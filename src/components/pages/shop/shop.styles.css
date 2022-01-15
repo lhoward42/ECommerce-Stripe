@@ -1,0 +1,36 @@
+.product-list-container {
+  margin: 3rem 0;
+}
+
+.product-list-container .product-list-title {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.product-list-container .product-list div {
+  margin: 1rem;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .product-list-container .product-list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 0 5rem;
+  }
+  .product-list-container .product-list div {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 300px;
+            flex: 0 0 300px;
+  }
+}
+/*# sourceMappingURL=shop.styles.css.map */

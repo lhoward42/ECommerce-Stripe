@@ -2566,6 +2566,9 @@ img {
   .featured-collection .products .featured-product {
     margin: 10px;
   }
+  .featured-collection .products .featured-image {
+    width: 17rem;
+  }
 }
 
 .name-price p {
@@ -2600,9 +2603,9 @@ form {
   text-align: center;
 }
 
-form input[type=text],
-form input[type=email],
-form input[type=password] {
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
   width: 60%;
 }
 
@@ -2657,9 +2660,9 @@ form .submit {
     width: 60%;
     margin: 0 auto;
   }
-  form input[type=text],
-  form input[type=email],
-  form input[type=password] {
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"] {
     width: 65%;
   }
 }

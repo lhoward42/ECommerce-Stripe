@@ -1,0 +1,40 @@
+.main-section-container {
+  width: 70%;
+  margin: 3rem auto;
+}
+
+h2 {
+  font-size: 1.1rem;
+}
+
+.ms-m-description p {
+  font-size: .9333rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 1024px) {
+  .main-section-middle {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .ms-image {
+    max-width: 545px;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 545px;
+            flex: 1 0 545px;
+  }
+  .ms-m-description {
+    margin-left: 30px;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  p {
+    font-size: 1.1rem;
+  }
+}
+/*# sourceMappingURL=main-section.styles.css.map */
