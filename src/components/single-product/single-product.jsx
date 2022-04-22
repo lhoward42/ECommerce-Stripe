@@ -5,7 +5,6 @@ import { isInCart } from '../../helpers';
 import { CartContext } from '../../context/cart-context';
 import Layout from '../shared/layout';
 import './single-product.styles.scss'
-import CartIcon from '../cart-icon/cart-icon';
 
  const SingleProduct = () => {
         const { products } = useContext(ProductsContext);
@@ -23,7 +22,7 @@ import CartIcon from '../cart-icon/cart-icon';
           }
       
           setProduct(product);
-        }, [id, product, products]);
+        }, [id, navigate, products, product]);
 
     if (!product) { return null }
   const { imageUrl, title, price, description } = product;
