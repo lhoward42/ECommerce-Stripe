@@ -1,9 +1,10 @@
-import React, { useContext} from 'react';
+import React, { useContext, useState} from 'react';
 // import { useNavigate } from 'react-router-dom';
 import { isInCart } from '../../helpers';
 import { CartContext } from '../../context/cart-context';
 import { Link } from 'react-router-dom';
 import './featured-products.styles.scss'
+import { useEffect } from 'react/cjs/react.development';
 
 
 const FeaturedProduct = (props) => {
@@ -11,6 +12,20 @@ const FeaturedProduct = (props) => {
     const product = { title, imageUrl, price, id, description, property, value };
     const { addProduct, cartItems, increase } = useContext(CartContext);
     const itemInCart = isInCart(product, cartItems)
+    const [selectedAttribute, setSelectedAttribute ] = useState(null);
+
+    // useEffect(() => {
+    //     console.log(selectedAttribute);
+    // }, [selectedAttribute])
+    
+    const select = async (e) => {
+        await setSelectedAttribute(e.target.value)
+        console.log(e.target.value, selectedAttribute);
+    }
+    const keyValue = (v) => {
+        console.log(value.indexOf(v));
+      return value.indexOf(v)
+    }
     return (
         
         <div className='featured-product'>
@@ -22,12 +37,16 @@ const FeaturedProduct = (props) => {
                     <h3 className='product-title'>{title}</h3>
                     <p>$ {price}</p>
                     <p>{property}</p>
-                    <p>{value.map(v => <p> {v} </p>)}</p>
+                    
+                    <select onChange={(e) => select(e)}>
+                        <option value="" disabled selected>Select a Size</option>
+                        {value.map(v => <option key={v} value={v}> {v} </option>)}
+                    </select>
                     {
                         !itemInCart &&  
                         <button 
                         className='button is-black nomad-btn'
-                        onClick={() => addProduct(product)}>
+                        onClick={() => addProduct(product, selectedAttribute)}>
                             ADD TO CART</button> 
                     }
                     {

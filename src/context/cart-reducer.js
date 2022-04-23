@@ -12,15 +12,18 @@ export const sumItems = (cartItems) => {
   }
 
 const cartReducer = (state, action) => {
+    
     switch(action.type) {
         case 'ADD_ITEM':
         //check if item is in cart 
-        if(!state.cartItems.find(item => Number(item.id) === Number(action.payload.id))) {
+        if(!state.cartItems.find(item => Number(item.id) === Number(action.payload.product.id))) {
             state.cartItems.push({
-                ...action.payload,
+                ...action.payload.product,
                 quantity: 1,
+                metadata: { property: action.payload.metadata}
                 
             })
+            console.log(action.payload);
         }
         return {
             ...state,
