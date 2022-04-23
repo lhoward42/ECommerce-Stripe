@@ -25,7 +25,7 @@ import './single-product.styles.scss'
         }, [id, navigate, products, product]);
 
     if (!product) { return null }
-  const { imageUrl, title, price, description } = product;
+  const { imageUrl, title, price, description, property, value } = product;
   const itemInCart = isInCart(product, cartItems)
     return (
         <Layout>
@@ -37,6 +37,8 @@ import './single-product.styles.scss'
           <div className='name-price'>
             <h3>{title}</h3>
             <p>$ {price}</p>
+            <p>{property}</p>
+            <p>{value.map(v => <p> {v} </p>)}</p>
           </div>
           <div className='add-to-cart-btns'>
             {

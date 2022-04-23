@@ -7,8 +7,8 @@ import './featured-products.styles.scss'
 
 
 const FeaturedProduct = (props) => {
-    const { title, imageUrl, price, id, description } = props;
-    const product = { title, imageUrl, price, id, description};
+    const { title, imageUrl, price, id, description, property, value } = props;
+    const product = { title, imageUrl, price, id, description, property, value };
     const { addProduct, cartItems, increase } = useContext(CartContext);
     const itemInCart = isInCart(product, cartItems)
     return (
@@ -21,8 +21,10 @@ const FeaturedProduct = (props) => {
                 <div className='name-price'>
                     <h3 className='product-title'>{title}</h3>
                     <p>$ {price}</p>
+                    <p>{property}</p>
+                    <p>{value.map(v => <p> {v} </p>)}</p>
                     {
-                        !itemInCart && 
+                        !itemInCart &&  
                         <button 
                         className='button is-black nomad-btn'
                         onClick={() => addProduct(product)}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SHOP_DATA from '../shop/index';
+
 import APIURL from '../utils/environment';
 
  export const ProductsContext = React.createContext();
