@@ -2,8 +2,8 @@ import React from 'react'
 import { PlusCircleIcon, MinusCircleIcon, TrashIcon } from '../../icons'
 
 const CartItem = (props) => {
-    const { title, imageUrl, price, quantity, increase, description, id, decrease, removeProduct } = props
-    const product = { title, imageUrl, price, quantity, id, description };
+    const { title, imageUrl, price, quantity, increase, description, id, decrease, removeProduct, metadata } = props
+    const product = { title, imageUrl, price, quantity, id, description, metadata };
     return (
         <div className='cart-item'>
             <div className='item-image'>
@@ -12,6 +12,7 @@ const CartItem = (props) => {
             <div className='name-price'>
                 <h4>{title}</h4>
                 <p>$ {price}</p>
+                <p>{metadata.property}</p>
             </div>
             <div className='quantity'>
                 <p>{`Quantity: ${quantity}`}</p>
