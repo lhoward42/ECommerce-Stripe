@@ -2,11 +2,11 @@ import React, { useContext,useState } from "react";
 import { CartContext } from '../../context/cart-context';
 import Layout from "../shared/layout";
 import ShippingAddress from './custom-checkout/shipping-address';
-import CustomCheckout from "./custom-checkout/custom-checkout";
+import StripeCheckout from "./stripe-checkout/stripe-checkout";
 import './checkout.styles.scss';
 
 const Checkout = () => {
-    const { itemCount, total, cartItems } = useContext(CartContext);
+    const { itemCount, total } = useContext(CartContext);
     const [shipping, setShipping] = useState(null);
     const addressShown = {
         display: (shipping ? 'none' : 'black')
@@ -26,7 +26,7 @@ const Checkout = () => {
                     <ShippingAddress setShipping={setShipping} />
                 </div>
                 <div style={cardShown}>
-                    <CustomCheckout {...{ shipping, cartItems } } />
+                    <StripeCheckout />
                 </div>
             </div>
         </Layout>
