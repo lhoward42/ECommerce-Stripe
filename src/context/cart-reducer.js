@@ -20,7 +20,7 @@ const cartReducer = (state, action) => {
             state.cartItems.push({
                 ...action.payload.product,
                 quantity: 1,
-                metadata: { property: action.payload.metadata}
+                metadata: { property: [action.payload.metadata]}
                 
             })
             console.log(action.payload);
@@ -33,7 +33,9 @@ const cartReducer = (state, action) => {
         case 'INCREASE':
             const increaseIndex = state.cartItems.findIndex(item => Number(item.id) === Number(action.payload.id));
             state.cartItems[increaseIndex].quantity++;
-
+            const prod = state.cartItems[increaseIndex].metadata.property
+            prod.push('dog')
+            console.log(prod);
             return {
                 ...state,
                 cartItems: [...state.cartItems],
