@@ -31,10 +31,10 @@ const cartReducer = (state, action) => {
             ...sumItems(state.cartItems)
         }
         case 'INCREASE':
-            const increaseIndex = state.cartItems.findIndex(item => Number(item.id) === Number(action.payload.id));
+            const increaseIndex = state.cartItems.findIndex(item => Number(item.id) === Number(action.payload.product.id));
             state.cartItems[increaseIndex].quantity++;
             const prod = state.cartItems[increaseIndex].metadata.property
-            prod.push('dog')
+            prod.push(action.payload.metadata)
             console.log(prod);
             return {
                 ...state,

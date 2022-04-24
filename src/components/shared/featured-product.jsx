@@ -54,7 +54,7 @@ const FeaturedProduct = (props) => {
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product)}>
+                        onClick={()=> increase(product, selectedAttribute)}>
                             ADD MORE</button> 
                     }
                    
