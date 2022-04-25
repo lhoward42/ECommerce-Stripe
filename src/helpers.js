@@ -2,6 +2,7 @@ export const isInCart = (product, cartItems) => {
   return cartItems.find((item) => item.id === product.id);
 };
 
+
 const API = 'http://localhost:3001';
 
 export async function fetchFromAPI(endpoint, opts) {

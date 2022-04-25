@@ -18,7 +18,8 @@ const StripeCheckout = () => {
                     product_data: {
                         name: item.title,
                         description: item.description,
-                        images: [item.imageUrl], //for multiple images create a .map
+                        images: [item.imageUrl],
+                        metadata: item.metadata //for multiple images create a .map
                     }
                 }
             }
