@@ -99,16 +99,18 @@ const cartReducer = (state, action) => {
       };
     }
     case "DECREASE": {
-      const decreaseIndex = state.cartItems.findIndex(
-        (item) => Number(item.id) === Number(action.payload.id)
-      );
-      const product = state.cartItems[decreaseIndex];
-      if (product.quantity > 1) {
-        product.quantity--;
-      }
-      // const prod2 = state.cartItems[increaseIndex].metadata;
-      // const meta2 = action.payload.metadata;
-      // delete prod2[meta2]
+        const previousItemsOfSize = state.cartItems.filter((item) => item.metadata.property === action.payload.metadata.property);
+        console.log(action.payload.metadata.property);
+        console.log(previousItemsOfSize);
+        const decreaseIndex = state.cartItems.findIndex(
+          (item) => (item) === previousItemsOfSize[0]
+        );
+        console.log(decreaseIndex, action.payload);
+        const product = state.cartItems[decreaseIndex];
+        if (product.quantity > 1) {
+          product.quantity--;
+        }
+       
       return {
         ...state,
         cartItems: [...state.cartItems],

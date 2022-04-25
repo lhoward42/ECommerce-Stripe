@@ -16,7 +16,7 @@ const StripeCheckout = () => {
                     currency: 'usd',
                     unit_amount: item.price * 100, //amount is in cents
                     product_data: {
-                        name: item.title,
+                        name: `${item.title} - ${item.metadata.property}`,
                         description: item.description,
                         images: [item.imageUrl],
                         metadata: item.metadata //for multiple images create a .map

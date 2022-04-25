@@ -19,7 +19,7 @@ const CartItem = (props) => {
             </div>
             <div className='btns-container'>
                 <button
-                className='btn-increase' onClick={() => increase(product)}>
+                className='btn-increase' onClick={() => increase(product, metadata.property)}>
                     <PlusCircleIcon width='20px' />
                 </button>
                 {
