@@ -9,6 +9,8 @@ import './cart-page.styles.scss'
 const CartPage = () => {
     const { cartItems, itemCount, total, increase, decrease, removeProduct, clearCart } = useContext(CartContext);
     const funcs = { increase, decrease, removeProduct }
+
+    
     return (
         <Layout>
             <>
@@ -20,7 +22,7 @@ const CartPage = () => {
                     <div className='cart-page'>
                         <div className='cart-item-container'>
                             {
-                                cartItems.map(item => <CartItem { ...item} key={item.id} {...funcs} />)
+                                cartItems.map((item, index) => <CartItem { ...item} key={index + 1} {...funcs} />)
                             }
                         </div>
                         <Total itemCount={itemCount} total={total} clearCart={clearCart} />

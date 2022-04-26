@@ -13,6 +13,7 @@ function App() {
   return (
     <div className='App'>
       <Routes>
+        
         <Route exact path='/' element={<HomePage />} />
         <Route path='/shop' element={<Shop />} />
         <Route path='/product/:id' element={<SingleProduct />} />

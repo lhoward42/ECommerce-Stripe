@@ -1,7 +1,14 @@
-export const isInCart = (product, cartItems) => {
-  return cartItems.find((item) => item.id === product.id);
+export const isInCart = (product, cartItems, metadata) => {
+  const isIn = cartItems.find((item) => item.id === product.id && item.metadata.property === metadata);
+  console.log(isIn);
+  return isIn
 };
 
+export const hasValueAttributes = (product) => {
+  const value = product.value.length ? true : false
+  console.log(value, product.value);
+  return value 
+}
 
 const API = 'http://localhost:3001';
 

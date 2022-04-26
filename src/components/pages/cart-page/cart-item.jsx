@@ -11,8 +11,9 @@ const CartItem = (props) => {
             </div>
             <div className='name-price'>
                 <h4>{title}</h4>
+                <p>{metadata.property}</p>
                 <p>$ {price}</p>
-                {/* <p>{metadata.property.map(v => v)}</p> */}
+                
             </div>
             <div className='quantity'>
                 <p>{`Quantity: ${quantity}`}</p>
