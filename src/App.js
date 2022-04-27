@@ -12,13 +12,31 @@ import "./App.scss";
 import { useEffect, useState } from "react/cjs/react.development";
 
 function App() {
+  const [token, setToken] = useState("");
+
+  useEffect(() => {
+    if(localStorage.getItem("token")){
+      setToken(localStorage.getItem("token"));
+    }
+  }, [])
+
+  const updateToken = (newToken) => {
+    localStorage.setItem("token", newToken);
+    setToken(localStorage.setItem("token", newToken));
+  };
   
+  const clearToken = () => {
+    localStorage.clear();
+    setToken("");
+  }
+
+
   return (
     <div className='App'>
       <Routes>
         
         <Route exact path='/' element={<HomePage />} />
-        <Route path='/portal' element={<Portal />} />
+        <Route path='/portal' element={<Portal token={token} logout={clearToken} newToken={updateToken} />} />
         {/* <Route path='/admin' element={<AdminPage />} /> */}
         <Route path='/shop' element={<Shop />} />
         <Route path='/product/:id' element={<SingleProduct />} />
