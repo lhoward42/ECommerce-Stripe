@@ -4,7 +4,7 @@ import Register from "./register"
 
 const Portal = () => {
     const [showLogin, setShowLogin] = useState(true);
-    const { token, setEmail, setPassword, email, password } = useContext(AdminContext);
+    const { token, setEmail, setPassword, email, password, adminSignUp } = useContext(AdminContext);
 
     return (
     <Register 
@@ -13,6 +13,7 @@ const Portal = () => {
     setPassword={setPassword}
     email={email}
     password={password}
+    adminSignUp={adminSignUp}
     />
 )
 }

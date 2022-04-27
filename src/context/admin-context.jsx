@@ -12,7 +12,24 @@ const AdminContextProvider = ({ children }) => {
     const [state, dispatch ] = useReducer(adminReducer, initialState);
     const setEmail = (email) => dispatch({ type: 'SET_EMAIL', payload: { email: email }})
     const setPassword = (password) => dispatch({ type: 'SET_PASSWORD', payload: { password: password }})
-    const adminSignUp = (newAdminData) => dispatch({ type: 'REGISTER', payload: { newAdmin: newAdminData }})
+    const adminSignUp = async () => {
+        let adminData = {
+            email: state.email,
+            password: state.password
+        }
+       try {
+         let response = fetch(`${APIURL}/admin/register`, {
+            method: 'POST',
+            headers: new Headers ({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify(adminData)
+        })
+        let data = await response.json();
+        console.log(data);   
+        } catch (err){ console.log(err);}
+        
+    }
     // useEffect(() => {
     //     if(getTokenFromStorage){
     //         setToken(getTokenFromStorage);

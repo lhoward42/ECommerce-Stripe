@@ -14,17 +14,6 @@ const adminReducer = (state, action) => {
                 password: action.payload.password,
             }
         }
-         case "REGISTER": {
-             fetch(`${APIURL}/admin/register`, {
-                 method: 'POST',
-                 headers: new Headers ({
-                     'Content-Type': 'application/json'
-                 }),
-                 body: JSON.stringify(action.payload.newAdmin)
-             })
-             return {}
-         }
-         
          
          default: {
          return state;
