@@ -134,16 +134,17 @@ const cartReducer = (state, action) => {
         ...sumItems(newCartItems),
       };
     }
-    case "CLEAR":
+    case "CLEAR": {
       localStorage.removeItem("cart");
       return {
         cartItems: [],
         itemCount: 0,
         total: 0,
       };
-
-    default:
+}
+    default: {
       return state;
+    }
   }
 };
 

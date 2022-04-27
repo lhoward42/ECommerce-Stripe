@@ -22,10 +22,7 @@ const FeaturedProduct = (props) => {
         await setSelectedAttribute(e.target.value)
         console.log(e.target.value, selectedAttribute);
     }
-    const keyValue = (v) => {
-        console.log(value.indexOf(v));
-      return value.indexOf(v)
-    }
+    
     return (
         
         <div className='featured-product'>

@@ -7,32 +7,18 @@ import CartPage from "./components/pages/cart-page/cart-page.jsx";
 import Checkout from "./components/checkout/checkout";
 import Success from "./components/checkout/stripe-checkout/success.jsx";
 import Canceled from "./components/checkout/stripe-checkout/canceled.jsx";
+import Portal from "./components/pages/auth/portal.jsx";
 import "./App.scss";
 import { useEffect, useState } from "react/cjs/react.development";
 
 function App() {
-  const [token, setToken] = useState(null);
-
-  useEffect(() => {
-    if(localStorage.getItem("token")){
-      setToken(localStorage.getItem("token"))
-    }
-  }, [])
-
-  const updateToken = (newToken) => {
-    localStorage.setItem("token", newToken);
-    setToken(newToken);
-  };
-
-  const clearToken = () => {
-    localStorage.clear();
-    setToken("");
-  }
+  
   return (
     <div className='App'>
       <Routes>
         
         <Route exact path='/' element={<HomePage />} />
+        <Route path='/portal' element={<Portal />} />
         {/* <Route path='/admin' element={<AdminPage />} /> */}
         <Route path='/shop' element={<Shop />} />
         <Route path='/product/:id' element={<SingleProduct />} />
