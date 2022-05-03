@@ -4,7 +4,7 @@ import FeaturedProduct from '../shared/featured-product';
 
 
 const FeaturedCollection = () => {
-    const { products, fetchAllProducts } = useContext(ProductsContext);
+    const { products } = useContext(ProductsContext);
     const productItems = products.filter((product, i) => i < 4).map(product => (
         <FeaturedProduct {...product} key={product.id} />
     )) 

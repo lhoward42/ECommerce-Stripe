@@ -1,6 +1,6 @@
 import React, { useContext, useState} from 'react';
 // import { useNavigate } from 'react-router-dom';
-import { isInCart, hasValueAttributes } from '../../helpers';
+import { isInCart, hasValueAttributes, hasValueAttributes2 } from '../../helpers';
 import { CartContext } from '../../context/cart-context';
 import { Link } from 'react-router-dom';
 import './featured-products.styles.scss'
@@ -8,17 +8,19 @@ import { useEffect } from 'react/cjs/react.development';
 
 
 const FeaturedProduct = (props) => {
-    const { title, imageUrl, price, id, description, metadata, value } = props;
-    const product = { title, imageUrl, price, id, description, metadata, value };
-    const { addProduct, cartItems, increase, addProdWNewAttribute } = useContext(CartContext);
+    const { title, imageUrl, price, id, description, metadata, value, property, value2, property2 } = props;
+    const product = { title, imageUrl, price, id, description, metadata, value, property, value2, property2 };
+    const { addProduct, cartItems, increase, addProdWAttribute } = useContext(CartContext);
     const [selectedAttribute, setSelectedAttribute ] = useState(null);
     const itemInCart = isInCart(product, cartItems, selectedAttribute)
     const hasValues = hasValueAttributes(product)
+    const hasMoreValues = hasValueAttributes(product)
     // useEffect(() => {
     //     console.log(selectedAttribute);
     // }, [selectedAttribute])
     
     const select = async (e) => {
+        //this needs a switch case for metadata 1 and 2
         await setSelectedAttribute(e.target.value)
         console.log(e.target.value, selectedAttribute);
     }
@@ -39,10 +41,16 @@ const FeaturedProduct = (props) => {
                         <option value="" disabled selected>Select a Size</option>
                         {value.map(v => <option key={v} value={v}> {v} </option>)}
                     </select>}
+                    { hasMoreValues && 
+                    <select onChange={(e) => select(e)}>
+                        <option value="" disabled selected>Select a {product.property}</option>
+                        {value.map(v => <option key={v} value={v}> {v} </option>)}
+                    </select>}
+
                     {!itemInCart && !hasValues ? (   
                         <button 
                         className='button is-black nomad-btn'
-                        onClick={() => addProdWNewAttribute(product, selectedAttribute)}>
+                        onClick={() => addProduct(product, selectedAttribute)}>
                             ADD TO CART</button> 
                     ) : itemInCart && !hasValues ? (
                         <button 
@@ -57,7 +65,7 @@ const FeaturedProduct = (props) => {
                         !itemInCart && hasValues && selectedAttribute !== null ? (   
                         <button 
                         className='button is-black nomad-btn'
-                        onClick={() => addProdWNewAttribute(product, selectedAttribute)}>
+                        onClick={() => addProdWAttribute(product, selectedAttribute)}>
                             ADD TO CART</button> 
                         ) : <></> }
                        { itemInCart && hasValues ? (

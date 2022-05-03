@@ -7,7 +7,8 @@ import CartPage from "./components/pages/cart-page/cart-page.jsx";
 import Checkout from "./components/checkout/checkout";
 import Success from "./components/checkout/stripe-checkout/success.jsx";
 import Canceled from "./components/checkout/stripe-checkout/canceled.jsx";
-import Portal from "./components/pages/auth/portal.jsx";
+import Portal from "./components/auth/portal.jsx";
+import CreateProduct from "./components/admin/products/create-product.jsx";
 import "./App.scss";
 import { useEffect, useState } from "react/cjs/react.development";
 
@@ -36,14 +37,16 @@ function App() {
       <Routes>
         
         <Route exact path='/' element={<HomePage />} />
-        <Route path='/portal' element={<Portal token={token} logout={clearToken} newToken={updateToken} />} />
+       
         {/* <Route path='/admin' element={<AdminPage />} /> */}
         <Route path='/shop' element={<Shop />} />
         <Route path='/product/:id' element={<SingleProduct />} />
         <Route path='/cart' element={<CartPage />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/success' element={<Success />} />
-        <Route path='/canceled' element={<Canceled />} />
+        <Route path='/canceled' element={<Canceled />} /> 
+        <Route path='/portal' element={<Portal token={token} logout={clearToken} newToken={updateToken} />} />
+        <Route path='/admin-home' element={<CreateProduct />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>

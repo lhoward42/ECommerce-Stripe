@@ -14,7 +14,7 @@ const CartContextProvider = ({ children }) => {
     const increase = (product, metadata) => dispatch({type: 'INCREASE', payload: { product: product, metadata: metadata } });
     const decrease = (product) => dispatch({type: 'DECREASE', payload: product });
     const removeProduct = (product) => dispatch({ type: 'REMOVE_ITEM', payload: product });
-    const addProdWNewAttribute = (product, metadata) => dispatch({type: 'ADD ITEM W NEW ATTRIBUTE', payload: { product: product, metadata: metadata  }})
+    const addProdWAttribute = (product, metadata) => dispatch({type: 'ADD ITEM W ATTRIBUTE', payload: { product: product, metadata: metadata  }})
     const clearCart = () => dispatch({ type: 'CLEAR'});
 
     
@@ -25,7 +25,7 @@ const CartContextProvider = ({ children }) => {
         decrease,
         removeProduct,
         clearCart,
-        addProdWNewAttribute,
+        addProdWAttribute,
     }
 
     return (

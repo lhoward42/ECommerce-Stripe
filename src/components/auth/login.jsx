@@ -1,9 +1,11 @@
-import Layout from "../../shared/layout";
+import Layout from "../shared/layout";
 import { useState } from "react/cjs/react.development";
-import APIURL from "../../../utils/environment";
+import APIURL from "../../utils/environment";
 
-const Register = ({ token, setEmail, setPassword, email, password, newToken }) => {
-  const [localToken, setLocalToken] = useState("");
+
+const Login = ({ email, setEmail, password, setPassword, newToken }) => {
+
+    const [localToken, setLocalToken] = useState("");
   const confirmAndSend = () => {
       adminSignUp()
   }
@@ -18,7 +20,7 @@ const Register = ({ token, setEmail, setPassword, email, password, newToken }) =
         }
     console.log(`newUserData --> ${adminData.email} ${adminData.password}`);
        try {
-         let response = await fetch(`${APIURL}/admin/register`, {
+         let response = await fetch(`${APIURL}/admin/login`, {
             method: 'POST',
             headers: new Headers ({
                 'Content-Type': 'application/json'
@@ -32,18 +34,18 @@ const Register = ({ token, setEmail, setPassword, email, password, newToken }) =
         } catch (err){ console.log(err);}
         
     }
-  return (
-<Layout>
-  <form onSubmit={adminSignUp}>
-      <h4>Email</h4>
-       <input value={email} onChange={(e) => { setEmail(e.target.value)}} />
-       <h4>Password</h4>
-       <input value={password} onChange={(e) => { setPassword(e.target.value)}} />
-       <br />
-       <input type="submit" value="Submit"/>
-   </form>
-</Layout>
-   )
+    return (
+        <Layout>
+          <form onSubmit={adminSignUp}>
+              <h4>Email</h4>
+               <input value={email} onChange={(e) => { setEmail(e.target.value)}} />
+               <h4>Password</h4>
+               <input value={password} onChange={(e) => { setPassword(e.target.value)}} />
+               <br />
+               <input type="submit" value="Submit"/>
+           </form>
+        </Layout>
+           )
 }
 
-export default Register
+export default Login

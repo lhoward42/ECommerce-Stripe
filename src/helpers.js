@@ -10,6 +10,12 @@ export const hasValueAttributes = (product) => {
   return value 
 }
 
+export const hasValueAttributes2 = (product) => {
+  const value = product.value2.length ? true : false
+  console.log(value, product.value2);
+  return value 
+}
+
 const API = 'http://localhost:3001';
 
 export async function fetchFromAPI(endpoint, opts) {

@@ -1,11 +1,9 @@
-import Layout from "../../shared/layout";
+import Layout from "../shared/layout";
 import { useState } from "react/cjs/react.development";
-import APIURL from "../../../utils/environment";
+import APIURL from "../../utils/environment";
 
-
-const Login = ({ email, setEmail, password, setPassword, newToken }) => {
-
-    const [localToken, setLocalToken] = useState("");
+const Register = ({ token, setEmail, setPassword, email, password, newToken }) => {
+  const [localToken, setLocalToken] = useState("");
   const confirmAndSend = () => {
       adminSignUp()
   }
@@ -20,7 +18,7 @@ const Login = ({ email, setEmail, password, setPassword, newToken }) => {
         }
     console.log(`newUserData --> ${adminData.email} ${adminData.password}`);
        try {
-         let response = await fetch(`${APIURL}/admin/login`, {
+         let response = await fetch(`${APIURL}/admin/register`, {
             method: 'POST',
             headers: new Headers ({
                 'Content-Type': 'application/json'
@@ -34,18 +32,18 @@ const Login = ({ email, setEmail, password, setPassword, newToken }) => {
         } catch (err){ console.log(err);}
         
     }
-    return (
-        <Layout>
-          <form onSubmit={adminSignUp}>
-              <h4>Email</h4>
-               <input value={email} onChange={(e) => { setEmail(e.target.value)}} />
-               <h4>Password</h4>
-               <input value={password} onChange={(e) => { setPassword(e.target.value)}} />
-               <br />
-               <input type="submit" value="Submit"/>
-           </form>
-        </Layout>
-           )
+  return (
+<Layout>
+  <form onSubmit={adminSignUp}>
+      <h4>Email</h4>
+       <input value={email} onChange={(e) => { setEmail(e.target.value)}} />
+       <h4>Password</h4>
+       <input value={password} onChange={(e) => { setPassword(e.target.value)}} />
+       <br />
+       <input type="submit" value="Submit"/>
+   </form>
+</Layout>
+   )
 }
 
-export default Login
+export default Register

@@ -26,7 +26,10 @@ const cartReducer = (state, action) => {
         state.cartItems.push({
           ...action.payload.product,
           quantity: 1,
-          metadata: { property: action.payload.metadata },
+          metadata: { 
+            property: action.payload.metadata, 
+           
+          },
         });
 
         console.log(action.payload, state.cartItems);
@@ -38,7 +41,7 @@ const cartReducer = (state, action) => {
         ...sumItems(state.cartItems),
       };
 }
-    case "ADD ITEM W NEW ATTRIBUTE": {
+    case "ADD ITEM W ATTRIBUTE": {
       const previousItemsOfSize = state.cartItems.filter((item) => {
         return (
           Number(item.id) === Number(action.payload.product.id) &&
@@ -55,26 +58,15 @@ const cartReducer = (state, action) => {
           metadata: { property: action.payload.metadata },
         });
       }
-
-      //   if (
-      //     state.cartItems.find(
-      //       (item) =>
-      //         Number(item.id) === Number(action.payload.product.id) &&
-      //         item.metadata.property !== action.payload.metadata
-      //     )
-      //   ) {
-      //     state.cartItems.push({
-      //       ...action.payload.product,
-      //       quantity: 1,
-      //       metadata: { property: action.payload.metadata },
-      //     });
-      //   }
       return {
         ...state,
         cartItems: [...state.cartItems],
         ...sumItems(state.cartItems),
       };
 }
+
+//case "ADD ITEM WITH MULTIPLE ATTRIBUTES": {}
+
     case "INCREASE": {
     //   if()
     const previousItemsOfSize = state.cartItems.filter((item) => {
