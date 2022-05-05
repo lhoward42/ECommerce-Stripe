@@ -16,46 +16,26 @@ export const sumItems = (cartItems) => {
 
 const cartReducer = (state, action) => {
   switch (action.type) {
-    case "ADD_ITEM": {
-      //check if item is in cart
-      if (
-        !state.cartItems.find(
-          (item) => Number(item.id) === Number(action.payload.product.id)
-        )
-      ) {
-        state.cartItems.push({
-          ...action.payload.product,
-          quantity: 1,
-          metadata: { 
-            property: action.payload.metadata, 
-           
-          },
-        });
-
-        console.log(action.payload, state.cartItems);
-      }
-
-      return {
-        ...state,
-        cartItems: [...state.cartItems],
-        ...sumItems(state.cartItems),
-      };
-}
     case "ADD ITEM W ATTRIBUTE": {
       const previousItemsOfSize = state.cartItems.filter((item) => {
         return (
           Number(item.id) === Number(action.payload.product.id) &&
-          item.metadata.property === action.payload.metadata
+          item.metadata.property === action.payload.metadata &&
+          item.metadata.property2 === action.payload.metadata2
         );
       });
 
       console.log(previousItemsOfSize);
 
       if (previousItemsOfSize.length === 0) {
+        
         state.cartItems.push({
           ...action.payload.product,
           quantity: 1,
-          metadata: { property: action.payload.metadata },
+          metadata: { 
+            property: action.payload.metadata,
+            property2: action.payload.metadata2
+           },
         });
       }
       return {
@@ -72,7 +52,8 @@ const cartReducer = (state, action) => {
     const previousItemsOfSize = state.cartItems.filter((item) => {
         return (
           Number(item.id) === Number(action.payload.product.id) &&
-          item.metadata.property === action.payload.metadata
+          item.metadata.property === action.payload.metadata && 
+          item.metadata.property2 === action.payload.metadata2
         );
       });
 
@@ -91,8 +72,14 @@ const cartReducer = (state, action) => {
       };
     }
     case "DECREASE": {
-        const previousItemsOfSize = state.cartItems.filter((item) => item.metadata.property === action.payload.metadata.property);
-        console.log(action.payload.metadata.property);
+        const previousItemsOfSize = state.cartItems.filter((item) => {
+        return (
+        Number(item.id) === Number(action.payload.product.id) &&
+        item.metadata.property === action.payload.metadata &&
+        item.metadata.property2 === action.payload.metadata2
+        );
+        });
+        console.log(action.payload.metadata);
         console.log(previousItemsOfSize);
         const decreaseIndex = state.cartItems.findIndex(
           (item) => (item) === previousItemsOfSize[0]

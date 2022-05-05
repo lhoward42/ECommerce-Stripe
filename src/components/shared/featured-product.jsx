@@ -12,9 +12,11 @@ const FeaturedProduct = (props) => {
     const product = { title, imageUrl, price, id, description, metadata, value, property, value2, property2 };
     const { addProduct, cartItems, increase, addProdWAttribute } = useContext(CartContext);
     const [selectedAttribute, setSelectedAttribute ] = useState(null);
-    const itemInCart = isInCart(product, cartItems, selectedAttribute)
+    const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
+    const itemInCart = isInCart(product, cartItems, selectedAttribute);
+    const token = localStorage.getItem("token")
     const hasValues = hasValueAttributes(product)
-    const hasMoreValues = hasValueAttributes(product)
+    const hasMoreValues = hasValueAttributes2(product)
     // useEffect(() => {
     //     console.log(selectedAttribute);
     // }, [selectedAttribute])
@@ -24,11 +26,24 @@ const FeaturedProduct = (props) => {
         await setSelectedAttribute(e.target.value)
         console.log(e.target.value, selectedAttribute);
     }
+    const select2 = async (e) => {
+        //this needs a switch case for metadata 1 and 2
+        await setSelectedAttribute2(e.target.value)
+        console.log(e.target.value, selectedAttribute2);
+    }
     
     return (
         
         <div className='featured-product'>
             <div className='featured-image'>
+                { token ? 
+                <div className="btns-container"> 
+                    <button className="btn-trash" onClick={()=> {}}> X </button> 
+                    <button className="btn-increase" onClick={()=> {}}> Edit </button>
+                    </div> 
+                    : 
+                    <></>
+                    }
                 <Link to={`/product/${id}`}>
                 <img src={imageUrl} alt='product'/> 
                 </Link>
@@ -38,19 +53,20 @@ const FeaturedProduct = (props) => {
                      
                     { hasValues && 
                     <select onChange={(e) => select(e)}>
-                        <option value="" disabled selected>Select a Size</option>
-                        {value.map(v => <option key={v} value={v}> {v} </option>)}
+                        <option disabled selected>Select a size</option>
+                        {value !== null && value.map(v => <option key={v} value={v}> {v} </option>)}
                     </select>}
+                    
                     { hasMoreValues && 
-                    <select onChange={(e) => select(e)}>
-                        <option value="" disabled selected>Select a {product.property}</option>
-                        {value.map(v => <option key={v} value={v}> {v} </option>)}
+                    <select onChange={(e) => select2(e)}>
+                        <option disabled selected>Select a size</option>
+                        {value2 !== null && value2.map(v => <option key={v} value={v}> {v} </option>)}
                     </select>}
 
                     {!itemInCart && !hasValues ? (   
                         <button 
                         className='button is-black nomad-btn'
-                        onClick={() => addProduct(product, selectedAttribute)}>
+                        onClick={() => addProdWAttribute(product, selectedAttribute)}>
                             ADD TO CART</button> 
                     ) : itemInCart && !hasValues ? (
                         <button 
@@ -62,17 +78,33 @@ const FeaturedProduct = (props) => {
                         }
             
                     {
-                        !itemInCart && hasValues && selectedAttribute !== null ? (   
+                        !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
                         <button 
                         className='button is-black nomad-btn'
                         onClick={() => addProdWAttribute(product, selectedAttribute)}>
                             ADD TO CART</button> 
                         ) : <></> }
-                       { itemInCart && hasValues ? (
+                       { itemInCart && hasValues && !hasMoreValues && selectedAttribute && !hasMoreValues ? (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
                         onClick={()=> increase(product, selectedAttribute)}>
+                            ADD MORE</button> 
+                    ) : <></>}
+                   
+
+                   {
+                        !itemInCart && hasValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (   
+                        <button 
+                        className='button is-black nomad-btn'
+                        onClick={() => addProdWAttribute(product, selectedAttribute, selectedAttribute2)}>
+                            ADD TO CART</button> 
+                        ) : <></> }
+                       { itemInCart && hasValues && hasMoreValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (
+                        <button 
+                        className='button is-white nomad-btn'
+                        id='btn-white-outline'
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2)}>
                             ADD MORE</button> 
                     ) : <></>}
                    

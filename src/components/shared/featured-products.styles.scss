@@ -6,3 +6,23 @@
 .product-title {
   margin-top: 1.7rem;
 }
+.btns-container {
+  button {
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 10px;
+    margin-right: 5px;
+  }
+
+  .btn-increase {
+    color: #fff;
+    background-color: #1a1a1a;
+  }
+
+  .btn-decrease,
+  .btn-trash {
+    color: #fff;
+    background-color: #d9534f;
+  }
+}

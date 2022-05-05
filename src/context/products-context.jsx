@@ -5,12 +5,6 @@ import APIURL from '../utils/environment';
  export const ProductsContext = createContext();
 
  const ProductsContextProvider = ({ children }) => {
-    // state = {
-    //      products: [],
-    //      token: localStorage.getItem("token"),
-    //      product: {}
-
-    // }
 
     const [products, setProducts] = useState([]);
     const [product, setProduct] = useState({});
@@ -46,6 +40,14 @@ import APIURL from '../utils/environment';
             }
             case 'value': {
                 setProduct({ ...product, value: [value] });
+                break;
+            }
+            case 'property2': {
+                setProduct({ ...product, property2: value });
+                break;
+            }
+            case 'value2': {
+                setProduct({ ...product, value2: [value] });
                 break;
             }
             default:

@@ -10,6 +10,7 @@ const StripeCheckout = () => {
     const handleGuestCheckout = async (e) => {
         e.preventDefault();
         const line_items = cartItems.map( item => {
+            
             return {
                 quantity: item.quantity,
                 price_data: {

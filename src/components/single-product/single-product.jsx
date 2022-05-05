@@ -12,6 +12,8 @@ import './single-product.styles.scss'
         const navigate = useNavigate()  
         const { id } = useParams()
         const [product, setProduct] = useState(null);
+        const [editFields, setEditFields] = useState(false)
+        const token = localStorage.getItem("token")
 
         useEffect(() => {
           const product = products.find(item => Number(item.id) === Number(id));
@@ -27,18 +29,26 @@ import './single-product.styles.scss'
     if (!product) { return null }
   const { imageUrl, title, price, description, property, value } = product;
   const itemInCart = isInCart(product, cartItems)
+  
+
     return (
         <Layout>
       <div className='single-product-container'>
+        {token && <button onClick={() => setEditFields(!editFields)}></button>}
         <div className='product-image'>
           <img src={imageUrl} alt='product' />
+          { token && editFields === true && <input type="text"/>}
         </div>
         <div className='product-details'>
           <div className='name-price'>
             <h3>{title}</h3>
+            { token && editFields === true && <input type="text"/>}
             <p>$ {price}</p>
+            { token && editFields === true && <input type="text"/>}
             <p>{property}</p>
+            { token && editFields === true && <input type="text"/>}
             <p>{value.map(v => <p> {v} </p>)}</p>
+            { token && editFields === true && <input type="text"/>}
           </div>
           <div className='add-to-cart-btns'>
             {
@@ -75,6 +85,7 @@ import './single-product.styles.scss'
             <p>
               { description }
             </p>
+            { token && editFields === true && <input type="text"/>}
           </div>
         </div>
       </div>

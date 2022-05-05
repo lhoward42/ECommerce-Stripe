@@ -5,7 +5,7 @@ import Layout from "../../shared/layout";
 
 const CreateProduct = () => {
     const { handleChange, createNewProduct } = useContext(ProductsContext);
-
+    const blankArr = []
     return (
         <Layout>
             <div className="container">
@@ -51,24 +51,50 @@ const CreateProduct = () => {
                 onChange={(e) => handleChange(e)}
                 />
                 <div className="form-group">
-                <label>Product Attributes: </label>
+                <label>Product Attribute: </label>
                 <input
                 className="form-control"
                 type="text"
                 name="property"
+                defaultValue=""
                 placeholder="Indicate whether a product will have size or colors. Indicate one attribute at a time and enter values in next field."
                 onChange={(e) => handleChange(e)}
                 />
                 </div>
                 <div className="form-group">
-                <label> Add Values for Attributes: </label>
+                <label> Add Values for Attribute: </label>
                 <input
                 className="form-control"
                 type="text"
                 name="value"
+                defaultValue={blankArr}
                 placeholder="Separate each value with comma. eg. Small, Medium, Large"
                 onChange={(e) => handleChange(e)}
                 />
+                
+                </div>
+                <div className="form-group">
+                <label>Second Product Attribute: </label>
+                <input
+                className="form-control"
+                type="text"
+                defaultValue=""
+                name="property2"
+                placeholder="Indicate whether a product will have size or colors. Indicate one attribute at a time and enter values in next field."
+                onChange={(e) => handleChange(e)}
+                />
+                </div>
+                <div className="form-group">
+                <label> Add Values for Second Attribute: </label>
+                <input
+                className="form-control"
+                type="text"
+                name="value2"
+                defaultValue={blankArr}
+                placeholder="Separate each value with comma. eg. Small, Medium, Large"
+                onChange={(e) => handleChange(e)}
+                />
+                
                 </div>
                 <div>
                     <button type="submit">Create New Product</button>

@@ -11,7 +11,7 @@ const CartItem = (props) => {
             </div>
             <div className='name-price'>
                 <h4>{title}</h4>
-                <p>{metadata.property}</p>
+                {metadata.property !== "" && <p>{metadata.property}</p>}
                 <p>$ {price}</p>
                 
             </div>
