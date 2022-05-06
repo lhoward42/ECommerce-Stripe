@@ -17,6 +17,7 @@ const FeaturedProduct = (props) => {
     const token = localStorage.getItem("token")
     const hasValues = hasValueAttributes(product)
     const hasMoreValues = hasValueAttributes2(product)
+
     // useEffect(() => {
     //     console.log(selectedAttribute);
     // }, [selectedAttribute])
@@ -38,15 +39,16 @@ const FeaturedProduct = (props) => {
             <div className='featured-image'>
                 { token ? 
                 <div className="btns-container"> 
+                {/* import update component in here and the navigation method for react-router 6 */}
                     <button className="btn-trash" onClick={()=> {}}> X </button> 
-                    <button className="btn-increase" onClick={()=> {}}> Edit </button>
+                    <Link className='btn-increase' to={`/update-product/${id}`}>Edit</Link>
                     </div> 
                     : 
                     <></>
                     }
                 <Link to={`/product/${id}`}>
                 <img src={imageUrl} alt='product'/> 
-                </Link>
+                </Link> 
                 <div className='name-price'>
                     <h3 className='product-title'>{title}</h3>
                     <p>$ {price}</p>

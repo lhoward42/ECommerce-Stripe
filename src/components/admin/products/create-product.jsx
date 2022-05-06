@@ -56,7 +56,6 @@ const CreateProduct = () => {
                 className="form-control"
                 type="text"
                 name="property"
-                defaultValue=""
                 placeholder="Indicate whether a product will have size or colors. Indicate one attribute at a time and enter values in next field."
                 onChange={(e) => handleChange(e)}
                 />
@@ -67,7 +66,6 @@ const CreateProduct = () => {
                 className="form-control"
                 type="text"
                 name="value"
-                defaultValue={blankArr}
                 placeholder="Separate each value with comma. eg. Small, Medium, Large"
                 onChange={(e) => handleChange(e)}
                 />
@@ -78,7 +76,6 @@ const CreateProduct = () => {
                 <input
                 className="form-control"
                 type="text"
-                defaultValue=""
                 name="property2"
                 placeholder="Indicate whether a product will have size or colors. Indicate one attribute at a time and enter values in next field."
                 onChange={(e) => handleChange(e)}
@@ -90,7 +87,6 @@ const CreateProduct = () => {
                 className="form-control"
                 type="text"
                 name="value2"
-                defaultValue={blankArr}
                 placeholder="Separate each value with comma. eg. Small, Medium, Large"
                 onChange={(e) => handleChange(e)}
                 />

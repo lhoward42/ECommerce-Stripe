@@ -7,7 +7,15 @@ import APIURL from '../utils/environment';
  const ProductsContextProvider = ({ children }) => {
 
     const [products, setProducts] = useState([]);
-    const [product, setProduct] = useState({});
+    const [product, setProduct] = useState(null);
+    const [title, setTitle] = useState(null);
+    const [description, setDescription] = useState(null);
+    const [imageUrl, setImageUrl] = useState(null);
+    const [price, setPrice] = useState(null);
+    const [property, setProperty] = useState(null);
+    const [val, setVal] = useState(null);
+    const [property2, setProperty2] = useState(null);
+    const [value2, setValue2] = useState(null);
 
 
     useEffect(() => {
@@ -55,6 +63,8 @@ import APIURL from '../utils/environment';
         }
         }
 
+        
+
     const fetchAllProducts = async () => {
        try {
         let res = await fetch(`${APIURL}/products/all`, { 
@@ -101,12 +111,57 @@ import APIURL from '../utils/environment';
         } 
     }
 
+    
+
+    const updateProduct = async (e) => {
+        //finish writing fetch]
+        e.preventDefault()
+        let token = localStorage.getItem("token");
+        let productData = {
+            title: title,
+            description: description,
+            price: price,
+            imageUrl: imageUrl,
+            property: property,
+            value: val,
+            property2: property2,
+            value2: value2,
+        };
+
+        try {
+            let res = await fetch(`${APIURL}/products/${product.id}`, {
+                method: 'PUT',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }),
+                body: JSON.stringify(productData),
+            })
+            let data = await res.json();
+            console.log(data);
+        } catch (err) {
+            console.error( "Product did not update", err )
+        }
+        
+    }
+
 const contextValues = {
     products,
     product,
     handleChange,
     fetchAllProducts,
     createNewProduct,
+    updateProduct,
+    setProduct,
+    setTitle,
+    setDescription,
+    setPrice,
+    setImageUrl,
+    setVal,
+    setProperty,
+    setProperty2,
+    setValue2
+
 }
     
     return (

@@ -1,34 +1,35 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom';
 import { ProductsContext } from '../../context/products-context';
 import { isInCart } from '../../helpers';
 import { CartContext } from '../../context/cart-context';
 import Layout from '../shared/layout';
-import './single-product.styles.scss'
+import './single-product.styles.scss';
 
  const SingleProduct = () => {
-        const { products } = useContext(ProductsContext);
-        const { addProduct, cartItems, increase } = useContext(CartContext)
-        const navigate = useNavigate()  
-        const { id } = useParams()
-        const [product, setProduct] = useState(null);
-        const [editFields, setEditFields] = useState(false)
-        const token = localStorage.getItem("token")
+    const { products } = useContext(ProductsContext);
+    const { addProduct, cartItems, increase } = useContext(CartContext)
+    const navigate = useNavigate();  
+    const { id } = useParams();
+    const [product, setProduct] = useState(null);
+    const [editFields, setEditFields] = useState(false);
+    const token = localStorage.getItem("token");
 
-        useEffect(() => {
-          const product = products.find(item => Number(item.id) === Number(id));
+    useEffect(() => {
+        const product = products.find(item => Number(item.id) === Number(id));
       
           // if product does not exist, redirect to shop page
-          if (!product) {
+        if (!product) {
             return navigate('/shop');
           }
       
           setProduct(product);
         }, [id, navigate, products, product]);
 
-    if (!product) { return null }
-  const { imageUrl, title, price, description, property, value } = product;
-  const itemInCart = isInCart(product, cartItems)
+    if (!product) { return null };
+
+    const { imageUrl, title, price, description, property, value } = product;
+    const itemInCart = isInCart(product, cartItems);
   
 
     return (
