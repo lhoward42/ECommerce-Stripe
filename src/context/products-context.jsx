@@ -13,10 +13,11 @@ import APIURL from '../utils/environment';
     const [imageUrl, setImageUrl] = useState(null);
     const [price, setPrice] = useState(null);
     const [property, setProperty] = useState(null);
-    const [val, setVal] = useState(null);
+    const [val, setVal] = useState([]);
+    const [newVal, setNewVal] = useState(null);
     const [property2, setProperty2] = useState(null);
-    const [value2, setValue2] = useState(null);
-
+    const [value2, setValue2] = useState([]);
+    const [removeValues, setRemoveValues] = useState([]);
 
     useEffect(() => {
         fetchAllProducts()
@@ -79,7 +80,7 @@ import APIURL from '../utils/environment';
         console.log(data); 
     } catch (err) {
         console.error(err);
-    }
+    } 
     }
 
     const createNewProduct = async () => {
@@ -148,6 +149,17 @@ import APIURL from '../utils/environment';
 const contextValues = {
     products,
     product,
+    removeValues,
+    title,
+    description,
+    imageUrl,
+    price,
+    property,
+    val,
+    property2, 
+    value2,
+    newVal,
+    setNewVal,
     handleChange,
     fetchAllProducts,
     createNewProduct,
@@ -160,7 +172,8 @@ const contextValues = {
     setVal,
     setProperty,
     setProperty2,
-    setValue2
+    setValue2, 
+    setRemoveValues
 
 }
     
