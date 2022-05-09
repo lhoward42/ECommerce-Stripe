@@ -115,8 +115,8 @@ import APIURL from '../utils/environment';
     
 
     const updateProduct = async (e) => {
-        //finish writing fetch]
-        e.preventDefault()
+
+        e.preventDefault();
         let token = localStorage.getItem("token");
         let productData = {
             title: title,
@@ -140,6 +140,7 @@ import APIURL from '../utils/environment';
             })
             let data = await res.json();
             console.log(data);
+            setRemoveValues([])
         } catch (err) {
             console.error( "Product did not update", err )
         }

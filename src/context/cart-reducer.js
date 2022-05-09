@@ -72,22 +72,22 @@ const cartReducer = (state, action) => {
       };
     }
     case "DECREASE": {
-        const previousItemsOfSize = state.cartItems.filter((item) => {
+      const previousItemsOfSize = state.cartItems.filter((item) => {
         return (
-        Number(item.id) === Number(action.payload.product.id) &&
-        item.metadata.property === action.payload.metadata &&
-        item.metadata.property2 === action.payload.metadata2
+          Number(item.id) === Number(action.payload.product.id) &&
+          item.metadata.property === action.payload.metadata && 
+          item.metadata.property2 === action.payload.metadata2
         );
-        });
+      });
         console.log(action.payload.metadata);
         console.log(previousItemsOfSize);
         const decreaseIndex = state.cartItems.findIndex(
           (item) => (item) === previousItemsOfSize[0]
         );
-        console.log(decreaseIndex, action.payload);
-        const product = state.cartItems[decreaseIndex];
-        if (product.quantity > 1) {
-          product.quantity--;
+        console.log(decreaseIndex);
+        console.log(action.payload);
+        if (previousItemsOfSize.length > 0 ){
+          state.cartItems[decreaseIndex].quantity--;
         }
        
       return {
@@ -97,14 +97,18 @@ const cartReducer = (state, action) => {
       };
     }
     case "REMOVE_ITEM": {
-    const sameProductTitle = state.cartItems.filter((item) => 
-        item.title === action.payload.title && item.metadata.property === action.payload.metadata.property
-    )
+      const previousItemsOfSize = state.cartItems.filter((item) => {
+        return (
+          Number(item.id) === Number(action.payload.product.id) &&
+          item.metadata.property === action.payload.metadata && 
+          item.metadata.property2 === action.payload.metadata2
+        );
+      });
 
     
-    console.log(sameProductTitle);
+    console.log(previousItemsOfSize);
       const newCartItems = state.cartItems.filter(
-        (item) => item !== sameProductTitle[0]
+        (item) => item !== previousItemsOfSize[0]
       );
       console.log(newCartItems);
       return {

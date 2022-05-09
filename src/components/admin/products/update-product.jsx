@@ -12,7 +12,7 @@ const UpdateProduct = (props) => {
     newVal, setNewVal  } = useContext(ProductsContext);
     const { id } = useParams();
     const navigate = useNavigate();
-    const [selectedOption, setSelectedOption] = useState(null)
+    
 
     useEffect(() => {
         const product = products.find(item => Number(item.id) === Number(id));
@@ -139,7 +139,7 @@ const UpdateProduct = (props) => {
 
                </button>
                 {/* {val.map((v,i ) => <button>{}X</button>)} */}
-                <div className="select is-multiple">
+                <div className="select is-multiple is-medium">
                 <select 
                 multiple 
                 size="8"
