@@ -1,5 +1,5 @@
 export const isInCart = (product, cartItems, metadata, metadata2) => {
-  console.log(">>>>>>>", product, cartItems," metadata", metadata)
+  // console.log(">>>>>>>", product, cartItems," metadata", metadata)
   const isIn = cartItems.find(
     (item) => item.id === product.id && item.metadata.property === metadata
     && item.metadata.property2 === metadata2
@@ -7,6 +7,7 @@ export const isInCart = (product, cartItems, metadata, metadata2) => {
   console.log('isIn',isIn);
   return isIn;
 };
+
 
 export const hasValueAttributes = (product) => {
   const value = product.value.length ? true : false;

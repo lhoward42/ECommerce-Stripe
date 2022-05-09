@@ -18,6 +18,7 @@ const FeaturedProduct = (props) => {
     const token = localStorage.getItem("token")
     const hasValues = hasValueAttributes(product)
     const hasMoreValues = hasValueAttributes2(product)
+    
 
     // useEffect(() => {
     //     console.log(selectedAttribute);
@@ -95,7 +96,7 @@ const FeaturedProduct = (props) => {
                         !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
                         <button 
                         className='button is-black nomad-btn'
-                        onClick={() => addProdWAttribute(product, selectedAttribute)}>
+                        onClick={() => addProdWAttribute(product, selectedAttribute, selectedAttribute2)}>
                             ADD TO CART</button> 
                         ) : <></> }
                        { itemInCart && hasValues && !hasMoreValues && selectedAttribute && !hasMoreValues ? (
