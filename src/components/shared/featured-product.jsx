@@ -14,7 +14,7 @@ const FeaturedProduct = (props) => {
     const [selectedAttribute, setSelectedAttribute ] = useState(null);
     const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
     const [match, setMatch] = useState(false);
-    const itemInCart = isInCart(product, cartItems, selectedAttribute);
+    const itemInCart = isInCart(product, cartItems, selectedAttribute, selectedAttribute2);
     const token = localStorage.getItem("token")
     const hasValues = hasValueAttributes(product)
     const hasMoreValues = hasValueAttributes2(product)

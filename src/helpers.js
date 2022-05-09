@@ -1,8 +1,10 @@
-export const isInCart = (product, cartItems, metadata) => {
+export const isInCart = (product, cartItems, metadata, metadata2) => {
+  console.log(">>>>>>>", product, cartItems," metadata", metadata)
   const isIn = cartItems.find(
     (item) => item.id === product.id && item.metadata.property === metadata
+    && item.metadata.property2 === metadata2
   );
-  console.log(isIn);
+  console.log('isIn',isIn);
   return isIn;
 };
 
