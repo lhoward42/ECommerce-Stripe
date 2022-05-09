@@ -8,7 +8,7 @@ export const isInCart = (product, cartItems, metadata) => {
 
 export const hasValueAttributes = (product) => {
   const value = product.value.length ? true : false;
-  console.log(value, product.value);
+  // console.log(value, product.value);
   
   return value;
 
@@ -16,7 +16,7 @@ export const hasValueAttributes = (product) => {
 
 export const hasValueAttributes2 = (product) => {
   const value = product.value2.length ? true : false;
-  console.log(value, product.value2);
+  // console.log(value, product.value2);
   return value;
 };
 

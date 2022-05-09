@@ -13,6 +13,7 @@ const FeaturedProduct = (props) => {
     const { addProduct, cartItems, increase, addProdWAttribute } = useContext(CartContext);
     const [selectedAttribute, setSelectedAttribute ] = useState(null);
     const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
+    const [match, setMatch] = useState(false);
     const itemInCart = isInCart(product, cartItems, selectedAttribute);
     const token = localStorage.getItem("token")
     const hasValues = hasValueAttributes(product)
@@ -32,6 +33,17 @@ const FeaturedProduct = (props) => {
         await setSelectedAttribute2(e.target.value)
         console.log(e.target.value, selectedAttribute2);
     }
+    
+     
+        // if(cartItems.find((item) => 
+        // item.id === product.id &&
+        // item.metadata.property === selectedAttribute &&
+        // item.metadata.property === selectedAttribute2
+        // )){ setMatch(true)}
+        // else {setMatch(false)}
+  
+    
+     
     
     return (
         
@@ -68,13 +80,13 @@ const FeaturedProduct = (props) => {
                     {!itemInCart && !hasValues ? (   
                         <button 
                         className='button is-black nomad-btn'
-                        onClick={() => addProdWAttribute(product, selectedAttribute)}>
+                        onClick={() => addProdWAttribute(product, selectedAttribute, selectedAttribute2)}>
                             ADD TO CART</button> 
                     ) : itemInCart && !hasValues ? (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute)}>
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2)}>
                             ADD MORE</button> 
                     ) : <></>
                         }
@@ -90,7 +102,7 @@ const FeaturedProduct = (props) => {
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute)}>
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2)}>
                             ADD MORE</button> 
                     ) : <></>}
                    
