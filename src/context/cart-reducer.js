@@ -1,3 +1,5 @@
+
+
 const storeCartItems = (cartItems) => {
   const cart = cartItems.length > 0 ? cartItems : [];
   localStorage.setItem("cart", JSON.stringify(cart));
@@ -31,13 +33,14 @@ const cartReducer = (state, action) => {
         
         state.cartItems.push({
           ...action.payload.product,
-          quantity: 1,
+          quantity: Number(action.payload.quantity),
           metadata: { 
             property: action.payload.metadata,
             property2: action.payload.metadata2
            },
         });
       }
+      // setQuantity(0)
       return {
         ...state,
         cartItems: [...state.cartItems],
@@ -47,7 +50,7 @@ const cartReducer = (state, action) => {
 
 //case "ADD ITEM WITH MULTIPLE ATTRIBUTES": {}
 
-    case "INCREASE": {
+    case "UPDATE": {
     //   if()
     const previousItemsOfSize = state.cartItems.filter((item) => {
         return (
@@ -59,11 +62,11 @@ const cartReducer = (state, action) => {
 
       console.log(previousItemsOfSize);
 
-      const increaseIndex = state.cartItems.findIndex(
+      const updateIndex = state.cartItems.findIndex(
         (item) =>item === previousItemsOfSize[0]
       );
       if (previousItemsOfSize.length > 0 ){
-      state.cartItems[increaseIndex].quantity++;
+      state.cartItems[updateIndex].quantity = Number(action.payload.quantity);
     }
       return {
         ...state,

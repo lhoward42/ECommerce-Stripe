@@ -5,19 +5,20 @@ import { CartContext } from '../../context/cart-context';
 import { Link } from 'react-router-dom';
 import './featured-products.styles.scss'
 import { useEffect } from 'react/cjs/react.development';
+import { ProductsContext } from '../../context/products-context';
 
 
 const FeaturedProduct = (props) => {
     const { title, imageUrl, price, id, description, metadata, value, property, value2, property2 } = props;
     const product = { title, imageUrl, price, id, description, metadata, value, property, value2, property2 };
-    const { addProduct, cartItems, increase, addProdWAttribute } = useContext(CartContext);
+    const { cartItems, increase, addProdWAttribute } = useContext(CartContext);
     const [selectedAttribute, setSelectedAttribute ] = useState(null);
     const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
-    const [match, setMatch] = useState(false);
+    const { quantity, setQuantity, onChangeQuantity, populateQuantities } = useContext(ProductsContext);
     const itemInCart = isInCart(product, cartItems, selectedAttribute, selectedAttribute2);
-    const token = localStorage.getItem("token")
-    const hasValues = hasValueAttributes(product)
-    const hasMoreValues = hasValueAttributes2(product)
+    const token = localStorage.getItem("token");
+    const hasValues = hasValueAttributes(product);
+    const hasMoreValues = hasValueAttributes2(product);
     
 
     // useEffect(() => {
@@ -36,13 +37,12 @@ const FeaturedProduct = (props) => {
     }
     
      
-        // if(cartItems.find((item) => 
-        // item.id === product.id &&
-        // item.metadata.property === selectedAttribute &&
-        // item.metadata.property === selectedAttribute2
-        // )){ setMatch(true)}
-        // else {setMatch(false)}
-  
+    const addToCart = () => {
+        addProdWAttribute(product, selectedAttribute, selectedAttribute2, quantity)
+        setQuantity(1);
+        
+    }
+      
     
      
     
@@ -65,61 +65,65 @@ const FeaturedProduct = (props) => {
                 <div className='name-price'>
                     <h3 className='product-title'>{title}</h3>
                     <p>$ {price}</p>
-                     
+                <div>
+                    {populateQuantities(1, 100)}
+                </div>
+                     {/* select menu for first set of attributes */}
                     { hasValues && 
                     <select onChange={(e) => select(e)}>
                         <option disabled selected>Select a size</option>
                         {value !== null && value.map(v => <option key={v} value={v}> {v} </option>)}
                     </select>}
-                    
+                    {/* select menu for second set of attributes */}
                     { hasMoreValues && 
                     <select onChange={(e) => select2(e)}>
                         <option disabled selected>Select a size</option>
                         {value2 !== null && value2.map(v => <option key={v} value={v}> {v} </option>)}
                     </select>}
-
+                    {/* Conditional for product with no attributes */}
                     {!itemInCart && !hasValues ? (   
                         <button 
                         className='button is-black nomad-btn'
-                        onClick={() => addProdWAttribute(product, selectedAttribute, selectedAttribute2)}>
+                        onClick={addToCart}>
                             ADD TO CART</button> 
                     ) : itemInCart && !hasValues ? (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2)}>
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, quantity)}>
                             ADD MORE</button> 
                     ) : <></>
                         }
-            
+
+                        {/* Conditional for product with one attribute */}
                     {
                         !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
                         <button 
                         className='button is-black nomad-btn'
-                        onClick={() => addProdWAttribute(product, selectedAttribute, selectedAttribute2)}>
+                        onClick={addToCart}>
                             ADD TO CART</button> 
                         ) : <></> }
                        { itemInCart && hasValues && !hasMoreValues && selectedAttribute && !hasMoreValues ? (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2)}>
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, quantity)}>
                             ADD MORE</button> 
                     ) : <></>}
                    
-
+                        {/* Conditional for product with two attributes */}
                    {
                         !itemInCart && hasValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (   
                         <button 
                         className='button is-black nomad-btn'
-                        onClick={() => addProdWAttribute(product, selectedAttribute, selectedAttribute2)}>
+                        onClick={addToCart}>
                             ADD TO CART</button> 
                         ) : <></> }
                        { itemInCart && hasValues && hasMoreValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2)}>
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, quantity)}>
                             ADD MORE</button> 
                     ) : <></>}
                    

@@ -18,6 +18,7 @@ import APIURL from '../utils/environment';
     const [property2, setProperty2] = useState(null);
     const [value2, setValue2] = useState([]);
     const [removeValues, setRemoveValues] = useState([]);
+    const [quantity, setQuantity] = useState(0)
 
     useEffect(() => {
         fetchAllProducts()
@@ -82,6 +83,34 @@ import APIURL from '../utils/environment';
         console.error(err);
     } 
     }
+
+    const onChangeQuantity = (e) => {
+        setQuantity(e.target.value);
+      };
+
+    const populateQuantities = (start, end) => {
+        return (
+          <>
+            <select
+              className='select'
+              optionFilterProp='children'
+              placeholder='Qty'
+              value={quantity ? quantity : "Qty"}
+              onChange={onChangeQuantity}
+            >
+              {Array(end - start + 1)
+                .fill()
+                .map((_, idx) => (
+                  <option key={start + idx} value={start + idx}>
+                    {" "}
+                    {start + idx}{" "}
+                  </option>
+                ))}
+            </select>
+          </>
+        );
+      };
+    
 
     const createNewProduct = async () => {
        
@@ -160,6 +189,10 @@ const contextValues = {
     property2, 
     value2,
     newVal,
+    quantity,
+    setQuantity,
+    onChangeQuantity,
+    populateQuantities,
     setNewVal,
     handleChange,
     fetchAllProducts,
