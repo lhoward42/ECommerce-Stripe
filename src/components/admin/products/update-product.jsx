@@ -8,8 +8,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const UpdateProduct = (props) => {
     const { products } = useContext(ProductsContext);
-    const { updateProduct, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, setProperty, setVal, setProperty2, setValue2, title, val, removeValues, setRemoveValues,
-    newVal, setNewVal  } = useContext(ProductsContext);
+    const { updateProduct, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, 
+    setProperty, setVal, setProperty2, setVal2, val, val2, newVal, newVal2, handleInputChangeVal,
+    handleRemoveVal, handleInputChangeVal2, handleRemoveVal2, handleChangeVal, handleChangeVal2  } = useContext(ProductsContext);
     const { id } = useParams();
     const navigate = useNavigate();
     
@@ -29,37 +30,26 @@ const UpdateProduct = (props) => {
         setProperty(product.property);
         setVal(product.value);
         setProperty2(product.property2);
-        setValue2(product.value2);
+        setVal2(product.value2);
         console.log(product);
 
-    }, [id, navigate, products, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, setProperty, setVal, setProperty2, setValue2])
+    }, [id, navigate, products, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, setProperty, setVal, setProperty2, setVal2])
 
-    const handleChange = (e) => {
-        const { options } = e.target;
+    // const handleChange = (e) => {
+    //     const { options } = e.target;
        
-        const newValues = [...options]
-        .filter(option => option.selected)
-        .map(x => x.value);
-        console.log("New Values", newValues);
+    //     const newValues = [...options]
+    //     .filter(option => option.selected)
+    //     .map(x => x.value);
+    //     console.log("New Values", newValues);
        
-        const removed = val.filter(element => 
-            newValues.includes(element)
-        )
-        setRemoveValues(removed)
-        console.log(removed)
-    }
-    const handleRemoveValue = (e) => {
-        const newArray = val.filter(element => 
-            !removeValues.includes(element))
-            console.log(newArray);
-            setVal(newArray)
-            setRemoveValues([])
-    }
-    const handleInputChange = (e) => {
-        const { value } = e.target;
-        setNewVal(value);
-
-    }
+    //     const removed = val.filter(element => 
+    //         newValues.includes(element)
+    //     )
+    //     setRemoveValues(removed)
+    //     console.log(removed)
+    // }
+    
 
     if(!product){ return null };
 
@@ -104,6 +94,7 @@ const UpdateProduct = (props) => {
                 <input
                 className="form-control"
                 type="number"
+                step=".01"
                 name="price"
                 placeholder={product.price}
                 onChange={(e) => setPrice(e.target.value)}
@@ -128,38 +119,37 @@ const UpdateProduct = (props) => {
                 type="text"
                 name="value"
                 placeholder={product.value}
-                onChange={handleInputChange}
+                onChange={handleInputChangeVal}
                 />
+                <div>
                 <button
-                onClick={handleRemoveValue}
+                type="button"
+                onClick={handleRemoveVal}
                 > Remove </button>
                <button
+               type="button"
                onClick={(e) => setVal([...val, newVal])}
                >
-
+                Add to Values
                </button>
-                {/* {val.map((v,i ) => <button>{}X</button>)} */}
-                <div className="select is-multiple is-medium">
-                <select 
-                multiple 
-                size="8"
-                onChange={handleChange}
-                >
-                {val.map((v, i) => (
-                    <option value={v} key={i}>{v}</option>
-                )
-                )}
-                </select>
+               </div>
+                    <div className="select is-multiple is-medium">
+                        <select 
+                        multiple 
+                        size="8"
+                        onChange={handleChangeVal}
+                        >
+                        {val.map((v, i) => (
+                            <option value={v} key={i}>{v}</option>
+                                )
+                            )}
+                        </select>
+                    </div>
+               
                 </div>
-                {/* <input type="select" name="select" id="exampleSelect" multiple>
-                {val.map((v, i) => (
-                    <option key={i}>{v}</option>
-                )
-                )}
-                </input> */}
-                </div>
+
                 <div className="form-group">
-                <label>Second Product Attribute: </label>
+                <label> Product Attribute: </label>
                 <input
                 className="form-control"
                 type="text"
@@ -168,21 +158,48 @@ const UpdateProduct = (props) => {
                 onChange={(e) => setProperty2(e.target.value)}
                 />
                 </div>
+
                 <div className="form-group">
-                <label> Add Values for Second Attribute: </label>
-                <p> Separate each value with a comma </p>
-                <input
-                className="form-control"
-                type="text"
-                name="value2"
-                placeholder={product.value2}
-                onChange={(e) => setValue2(e.target.value)}
-                />
-                
+                    <label>Edit Values for Attribute: </label> 
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="value2"
+                    placeholder={product.value2}
+                    onChange={handleInputChangeVal2}
+                    />
+                    <div>
+                    <button
+                    type="button"
+                    onClick={handleRemoveVal2}
+                    > Remove </button>
+
+                    <button
+                    type="button"
+                    onClick={(e) => setVal2([...val2, newVal2])}
+               >
+                   Add to Values
+               </button>
+               </div>
+                <div className="select is-multiple is-medium">
+                    <select 
+                    multiple 
+                    size="8"
+                    onChange={handleChangeVal2}
+                    >
+                    {val2.map((v, i) => (
+                        <option value={v} key={i}>{v}</option>
+                            )
+                        )}
+                    </select>
                 </div>
+
+                </div>
+
                 <div>
                     <button type="submit">Update Product</button>
                 </div>
+
                 </div>
             </form>
             </div>

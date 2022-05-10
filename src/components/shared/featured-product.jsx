@@ -14,7 +14,7 @@ const FeaturedProduct = (props) => {
     const { cartItems, increase, addProdWAttribute } = useContext(CartContext);
     const [selectedAttribute, setSelectedAttribute ] = useState(null);
     const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
-    const [qty, setQty] = useState(0);
+    const [qty, setQty] = useState(1);
     const itemInCart = isInCart(product, cartItems, selectedAttribute, selectedAttribute2);
     const token = localStorage.getItem("token");
     const hasValues = hasValueAttributes(product);

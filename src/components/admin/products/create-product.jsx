@@ -4,8 +4,8 @@ import Layout from "../../shared/layout";
 
 
 const CreateProduct = () => {
-    const { handleChange, createNewProduct } = useContext(ProductsContext);
-    const blankArr = []
+    const { handleChange, createNewProduct, handleInputChange, handleRemoveValue, newVal } = useContext(ProductsContext);
+    
     return (
         <Layout>
             <div className="container">
@@ -36,6 +36,7 @@ const CreateProduct = () => {
                 <input
                 className="form-control"
                 type="number"
+                step=".01"
                 name="price"
                 placeholder="Price"
                 onChange={(e) => handleChange(e)}

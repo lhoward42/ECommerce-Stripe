@@ -13,12 +13,14 @@ import APIURL from '../utils/environment';
     const [imageUrl, setImageUrl] = useState(null);
     const [price, setPrice] = useState(null);
     const [property, setProperty] = useState(null);
-    const [val, setVal] = useState([]);
+    const [val, setVal] = useState([]); 
+    const [val2, setVal2] = useState([]);
     const [newVal, setNewVal] = useState(null);
+    const [newVal2, setNewVal2] = useState(null);
     const [property2, setProperty2] = useState(null);
-    const [value2, setValue2] = useState([]);
-    const [removeValues, setRemoveValues] = useState([]);
-    
+   
+    const [removeVal, setRemoveVal] = useState([]);
+    const [removeVal2, setRemoveVal2] = useState([]);
 
     useEffect(() => {
         fetchAllProducts()
@@ -132,7 +134,7 @@ import APIURL from '../utils/environment';
             property: property,
             value: val,
             property2: property2,
-            value2: value2,
+            value2: val2,
         };
 
         try {
@@ -146,17 +148,77 @@ import APIURL from '../utils/environment';
             })
             let data = await res.json();
             console.log(data);
-            setRemoveValues([])
+            setRemoveVal([])
         } catch (err) {
             console.error( "Product did not update", err )
         }
         
     }
 
+    const handleRemoveVal = (e) => {
+        const newArray = val.filter(element => 
+            !removeVal.includes(element))
+            console.log(newArray);
+            setVal(newArray)
+            setRemoveVal2([])
+    }
+    
+    const handleInputChangeVal = (e) => {
+        const { value } = e.target;
+        setNewVal(value);
+
+    }
+
+   
+
+    const handleChangeVal = (e) => {
+        const { options } = e.target;
+       
+        const newValues = [...options]
+        .filter(option => option.selected)
+        .map(x => x.value);
+        console.log("New Values", newValues);
+       
+        const removed = val.filter(element => 
+            newValues.includes(element)
+        )
+        setRemoveVal(removed)
+        console.log(removed)
+    }
+    const handleChangeVal2 = (e) => {
+        const { options } = e.target;
+       
+        const newValues = [...options]
+        .filter(option => option.selected)
+        .map(x => x.value);
+        console.log("New Values", newValues);
+       
+        const removed = val2.filter(element => 
+            newValues.includes(element)
+        )
+        setRemoveVal2(removed)
+        console.log(removed)
+    }
+    
+    const handleRemoveVal2 = (e) => {
+        const newArray = val2.filter(element => 
+            !removeVal2.includes(element))
+            console.log(newArray);
+            setVal2(newArray)
+            setRemoveVal2([])
+    }
+    
+    const handleInputChangeVal2 = (e) => {
+        const { value } = e.target;
+        setNewVal2(value);
+
+    }
+
 const contextValues = {
     products,
     product,
-    removeValues,
+    removeVal,
+    removeVal2,
     title,
     description,
     imageUrl,
@@ -164,10 +226,16 @@ const contextValues = {
     property,
     val,
     property2, 
-    value2,
+    val2,
     newVal,
-    setNewVal,
+    newVal2,
     handleChange,
+    setNewVal,
+    handleChangeVal,
+    handleChangeVal2,
+    handleInputChangeVal,
+    handleRemoveVal,
+    handleRemoveVal2,
     fetchAllProducts,
     createNewProduct,
     updateProduct,
@@ -179,8 +247,10 @@ const contextValues = {
     setVal,
     setProperty,
     setProperty2,
-    setValue2, 
-    setRemoveValues
+    setVal2, 
+    setRemoveVal,
+    setRemoveVal2,
+    handleInputChangeVal2
 
 }
     
