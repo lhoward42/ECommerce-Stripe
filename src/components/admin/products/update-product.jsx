@@ -77,7 +77,7 @@ const UpdateProduct = (props) => {
                 type="text"
                 name="imageUrl"
                 placeholder={product.imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
+                onChange={(e) => setImageUrl(e.target.value.length > 0 ? e.target.value : product.imageUrl)}
                 />
                 <div className="form-group">
                   <label>Product Name: </label>            
@@ -117,7 +117,7 @@ const UpdateProduct = (props) => {
                 type="text"
                 name="property"
                 placeholder={product.property}
-                onChange={(e) => setProperty(e.target.value)}
+                onChange={(e) => setProperty(e.target.value.length === 0 ? product.property : e.target.value)}
                 />
                 
                 </div>
