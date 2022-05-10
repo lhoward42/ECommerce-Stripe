@@ -14,7 +14,7 @@ const FeaturedProduct = (props) => {
     const { cartItems, increase, addProdWAttribute } = useContext(CartContext);
     const [selectedAttribute, setSelectedAttribute ] = useState(null);
     const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
-    const { quantity, setQuantity, onChangeQuantity, populateQuantities } = useContext(ProductsContext);
+    const [qty, setQty] = useState(0);
     const itemInCart = isInCart(product, cartItems, selectedAttribute, selectedAttribute2);
     const token = localStorage.getItem("token");
     const hasValues = hasValueAttributes(product);
@@ -38,14 +38,36 @@ const FeaturedProduct = (props) => {
     
      
     const addToCart = () => {
-        addProdWAttribute(product, selectedAttribute, selectedAttribute2, quantity)
-        setQuantity(1);
-        
+        addProdWAttribute(product, selectedAttribute, selectedAttribute2, qty)
+            
     }
       
-    
+    const onChangeQty = (e) => {
+        setQty(e.target.value);
+      };
      
-    
+      const populateQuantities = (start, end) => {
+        return (
+          <>
+            <select
+              className='select'
+              
+              placeholder='Qty'
+              value={qty ? qty : "Qty"}
+              onChange={onChangeQty}
+            >
+              {Array(end - start + 1)
+                .fill()
+                .map((_, idx) => (
+                  <option key={start + idx} value={start + idx}>
+                    {" "}
+                    {start + idx}{" "}
+                  </option>
+                ))}
+            </select>
+          </>
+        );
+      };
     return (
         
         <div className='featured-product'>
@@ -90,7 +112,7 @@ const FeaturedProduct = (props) => {
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, quantity)}>
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
                             ADD MORE</button> 
                     ) : <></>
                         }
@@ -107,7 +129,7 @@ const FeaturedProduct = (props) => {
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, quantity)}>
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
                             ADD MORE</button> 
                     ) : <></>}
                    
@@ -123,7 +145,7 @@ const FeaturedProduct = (props) => {
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, quantity)}>
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
                             ADD MORE</button> 
                     ) : <></>}
                    
