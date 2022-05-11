@@ -27,6 +27,8 @@ import APIURL from '../utils/environment';
     }, []) 
    
     
+    //HANDLES CHANGES TO CREATE-PRODUCT.JS FORM
+
     const handleChange = (e) => {
         e.preventDefault();
         const { name, value } = e.target;
@@ -87,7 +89,9 @@ import APIURL from '../utils/environment';
     } 
     }
 
-    const createNewProduct = async () => {
+    //EVENT FUNCTION CREATES A NEW PRODUCT
+
+    const createNewProduct = async (e) => {
        
         let token = localStorage.getItem("token");
         let productData = {
@@ -116,7 +120,7 @@ import APIURL from '../utils/environment';
         } 
     }
 
-    
+    //EVENT FUNCTION UPDATES THE PRODUCT
 
     const updateProduct = async (e) => {
 
@@ -151,14 +155,27 @@ import APIURL from '../utils/environment';
         
     }
 
+    //EVENT FUNCTIONS FOR FIRST SET OF PRODUCT ATTRIBUTES
+
     const handleRemoveVal = (e) => {
-        const newArray = val.filter(element => 
-            !removeVal.includes(element))
-            console.log(newArray, removeVal);
-            setVal(newArray)
+        console.log('val', val, removeVal)
+        // const newArray = val.filter(element => 
+        //     !removeVal.includes(element))
+        const newArray = val.filter((item) => {
+            return !removeVal.includes(item)
+        })
+
+
+        console.log({newArray});
+            setVal(val.length > 1 ? newArray : [])
             setRemoveVal([])
-            console.log(e);
+        //     console.log(e);
+
     }
+
+    React.useEffect(() => {
+        console.log('useEffect - meow:', { val, removeVal })
+    }, [val, removeVal])
     
     const handleInputChangeVal = (e) => {
         const { value } = e.target;
@@ -185,6 +202,9 @@ import APIURL from '../utils/environment';
         setRemoveVal(newValues)
         console.log('removed')
     }
+
+    //EVENT FUNCTIONS FOR SECOND SET OF PRODUCT ATTRIBUTES
+
     const handleRemoveVal2 = (e) => {
         e.stopPropagation();
         e.preventDefault();

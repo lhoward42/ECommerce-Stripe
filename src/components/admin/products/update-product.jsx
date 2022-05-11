@@ -10,7 +10,7 @@ const UpdateProduct = (props) => {
     const { products } = useContext(ProductsContext);
     const { updateProduct, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, 
     setProperty, setVal, setProperty2, setVal2, val, val2, newVal, newVal2, handleInputChangeVal,
-    handleRemoveVal, handleInputChangeVal2, handleRemoveVal2, handleChangeVal, handleChangeVal2  } = useContext(ProductsContext);
+    handleRemoveVal, handleInputChangeVal2, handleRemoveVal2, handleChangeVal, handleChangeVal2 , removeVal, removeVal2 } = useContext(ProductsContext);
     const { id } = useParams();
     const navigate = useNavigate();
     
@@ -35,23 +35,13 @@ const UpdateProduct = (props) => {
 
     }, [id, navigate, products, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, setProperty, setVal, setProperty2, setVal2])
 
-    // const handleChange = (e) => {
-    //     const { options } = e.target;
-       
-    //     const newValues = [...options]
-    //     .filter(option => option.selected)
-    //     .map(x => x.value);
-    //     console.log("New Values", newValues);
-       
-    //     const removed = val.filter(element => 
-    //         newValues.includes(element)
-    //     )
-    //     setRemoveValues(removed)
-    //     console.log(removed)
-    // }
-    
+   
+    useEffect(() => 
+    {console.log("val", val)}, 
+    [val])
 
     if(!product){ return null };
+
 
     return (
         <Layout>
@@ -59,6 +49,7 @@ const UpdateProduct = (props) => {
             <div className="container">
                 <h3> Update Product </h3>
             <form onSubmit={updateProduct} >
+
                 <div className="form-group">
                 <img src={product.imageUrl} alt='product' />
                 <label>Image URL: </label>
@@ -69,6 +60,7 @@ const UpdateProduct = (props) => {
                 placeholder={product.imageUrl}
                 onChange={(e) => setImageUrl(e.target.value.length > 0 ? e.target.value : product.imageUrl)}
                 />
+
                 <div className="form-group">
                   <label>Product Name: </label>            
                   <input 
@@ -79,6 +71,7 @@ const UpdateProduct = (props) => {
                   onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
+
                 <div className="form-group">
                 <label>Description: </label>
                 <input
@@ -89,6 +82,7 @@ const UpdateProduct = (props) => {
                 onChange={(e) => setDescription(e.target.value)}
                 />
                 </div>
+
                 <div className="form-group">
                 <label>Price: </label>
                 <input
@@ -125,7 +119,10 @@ const UpdateProduct = (props) => {
                 <button
                 type="button"
                 onClick={handleRemoveVal}
-                > Remove </button>
+                > 
+                Remove 
+                </button>
+
                <button
                type="button"
                onClick={(e) => setVal([...val, newVal])}
@@ -145,7 +142,6 @@ const UpdateProduct = (props) => {
                             )}
                         </select>
                     </div>
-               
                 </div>
 
                 <div className="form-group">
