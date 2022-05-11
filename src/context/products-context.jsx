@@ -52,7 +52,7 @@ import APIURL from '../utils/environment';
                 break;
             }
             case 'value': {
-                setProduct({ ...product, value: [value] });
+                setProduct({ ...product, value: value });
                 break;
             }
             case 'property2': {
@@ -87,10 +87,6 @@ import APIURL from '../utils/environment';
     } 
     }
 
-
-
-    
-
     const createNewProduct = async () => {
        
         let token = localStorage.getItem("token");
@@ -100,7 +96,7 @@ import APIURL from '../utils/environment';
             price: product.price,
             imageUrl: product.imageUrl,
             property: product.property,
-            value: product.value,
+            value: val,
             property2: product.property2,
             value2: product.value2,
         };
@@ -158,9 +154,10 @@ import APIURL from '../utils/environment';
     const handleRemoveVal = (e) => {
         const newArray = val.filter(element => 
             !removeVal.includes(element))
-            console.log(newArray);
+            console.log(newArray, removeVal);
             setVal(newArray)
-            setRemoveVal2([])
+            setRemoveVal([])
+            console.log(e);
     }
     
     const handleInputChangeVal = (e) => {
@@ -173,25 +170,42 @@ import APIURL from '../utils/environment';
 
     const handleChangeVal = (e) => {
         const { options } = e.target;
-       
+        console.log('options', options.selectedIndex)
+        console.log('selected', options)
+        console.log(options.selected);
+        console.log(e.target[e.target.selectedIndex].text)
         const newValues = [...options]
-        .filter(option => option.selected)
+        .filter(option => option.selected === true)
         .map(x => x.value);
         console.log("New Values", newValues);
        
-        const removed = val.filter(element => 
-            newValues.includes(element)
-        )
-        setRemoveVal(removed)
-        console.log(removed)
+        // const removed = val.filter(element => 
+        //     newValues.includes(element)
+        // )
+        setRemoveVal(newValues)
+        console.log('removed')
     }
+    const handleRemoveVal2 = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        const newArray = val2.filter(element => 
+            !removeVal2.includes(element))
+            console.log(newArray);
+            setVal2(newArray)
+        //    const removedIndexItem =  val2.findIndex(element => 
+        //         removeVal2.includes(element))
+        //      setRemoveVal2(removedIndexItem!== -1 ? removeVal2[removeVal2.length-1]:[])
+    }
+    
     const handleChangeVal2 = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
         const { options } = e.target;
        
         const newValues = [...options]
         .filter(option => option.selected)
         .map(x => x.value);
-        console.log("New Values", newValues);
+        console.log("New Values", newValues, "event target", e.target);
        
         const removed = val2.filter(element => 
             newValues.includes(element)
@@ -200,13 +214,6 @@ import APIURL from '../utils/environment';
         console.log(removed)
     }
     
-    const handleRemoveVal2 = (e) => {
-        const newArray = val2.filter(element => 
-            !removeVal2.includes(element))
-            console.log(newArray);
-            setVal2(newArray)
-            setRemoveVal2([])
-    }
     
     const handleInputChangeVal2 = (e) => {
         const { value } = e.target;

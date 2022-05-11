@@ -4,7 +4,8 @@ import Layout from "../../shared/layout";
 
 
 const CreateProduct = () => {
-    const { handleChange, createNewProduct, handleInputChange, handleRemoveValue, newVal } = useContext(ProductsContext);
+    const { handleChange, createNewProduct, setVal, setVal2, val, val2, newVal, newVal2, handleInputChangeVal,
+        handleRemoveVal, handleInputChangeVal2, handleRemoveVal2, handleChangeVal, handleChangeVal2 } = useContext(ProductsContext);
     
     return (
         <Layout>
@@ -62,15 +63,51 @@ const CreateProduct = () => {
                 />
                 </div>
                 <div className="form-group">
-                <label> Add Values for Attribute: </label>
+                {/* <label> Add Values for Attribute: </label>
                 <input
                 className="form-control"
                 type="text"
                 name="value"
                 placeholder="Separate each value with comma. eg. Small, Medium, Large"
                 onChange={(e) => handleChange(e)}
+                /> */}
+                <div className="form-group">
+                <label> Edit Values for Attribute: </label>
+                <input
+                className="form-control"
+                type="text"
+                name="value"
+                placeholder="set values"
+                onChange={handleInputChangeVal}
                 />
-                
+                <div>
+                <button
+                type="button"
+                onClick={handleRemoveVal}
+                > Remove </button>
+               <button
+               type="button"
+               onClick={(e) => setVal([...val, newVal])}
+               >
+                Add to Values
+               </button>
+               </div>
+                    <div className="select is-multiple is-medium">
+                        <select 
+                        multiple
+                        aria-multiselectable="true"
+                        size="8"
+                        onChange={handleChangeVal}
+                        >
+                        {val.map((v, i) => (
+                            <option value={v} key={i}>{v}</option>
+                                )
+                            )}
+                        </select>
+                    </div>
+               
+                </div>
+
                 </div>
                 <div className="form-group">
                 <label>Second Product Attribute: </label>
@@ -84,14 +121,48 @@ const CreateProduct = () => {
                 </div>
                 <div className="form-group">
                 <label> Add Values for Second Attribute: </label>
-                <input
+                {/* <input
                 className="form-control"
                 type="text"
                 name="value2"
                 placeholder="Separate each value with comma. eg. Small, Medium, Large"
                 onChange={(e) => handleChange(e)}
-                />
-                
+                /> */}
+                  <div className="form-group">
+                    <label>Edit Values for Attribute: </label> 
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="value2"
+                    placeholder="add value"
+                    onChange={handleInputChangeVal2}
+                    />
+                    <div>
+                    <button
+                    type="button"
+                    onClick={handleRemoveVal2}
+                    > Remove </button>
+
+                    <button
+                    type="button"
+                    onClick={(e) => setVal2([...val2, newVal2])}
+               >
+                   Add to Values
+               </button>
+               </div>
+                <div className="select is-multiple is-medium">
+                    <select 
+                    multiple 
+                    onChange={handleChangeVal2}
+                    >
+                    {val2.map((v, i) => (
+                        <option value={v} key={i}>{v}</option>
+                            )
+                        )}
+                    </select>
+                </div>
+
+                </div>
                 </div>
                 <div>
                     <button type="submit">Create New Product</button>
