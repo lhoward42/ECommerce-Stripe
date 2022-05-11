@@ -167,41 +167,46 @@ import APIURL from '../utils/environment';
 
 
         console.log({newArray});
-            setVal(val.length > 1 ? newArray : [])
+            // setVal(val.length > 1 ? newArray : [])
+            setVal(newArray)
             setRemoveVal([])
         //     console.log(e);
 
     }
 
-    React.useEffect(() => {
-        console.log('useEffect - meow:', { val, removeVal })
-    }, [val, removeVal])
-    
     const handleInputChangeVal = (e) => {
         const { value } = e.target;
         setNewVal(value);
 
     }
 
-   
+    const handleChangeSelect = (event) => {
+        const {
+          target: { value },
+        } = event;
+        setRemoveVal(
+          // On autofill we get a stringified value.
+          typeof value === 'string' ? value.split(',') : value,
+        );
+      };
 
-    const handleChangeVal = (e) => {
-        const { options } = e.target;
-        console.log('options', options.selectedIndex)
-        console.log('selected', options)
-        console.log(options.selected);
-        console.log(e.target[e.target.selectedIndex].text)
-        const newValues = [...options]
-        .filter(option => option.selected === true)
-        .map(x => x.value);
-        console.log("New Values", newValues);
+    // const handleChangeVal = (e) => {
+    //     const { options } = e.target;
+    //     console.log('options', options.selectedIndex)
+    //     console.log('selected', options)
+    //     console.log(options.selected);
+    //     console.log(e.target[e.target.selectedIndex].text)
+    //     const newValues = [...options]
+    //     .filter(option => option.selected === true)
+    //     .map(x => x.value);
+    //     console.log("New Values", newValues);
        
-        // const removed = val.filter(element => 
-        //     newValues.includes(element)
-        // )
-        setRemoveVal(newValues)
-        console.log('removed')
-    }
+    //     // const removed = val.filter(element => 
+    //     //     newValues.includes(element)
+    //     // )
+    //     setRemoveVal(newValues)
+    //     console.log('removed')
+    // }
 
     //EVENT FUNCTIONS FOR SECOND SET OF PRODUCT ATTRIBUTES
 
@@ -216,7 +221,23 @@ import APIURL from '../utils/environment';
         //         removeVal2.includes(element))
         //      setRemoveVal2(removedIndexItem!== -1 ? removeVal2[removeVal2.length-1]:[])
     }
-    
+
+    const handleChangeSelect2 = (event) => {
+        const {
+          target: { value },
+        } = event;
+        setRemoveVal2(
+          // On autofill we get a stringified value.
+          typeof value === 'string' ? value.split(',') : value,
+        );
+      };
+
+    const handleInputChangeVal2 = (e) => {
+        const { value } = e.target;
+        setNewVal2(value);
+
+    }
+
     const handleChangeVal2 = (e) => {
         e.stopPropagation();
         e.preventDefault();
@@ -235,11 +256,7 @@ import APIURL from '../utils/environment';
     }
     
     
-    const handleInputChangeVal2 = (e) => {
-        const { value } = e.target;
-        setNewVal2(value);
-
-    }
+    
 
 const contextValues = {
     products,
@@ -258,7 +275,6 @@ const contextValues = {
     newVal2,
     handleChange,
     setNewVal,
-    handleChangeVal,
     handleChangeVal2,
     handleInputChangeVal,
     handleRemoveVal,
@@ -269,6 +285,8 @@ const contextValues = {
     setProduct,
     setTitle,
     setDescription,
+    handleChangeSelect,
+    handleChangeSelect2,
     setPrice,
     setImageUrl,
     setVal,
