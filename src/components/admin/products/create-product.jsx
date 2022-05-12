@@ -71,6 +71,14 @@ const CreateProduct = () => {
                 placeholder="Price"
                 onChange={(e) => handleChange(e)}
                 />
+                <label>Type: </label>
+                <input
+                className="form-control"
+                type="text"
+                name="category"
+                placeholder="Category"
+                onChange={(e) => handleChange(e)}
+                />
                 </div>
                 <div className="form-group">
                 <label>Image URL: </label>

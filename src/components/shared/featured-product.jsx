@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 import './featured-products.styles.scss'
 
 const FeaturedProduct = (props) => {
-    const { title, imageUrl, price, id, description, metadata, value, property, value2, property2 } = props;
-    const product = { title, imageUrl, price, id, description, metadata, value, property, value2, property2 };
+    const { title, imageUrl, price, id, description, metadata, value, property, value2, property2, category } = props;
+    const product = { title, imageUrl, price, id, description, metadata, value, property, value2, property2, category };
     const { cartItems, update, addProdWAttribute } = useContext(CartContext);
     const [selectedAttribute, setSelectedAttribute ] = useState(null);
     const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
@@ -74,6 +74,7 @@ const FeaturedProduct = (props) => {
                     : 
                     <></>
                     }
+                    <p>{category}</p>
                 <Link to={`/product/${id}`}>
                 <img src={imageUrl} alt='product'/> 
                 </Link> 

@@ -15,6 +15,7 @@ import APIURL from '../utils/environment';
     const [property, setProperty] = useState(null);
     const [val, setVal] = useState([]); 
     const [val2, setVal2] = useState([]);
+    const [category, setCategory] = useState("");
     const [newVal, setNewVal] = useState(null);
     const [newVal2, setNewVal2] = useState(null);
     const [property2, setProperty2] = useState(null);
@@ -74,10 +75,10 @@ import APIURL from '../utils/environment';
                 setProduct({ ...product, property: value });
                 break;
             }
-            // case 'value': {
-            //     setProduct({ ...product, value: value });
-            //     break;
-            // }
+            case 'category': {
+                setProduct({ ...product, category: value });
+                break;
+            }
             case 'property2': {
                 setProduct({ ...product, property2: value });
                 break;
@@ -124,6 +125,7 @@ import APIURL from '../utils/environment';
             value: val,
             property2: product.property2,
             value2: val2,
+            category: product.category,
         };
 
         console.log(productData);
@@ -158,6 +160,7 @@ import APIURL from '../utils/environment';
             value: val,
             property2: property2,
             value2: val2,
+            category: category,
         };
 
         try {
@@ -308,6 +311,8 @@ const contextValues = {
     newVal,
     newVal2,
     MenuProps,
+    category,
+    setCategory,
     getStyles,
     handleChange,
     setNewVal,
