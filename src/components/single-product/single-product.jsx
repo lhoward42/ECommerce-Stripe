@@ -17,7 +17,19 @@ import './single-product.styles.scss';
     const [qty, setQty] = useState(1);
     
     const token = localStorage.getItem("token");
-
+    
+    const select = async (e) => {
+      //this needs a switch case for metadata 1 and 2
+      await setSelectedAttribute(e.target.value)
+      console.log(e.target.value, selectedAttribute);
+    }
+  
+    const select2 = async (e) => {
+      //this needs a switch case for metadata 1 and 2
+      await setSelectedAttribute2(e.target.value)
+      console.log(e.target.value, selectedAttribute2);
+    }
+    
     useEffect(() => {
         const product = products.find(item => Number(item.id) === Number(id));
       
