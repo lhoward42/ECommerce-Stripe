@@ -8,7 +8,7 @@ import './single-product.styles.scss';
 
  const SingleProduct = () => {
     const { products } = useContext(ProductsContext);
-    const { addProduct, cartItems, increase } = useContext(CartContext)
+    const { addProdWAttribute, cartItems, increase } = useContext(CartContext)
     const navigate = useNavigate();  
     const { id } = useParams();
     const [product, setProduct] = useState(null);
@@ -60,7 +60,7 @@ import './single-product.styles.scss';
               <button 
                 className='button is-white nomad-btn' 
                 id='btn-white-outline'
-                onClick={() => addProduct(product)}
+                onClick={() => addProdWAttribute(product)}
                 >
                   ADD TO CART
               </button> 
