@@ -11,33 +11,12 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 
-
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
-
-  
-  function getStyles(val, removeVal, theme) {
-    return {
-      fontWeight:
-        removeVal.indexOf(val) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
-
 const UpdateProduct = (props) => {
     const { products } = useContext(ProductsContext);
     const { updateProduct, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, 
     setProperty, setVal, setProperty2, setVal2, val, val2, newVal, newVal2, handleInputChangeVal,
-     handleInputChangeVal2, handleRemoveVal2, handleChangeVal2 , removeVal2, handleRemoveVal, removeVal, handleChangeSelect, handleChangeSelect2 } = useContext(ProductsContext);
+    handleInputChangeVal2, handleRemoveVal2, handleChangeVal2 , removeVal2, handleRemoveVal, 
+    removeVal, handleChangeSelect, handleChangeSelect2, MenuProps, getStyles } = useContext(ProductsContext);
     const { id } = useParams();
     const navigate = useNavigate();
     const theme = useTheme();
@@ -69,18 +48,6 @@ const UpdateProduct = (props) => {
     useEffect(() => 
     {console.log("val", val)}, 
     [val])
-
-    
-
-    // const handleChangeSelect = (event) => {
-    //     const {
-    //       target: { value },
-    //     } = event;
-    //     setRemoveVal(
-    //       // On autofill we get a stringified value.
-    //       typeof value === 'string' ? value.split(',') : value,
-    //     );
-    //   };
 
     if(!product){ return null };
 

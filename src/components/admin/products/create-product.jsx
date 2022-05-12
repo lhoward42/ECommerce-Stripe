@@ -1,12 +1,41 @@
 import { useContext, useState } from "react";
 import { ProductsContext } from "../../../context/products-context";
 import Layout from "../../shared/layout";
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { useTheme } from '@mui/material/styles';
 
+// const ITEM_HEIGHT = 48;
+// const ITEM_PADDING_TOP = 8;
+// const MenuProps = {
+//   PaperProps: {
+//     style: {
+//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+//       width: 250,
+//     },
+//   },
+// };
+
+function getStyles(val, removeVal, theme) {
+    return {
+      fontWeight:
+        removeVal.indexOf(val) === -1
+          ? theme.typography.fontWeightRegular
+          : theme.typography.fontWeightMedium,
+    };
+  }
 
 const CreateProduct = () => {
     const { handleChange, createNewProduct, setVal, setVal2, val, val2, newVal, newVal2, handleInputChangeVal,
-        handleRemoveVal, handleInputChangeVal2, handleRemoveVal2, handleChangeVal, handleChangeVal2 } = useContext(ProductsContext);
+    handleRemoveVal, handleInputChangeVal2, handleRemoveVal2,removeVal, removeVal2, handleChangeSelect,
+    handleChangeSelect2, MenuProps } = useContext(ProductsContext);
     
+    const theme = useTheme();
+
+
     return (
         <Layout>
             <div className="container">
@@ -63,50 +92,54 @@ const CreateProduct = () => {
                 />
                 </div>
                 <div className="form-group">
-                {/* <label> Add Values for Attribute: </label>
-                <input
-                className="form-control"
-                type="text"
-                name="value"
-                placeholder="Separate each value with comma. eg. Small, Medium, Large"
-                onChange={(e) => handleChange(e)}
-                /> */}
+              
                 <div className="form-group">
                 <label> Edit Values for Attribute: </label>
                 <input
                 className="form-control"
                 type="text"
                 name="value"
-                placeholder="set values"
+                placeholder={val}
                 onChange={handleInputChangeVal}
                 />
-                <div>
+                 <div>
+                 <FormControl sx={{ m: 1, width: 300 }}>
+                <InputLabel id="demo-multiple-name-label">Name</InputLabel>
+                <Select
+                    labelId="demo-multiple-name-label"
+                    id="demo-multiple-name"
+                    multiple
+                    value={removeVal}
+                    onChange={handleChangeSelect}
+                    input={<OutlinedInput label="Name" />}
+                    MenuProps={MenuProps}
+                    >
+                    {val.map((v) => (
+                        <MenuItem
+                        key={v}
+                        value={v}
+                        style={getStyles(v, removeVal, theme)}
+                        >
+                        {v}
+                        </MenuItem>
+                    ))}
+                    </Select>
+            </FormControl>
+         </div>
                 <button
                 type="button"
                 onClick={handleRemoveVal}
-                > Remove </button>
+                > 
+                Remove 
+                </button>
+
                <button
                type="button"
                onClick={(e) => setVal([...val, newVal])}
                >
                 Add to Values
-               </button>
-               </div>
-                    <div className="select is-multiple is-medium">
-                        <select 
-                        multiple
-                        aria-multiselectable="true"
-                        size="8"
-                        onChange={handleChangeVal}
-                        >
-                        {val.map((v, i) => (
-                            <option value={v} key={i}>{v}</option>
-                                )
-                            )}
-                        </select>
-                    </div>
-               
-                </div>
+               </button> 
+                </div> 
 
                 </div>
                 <div className="form-group">
@@ -120,21 +153,12 @@ const CreateProduct = () => {
                 />
                 </div>
                 <div className="form-group">
-                <label> Add Values for Second Attribute: </label>
-                {/* <input
-                className="form-control"
-                type="text"
-                name="value2"
-                placeholder="Separate each value with comma. eg. Small, Medium, Large"
-                onChange={(e) => handleChange(e)}
-                /> */}
-                  <div className="form-group">
                     <label>Edit Values for Attribute: </label> 
                     <input
                     className="form-control"
                     type="text"
                     name="value2"
-                    placeholder="add value"
+                    placeholder={val2}
                     onChange={handleInputChangeVal2}
                     />
                     <div>
@@ -150,20 +174,31 @@ const CreateProduct = () => {
                    Add to Values
                </button>
                </div>
-                <div className="select is-multiple is-medium">
-                    <select 
-                    multiple 
-                    onChange={handleChangeVal2}
+                <FormControl sx={{ m: 1, width: 300 }}>
+                <InputLabel id="demo-multiple-name-label">Name</InputLabel>
+                <Select
+                    labelId="demo-multiple-name-label"
+                    id="demo-multiple-name"
+                    multiple
+                    value={removeVal2}
+                    onChange={handleChangeSelect2}
+                    input={<OutlinedInput label="Name" />}
+                    MenuProps={MenuProps}
                     >
-                    {val2.map((v, i) => (
-                        <option value={v} key={i}>{v}</option>
-                            )
-                        )}
-                    </select>
-                </div>
+                    {val2.map((v) => (
+                        <MenuItem
+                        key={v}
+                        value={v}
+                        style={getStyles(v, removeVal2, theme)}
+                        >
+                        {v}
+                        </MenuItem>
+                    ))}
+                    </Select>
+            </FormControl>
 
                 </div>
-                </div>
+
                 <div>
                     <button type="submit">Create New Product</button>
                 </div>

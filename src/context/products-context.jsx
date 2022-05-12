@@ -26,6 +26,27 @@ import APIURL from '../utils/environment';
         fetchAllProducts()
     }, []) 
    
+    //MUI FUNCTIONS
+
+    const ITEM_HEIGHT = 48;
+    const ITEM_PADDING_TOP = 8;
+    const MenuProps = {
+        PaperProps: {
+            style: {
+             maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+            width: 250,
+            },
+        },
+    };
+
+    const getStyles = (val, removeVal, theme) => {
+        return {
+          fontWeight:
+            removeVal.indexOf(val) === -1
+              ? theme.typography.fontWeightRegular
+              : theme.typography.fontWeightMedium,
+        };
+      }
     
     //HANDLES CHANGES TO CREATE-PRODUCT.JS FORM
 
@@ -53,18 +74,18 @@ import APIURL from '../utils/environment';
                 setProduct({ ...product, property: value });
                 break;
             }
-            case 'value': {
-                setProduct({ ...product, value: value });
-                break;
-            }
+            // case 'value': {
+            //     setProduct({ ...product, value: value });
+            //     break;
+            // }
             case 'property2': {
                 setProduct({ ...product, property2: value });
                 break;
             }
-            case 'value2': {
-                setProduct({ ...product, value2: [value] });
-                break;
-            }
+            // case 'value2': {
+            //     setProduct({ ...product, value2: [value] });
+            //     break;
+            // }
             default:
                 break;
         }
@@ -92,9 +113,9 @@ import APIURL from '../utils/environment';
     //EVENT FUNCTION CREATES A NEW PRODUCT
 
     const createNewProduct = async (e) => {
-       
-        let token = localStorage.getItem("token");
-        let productData = {
+    //    e.preventDefault()
+        const token = localStorage.getItem("token");
+        const productData = {
             title: product.title,
             description: product.description,
             price: product.price,
@@ -102,8 +123,10 @@ import APIURL from '../utils/environment';
             property: product.property,
             value: val,
             property2: product.property2,
-            value2: product.value2,
+            value2: val2,
         };
+
+        console.log(productData);
         try {
         let res = await fetch(`${APIURL}/products/new-product`, {
             method: "POST",
@@ -273,6 +296,8 @@ const contextValues = {
     val2,
     newVal,
     newVal2,
+    MenuProps,
+    getStyles,
     handleChange,
     setNewVal,
     handleChangeVal2,

@@ -53,13 +53,12 @@ const CartItem = (props) => {
                 className='btn-increase' onClick={() => increase(product, metadata.property, metadata.property2, qty)}>
                     <PlusCircleIcon width='20px' />
                 </button>
-                {
-                    quantity > 1 && 
+                
                     <button
                     className='btn-trash' onClick={() => removeProduct(product, metadata.property, metadata.property2)}>
                         <TrashIcon width='20px' />
                     </button>
-                }
+                
               
             </div>
         </div>
