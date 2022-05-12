@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ProductsContext } from "../../../context/products-context";
 import Layout from "../../shared/layout";
 import OutlinedInput from '@mui/material/OutlinedInput';

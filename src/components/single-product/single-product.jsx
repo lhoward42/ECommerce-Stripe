@@ -16,7 +16,6 @@ import './single-product.styles.scss';
     const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
     const [qty, setQty] = useState(1);
     
-    const token = localStorage.getItem("token");
     
     const onChangeQty = (e) => {
       setQty(e.target.value);
@@ -70,7 +69,7 @@ import './single-product.styles.scss';
 
     if (!product) { return null };
 
-    const { imageUrl, title, price, description, property, value, value2, property2 } = product;
+    const { imageUrl, title, price, description, value, value2 } = product;
     const itemInCart = isInCart(product, cartItems, selectedAttribute, selectedAttribute2);
     const hasValues = hasValueAttributes(product);
     const hasMoreValues = hasValueAttributes2(product);      

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { PlusCircleIcon, MinusCircleIcon, TrashIcon } from '../../icons'
+import { TrashIcon } from '../../icons'
 import { Link } from 'react-router-dom';
 
 const CartItem = (props) => {
-    const { title, imageUrl, price, quantity, increase, description, id, decrease, removeProduct, metadata, metadata2 } = props
-    const product = { title, imageUrl, price, quantity, id, description, metadata, metadata2 };
+    const { title, imageUrl, price, quantity, update, description, id, removeProduct, metadata  } = props
+    const product = { title, imageUrl, price, quantity, id, description, metadata };
     const [qty, setQty] = useState(quantity);
 
     const onChangeQty = (e) => {
@@ -33,6 +33,16 @@ const CartItem = (props) => {
           </>
         );
       };
+
+      const updateCart = () => {
+         update(product, metadata.property, metadata.property2, qty)
+      }
+
+      const remove = () => {
+        removeProduct(product, metadata.property, metadata.property2)
+        setQty(1)
+      }
+
     return (
         <div className='cart-item'>
             <div className='item-image'>
@@ -54,12 +64,12 @@ const CartItem = (props) => {
             </div>
             <div className='btns-container'>
                 <button
-                className='btn-increase' onClick={() => increase(product, metadata.property, metadata.property2, qty)}>
-                    <PlusCircleIcon width='20px' />
+                className='btn-increase' onClick={updateCart}>
+                    Update Qty 
                 </button>
                 
                     <button
-                    className='btn-trash' onClick={() => removeProduct(product, metadata.property, metadata.property2)}>
+                    className='btn-trash' onClick={remove}>
                         <TrashIcon width='20px' />
                     </button>
                 

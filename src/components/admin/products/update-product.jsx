@@ -1,9 +1,9 @@
 import { ProductsContext } from "../../../context/products-context";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import Layout from "../../shared/layout";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -15,7 +15,7 @@ const UpdateProduct = (props) => {
     const { products } = useContext(ProductsContext);
     const { updateProduct, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, 
     setProperty, setVal, setProperty2, setVal2, val, val2, newVal, newVal2, handleInputChangeVal,
-    handleInputChangeVal2, handleRemoveVal2, handleChangeVal2 , removeVal2, handleRemoveVal, 
+    handleInputChangeVal2, handleRemoveVal2, removeVal2, handleRemoveVal, 
     removeVal, handleChangeSelect, handleChangeSelect2, MenuProps, getStyles } = useContext(ProductsContext);
     const { id } = useParams();
     const navigate = useNavigate();
