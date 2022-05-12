@@ -33,7 +33,8 @@ import './single-product.styles.scss';
 
     const { imageUrl, title, price, description, property, value, value2, property2 } = product;
     const itemInCart = isInCart(product, cartItems);
-  
+    const hasValues = hasValueAttributes(product);
+    const hasMoreValues = hasValueAttributes2(product);      
 
     return (
         <Layout>
