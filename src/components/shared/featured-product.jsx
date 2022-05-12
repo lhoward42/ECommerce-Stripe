@@ -4,14 +4,11 @@ import { isInCart, hasValueAttributes, hasValueAttributes2 } from '../../helpers
 import { CartContext } from '../../context/cart-context';
 import { Link } from 'react-router-dom';
 import './featured-products.styles.scss'
-import { useEffect } from 'react/cjs/react.development';
-import { ProductsContext } from '../../context/products-context';
-
 
 const FeaturedProduct = (props) => {
     const { title, imageUrl, price, id, description, metadata, value, property, value2, property2 } = props;
     const product = { title, imageUrl, price, id, description, metadata, value, property, value2, property2 };
-    const { cartItems, increase, addProdWAttribute } = useContext(CartContext);
+    const { cartItems, update, addProdWAttribute } = useContext(CartContext);
     const [selectedAttribute, setSelectedAttribute ] = useState(null);
     const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
     const [qty, setQty] = useState(1);
@@ -20,11 +17,6 @@ const FeaturedProduct = (props) => {
     const hasValues = hasValueAttributes(product);
     const hasMoreValues = hasValueAttributes2(product);
     
-
-    // useEffect(() => {
-    //     console.log(selectedAttribute);
-    // }, [selectedAttribute])
-    
     const select = async (e) => {
         //this needs a switch case for metadata 1 and 2
         await setSelectedAttribute(e.target.value)
@@ -32,14 +24,16 @@ const FeaturedProduct = (props) => {
     }
     const select2 = async (e) => {
         //this needs a switch case for metadata 1 and 2
-        await setSelectedAttribute2(e.target.value)
+        await setSelectedAttribute2(e.target.value);
         console.log(e.target.value, selectedAttribute2);
-    }
-    
+    }  
      
     const addToCart = () => {
-        addProdWAttribute(product, selectedAttribute, selectedAttribute2, qty)
+        addProdWAttribute(product, selectedAttribute, selectedAttribute2, qty);
             
+    }
+    const updateCart = () => {
+        update(product, selectedAttribute, selectedAttribute2, qty);
     }
       
     const onChangeQty = (e) => {
@@ -112,8 +106,8 @@ const FeaturedProduct = (props) => {
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
-                            ADD MORE</button> 
+                        onClick={updateCart}>
+                            UPDATE CART</button> 
                     ) : <></>
                         }
 
@@ -130,8 +124,8 @@ const FeaturedProduct = (props) => {
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
-                            ADD MORE</button> 
+                        onClick={updateCart}>
+                            UPDATE CART</button> 
                     ) :                
                         <></>}
                    
@@ -149,8 +143,8 @@ const FeaturedProduct = (props) => {
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
-                            ADD MORE</button> 
+                        onClick={updateCart}>
+                            UPDATE CART</button> 
                     ) : 
                         <></>}
                    

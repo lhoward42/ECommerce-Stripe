@@ -8,7 +8,7 @@ import './single-product.styles.scss';
 
  const SingleProduct = () => {
     const { products } = useContext(ProductsContext);
-    const { addProdWAttribute, cartItems, increase } = useContext(CartContext)
+    const { addProdWAttribute, cartItems, update } = useContext(CartContext)
     const navigate = useNavigate();  
     const { id } = useParams();
     const [product, setProduct] = useState(null);
@@ -79,7 +79,9 @@ import './single-product.styles.scss';
       addProdWAttribute(product, selectedAttribute, selectedAttribute2, qty)
           
     }
-        
+    const updateCart = () => {
+      update(product, selectedAttribute, selectedAttribute2, qty);
+    }   
     return (
         <Layout>
       <div className='single-product-container'>
@@ -147,7 +149,7 @@ import './single-product.styles.scss';
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
+                        onClick={updateCart}>
                             ADD MORE</button> 
                     ) : <></>
                         }
@@ -165,7 +167,7 @@ import './single-product.styles.scss';
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
+                        onClick={updateCart}>
                             ADD MORE</button> 
                     ) :                
                         <></>}
@@ -184,7 +186,7 @@ import './single-product.styles.scss';
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
+                        onClick={updateCart}>
                             ADD MORE</button> 
                     ) : 
                         <></>}
