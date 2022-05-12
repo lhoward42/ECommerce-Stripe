@@ -69,7 +69,6 @@ const FeaturedProduct = (props) => {
                 { token ? 
                 <div className="btns-container"> 
                 {/* import update component in here and the navigation method for react-router 6 */}
-                    <button className="btn-trash" onClick={()=> {}}> X </button> 
                     <Link className='btn-increase' to={`/update-product/${id}`}>Edit</Link>
                     </div> 
                     : 
