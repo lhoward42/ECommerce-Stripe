@@ -18,6 +18,33 @@ import './single-product.styles.scss';
     
     const token = localStorage.getItem("token");
     
+    const onChangeQty = (e) => {
+      setQty(e.target.value);
+    };
+   
+    const populateQuantities = (start, end) => {
+      return (
+        <>
+          <select
+            className='select'
+            
+            placeholder='Qty'
+            value={qty ? qty : "Qty"}
+            onChange={onChangeQty}
+          >
+            {Array(end - start + 1)
+              .fill()
+              .map((_, idx) => (
+                <option key={start + idx} value={start + idx}>
+                
+                  {start + idx}
+                </option>
+              ))}
+          </select>
+        </>
+      );
+    };
+
     const select = async (e) => {
       //this needs a switch case for metadata 1 and 2
       await setSelectedAttribute(e.target.value)
@@ -47,7 +74,12 @@ import './single-product.styles.scss';
     const itemInCart = isInCart(product, cartItems, selectedAttribute, selectedAttribute2);
     const hasValues = hasValueAttributes(product);
     const hasMoreValues = hasValueAttributes2(product);      
-
+    
+    const addToCart = () => {
+      addProdWAttribute(product, selectedAttribute, selectedAttribute2, qty)
+          
+    }
+        
     return (
         <Layout>
       <div className='single-product-container'>
@@ -61,18 +93,26 @@ import './single-product.styles.scss';
             <h3>{title}</h3>
            
             <p>$ {price}</p>
-            
-            
+            { hasValues && 
+                    <select onChange={(e) => select(e)}>
+                        <option disabled selected>Select a size</option>
+                        {value !== null && value.map(v => <option key={v} value={v}> {v} </option>)}
+                    </select>}
+            { hasMoreValues && 
+                    <select onChange={(e) => select2(e)}>
+                        <option disabled selected>Select a size</option>
+                        {value2 !== null && value2.map(v => <option key={v} value={v}> {v} </option>)}
+                    </select>}
             <p>{value.map(v => <p> {v} </p>)}</p>
-            
+            <p>{populateQuantities(1, 100)}</p>
           </div>
           <div className='add-to-cart-btns'>
-            {
+            {/* {
               !itemInCart &&
               <button 
                 className='button is-white nomad-btn' 
                 id='btn-white-outline'
-                onClick={() => addProdWAttribute(product)}
+                onClick={addToCart}
                 >
                   ADD TO CART
               </button> 
@@ -95,7 +135,10 @@ import './single-product.styles.scss';
             }
            
             
-            
+             */}
+          </div>
+          <div className='add-to-cart-btns'>
+
           </div>
           <div className='product-description'>
             <p>
