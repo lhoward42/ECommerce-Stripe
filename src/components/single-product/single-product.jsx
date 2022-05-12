@@ -31,7 +31,7 @@ import './single-product.styles.scss';
 
     if (!product) { return null };
 
-    const { imageUrl, title, price, description, property, value } = product;
+    const { imageUrl, title, price, description, property, value, value2, property2 } = product;
     const itemInCart = isInCart(product, cartItems);
   
 
