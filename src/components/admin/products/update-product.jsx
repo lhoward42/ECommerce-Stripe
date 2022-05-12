@@ -16,11 +16,13 @@ const UpdateProduct = (props) => {
     const { updateProduct, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, 
     setProperty, setVal, setProperty2, setVal2, val, val2, newVal, newVal2, handleInputChangeVal,
     handleInputChangeVal2, handleRemoveVal2, removeVal2, handleRemoveVal, 
-    removeVal, handleChangeSelect, handleChangeSelect2, MenuProps, getStyles } = useContext(ProductsContext);
+    removeVal, handleChangeSelect, handleChangeSelect2, MenuProps, getStyles, deleteProduct } = useContext(ProductsContext);
     const { id } = useParams();
     const navigate = useNavigate();
     const theme = useTheme();
+    
 
+    
 
     
 
@@ -58,7 +60,7 @@ const UpdateProduct = (props) => {
             <div className="container">
                 <h3> Update Product </h3>
             <form onSubmit={updateProduct} >
-
+               
                 <div className="form-group">
                 <img src={product.imageUrl} alt='product' />
                 <label>Image URL: </label>
@@ -224,9 +226,17 @@ const UpdateProduct = (props) => {
                 <div>
                     <button type="submit">Update Product</button>
                 </div>
-
+ 
                 </div>
             </form>
+            <div>
+            <button
+             type ="button" 
+             onClick={() => deleteProduct(product)}
+             >
+                Delete Product From Store
+            </button>
+            </div>
             </div>
         </Layout>
     )

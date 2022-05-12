@@ -178,6 +178,35 @@ import APIURL from '../utils/environment';
         
     }
 
+    //DELETE PRODUCT FROM STORE
+
+    const deleteProduct = async (product) => { 
+        const token = localStorage.getItem("token");
+        try{
+            const res = await fetch( 
+                `${APIURL}/products/${product.id}`, {
+                    method: "DELETE",
+                    headers: new Headers({
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }),
+                }
+            );
+            const data = res.json();
+            console.log(data);
+            console.log("product successfully deleted");
+            let array = await [...products];
+            let index = array.indexOf(product);
+            if (index !== -1){
+                array.splice(index, 1);
+                setProducts(array);
+            };
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     //EVENT FUNCTIONS FOR FIRST SET OF PRODUCT ATTRIBUTES
 
     const handleRemoveVal = (e) => {
@@ -212,24 +241,6 @@ import APIURL from '../utils/environment';
           typeof value === 'string' ? value.split(',') : value,
         );
       };
-
-    // const handleChangeVal = (e) => {
-    //     const { options } = e.target;
-    //     console.log('options', options.selectedIndex)
-    //     console.log('selected', options)
-    //     console.log(options.selected);
-    //     console.log(e.target[e.target.selectedIndex].text)
-    //     const newValues = [...options]
-    //     .filter(option => option.selected === true)
-    //     .map(x => x.value);
-    //     console.log("New Values", newValues);
-       
-    //     // const removed = val.filter(element => 
-    //     //     newValues.includes(element)
-    //     // )
-    //     setRemoveVal(newValues)
-    //     console.log('removed')
-    // }
 
     //EVENT FUNCTIONS FOR SECOND SET OF PRODUCT ATTRIBUTES
 
@@ -310,6 +321,7 @@ const contextValues = {
     setProduct,
     setTitle,
     setDescription,
+    deleteProduct,
     handleChangeSelect,
     handleChangeSelect2,
     setPrice,
