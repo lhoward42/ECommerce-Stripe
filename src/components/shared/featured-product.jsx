@@ -118,36 +118,41 @@ const FeaturedProduct = (props) => {
                         }
 
                         {/* Conditional for product with one attribute */}
-                    {
+                        {
                         !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
                         <button 
                         className='button is-black nomad-btn'
                         onClick={addToCart}>
                             ADD TO CART</button> 
-                        ) : <></> }
+                    ) :
+                        <></> }
                        { itemInCart && hasValues && !hasMoreValues && selectedAttribute && !hasMoreValues ? (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
                         onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
                             ADD MORE</button> 
-                    ) : <></>}
+                    ) :                
+                        <></>}
                    
                         {/* Conditional for product with two attributes */}
-                   {
+                        {
                         !itemInCart && hasValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (   
                         <button 
                         className='button is-black nomad-btn'
                         onClick={addToCart}>
                             ADD TO CART</button> 
-                        ) : <></> }
-                       { itemInCart && hasValues && hasMoreValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (
+                    ) :
+                        <></> }
+                       { 
+                       itemInCart && hasValues && hasMoreValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
                         onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
                             ADD MORE</button> 
-                    ) : <></>}
+                    ) : 
+                        <></>}
                    
                 </div>
             </div>

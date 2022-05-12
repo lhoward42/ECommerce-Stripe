@@ -91,8 +91,8 @@ import './single-product.styles.scss';
         <div className='product-details'>
           <div className='name-price'>
             <h3>{title}</h3>
-           
             <p>$ {price}</p>
+            <p>{populateQuantities(1, 100)}</p>
             { hasValues && 
                     <select onChange={(e) => select(e)}>
                         <option disabled selected>Select a size</option>
@@ -102,9 +102,7 @@ import './single-product.styles.scss';
                     <select onChange={(e) => select2(e)}>
                         <option disabled selected>Select a size</option>
                         {value2 !== null && value2.map(v => <option key={v} value={v}> {v} </option>)}
-                    </select>}
-            <p>{value.map(v => <p> {v} </p>)}</p>
-            <p>{populateQuantities(1, 100)}</p>
+                    </select>}  
           </div>
           <div className='add-to-cart-btns'>
             {/* {
@@ -138,6 +136,59 @@ import './single-product.styles.scss';
              */}
           </div>
           <div className='add-to-cart-btns'>
+
+          {/* Conditional for product with no attributes */}
+          {!itemInCart && !hasValues ? (   
+                        <button 
+                        className='button is-black nomad-btn'
+                        onClick={addToCart}>
+                            ADD TO CART</button> 
+                    ) : itemInCart && !hasValues ? (
+                        <button 
+                        className='button is-white nomad-btn'
+                        id='btn-white-outline'
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
+                            ADD MORE</button> 
+                    ) : <></>
+                        }
+
+          {/* Conditional for product with one attribute */}
+          {
+                        !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
+                        <button 
+                        className='button is-black nomad-btn'
+                        onClick={addToCart}>
+                            ADD TO CART</button> 
+                    ) :
+                        <></> }
+                       { itemInCart && hasValues && !hasMoreValues && selectedAttribute && !hasMoreValues ? (
+                        <button 
+                        className='button is-white nomad-btn'
+                        id='btn-white-outline'
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
+                            ADD MORE</button> 
+                    ) :                
+                        <></>}
+
+          {/* Conditional for product with two attributes */}
+          {
+                        !itemInCart && hasValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (   
+                        <button 
+                        className='button is-black nomad-btn'
+                        onClick={addToCart}>
+                            ADD TO CART</button> 
+                    ) :
+                        <></> }
+                       { 
+                       itemInCart && hasValues && hasMoreValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (
+                        <button 
+                        className='button is-white nomad-btn'
+                        id='btn-white-outline'
+                        onClick={()=> increase(product, selectedAttribute, selectedAttribute2, qty)}>
+                            ADD MORE</button> 
+                    ) : 
+                        <></>}
+                   
 
           </div>
           <div className='product-description'>

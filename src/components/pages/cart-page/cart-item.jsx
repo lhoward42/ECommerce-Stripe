@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { PlusCircleIcon, MinusCircleIcon, TrashIcon } from '../../icons'
+import { Link } from 'react-router-dom';
 
 const CartItem = (props) => {
     const { title, imageUrl, price, quantity, increase, description, id, decrease, removeProduct, metadata, metadata2 } = props
@@ -35,11 +36,14 @@ const CartItem = (props) => {
     return (
         <div className='cart-item'>
             <div className='item-image'>
+            {/* <Link to={`/product/${id}`}> */}
                 <img src={imageUrl} alt='product' />
+            {/* </Link> */}
             </div>
             <div className='name-price'>
                 <h4>{title}</h4>
                 {metadata.property !== "" && <p>{metadata.property}</p>}
+                {metadata.property2 !== "" && <p>{metadata.property2}</p>}
                 <p>$ {price}</p>
    
             </div>
