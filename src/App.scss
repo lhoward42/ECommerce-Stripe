@@ -41,7 +41,7 @@ img {
   @media (min-width: 1024px) {
     .products {
       display: flex;
-      justify-content: space-between;
+      justify-content: space-around;
       padding: 5px;
 
       .featured-product {

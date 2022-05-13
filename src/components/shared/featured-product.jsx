@@ -95,14 +95,15 @@ const FeaturedProduct = (props) => {
                 <div className='name-price'>
                 <h3 className='product-title'>{title}</h3>
                 <p>$ {price}</p>    
-                <div>
-                <p>{populateQuantities(1, 100)}</p>
                 </div>
-                <div>
+                <p>{populateQuantities(1, 100)}</p>
+                
+                <div className='select-container'>
                      {/* select menu for first set of attributes */}
                     { hasValues && 
                     // <FormControl>
-                    <Select 
+                    <Select
+                    sx={{ width: 9/10 }} 
                     onChange={select}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute}
@@ -118,7 +119,7 @@ const FeaturedProduct = (props) => {
                     { hasMoreValues && 
                     
                     <Select 
-                    
+                    sx={{ width: 9/10 }}
                     onChange={select2}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute2}
@@ -182,7 +183,7 @@ const FeaturedProduct = (props) => {
                     ) : 
                         <></>}
                     
-                </div>
+                
             </div>
         </div>
      
