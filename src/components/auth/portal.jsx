@@ -4,8 +4,8 @@ import Register from "./register";
 
 const Portal = (props) => {
     const [showLogin, setShowLogin] = useState(true);
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
     const toggleLoginSignup = () => {
         setShowLogin(!showLogin);

@@ -4,10 +4,16 @@ import { ProductsContext } from '../../context/products-context';
 import { isInCart, hasValueAttributes, hasValueAttributes2 } from '../../helpers';
 import { CartContext } from '../../context/cart-context';
 import Layout from '../shared/layout';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { useTheme } from '@mui/material/styles';
 import './single-product.styles.scss';
 
  const SingleProduct = () => {
-    const { products } = useContext(ProductsContext);
+    const { products, MenuProps } = useContext(ProductsContext);
     const { addProdWAttribute, cartItems, update } = useContext(CartContext)
     const navigate = useNavigate();  
     const { id } = useParams();
@@ -23,24 +29,26 @@ import './single-product.styles.scss';
    
     const populateQuantities = (start, end) => {
       return (
-        <>
-          <select
-            className='select'
-            
-            placeholder='Qty'
-            value={qty ? qty : "Qty"}
-            onChange={onChangeQty}
-          >
-            {Array(end - start + 1)
-              .fill()
-              .map((_, idx) => (
-                <option key={start + idx} value={start + idx}>
-                
-                  {start + idx}
-                </option>
-              ))}
-          </select>
-        </>
+        <FormControl sx={{ width: 100 }}>
+        <InputLabel id="demo-multiple-name-label">Qty</InputLabel>
+        <Select
+          className='select'
+          input={<OutlinedInput label="Qty" />}
+          placeholder='Qty'
+          value={qty ? qty : "Qty"}
+          onChange={onChangeQty}
+          MenuProps={MenuProps}
+        >
+          {Array(end - start + 1)
+            .fill()
+            .map((_, idx) => (
+              <MenuItem key={start + idx} value={start + idx}>
+                {" "}
+                {start + idx}{" "}
+              </MenuItem>
+            ))}
+        </Select>
+    </FormControl>
       );
     };
 
@@ -95,15 +103,16 @@ import './single-product.styles.scss';
             <p>$ {price}</p>
             <p>{populateQuantities(1, 100)}</p>
             { hasValues && 
-                    <select onChange={(e) => select(e)}>
-                        <option disabled selected>Select a size</option>
-                        {value !== null && value.map(v => <option key={v} value={v}> {v} </option>)}
-                    </select>}
+                    <Select 
+                    onChange={(e) => select(e)}
+                    >
+                        {value !== null && value.map(v => <MenuItem key={v} value={v}> {v} </MenuItem>)}
+                    </Select>}
             { hasMoreValues && 
-                    <select onChange={(e) => select2(e)}>
-                        <option disabled selected>Select a size</option>
-                        {value2 !== null && value2.map(v => <option key={v} value={v}> {v} </option>)}
-                    </select>}  
+                    <Select onChange={(e) => select2(e)}>
+                        
+                        {value2 !== null && value2.map(v => <MenuItem key={v} value={v}> {v} </MenuItem>)}
+                    </Select>}  
           </div>
           <div className='add-to-cart-btns'>
             {/* {

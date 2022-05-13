@@ -1,36 +1,45 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { TrashIcon } from '../../icons'
 import { Link } from 'react-router-dom';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { useTheme } from '@mui/material/styles';
+import { ProductsContext } from '../../../context/products-context';
 
 const CartItem = (props) => {
     const { title, imageUrl, price, quantity, update, description, id, removeProduct, metadata  } = props
     const product = { title, imageUrl, price, quantity, id, description, metadata };
     const [qty, setQty] = useState(quantity);
-
+    const { MenuProps } = useContext(ProductsContext)
     const onChangeQty = (e) => {
         setQty(e.target.value);
       };
      
       const populateQuantities = (start, end) => {
         return (
-          <>
-            <select
-              className='select'
-              
+          <FormControl sx={{ width: 100 }}>
+          <InputLabel id="demo-multiple-name-label">Qty</InputLabel>
+            <Select
+              className='select'  
               placeholder='Qty'
+              input={<OutlinedInput label="Qty" />}
               value={qty ? qty : "Qty"}
               onChange={onChangeQty}
+              MenuProps={MenuProps}
             >
               {Array(end - start + 1)
                 .fill()
                 .map((_, idx) => (
-                  <option key={start + idx} value={start + idx}>
+                  <MenuItem key={start + idx} value={start + idx}>
                     {" "}
                     {start + idx}{" "}
-                  </option>
+                  </MenuItem>
                 ))}
-            </select>
-          </>
+            </Select>
+          </FormControl>
         );
       };
 

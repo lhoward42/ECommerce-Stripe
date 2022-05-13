@@ -83,10 +83,6 @@ import APIURL from '../utils/environment';
                 setProduct({ ...product, property2: value });
                 break;
             }
-            // case 'value2': {
-            //     setProduct({ ...product, value2: [value] });
-            //     break;
-            // }
             default:
                 break;
         }

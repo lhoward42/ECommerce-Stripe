@@ -3,19 +3,28 @@ import React, { useContext, useState} from 'react';
 import { isInCart, hasValueAttributes, hasValueAttributes2 } from '../../helpers';
 import { CartContext } from '../../context/cart-context';
 import { Link } from 'react-router-dom';
-import './featured-products.styles.scss'
+import './featured-products.styles.scss';
+import { ProductsContext } from '../../context/products-context';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import { useTheme } from '@mui/material/styles';
 
 const FeaturedProduct = (props) => {
     const { title, imageUrl, price, id, description, metadata, value, property, value2, property2, category } = props;
     const product = { title, imageUrl, price, id, description, metadata, value, property, value2, property2, category };
     const { cartItems, update, addProdWAttribute } = useContext(CartContext);
-    const [selectedAttribute, setSelectedAttribute ] = useState(null);
-    const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
+    const [selectedAttribute, setSelectedAttribute ] = useState("");
+    const [selectedAttribute2, setSelectedAttribute2 ] = useState("");
     const [qty, setQty] = useState(1);
     const itemInCart = isInCart(product, cartItems, selectedAttribute, selectedAttribute2);
+    const { MenuProps } = useContext(ProductsContext);
     const token = localStorage.getItem("token");
     const hasValues = hasValueAttributes(product);
     const hasMoreValues = hasValueAttributes2(product);
+    
     
     const select = async (e) => {
         //this needs a switch case for metadata 1 and 2
@@ -42,24 +51,28 @@ const FeaturedProduct = (props) => {
      
       const populateQuantities = (start, end) => {
         return (
-          <>
-            <select
+        <div>
+         
+            <InputLabel id="demo-multiple-name-label">Qty</InputLabel>
+            <Select
               className='select'
-              
+              input={<OutlinedInput label="Qty" />}
               placeholder='Qty'
               value={qty ? qty : "Qty"}
               onChange={onChangeQty}
+              MenuProps={MenuProps}
             >
               {Array(end - start + 1)
                 .fill()
                 .map((_, idx) => (
-                  <option key={start + idx} value={start + idx}>
+                  <MenuItem key={start + idx} value={start + idx}>
                     {" "}
                     {start + idx}{" "}
-                  </option>
+                  </MenuItem>
                 ))}
-            </select>
-          </>
+            </Select>
+        
+        </div>
         );
       };
     return (
@@ -78,24 +91,45 @@ const FeaturedProduct = (props) => {
                 <Link to={`/product/${id}`}>
                 <img src={imageUrl} alt='product'/> 
                 </Link> 
+                
                 <div className='name-price'>
-                    <h3 className='product-title'>{title}</h3>
-                    <p>$ {price}</p>
+                <h3 className='product-title'>{title}</h3>
+                <p>$ {price}</p>    
                 <div>
-                    {populateQuantities(1, 100)}
+                <p>{populateQuantities(1, 100)}</p>
                 </div>
+                <div>
                      {/* select menu for first set of attributes */}
                     { hasValues && 
-                    <select onChange={(e) => select(e)}>
-                        <option disabled selected>Select a size</option>
-                        {value !== null && value.map(v => <option key={v} value={v}> {v} </option>)}
-                    </select>}
+                    // <FormControl>
+                    <Select 
+                    onChange={select}
+                    labelId="demo-multiple-name-label"
+                    value={selectedAttribute}
+                    MenuProps={MenuProps}
+                    >
+                        {value !== null && value.map(v => 
+                        <MenuItem key={v} value={v}> {v} </MenuItem>)}
+                    </Select>
+                //    </FormControl>
+                    }
+                    <br/>
                     {/* select menu for second set of attributes */}
                     { hasMoreValues && 
-                    <select onChange={(e) => select2(e)}>
-                        <option disabled selected>Select a size</option>
-                        {value2 !== null && value2.map(v => <option key={v} value={v}> {v} </option>)}
-                    </select>}
+                    
+                    <Select 
+                    
+                    onChange={select2}
+                    labelId="demo-multiple-name-label"
+                    value={selectedAttribute2}
+                    MenuProps={MenuProps}
+                    >
+                        {value2 !== null && value2.map(v =>
+                         <MenuItem key={v} value={v}> {v} </MenuItem>)}
+                    </Select>
+                 
+                    }
+                </div>
                     {/* Conditional for product with no attributes */}
                     {!itemInCart && !hasValues ? (   
                         <button 
@@ -147,11 +181,11 @@ const FeaturedProduct = (props) => {
                             UPDATE CART</button> 
                     ) : 
                         <></>}
-                   
+                    
                 </div>
             </div>
         </div>
-       
+     
     )
 }
 

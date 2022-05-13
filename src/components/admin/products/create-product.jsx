@@ -71,7 +71,9 @@ const CreateProduct = () => {
                 placeholder="Price"
                 onChange={(e) => handleChange(e)}
                 />
-                <label>Type: </label>
+
+                {/* Needs to be a select menu */}
+                <label>Category: </label>
                 <input
                 className="form-control"
                 type="text"
@@ -112,7 +114,7 @@ const CreateProduct = () => {
                 />
                  <div>
                  <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel id="demo-multiple-name-label">Name</InputLabel>
+                <InputLabel id="demo-multiple-name-label">Attributes</InputLabel>
                 <Select
                     labelId="demo-multiple-name-label"
                     id="demo-multiple-name"
@@ -208,7 +210,7 @@ const CreateProduct = () => {
                 </div>
 
                 <div>
-                    <button type="submit">Create New Product</button>
+                    <button className="is-black submit nomad-btn " type="submit">Create New Product</button>
                 </div>
                 </div>
             </form>
