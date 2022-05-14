@@ -8,16 +8,6 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useTheme } from '@mui/material/styles';
 
-// const ITEM_HEIGHT = 48;
-// const ITEM_PADDING_TOP = 8;
-// const MenuProps = {
-//   PaperProps: {
-//     style: {
-//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-//       width: 250,
-//     },
-//   },
-// };
 
 function getStyles(val, removeVal, theme) {
     return {
@@ -71,7 +61,8 @@ const CreateProduct = () => {
                 placeholder="Price"
                 onChange={(e) => handleChange(e)}
                 />
-
+                </div>
+                <div className="form-group">
                 {/* Needs to be a select menu */}
                 <label>Category: </label>
                 <input
@@ -91,6 +82,7 @@ const CreateProduct = () => {
                 placeholder="Image URL"
                 onChange={(e) => handleChange(e)}
                 />
+                </div>
                 <div className="form-group">
                 <label>Product Attribute: </label>
                 <input
@@ -104,16 +96,25 @@ const CreateProduct = () => {
                 <div className="form-group">
               
                 <div className="form-group">
-                <label> Edit Values for Attribute: </label>
-                <input
-                className="form-control"
-                type="text"
-                name="value"
-                placeholder={val}
-                onChange={handleInputChangeVal}
-                />
-                 <div>
-                 <FormControl sx={{ m: 1, width: 300 }}>
+                    <div className="value-input">
+                    <label> Edit Values for Attribute: </label>
+                    <input
+                        className="form-control"
+                        type="text"
+                        name="value"
+                        placeholder={val}
+                        onChange={handleInputChangeVal}
+                    />
+                   
+                    <button
+                    type="button"
+                    onClick={(e) => setVal([...val, newVal])}
+                    >
+                    Add to Values
+                    </button> 
+                    </div>
+                    <div className="value-dropdown">
+                    <FormControl sx={{ m: 1, width: 300 }}>
                 <InputLabel id="demo-multiple-name-label">Attributes</InputLabel>
                 <Select
                     labelId="demo-multiple-name-label"
@@ -134,24 +135,19 @@ const CreateProduct = () => {
                         </MenuItem>
                     ))}
                     </Select>
-            </FormControl>
-         </div>
-                <button
-                type="button"
-                onClick={handleRemoveVal}
-                > 
-                Remove 
-                </button>
+                    </FormControl>
+            
+                    <button
+                    type="button"
+                    onClick={handleRemoveVal}
+                    > 
+                    Remove 
+                    </button>
 
-               <button
-               type="button"
-               onClick={(e) => setVal([...val, newVal])}
-               >
-                Add to Values
-               </button> 
+                    </div>
                 </div> 
-
                 </div>
+                
                 <div className="form-group">
                 <label>Second Product Attribute: </label>
                 <input
@@ -163,6 +159,7 @@ const CreateProduct = () => {
                 />
                 </div>
                 <div className="form-group">
+                    <div className="value-input"> 
                     <label>Edit Values for Attribute: </label> 
                     <input
                     className="form-control"
@@ -171,21 +168,22 @@ const CreateProduct = () => {
                     placeholder={val2}
                     onChange={handleInputChangeVal2}
                     />
-                    <div>
-                    <button
-                    type="button"
-                    onClick={handleRemoveVal2}
-                    > Remove </button>
+                    
+                   
+                    
+                    
 
                     <button
                     type="button"
                     onClick={(e) => setVal2([...val2, newVal2])}
-               >
+                    >
                    Add to Values
-               </button>
-               </div>
+                    </button>
+                   
+                    </div>
+                    <div className="value-dropdown">
                 <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel id="demo-multiple-name-label">Name</InputLabel>
+                <InputLabel id="demo-multiple-name-label">Second Atrributes</InputLabel>
                 <Select
                     labelId="demo-multiple-name-label"
                     id="demo-multiple-name"
@@ -205,14 +203,30 @@ const CreateProduct = () => {
                         </MenuItem>
                     ))}
                     </Select>
-            </FormControl>
-
+                </FormControl>
+                    <button
+                    type="button"
+                    onClick={handleRemoveVal2}
+                    > 
+                    Remove 
+                    </button>
+                    </div>
                 </div>
+                <div className="form-group">
+                <label>Event Name: </label>
+                <input
+                className="form-control"
+                type="text"
+                name="eventName"
+                placeholder="Event Name (Must Be Exact)"
+                onChange={(e) => handleChange(e)}
+                />
+                </div>        
 
                 <div>
                     <button className="is-black submit nomad-btn " type="submit">Create New Product</button>
                 </div>
-                </div>
+                
             </form>
             </div>
         </Layout>

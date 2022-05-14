@@ -19,6 +19,7 @@ import APIURL from '../utils/environment';
     const [newVal, setNewVal] = useState(null);
     const [newVal2, setNewVal2] = useState(null);
     const [property2, setProperty2] = useState(null);
+    const [eventName, setEventName] = useState(null);
    
     const [removeVal, setRemoveVal] = useState([]);
     const [removeVal2, setRemoveVal2] = useState([]);
@@ -75,12 +76,17 @@ import APIURL from '../utils/environment';
                 setProduct({ ...product, property: value });
                 break;
             }
+
+            case 'property2': {
+                setProduct({ ...product, property2: value });
+                break;
+            }          
             case 'category': {
                 setProduct({ ...product, category: value });
                 break;
             }
-            case 'property2': {
-                setProduct({ ...product, property2: value });
+            case 'eventName': {
+                setProduct({ ...product, eventName: value });
                 break;
             }
             default:
@@ -122,6 +128,7 @@ import APIURL from '../utils/environment';
             property2: product.property2,
             value2: val2,
             category: product.category,
+            eventName: product.eventName,
         };
 
         console.log(productData);
@@ -157,6 +164,7 @@ import APIURL from '../utils/environment';
             property2: property2,
             value2: val2,
             category: category,
+            eventName: eventName,
         };
 
         try {
@@ -304,11 +312,13 @@ const contextValues = {
     val,
     property2, 
     val2,
+    eventName,
     newVal,
     newVal2,
     MenuProps,
     category,
     setCategory,
+    setEventName,
     getStyles,
     handleChange,
     setNewVal,
