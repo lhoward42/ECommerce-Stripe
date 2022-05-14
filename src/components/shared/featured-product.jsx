@@ -11,6 +11,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { useTheme } from '@mui/material/styles';
+import { format } from 'date-fns';
 
 const FeaturedProduct = (props) => {
     const { title, imageUrl, price, id, description, metadata, value, property, value2, property2, category } = props;
@@ -24,7 +25,7 @@ const FeaturedProduct = (props) => {
     const token = localStorage.getItem("token");
     const hasValues = hasValueAttributes(product);
     const hasMoreValues = hasValueAttributes2(product);
-    
+    const date = format(new Date(2022, 11, 16), 'yyyy-MM-dd');
     
     const select = async (e) => {
         //this needs a switch case for metadata 1 and 2
@@ -52,7 +53,7 @@ const FeaturedProduct = (props) => {
       const populateQuantities = (start, end) => {
         return (
         <div>
-         
+            
             <InputLabel id="demo-multiple-name-label">Qty</InputLabel>
             <Select
               className='select'
@@ -91,7 +92,7 @@ const FeaturedProduct = (props) => {
                 <Link to={`/product/${id}`}>
                 <img src={imageUrl} alt='product'/> 
                 </Link> 
-                
+                <div>{date}</div>
                 <div className='name-price'>
                 <h3 className='product-title'>{title}</h3>
                 <p>$ {price}</p>    
