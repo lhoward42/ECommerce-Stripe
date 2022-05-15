@@ -10,6 +10,7 @@ import Canceled from "./components/checkout/stripe-checkout/canceled.jsx";
 import Portal from "./components/auth/portal.jsx";
 import CreateProduct from "./components/admin/products/create-product.jsx";
 import UpdateProduct from "./components/admin/products/update-product.jsx";
+import CreateEvent from "./components/admin/events/create-events.jsx";
 import "./App.scss";
 import { useEffect, useState } from "react/cjs/react.development";
 
@@ -49,6 +50,7 @@ function App() {
         <Route path='/portal' element={<Portal token={token} logout={clearToken} newToken={updateToken} />} />
         <Route path='/admin-home/create-product' element={<CreateProduct />} />
         <Route path='/update-product/:id' element={<UpdateProduct />} />
+        <Route path='/admin-home/create-event' element={<CreateEvent />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>

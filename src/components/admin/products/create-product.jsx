@@ -9,19 +9,19 @@ import Select from '@mui/material/Select';
 import { useTheme } from '@mui/material/styles';
 
 
-function getStyles(val, removeVal, theme) {
-    return {
-      fontWeight:
-        removeVal.indexOf(val) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
-    };
-  }
+// function getStyles(val, removeVal, theme) {
+//     return {
+//       fontWeight:
+//         removeVal.indexOf(val) === -1
+//           ? theme.typography.fontWeightRegular
+//           : theme.typography.fontWeightMedium,
+//     };
+//   }
 
 const CreateProduct = () => {
     const { handleChange, createNewProduct, setVal, setVal2, val, val2, newVal, newVal2, handleInputChangeVal,
     handleRemoveVal, handleInputChangeVal2, handleRemoveVal2,removeVal, removeVal2, handleChangeSelect,
-    handleChangeSelect2, MenuProps } = useContext(ProductsContext);
+    handleChangeSelect2, MenuProps, getStyles } = useContext(ProductsContext);
     
     const theme = useTheme();
 
@@ -93,7 +93,7 @@ const CreateProduct = () => {
                 onChange={(e) => handleChange(e)}
                 />
                 </div>
-                <div className="form-group">
+               
               
                 <div className="form-group">
                     <div className="value-input">
@@ -146,7 +146,7 @@ const CreateProduct = () => {
 
                     </div>
                 </div> 
-                </div>
+               
                 
                 <div className="form-group">
                 <label>Second Product Attribute: </label>

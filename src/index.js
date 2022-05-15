@@ -8,6 +8,7 @@ import ProductsContextProvider from "./context/products-context";
 import CartContextProvider from "./context/cart-context";
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import EventsContextProvider from "./context/events-context";
 
 
 const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
@@ -16,12 +17,14 @@ const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
 ReactDOM.render(
   <BrowserRouter>
     <ProductsContextProvider>
+      <EventsContextProvider>
       <CartContextProvider>
         {/* //This Element tag with the stripe child now gives us access to stripe throughout our app!! */}
         <Elements stripe={stripePromise}>
         <App />
         </Elements>
       </CartContextProvider>
+      </EventsContextProvider>
     </ProductsContextProvider>
   </BrowserRouter>,
   document.getElementById("root")

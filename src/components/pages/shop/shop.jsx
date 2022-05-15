@@ -8,7 +8,7 @@ import './shop.styles.scss'
 const Shop = () => {
     const { products } = useContext(ProductsContext)
     const allProducts = products.map(product => (
-        product.category === "product" &&
+        product.category.includes("product") &&
         <FeaturedProduct {...product } key={product.id} />
       
     ))
