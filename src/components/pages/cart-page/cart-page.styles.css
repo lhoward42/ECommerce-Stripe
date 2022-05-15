@@ -66,9 +66,6 @@ h1, .empty-cart {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  div {
-    margin: 1rem;
-  }
   .name-price {
     width: 200px;
   }

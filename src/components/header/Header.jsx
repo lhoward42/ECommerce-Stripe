@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CartIcon from "../cart-icon/cart-icon";
 import './header.styles.scss';
+import VintageTruck from '../../assets/vintagetruck.svg'
 
 
 
@@ -10,6 +11,7 @@ const Header = () => {
         <nav className="nav-menu container">   
             <div className="logo">
                 <Link to='/'>Craft Me A Dream</Link>
+                <img src={VintageTruck} alt="Vintage" />
             </div>
             <ul>
                 <li>

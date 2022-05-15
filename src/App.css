@@ -2529,6 +2529,10 @@ fieldset[disabled] .button {
   min-height: 100vh;
 }
 
+#root {
+  background-color: #FFC7F1;
+}
+
 img {
   width: 100%;
 }

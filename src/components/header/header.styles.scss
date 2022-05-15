@@ -1,6 +1,8 @@
 .nav-menu {
   display: flex;
   padding: 1rem;
+  background-color: #40FFF9;
+  
 }
 
 a {
@@ -8,7 +10,7 @@ a {
   &:focus,
   &:hover,
   &:visited {
-    color: black;
+    color: #3B1E57;
   }
 }
 

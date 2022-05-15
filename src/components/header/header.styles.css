@@ -3,6 +3,7 @@
   display: -ms-flexbox;
   display: flex;
   padding: 1rem;
+  background-color: #40FFF9;
 }
 
 a {
@@ -10,7 +11,7 @@ a {
 }
 
 a:focus, a:hover, a:visited {
-  color: black;
+  color: #3B1E57;
 }
 
 .logo {

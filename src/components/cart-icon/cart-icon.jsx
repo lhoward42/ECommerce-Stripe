@@ -12,7 +12,7 @@ console.log('CartItems', cartItems, itemCount);
 
     return (
         <div className="cart-container">
-            <Icon path={mdiBasket} alt='shopping-cart-icon' size={1.5} onClick={() => navigate('/cart')}/>
+            <Icon className="shopping-basket" path={mdiBasket} alt='shopping-cart-icon' size={1.5} onClick={() => navigate('/cart')}/>
             {
                 itemCount > 0 ? <span className="cart-count"> { itemCount } </span> : null
             }
