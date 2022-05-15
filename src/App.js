@@ -13,6 +13,8 @@ import UpdateProduct from "./components/admin/products/update-product.jsx";
 import CreateEvent from "./components/admin/events/create-events.jsx";
 import "./App.scss";
 import { useEffect, useState } from "react/cjs/react.development";
+// import {DeviceSize} from './utils/DeviceSize.js'
+// import { useMediaQuery } from "react-responsive";
 
 function App() {
   const [token, setToken] = useState("");
@@ -32,6 +34,8 @@ function App() {
     localStorage.clear();
     setToken("");
   }
+
+  // const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
 
 
   return (

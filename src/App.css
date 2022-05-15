@@ -2519,6 +2519,11 @@ fieldset[disabled] .button {
   }
 }
 
+@font-face {
+  font-family: "Elephant";
+  src: local("ELEPHANT"), url("./fonts/ELEPHNT.TTF") format("truetype");
+}
+
 .app {
   position: relative;
   min-height: 100vh;
