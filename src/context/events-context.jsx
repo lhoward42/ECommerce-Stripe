@@ -6,7 +6,7 @@ export const EventsContext = createContext();
 
 const EventsContextProvider = ({ children }) => {
 const [events, setEvents] = useState([])
-const [event, setEvent] = useState(null);
+const [event, setEvent] = useState({});
 const [title, setTitle] = useState(null);
 const [description, setDescription] = useState(null);
 const [year, setYear] = useState(null);
@@ -74,7 +74,7 @@ function getStyles(val, removeVal, theme) {
     }
 
     const formValidation = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
        const dateMatch = isMatch(event.date,'yyyy-MM-dd');
        console.log(dateMatch);
     }

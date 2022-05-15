@@ -9,7 +9,7 @@ const HomePage = () => {
         <div>
             <Layout>
                 <Hero />
-                <MainSection />
+                    <MainSection />
                 <FeaturedCollection />
             </Layout>
         </div>
