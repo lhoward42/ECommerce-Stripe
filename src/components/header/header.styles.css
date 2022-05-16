@@ -2,8 +2,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding: 1rem;
+  padding: 1rem 0rem 1rem 1rem;
   background-color: #40FFF9;
+  max-width: 100% !important;
 }
 
 a {
@@ -27,5 +28,9 @@ ul {
 li {
   display: inline-block;
   margin: 0 1rem;
+}
+
+.vintage-truck {
+  width: 8% !important;
 }
 /*# sourceMappingURL=header.styles.css.map */

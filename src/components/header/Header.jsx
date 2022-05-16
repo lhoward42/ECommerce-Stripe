@@ -11,7 +11,7 @@ const Header = () => {
         <nav className="nav-menu container">   
             <div className="logo">
                 <Link to='/'>Craft Me A Dream</Link>
-                <img src={VintageTruck} alt="Vintage" />
+                <img className="vintage-truck" src={VintageTruck} alt="Vintage" />
             </div>
             <ul>
                 <li>

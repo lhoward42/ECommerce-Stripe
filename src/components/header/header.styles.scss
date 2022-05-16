@@ -1,8 +1,8 @@
 .nav-menu {
   display: flex;
-  padding: 1rem;
-  background-color: #40FFF9;
-  
+  padding: 1rem 0rem 1rem 1rem;
+  background-color: #40FFF9;  
+  max-width: 100% !important
 }
 
 a {
@@ -29,3 +29,8 @@ li {
    margin: 0 1rem;
 
 }
+
+.vintage-truck { 
+  width: 8% !important;
+}
+

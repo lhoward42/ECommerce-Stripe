@@ -2,6 +2,12 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #FFC7F1;
+}
+
+@font-face {
+  font-family: "Elephant";
+  src: local("ELEPHANT"), url("./fonts/ELEPHNT.TTF") format("truetype")
 }
 
 
