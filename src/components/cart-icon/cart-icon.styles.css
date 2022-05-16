@@ -4,11 +4,11 @@
 }
 
 .cart-count {
-  margin-left: -10px;
+  margin-left: -.65rem;
   background-color: #FFC7F1;
   color: white;
-  padding-right: 4px;
-  border-radius: 10px;
+  padding-right: .3rem;
+  border-radius: .65rem;
 }
 
 .shopping-basket {

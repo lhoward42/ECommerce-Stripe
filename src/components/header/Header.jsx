@@ -25,6 +25,11 @@ const Header = () => {
                     </Link>
                 </li>
                 <li>
+                    <Link to="/">
+                       Events
+                    </Link>
+                </li>
+                <li>
                  <CartIcon />   
                 </li>
             </ul>

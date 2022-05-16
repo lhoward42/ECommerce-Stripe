@@ -22,7 +22,6 @@ a:focus, a:hover, a:visited {
 ul {
   list-style-type: none;
   margin: 0;
-  margin-left: auto;
 }
 
 li {

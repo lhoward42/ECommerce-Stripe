@@ -9,14 +9,19 @@ const [events, setEvents] = useState([])
 const [event, setEvent] = useState({});
 const [title, setTitle] = useState(null);
 const [description, setDescription] = useState(null);
-const [year, setYear] = useState(null);
-const [month, setMonth] = useState(null);
 const [date, setDate] = useState(null);
+const [startTime, setStartTime] = useState(null);
+const [endTime, setEndTime] = useState(null);
+const [location, setLocation] = useState(null);
+const [hasProduct, setHasProduct] = useState(false);
+
 
 // useEffect(() => {
 //   fetchAllEvents()
 // }, [])
 
+
+//MUI Functions 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -74,26 +79,36 @@ function getStyles(val, removeVal, theme) {
     }
 
     const formValidation = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
        const dateMatch = isMatch(event.date,'yyyy-MM-dd');
-       console.log(dateMatch);
+       const endTimeMatch = isMatch(event.endTime, 'hh:mm a');
+       const startTimeMatch = isMatch(event.startTime, 'hh:mm a');
+       if(dateMatch === true && 
+        endTimeMatch === true &&
+        startTimeMatch === true 
+        ){ console.log("Hell Yeah")}
+    //    console.log(endTimeMatch);
+    //    console.log(format(new Date(event.date), 'yyyy-MM-dd'));
     }
-    const contextValues = {
-        
+    const contextValues = {    
         event,
         title,
         description,
-        year,
-        month,
         date,
         MenuProps,
         events,
+        startTime,        
+        endTime,
+        location,  
+        hasProduct, 
+        setLocation,
+        setStartTime,
+        setHasProduct, 
+        setEndTime,
         setEvents,
         getStyles,
         setDate,
-        setMonth,
         formValidation,
-        setYear,
         setDescription,
         setTitle,
         setEvent,

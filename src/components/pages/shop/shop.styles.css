@@ -8,7 +8,7 @@
 }
 
 .product-list-container .product-list div {
-  margin: 1rem;
+  margin: .5rem;
   cursor: pointer;
 }
 
@@ -22,7 +22,7 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    margin: 0 5rem;
+    margin: 0 2rem;
   }
   .product-list-container .product-list div {
     -webkit-box-flex: 0;
