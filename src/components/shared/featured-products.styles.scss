@@ -1,6 +1,6 @@
 .featured-product {
   border: .2rem solid #F7F063;
-  padding: 1.1rem;
+  padding: 2.5rem;
   margin: 1.2rem;
   background-color: #FFD8C4;
 }
@@ -29,5 +29,6 @@
 }
 
 .select-container {
-  margin: 0;
+  margin-left: auto !important;
+  margin-right: 0 !important;
 }

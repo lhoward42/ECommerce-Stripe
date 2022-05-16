@@ -1,4 +1,13 @@
 .vintage-truck {
   width: 8% !important;
 }
+
+.nav-item {
+  margin: 0rem 2.25rem;
+}
+
+.nav-bar {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
 /*# sourceMappingURL=navbar.styles.css.map */

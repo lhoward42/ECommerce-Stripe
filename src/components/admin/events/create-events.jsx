@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { EventsContext } from "../../../context/events-context";
 import Layout from "../../shared/layout";
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -12,10 +12,12 @@ import Checkbox from '@mui/material/Checkbox';
 
 
 const CreateEvent = () => {
-    const { formValidation, handleChange, event } = useContext(EventsContext);
+    const { formValidation, handleChange, event, checked, handleChecked } = useContext(EventsContext);
     // const eventDate = format(new Date(event.date), 'MMM dd, YYYY')
     const date = (new Date(JSON.stringify(event.date)));
     
+
+
     console.log(date);
     return (
         <Layout>  
@@ -86,12 +88,12 @@ const CreateEvent = () => {
                 </div>
                 <div className="form-group">
                     <label>Products or Tickets?</label>
-                    <input
+                    <Checkbox
                     className="form-control"
-                    type="text"
-                    name="hasProducts"
-                    placeholder=""
-                    onChange={(e) => handleChange(e)}
+                    inputProps={{ 'aria-label': 'controlled' }}
+                    name="hasProduct"
+                    checked={checked}
+                    onChange={handleChange}
                     />
                 </div>
                

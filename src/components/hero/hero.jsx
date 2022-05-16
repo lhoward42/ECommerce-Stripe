@@ -10,7 +10,7 @@ const Hero = () => {
                     Crafts for Every Occasion 
                 </h1>
                 <div className="shop-now-btn">
-                    <button className="button is-success" id='shop-now'>
+                    <button className="button shop-now" id='shop-now'>
                         SHOP NOW
                     </button>
                 </div>

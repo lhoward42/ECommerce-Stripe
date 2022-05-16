@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-
+import { ListItem, ListItemText } from '@mui/material';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -13,7 +13,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import VintageTruck from '../../assets/vintagetruck.svg'
 import CartIcon from "../cart-icon/cart-icon";
-const pages = ['Products', 'Pricing', 'Blog'];
+import { Link } from "react-router-dom";
+import './navbar.styles.scss'
+
+const pages = ['home', 'shop', 'events'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = () => {
@@ -36,38 +39,21 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar className="nav-bar" position="sticky" sx={{ backgroundColor: '#40FFF9' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img  className="vintage-truck" src={VintageTruck} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+        <img  className="vintage-truck" src={VintageTruck} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}alt="vintageTruck" />
+          <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
-              size="large"
+              
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
+              sx={{width: '.25rem'}}
             >
-             
+              <img  className="vintage-truck" src={VintageTruck} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}alt="vintageTruck" />
             </IconButton>
             <Menu
               id="menu-appbar"
@@ -84,14 +70,19 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: 'block', md: 'none' }, 
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key="home"  onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center" ><Link className="nav-links" to='/'>Home</Link></Typography>
                 </MenuItem>
-              ))}
+                <MenuItem key="shop" onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center"><Link className="nav-links2" to='/shop'>Shop</Link></Typography>
+                </MenuItem>
+                <MenuItem key="event" onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center" ><Link className="nav-links" to='/event'>Event</Link></Typography>
+                </MenuItem>
+           
             </Menu>
           </Box>
           
@@ -113,16 +104,19 @@ const ResponsiveAppBar = () => {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexDirection: 'row-reverse' }}>
+            {/* <ListItem key="events" className='nav-links' onClick={handleCloseNavMenu} >
+                  <ListItemText textAlign="right"><Link to='/events'> Events </Link></ListItemText>
+                </ListItem>
+            <ListItem key="shop" onClick={handleCloseNavMenu} >
+                  <ListItemText textAlign="center"><Link to='/shop'> Shop </Link></ListItemText>
+                </ListItem>
+            <ListItem key="home" onClick={handleCloseNavMenu} >
+                  <ListItemText textAlign="center"><Link to='/'> Home </Link></ListItemText>
+                </ListItem> */}
+                <Link className="nav-item" to='/events'> Events </Link>
+                <Link className="nav-item" to='/shop'> Shop </Link>
+                <Link className="nav-item" to='/'> Home </Link>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

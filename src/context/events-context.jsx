@@ -14,7 +14,7 @@ const [startTime, setStartTime] = useState(null);
 const [endTime, setEndTime] = useState(null);
 const [location, setLocation] = useState(null);
 const [hasProduct, setHasProduct] = useState(false);
-
+const [checked, setChecked] = useState(true)
 
 // useEffect(() => {
 //   fetchAllEvents()
@@ -41,6 +41,8 @@ function getStyles(val, removeVal, theme) {
           : theme.typography.fontWeightMedium,
     };
   }
+
+  
 
     const handleChange = (e) => {
         const { name, value, checked } = e.target;
@@ -70,7 +72,9 @@ function getStyles(val, removeVal, theme) {
                 break;
             }
             case 'hasProduct': {
-                setEvent({...event, hasProduct: checked });
+                setChecked(checked);
+                // setEvent({...event, hasProduct: checked });
+                console.log(checked);
                 break;
             }
             default:
@@ -78,15 +82,33 @@ function getStyles(val, removeVal, theme) {
         }
     }
 
-    const formValidation = (e) => {
+    const formValidation = async (e) => {
         e.preventDefault();
-       const dateMatch = isMatch(event.date,'yyyy-MM-dd');
-       const endTimeMatch = isMatch(event.endTime, 'hh:mm a');
-       const startTimeMatch = isMatch(event.startTime, 'hh:mm a');
-       if(dateMatch === true && 
+        const token = localStorage.getItem("token")
+        const eventData = {...event, hasProduct: checked };
+        const dateMatch = isMatch(event.date,'yyyy-MM-dd');
+        const endTimeMatch = isMatch(event.endTime, 'hh:mm a');
+        const startTimeMatch = isMatch(event.startTime, 'hh:mm a');
+        try {
+        if(dateMatch === true && 
         endTimeMatch === true &&
         startTimeMatch === true 
-        ){ console.log("Hell Yeah")}
+        ){ 
+            let res = await fetch(`${APIURL}/events/new-event`, {
+                method: "POST",
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }),
+                body: JSON.stringify(eventData),
+               })  
+            let data = await res.json();
+            console.log(data);
+            console.log("Success", eventData);
+        }
+    } catch (err) {
+        console.error(err);
+    }
     //    console.log(endTimeMatch);
     //    console.log(format(new Date(event.date), 'yyyy-MM-dd'));
     }
@@ -100,7 +122,10 @@ function getStyles(val, removeVal, theme) {
         startTime,        
         endTime,
         location,  
-        hasProduct, 
+        hasProduct,
+        checked,
+        
+        setChecked, 
         setLocation,
         setStartTime,
         setHasProduct, 
