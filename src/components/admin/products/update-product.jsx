@@ -12,8 +12,7 @@ import Select from '@mui/material/Select';
 
 
 const UpdateProduct = (props) => {
-    const { products } = useContext(ProductsContext);
-    const { updateProduct, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, 
+    const { products, updateProduct, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, 
     setProperty, setVal, setProperty2, setVal2, val, val2, newVal, newVal2, handleInputChangeVal,
     handleInputChangeVal2, handleRemoveVal2, removeVal2, handleRemoveVal, category, setCategory,
     removeVal, handleChangeSelect, handleChangeSelect2, MenuProps, getStyles, deleteProduct } = useContext(ProductsContext);

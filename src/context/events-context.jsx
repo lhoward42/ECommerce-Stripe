@@ -16,9 +16,9 @@ const [location, setLocation] = useState(null);
 const [hasProduct, setHasProduct] = useState(false);
 const [checked, setChecked] = useState(true)
 
-// useEffect(() => {
-//   fetchAllEvents()
-// }, [])
+useEffect(() => {
+  fetchAllEvents();
+}, [])
 
 
 //MUI Functions 
@@ -79,6 +79,23 @@ function getStyles(val, removeVal, theme) {
             }
             default:
                 break;
+        }
+    }
+
+    const fetchAllEvents = async () => {
+        try{
+            let res = await fetch(`${APIURL}/events/all`, {
+                method: "GET", 
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                }),
+            });
+            let data = await res.json();
+            await setEvents(data);
+            await localStorage.setItem("events", JSON.stringify(data));
+            console.log(data);
+        } catch (err) {
+            console.error(err)
         }
     }
 

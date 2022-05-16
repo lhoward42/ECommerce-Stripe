@@ -5,13 +5,22 @@ import { CartContext } from '../../context/cart-context';
 import { Link } from 'react-router-dom';
 import './featured-products.styles.scss';
 import { ProductsContext } from '../../context/products-context';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { useTheme } from '@mui/material/styles';
+import { 
+    OutlinedInput, 
+    InputLabel, 
+    MenuItem, 
+    FormControl, 
+    Box, 
+    Select, 
+    Card, 
+    CardActions, 
+    CardContent, 
+    Button, 
+    Typography,
+    useTheme,
+  }  from '@mui/material/'
 import { format } from 'date-fns';
+
 
 const FeaturedProduct = (props) => {
     const { title, imageUrl, price, id, description, metadata, value, property, value2, property2, category } = props;
@@ -76,6 +85,7 @@ const FeaturedProduct = (props) => {
         </div>
         );
       };
+      
     return (
         
         <div className='featured-product'>
