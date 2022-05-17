@@ -44,10 +44,15 @@ img {
     cursor: pointer;
   }
 
+  .products {
+      display: flex;
+      
+  }
+
   @media (min-width: 1024px) {
     .products {
       display: flex;
-      
+      justify-content: center;
       padding: 5px;
       overflow: scroll;
 
@@ -55,7 +60,7 @@ img {
         margin: 10px;
       }
       .featured-image {
-        width: 17rem;
+        width: 10rem !important;
       }
     }
   }

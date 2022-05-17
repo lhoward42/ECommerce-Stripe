@@ -10,6 +10,7 @@ const FeaturedCollection = () => {
     )) 
 
     return (
+        <>
         <div className="featured-collection container">
             <h2 className="featured-section-title">Featured Collection</h2>
             <div className='products'>
@@ -18,6 +19,7 @@ const FeaturedCollection = () => {
                 }
             </div>
         </div>
+        </>
     )
 }
 

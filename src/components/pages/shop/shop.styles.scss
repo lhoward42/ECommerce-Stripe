@@ -13,6 +13,20 @@
     }
 }
 
+.product-list-container {
+    .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        
+        margin: 0 2rem;
+        div {
+         
+        }
+    }
+}
+
+
 @media(min-width: 1024px){
     .product-list-container {
         .product-list {
@@ -22,7 +36,7 @@
             
             margin: 0 2rem;
             div {
-                flex: 0 0 300px
+             
             }
         }
     }

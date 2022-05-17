@@ -4,6 +4,7 @@ import { isInCart, hasValueAttributes, hasValueAttributes2 } from '../../helpers
 import { CartContext } from '../../context/cart-context';
 import { Link } from 'react-router-dom';
 import './featured-products.styles.scss';
+import { useMediaQuery } from "react-responsive";
 import { ProductsContext } from '../../context/products-context';
 import { 
     OutlinedInput, 
@@ -17,8 +18,11 @@ import {
     CardContent, 
     Button, 
     Typography,
-    useTheme,
+    CardMedia,
+    
   }  from '@mui/material/'
+  import { DeviceSize } from '../../utils/DeviceSize';
+  // import { useMediaQuery } from "react-responsive";
 import { format } from 'date-fns';
 
 
@@ -59,11 +63,11 @@ const FeaturedProduct = (props) => {
         setQty(e.target.value);
       };
      
+
+
       const populateQuantities = (start, end) => {
-        return (
-        <div>
-            
-            <InputLabel id="demo-multiple-name-label">Qty</InputLabel>
+        return ( 
+           <FormControl size="small">
             <Select
               className='select'
               input={<OutlinedInput label="Qty" />}
@@ -81,15 +85,17 @@ const FeaturedProduct = (props) => {
                   </MenuItem>
                 ))}
             </Select>
-        
-        </div>
+        </FormControl>  
         );
       };
       
+      const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
+      const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet})
+
     return (
         
-        <div className='featured-product'>
-            <div className='featured-image'>
+        <Card sx={{ backgroundColor: '#FFD8C4', color: '#3B1E57', margin: '.5rem', minWidth: " 50%", minHeight: isMobile ? '40rem' : isTablet ? '50rem' : '66rem' }}>
+            <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem',}}>
                 { token ? 
                 <div className="btns-container"> 
                 {/* import update component in here and the navigation method for react-router 6 */}
@@ -99,22 +105,30 @@ const FeaturedProduct = (props) => {
                     <></>
                     }
                     <p>{category}</p>
+               
                 <Link to={`/product/${id}`}>
-                <img src={imageUrl} alt='product'/> 
+                <CardMedia 
+                sx={{objectFit: 'cover', maxWidth: '40rem', maxHeight: '35rem'}}
+                component='img'
+                image={imageUrl} 
+                alt='product'
+                /> 
                 </Link> 
-                <div>{date}</div>
-                <div className='name-price'>
-                <h3 className='product-title'>{title}</h3>
+              
+                <Typography variant="div">{date}</Typography>
+                {/* <div className='name-price'> */}
+                <Typography variant="h5" >{title}</Typography>
                 <p>$ {price}</p>    
-                </div>
-                <p>{populateQuantities(1, 100)}</p>
+                {/* </div> */}
+                <InputLabel id="demo-multiple-name-label">Qty</InputLabel>
+                {populateQuantities(1, 100)}
                 
-                <div className='select-container'>
+                
                      {/* select menu for first set of attributes */}
                     { hasValues && 
-                    // <FormControl>
+                    <FormControl size="small">
                     <Select
-                    sx={{ width: 9/10 }} 
+                    sx={{ width: 100, marginTop: '.5rem' }} 
                     onChange={select}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute}
@@ -123,14 +137,14 @@ const FeaturedProduct = (props) => {
                         {value !== null && value.map(v => 
                         <MenuItem key={v} value={v}> {v} </MenuItem>)}
                     </Select>
-                //    </FormControl>
+                  </FormControl>
                     }
-                    <br/>
+                    
                     {/* select menu for second set of attributes */}
                     { hasMoreValues && 
-                    
+                    <FormControl size="small">
                     <Select 
-                    sx={{ width: 9/10 }}
+                    sx={{ width: 100 }}
                     onChange={select2}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute2}
@@ -139,9 +153,9 @@ const FeaturedProduct = (props) => {
                         {value2 !== null && value2.map(v =>
                          <MenuItem key={v} value={v}> {v} </MenuItem>)}
                     </Select>
-                 
+                 </FormControl>
                     }
-                </div>
+               
                     {/* Conditional for product with no attributes */}
                     {!itemInCart && !hasValues ? (   
                         <button 
@@ -195,8 +209,8 @@ const FeaturedProduct = (props) => {
                         <></>}
                     
                 
-            </div>
-        </div>
+            </CardContent>
+        </Card>
      
     )
 }

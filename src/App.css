@@ -2553,11 +2553,20 @@ img {
   cursor: pointer;
 }
 
+.featured-collection .products {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 @media (min-width: 1024px) {
   .featured-collection .products {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     padding: 5px;
     overflow: scroll;
   }
@@ -2565,7 +2574,7 @@ img {
     margin: 10px;
   }
   .featured-collection .products .featured-image {
-    width: 17rem;
+    width: 10rem !important;
   }
 }
 
