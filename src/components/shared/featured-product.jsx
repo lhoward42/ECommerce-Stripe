@@ -90,11 +90,11 @@ const FeaturedProduct = (props) => {
       };
       
       const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
-      const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet})
+      const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet});
 
     return (
         
-        <Card sx={{ backgroundColor: '#FFD8C4', color: '#3B1E57', margin: '.5rem', minWidth: " 50%", minHeight: isMobile ? '40rem' : isTablet ? '50rem' : '66rem' }}>
+        <Card sx={{ backgroundColor: '#FFD8C4', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '40rem' : isTablet ? '50rem' : '67rem' }}>
             <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem',}}>
                 { token ? 
                 <div className="btns-container"> 
@@ -159,7 +159,7 @@ const FeaturedProduct = (props) => {
                     {/* Conditional for product with no attributes */}
                     {!itemInCart && !hasValues ? (   
                         <button 
-                        className='button is-black nomad-btn'
+                        className='button btn-increase nomad-btn'
                         onClick={addToCart}>
                             ADD TO CART</button> 
                     ) : itemInCart && !hasValues ? (
@@ -175,7 +175,7 @@ const FeaturedProduct = (props) => {
                         {
                         !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
                         <button 
-                        className='button is-black nomad-btn'
+                        className='button btn-increase nomad-btn'
                         onClick={addToCart}>
                             ADD TO CART</button> 
                     ) :

@@ -2659,7 +2659,7 @@ form .submit {
 }
 
 #buy-it-now-btn:hover {
-  background-color: #606060;
+  background-color: grey;
 }
 
 @media (min-width: 1024px) {

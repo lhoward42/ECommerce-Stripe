@@ -13,7 +13,6 @@ const [date, setDate] = useState(null);
 const [startTime, setStartTime] = useState(null);
 const [endTime, setEndTime] = useState(null);
 const [location, setLocation] = useState(null);
-const [hasProduct, setHasProduct] = useState(false);
 const [checked, setChecked] = useState(true)
 
 useEffect(() => {
@@ -103,14 +102,14 @@ function getStyles(val, removeVal, theme) {
         e.preventDefault();
         const token = localStorage.getItem("token")
         const eventData = {...event, hasProduct: checked };
-        const dateMatch = isMatch(event.date,'yyyy-MM-dd');
-        const endTimeMatch = isMatch(event.endTime, 'hh:mm a');
-        const startTimeMatch = isMatch(event.startTime, 'hh:mm a');
+        // const dateMatch = isMatch(event.date,'yyyy-MM-dd');
+        // const endTimeMatch = isMatch(event.endTime, 'hh:mm a');
+        // const startTimeMatch = isMatch(event.startTime, 'hh:mm a');
         try {
-        if(dateMatch === true && 
-        endTimeMatch === true &&
-        startTimeMatch === true 
-        ){ 
+        // if(dateMatch === true && 
+        // endTimeMatch === true &&
+        // startTimeMatch === true 
+        // ){ 
             let res = await fetch(`${APIURL}/events/new-event`, {
                 method: "POST",
                 headers: new Headers({
@@ -122,13 +121,43 @@ function getStyles(val, removeVal, theme) {
             let data = await res.json();
             console.log(data);
             console.log("Success", eventData);
-        }
+        // }
     } catch (err) {
         console.error(err);
     }
     //    console.log(endTimeMatch);
     //    console.log(format(new Date(event.date), 'yyyy-MM-dd'));
     }
+
+    //Update Event 
+    const updateEvent = async (e) =>{
+        e.preventDefault();
+        const token = localStorage.getItem("token");
+        const eventData = {
+            title: title,
+            description: description,
+            date: date,
+            startTime: startTime,
+            endTime: endTime,
+            location: location,
+            hasProduct: checked
+        };
+        try { 
+            const res = await fetch(`${APIURL}/events/4`,{
+                method: 'PUT',
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                }),
+                body: JSON.stringify(eventData),
+            })
+            let data = await res.json();
+            console.log(data);
+        } catch (err) {
+            console.log("Happening here ******", err)
+        }
+    }
+
     const contextValues = {    
         event,
         title,
@@ -139,17 +168,15 @@ function getStyles(val, removeVal, theme) {
         startTime,        
         endTime,
         location,  
-        hasProduct,
-        checked,
-        
+        checked,       
         setChecked, 
         setLocation,
         setStartTime,
-        setHasProduct, 
         setEndTime,
         setEvents,
         getStyles,
         setDate,
+        updateEvent,
         formValidation,
         setDescription,
         setTitle,

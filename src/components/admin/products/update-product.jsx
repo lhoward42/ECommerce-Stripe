@@ -61,14 +61,14 @@ const UpdateProduct = (props) => {
             <form onSubmit={updateProduct} >
                
                 <div className="form-group">
-                <img src={product.imageUrl} alt='product' />
-                <label>Image URL: </label>
-                <input
-                className="form-control"
-                type="text"
-                name="imageUrl"
-                placeholder={product.imageUrl}
-                onChange={(e) => setImageUrl(e.target.value.length > 0 ? e.target.value : product.imageUrl)}
+                    <img src={product.imageUrl} alt='product' />
+                    <label>Image URL: </label>
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="imageUrl"
+                    placeholder={product.imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value.length > 0 ? e.target.value : product.imageUrl)}
                 />
 
                 <div className="form-group">
@@ -83,52 +83,58 @@ const UpdateProduct = (props) => {
                 </div>
 
                 <div className="form-group">
-                <label>Description: </label>
-                <input
-                className="form-control"
-                type="text"
-                name="description"
-                placeholder={product.description}
-                onChange={(e) => setDescription(e.target.value)}
-                />
+                    <label>Description: </label>
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="description"
+                    placeholder={product.description}
+                    onChange={(e) => setDescription(e.target.value)}
+                    />
                 </div>
 
                 <div className="form-group">
-                <label>Price: </label>
-                <input
-                className="form-control"
-                type="number"
-                step=".01"
-                name="price"
-                placeholder={product.price}
-                onChange={(e) => setPrice(e.target.value)}
-                />
+                    <label>Price: </label>
+                    <input
+                    className="form-control"
+                    type="number"
+                    step=".01"
+                    name="price"
+                    placeholder={product.price}
+                    onChange={(e) => setPrice(e.target.value)}
+                    />
                 </div>
                 
                 <div className="form-group">
-                <label>Product Attribute: </label>
-                <input
-                className="form-control"
-                type="text"
-                name="property"
-                placeholder={product.property}
-                onChange={(e) => setProperty(e.target.value.length === 0 ? product.property : e.target.value)}
-                />
-                
+                    <label>Product Attribute: </label>
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="property"
+                    placeholder={product.property}
+                    onChange={(e) => setProperty(e.target.value.length === 0 ? product.property : e.target.value)}
+                    />
                 </div>
                 <div className="form-group">
-                <label> Edit Values for Attribute: </label>
-                <input
-                className="form-control"
-                type="text"
-                name="value"
-                placeholder={product.value}
-                onChange={handleInputChangeVal}
-                />
+                    <label> Edit Values for Attribute: </label>
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="value"
+                    placeholder={product.value}
+                    onChange={handleInputChangeVal}
+                    />
+                     <button
+                    type="button"
+                    onClick={(e) => setVal([...val, newVal])}
+                    >
+                    Add to Values
+                    </button> 
+                </div>
                  <div>
-                 <FormControl sx={{ m: 1, width: 300 }}>
-                <InputLabel id="demo-multiple-name-label">Name</InputLabel>
-                <Select
+                    <FormControl sx={{ m: 1, width: 300 }}>
+                    <InputLabel id="demo-multiple-name-label">Name</InputLabel>
+                    <Select
                     labelId="demo-multiple-name-label"
                     id="demo-multiple-name"
                     multiple
@@ -137,42 +143,35 @@ const UpdateProduct = (props) => {
                     input={<OutlinedInput label="Name" />}
                     MenuProps={MenuProps}
                     >
-                    {val.map((v) => (
-                        <MenuItem
-                        key={v}
-                        value={v}
-                        style={getStyles(v, removeVal, theme)}
-                        >
-                        {v}
-                        </MenuItem>
-                    ))}
+                        {val.map((v) => (
+                            <MenuItem
+                            key={v}
+                            value={v}
+                            style={getStyles(v, removeVal, theme)}
+                            >
+                            {v}
+                            </MenuItem>
+                        ))}
                     </Select>
-            </FormControl>
-         </div>
-                <button
-                type="button"
-                onClick={handleRemoveVal}
-                > 
-                Remove 
-                </button>
-
-               <button
-               type="button"
-               onClick={(e) => setVal([...val, newVal])}
-               >
-                Add to Values
-               </button> 
-                </div> 
+                    </FormControl>
+         
+                    <button
+                    type="button"
+                    onClick={handleRemoveVal}
+                    > 
+                    Remove 
+                    </button>
+                    </div> 
 
                 <div className="form-group">
-                <label> Product Attribute: </label>
-                <input
-                className="form-control"
-                type="text"
-                name="property2"
-                placeholder={product.property2}
-                onChange={(e) => setProperty2(e.target.value)}
-                />
+                    <label> Product Attribute: </label>
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="property2"
+                    placeholder={product.property2}
+                    onChange={(e) => setProperty2(e.target.value)}
+                    />
                 </div>
 
                 <div className="form-group">
@@ -184,11 +183,8 @@ const UpdateProduct = (props) => {
                     placeholder={product.value2}
                     onChange={handleInputChangeVal2}
                     />
-                    <div>
-                    <button
-                    type="button"
-                    onClick={handleRemoveVal2}
-                    > Remove </button>
+                    
+                   
 
                     <button
                     type="button"
@@ -197,6 +193,7 @@ const UpdateProduct = (props) => {
                    Add to Values
                </button>
                </div>
+               <div>
                 <FormControl sx={{ m: 1, width: 300 }}>
                 <InputLabel id="demo-multiple-name-label">Name</InputLabel>
                 <Select
@@ -218,8 +215,13 @@ const UpdateProduct = (props) => {
                         </MenuItem>
                     ))}
                     </Select>
-            </FormControl>
-
+                    </FormControl>
+                    <button
+                    type="button"
+                    onClick={handleRemoveVal2}
+                    > 
+                    Remove 
+                    </button>
                 </div>
 
                 <div>
@@ -228,14 +230,14 @@ const UpdateProduct = (props) => {
  
                 </div>
             </form>
-            <div>
-            <button
-             type ="button" 
-             onClick={() => deleteProduct(product)}
-             >
+                <div>
+                <button
+                type ="button" 
+                onClick={() => deleteProduct(product)}
+                >
                 Delete Product From Store
-            </button>
-            </div>
+                </button>
+                </div>
             </div>
         </Layout>
     )

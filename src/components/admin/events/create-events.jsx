@@ -50,7 +50,7 @@ const CreateEvent = () => {
                     <label>Date: </label>
                     <input
                     className="form-control"
-                    type="text"
+                    type="date"
                     name="date"
                     placeholder="Date"
                     onChange={(e) => handleChange(e)}
@@ -60,7 +60,7 @@ const CreateEvent = () => {
                     <label>Start Time: </label>
                     <input
                     className="form-control"
-                    type="text"
+                    type="time"
                     name="startTime"
                     placeholder="Start Time"
                     onChange={(e) => handleChange(e)}
@@ -70,7 +70,7 @@ const CreateEvent = () => {
                     <label>End Time: </label>
                     <input
                     className="form-control"
-                    type="text"
+                    type="time"
                     name="endTime"
                     placeholder="End Time"
                     onChange={(e) => handleChange(e)}

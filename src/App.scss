@@ -7,6 +7,14 @@
 
 
 
+// $russian-violet: #3b1e57ff;
+// $icterine: #f7f063ff;
+// $cotton-candy: #ffc7f1ff;
+// $aqua: #40fff9ff;
+// $unbleached-silk: #ffd8c4ff;
+
+
+
 .app {
   position: relative;
   min-height: 100vh;
@@ -132,7 +140,7 @@ form {
 }
 #buy-it-now-btn {
   &:hover {
-    background-color: #606060;
+    background-color: grey;
   }
 }
 
