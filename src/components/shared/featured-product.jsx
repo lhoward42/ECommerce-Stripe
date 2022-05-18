@@ -94,7 +94,7 @@ const FeaturedProduct = (props) => {
 
     return (
         
-        <Card sx={{ backgroundColor: '#FFD8C4', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '40rem' : isTablet ? '50rem' : '67rem' }}>
+        <Card sx={{ backgroundColor: '#FFD8C4', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '40rem' : isTablet ? '50rem' : '53rem' }}>
             <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem',}}>
                 { token ? 
                 <div className="btns-container"> 
