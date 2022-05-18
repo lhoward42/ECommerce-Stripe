@@ -1,13 +1,21 @@
 import React, { useContext, useState } from 'react'
 import { TrashIcon } from '../../icons'
 import { Link } from 'react-router-dom';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
+import { 
+  Button,
+  FormControl,
+  OutlinedInput,
+  InputLabel,
+  MenuItem,
+  Container,
+ } from '@mui/material'
+
 import Select from '@mui/material/Select';
 import { useTheme } from '@mui/material/styles';
 import { ProductsContext } from '../../../context/products-context';
+import { DeviceSize } from '../../../utils/DeviceSize';
+import { useMediaQuery } from "react-responsive";
+
 
 const CartItem = (props) => {
     const { title, imageUrl, price, quantity, update, description, id, removeProduct, metadata  } = props
@@ -52,18 +60,20 @@ const CartItem = (props) => {
         setQty(1)
       }
 
+      const isLaptop = useMediaQuery({ maxWidth: DeviceSize.laptop })
+      const isDesktop = useMediaQuery({ maxWidth: DeviceSize.desktop })
     return (
-        <div className='cart-item'>
+      <div className='cart-item'>
             <div className='item-image'>
             {/* <Link to={`/product/${id}`}> */}
-                <img src={imageUrl} alt='product' />
+                <img src={imageUrl} alt='event' />
             {/* </Link> */}
             </div>
             <div className='name-price'>
                 <h4>{title}</h4>
                 {metadata.property !== "" && <p>{metadata.property}</p>}
                 {metadata.property2 !== "" && <p>{metadata.property2}</p>}
-                <p>$ {price}</p>
+                <p>$ {(Math.round(price * 100)/100).toFixed(2)}</p>
    
             </div>
             <div className='quantity'>
@@ -71,20 +81,23 @@ const CartItem = (props) => {
                     {populateQuantities(1, 100)}
                    
             </div>
-            <div className='btns-container'>
-                <button
-                className='btn-increase' onClick={updateCart}>
+            <Container sx={{ paddingTop: isLaptop ? '20px' ? isDesktop : '30px' : '25px' }}>
+                <Button
+                sx={{ minHeight: '2.25rem', backgroundColor: '#40fff9ff', color: '#ffc7f1ff', margin: '.5rem 2px'}}
+                 onClick={updateCart}>
                     Update Qty 
-                </button>
+                </Button>
                 
-                    <button
-                    className='btn-trash' onClick={remove}>
+                    <Button
+                    sx={{ minHeight: '2.25rem', backgroundColor: '#f7f063ff', color: '#3b1e57ff', margin: '.5rem 2px'}}
+                    onClick={remove}
+                    >
                         <TrashIcon width='20px' />
-                    </button>
+                    </Button>
                 
               
+            </Container>
             </div>
-        </div>
     )
 }
 

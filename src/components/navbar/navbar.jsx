@@ -16,7 +16,7 @@ import CartIcon from "../cart-icon/cart-icon";
 import { Link } from "react-router-dom";
 import './navbar.styles.scss'
 
-const pages = ['home', 'shop', 'events'];
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const ResponsiveAppBar = () => {
@@ -39,10 +39,10 @@ const ResponsiveAppBar = () => {
   };
 
   return (
-    <AppBar className="nav-bar" position="sticky" sx={{ backgroundColor: '#40FFF9' }}>
-      <Container maxWidth="xl">
+    <AppBar className="nav-bar" position="sticky" sx={{ backgroundColor: '#40FFF9', padding: '.5rem 1.25rem' }}>
+    
         <Toolbar disableGutters>
-        <img  className="vintage-truck" src={VintageTruck} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}alt="vintageTruck" />
+        <img  className="vintage-truck" src={VintageTruck} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} alt="vintageTruck" />
           <Box sx={{ flexGrow: 0, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               
@@ -51,7 +51,8 @@ const ResponsiveAppBar = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-              sx={{width: '.25rem'}}
+              sx={{width: '.25rem', flexGrow: '1'}}
+               
             >
               <img  className="vintage-truck" src={VintageTruck} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}alt="vintageTruck" />
             </IconButton>
@@ -70,7 +71,7 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' }, 
+                display: { xs: 'block', md: 'block' }, 
               }}
             >
                 <MenuItem key="home"  onClick={handleCloseNavMenu}>
@@ -79,8 +80,8 @@ const ResponsiveAppBar = () => {
                 <MenuItem key="shop" onClick={handleCloseNavMenu}>
                   <Typography textAlign="center"><Link className="nav-links2" to='/shop'>Shop</Link></Typography>
                 </MenuItem>
-                <MenuItem key="event" onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" ><Link className="nav-links" to='/event'>Event</Link></Typography>
+                <MenuItem key="events" onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center" ><Link className="nav-links" to='/events'>Events</Link></Typography>
                 </MenuItem>
            
             </Menu>
@@ -149,7 +150,7 @@ const ResponsiveAppBar = () => {
             </Menu>
           </Box>
         </Toolbar>
-      </Container>
+    
     </AppBar>
   );
 };

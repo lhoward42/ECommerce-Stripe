@@ -3,6 +3,7 @@ import HomePage from "./components/home-page.jsx";
 import NotFound from "./components/not-found.jsx";
 import SingleProduct from "./components/single-product/single-product.jsx";
 import Shop from "./components/pages/shop/shop";
+import EventPage from "./components/events/events.jsx";
 import CartPage from "./components/pages/cart-page/cart-page.jsx";
 import Checkout from "./components/checkout/checkout";
 import Success from "./components/checkout/stripe-checkout/success.jsx";
@@ -47,6 +48,7 @@ function App() {
        
         {/* <Route path='/admin' element={<AdminPage />} /> */}
         <Route path='/shop' element={<Shop />} />
+        <Route path='/events' element={<EventPage />} />
         <Route path='/product/:id' element={<SingleProduct />} />
         <Route path='/cart' element={<CartPage />} />
         <Route path='/checkout' element={<Checkout />} />

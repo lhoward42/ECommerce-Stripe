@@ -37,6 +37,16 @@ const CreateEvent = () => {
                     />
                 </div>
                 <div className="form-group">
+                    <label>Image URL: </label>
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="imageUrl"
+                    placeholder="Image URL"
+                    onChange={(e) => handleChange(e)}
+                    />
+                </div>
+                <div className="form-group">
                     <label>Description: </label>
                     <input
                     className="form-control"

@@ -26,7 +26,7 @@ import {
 import { format } from 'date-fns';
 
 
-const FeaturedProduct = (props) => {
+const FeaturedProductHome = (props) => {
     const { title, imageUrl, price, id, description, metadata, value, property, value2, property2, category } = props;
     const product = { title, imageUrl, price, id, description, metadata, value, property, value2, property2, category };
     const { cartItems, update, addProdWAttribute } = useContext(CartContext);
@@ -90,14 +90,14 @@ const FeaturedProduct = (props) => {
       };
       
       const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
-
+      const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet});
 
     return (
         
-        <Card sx={{ backgroundColor: '#FFD8C4', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '45rem' : '66.5rem' }}>
+        <Card sx={{ backgroundColor: '#FFD8C4', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '40rem' : isTablet ? '47rem' : '49rem' }}>
             <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem',}}>
                 { token ? 
-                <div className="container"> 
+                <div className="btns-container"> 
                 {/* import update component in here and the navigation method for react-router 6 */}
                     <Link className='btn-increase' to={`/update-product/${id}`}>Edit</Link>
                     </div> 
@@ -108,7 +108,7 @@ const FeaturedProduct = (props) => {
                
                 <Link to={`/product/${id}`}>
                 <CardMedia 
-                sx={{objectFit: 'cover', maxWidth: '40rem', maxHeight: '35rem'}}
+                sx={{objectFit: 'cover', maxWidth: '42rem', maxHeight: '37rem'}}
                 component='img'
                 image={imageUrl} 
                 alt='product'
@@ -126,7 +126,7 @@ const FeaturedProduct = (props) => {
                 
                      {/* select menu for first set of attributes */}
                     { hasValues && 
-                    <FormControl size="small" sx={{ margin: '1rem' }}>
+                    <FormControl size="small">
                     <Select
                     sx={{ width: 100, marginTop: '.5rem' }} 
                     onChange={select}
@@ -142,7 +142,7 @@ const FeaturedProduct = (props) => {
                     
                     {/* select menu for second set of attributes */}
                     { hasMoreValues && 
-                    <FormControl size="small" sx={{ margin: '1rem' }}>
+                    <FormControl size="small">
                     <Select 
                     sx={{ width: 100 }}
                     onChange={select2}
@@ -158,59 +158,53 @@ const FeaturedProduct = (props) => {
                
                     {/* Conditional for product with no attributes */}
                     {!itemInCart && !hasValues ? (   
-                        <Button 
-                        sx={{ marginTop: '1rem'}}
-                        className='button btn-increase width nomad-btn'
+                        <button 
+                        className='button btn-increase nomad-btn'
                         onClick={addToCart}>
-                            ADD TO CART</Button> 
+                            ADD TO CART</button> 
                     ) : itemInCart && !hasValues ? (
-                        <Button
-                        sx={{ marginTop: '1rem'}}
-                        className='button is-white width nomad-btn'
+                        <button 
+                        className='button is-white nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>
-                            UPDATE CART</Button> 
+                            UPDATE CART</button> 
                     ) : <></>
                         }
 
                         {/* Conditional for product with one attribute */}
                         {
                         !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
-                        <Button 
-                        sx={{ marginTop: '1rem'}}
-                        className='button btn-increase width nomad-btn'
+                        <button 
+                        className='button btn-increase nomad-btn'
                         onClick={addToCart}>
-                            ADD TO CART</Button> 
+                            ADD TO CART</button> 
                     ) :
                         <></> }
                        { itemInCart && hasValues && !hasMoreValues && selectedAttribute && !hasMoreValues ? (
-                        <Button 
-                        sx={{ marginTop: '1rem'}}
-                        className='button is-white width nomad-btn'
+                        <button 
+                        className='button is-white nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>
-                            UPDATE CART</Button> 
+                            UPDATE CART</button> 
                     ) :                
                         <></>}
                    
                         {/* Conditional for product with two attributes */}
                         {
                         !itemInCart && hasValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (   
-                        <Button 
-                        sx={{ marginTop: '1rem'}}
+                        <button 
                         className='button is-black nomad-btn'
                         onClick={addToCart}>
-                            ADD TO CART</Button> 
+                            ADD TO CART</button> 
                     ) :
                         <></> }
                        { 
                        itemInCart && hasValues && hasMoreValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (
-                        <Button 
-                        sx={{ marginTop: '1rem'}}
+                        <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>
-                            UPDATE CART</Button> 
+                            UPDATE CART</button> 
                     ) : 
                         <></>}
                     
@@ -221,4 +215,4 @@ const FeaturedProduct = (props) => {
     )
 }
 
-export default FeaturedProduct;
+export default FeaturedProductHome;

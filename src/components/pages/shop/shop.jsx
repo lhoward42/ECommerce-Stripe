@@ -18,11 +18,17 @@ const Shop = () => {
     ))
 
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
-      const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet})
+     
     return (
     <Layout>
-        <Grid container display="flex" justifyContent="center" sx={{ padding: !isMobile ? '1rem 1.5rem' : 'none' }}>
-            {/* <h2 className='product-list-title'>Shop</h2> */}
+        <h2 className='product-list-title'>Shop</h2>
+        <Grid 
+        container 
+        display="flex" 
+        justifyContent="center" 
+        sx={{ padding: !isMobile ? '1rem 1.5rem' : 'none' }}
+        >
+            
             
                 {
                     allProducts

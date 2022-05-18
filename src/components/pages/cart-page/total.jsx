@@ -7,7 +7,7 @@ const Total = ({ itemCount, total, clearCart }) => {
         <div className='total-container'>
             <div className='total'>
                 <p>Total Items: {itemCount}</p>
-                <p>{`Total: $${total}`}</p>
+                <p>{`Total: $${(Math.round(total * 100)/100).toFixed(2)} `}</p>
             </div>            
             <div className='checkout'>
                 <button className='button is-black' 

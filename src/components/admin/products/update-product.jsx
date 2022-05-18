@@ -39,8 +39,10 @@ const UpdateProduct = (props) => {
         setPrice(product.price);
         setProperty(product.property);
         setVal(product.value);
+        setCategory(product.category);
         setProperty2(product.property2);
         setVal2(product.value2);
+
         console.log(product);
 
     }, [id, navigate, products, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, setProperty, setVal, setProperty2, setVal2])
@@ -104,7 +106,17 @@ const UpdateProduct = (props) => {
                     onChange={(e) => setPrice(e.target.value)}
                     />
                 </div>
-                
+                  <div className="form-group">
+                {/* Needs to be a select menu */}
+                    <label>Category: </label>
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="category"
+                    placeholder="Category"
+                    onChange={(e) => setCategory(e.target.value)}
+                    />
+                </div>
                 <div className="form-group">
                     <label>Product Attribute: </label>
                     <input

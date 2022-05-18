@@ -5,7 +5,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Checkbox } from '@mui/material'
 
 const UpdateEvent = (props) => {
-    const { events, updateEvent, deleteEvent, setTitle, setDescription, setDate, setStartTime, setEndTime, setLocation, setHasProduct, checked, setChecked, handleChange } = useContext(EventsContext);
+    const { events, updateEvent, deleteEvent, setTitle, setDescription, setDate, setStartTime,
+         setEndTime, setLocation, setHasProduct, checked, setChecked, handleChange, imageUrl, 
+         setImageUrl } = useContext(EventsContext);
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -33,6 +35,16 @@ const UpdateEvent = (props) => {
                     name="title"
                     placeholder="Name"
                     onChange={(e) => setTitle(e.target.value)}
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Event Image: </label>
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="imageUrl"
+                    placeholder="image url here"
+                    onChange={(e) => setImageUrl(e.target.value)}
                     />
                 </div>
                 <div className="form-group">

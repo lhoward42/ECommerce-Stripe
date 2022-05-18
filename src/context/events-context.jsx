@@ -8,6 +8,7 @@ const EventsContextProvider = ({ children }) => {
 const [events, setEvents] = useState([])
 const [event, setEvent] = useState({});
 const [title, setTitle] = useState(null);
+const [imageUrl, setImageUrl] = useState(null);
 const [description, setDescription] = useState(null);
 const [date, setDate] = useState(null);
 const [startTime, setStartTime] = useState(null);
@@ -48,6 +49,10 @@ function getStyles(val, removeVal, theme) {
         switch (name) {
             case 'title': {
                 setEvent({...event, title: value });
+                break;
+            }
+            case 'imageUrl': {
+                setEvent({...event, imageUrl: value });
                 break;
             }
             case 'description': {
@@ -135,6 +140,7 @@ function getStyles(val, removeVal, theme) {
         const token = localStorage.getItem("token");
         const eventData = {
             title: title,
+            imageUrl: imageUrl,
             description: description,
             date: date,
             startTime: startTime,
@@ -143,7 +149,7 @@ function getStyles(val, removeVal, theme) {
             hasProduct: checked
         };
         try { 
-            const res = await fetch(`${APIURL}/events/4`,{
+            const res = await fetch(`${APIURL}/events/${event.id}`,{
                 method: 'PUT',
                 headers: new Headers({
                     "Content-Type": "application/json",
@@ -168,7 +174,9 @@ function getStyles(val, removeVal, theme) {
         startTime,        
         endTime,
         location,  
-        checked,       
+        checked,
+        imageUrl,
+        setImageUrl,       
         setChecked, 
         setLocation,
         setStartTime,

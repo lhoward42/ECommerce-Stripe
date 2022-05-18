@@ -4,13 +4,13 @@ h1, .empty-cart {
 
 .cart-item {
   text-align: center;
-  border: 1px solid #ccc;
+  background-color: #ffd8c4ff;
   margin: 2rem;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .cart-item .item-image img {
-  width: 50px;
+  width: 120px;
 }
 
 .cart-item .name-price h4 {
