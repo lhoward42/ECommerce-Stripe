@@ -11,7 +11,8 @@ import {
     FormControl,
     Select,
     Container,
-    Button
+    Button,
+    CardMedia
 } from '@mui/material'
 import Layout from '../shared/layout';
 import { DeviceSize } from '../../utils/DeviceSize';
@@ -72,7 +73,7 @@ const SingleEvent = () => {
       useEffect(() => {
           const prod = products.find(item => title === item.eventName);
           const event = events.find(ev => Number(ev.id) === Number(id));
-          console.log(prod)
+        //   console.log(prod)
           console.log(event);
           console.log(title);
           if(!event) {
@@ -91,9 +92,11 @@ const SingleEvent = () => {
       
       
       const { description, date, startTime, endTime, location } = event;
-    //   const itemInCart = isInCart(product, cartItems, selectedAttribute, selectedAttribute2);
-    //   const hasValues = hasValueAttributes(product);
-    //   const hasMoreValues = hasValueAttributes2(product);      
+      const { value, value2 } = product;
+      console.log(event.value);
+      const itemInCart = isInCart(product, cartItems, selectedAttribute, selectedAttribute2);
+      const hasValues = hasValueAttributes(product);
+      const hasMoreValues = hasValueAttributes2(product);      
       
       const addToCart = () => {
         addProdWAttribute(product, selectedAttribute, selectedAttribute2, qty)
@@ -108,10 +111,95 @@ const SingleEvent = () => {
           <Container sx={{ margin: '2rem 0', marginBottom: '3rem', padding: '2rem',
            display: isLaptop && 'flex', justifyContent: isLaptop && 'center',
             alignItems: isLaptop && 'center'}}>
-                <img src={event.imageUrl} alt='event'/>              <h2>{event.title}</h2>
-              <h4>{product.price}</h4>
+                <CardMedia component='img' image={event.imageUrl} alt='event' sx={{ width: '60%', margin: '2.5rem auto' }} />              <h2>{event.title}</h2>
+              {/* <h4>{product.price}</h4> */}
               <p>{event.description}</p>
-              
+               {/* select menu for first set of attributes */}
+               { hasValues && 
+                    <FormControl size="small">
+                    <Select
+                    sx={{ width: 100, marginTop: '.5rem' }} 
+                    onChange={select}
+                    labelId="demo-multiple-name-label"
+                    value={selectedAttribute}
+                    MenuProps={MenuProps}
+                    >
+                        {value !== [] && value.map(v => 
+                        <MenuItem key={v} value={v}> {v} </MenuItem>)}
+                    </Select>
+                  </FormControl>
+                    }
+                    
+                    {/* select menu for second set of attributes */}
+                    { hasMoreValues && 
+                    <FormControl size="small">
+                    <Select 
+                    sx={{ width: 100 }}
+                    onChange={select2}
+                    labelId="demo-multiple-name-label"
+                    value={selectedAttribute2}
+                    MenuProps={MenuProps}
+                    >
+                        {value2 !== null && value2.map(v =>
+                         <MenuItem key={v} value={v}> {v} </MenuItem>)}
+                    </Select>
+                 </FormControl>
+                    }
+                    
+               
+                    {/* Conditional for product with no attributes */}
+                    {Object.keys(product).length !== 0 && !itemInCart && !hasValues ? (   
+                        <button 
+                        className='button btn-increase nomad-btn'
+                        onClick={addToCart}>
+                            ADD TICKET TO CART</button> 
+                    ) : Object.keys(product).length !== 0 && itemInCart && !hasValues ? (
+                        <button 
+                        className='button is-white nomad-btn'
+                        id='btn-white-outline'
+                        onClick={updateCart}>
+                            UPDATE TICKET IN CART</button> 
+                    ) : <></>
+                        }
+
+                        {/* Conditional for product with one attribute */}
+                        {
+                        Object.keys(product).length !== 0 && !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
+                        <button 
+                        className='button btn-increase nomad-btn'
+                        onClick={addToCart}>
+                            ADD TO CART</button> 
+                    ) :
+                        <></> }
+                       { Object.keys(product).length !== 0 && itemInCart && hasValues && !hasMoreValues && selectedAttribute && !hasMoreValues ? (
+                        <button 
+                        className='button is-white nomad-btn'
+                        id='btn-white-outline'
+                        onClick={updateCart}>
+                            UPDATE CART</button> 
+                    ) :                
+                        <></>}
+                   
+                        {/* Conditional for product with two attributes */}
+                        {
+                        Object.keys(product).length !== 0 && !itemInCart && hasValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (   
+                        <button 
+                        className='button is-black nomad-btn'
+                        onClick={addToCart}>
+                            ADD TO CART</button> 
+                    ) :
+                        <></> }
+                       { 
+                       Object.keys(product).length !== 0 && itemInCart && hasValues && hasMoreValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (
+                        <button 
+                        className='button is-white nomad-btn'
+                        id='btn-white-outline'
+                        onClick={updateCart}>
+                            UPDATE CART</button> 
+                    ) : 
+                        <></>}
+                    
+              <Button></Button>
               
             </Container>
             </Layout>

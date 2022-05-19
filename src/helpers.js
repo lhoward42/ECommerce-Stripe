@@ -1,26 +1,34 @@
 export const isInCart = (product, cartItems, metadata, metadata2) => {
   // console.log(">>>>>>>", product, cartItems," metadata", metadata)
+
   const isIn = cartItems.find(
-    (item) => item.id === product.id && item.metadata.property === metadata
-    && item.metadata.property2 === metadata2
+    (item) =>
+      item.id === product.id &&
+      item.metadata.property === metadata &&
+      item.metadata.property2 === metadata2
   );
-  console.log('isIn',isIn);
+  console.log("isIn", isIn);
   return isIn;
 };
 
-
 export const hasValueAttributes = (product) => {
-  const value = product.value.length ? true : false;
-  // console.log(value, product.value);
-  
-  return value;
-
+  const value = product.value ? true : false;
+  console.log(value, product.value);
+  if (value === true && product.value.length > 0) {
+    return value;
+  } else {
+    return false;
+  }
 };
 
 export const hasValueAttributes2 = (product) => {
-  const value = product.value2.length ? true : false;
-  // console.log(value, product.value2);
-  return value;
+  const value = product.value2 ? true : false;
+  console.log(value, product.value2);
+  if (value === true && product.value2.length > 0) {
+    return value;
+  } else {
+    return false;
+  }
 };
 
 const API = "http://localhost:3001";

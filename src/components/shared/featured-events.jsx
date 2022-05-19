@@ -30,7 +30,7 @@ const FeaturedEvents = (props) => {
     const event = { title, description, date, id, endTime, startTime, location, hasProduct, imageUrl};
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
     return(
-        <Card sx={{ backgroundColor: '#FFD8C4', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '45rem' : '66.5rem' }}>
+        <Card sx={{ backgroundColor: '#FFD8C4', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '45rem' : '40rem' }}>
             <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem',}}>
             <Link to={`/events/${title}/${id}`}>
             <CardMedia 
