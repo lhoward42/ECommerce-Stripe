@@ -38,7 +38,7 @@ const FeaturedProductHome = (props) => {
     const token = localStorage.getItem("token");
     const hasValues = hasValueAttributes(product);
     const hasMoreValues = hasValueAttributes2(product);
-    const date = format(new Date(2022, 11, 16), 'yyyy-MM-dd');
+    const date = format(new Date(2022, 11, 16), 'MMM dd, yyyy');
     
     const select = async (e) => {
         //this needs a switch case for metadata 1 and 2
@@ -115,7 +115,7 @@ const FeaturedProductHome = (props) => {
                 /> 
                 </Link> 
               
-                <Typography variant="div">{date}</Typography>
+                {/* <Typography variant="div">{date}</Typography> */}
                 {/* <div className='name-price'> */}
                 <Typography variant="h5" >{title}</Typography>
                 <p>$ {price}</p>    

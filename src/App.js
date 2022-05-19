@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./components/home-page.jsx";
 import NotFound from "./components/not-found.jsx";
 import SingleProduct from "./components/single-product/single-product.jsx";
+import SingleEvent from "./components/single-event/single-event.jsx";
 import Shop from "./components/pages/shop/shop";
 import EventPage from "./components/events/events.jsx";
 import CartPage from "./components/pages/cart-page/cart-page.jsx";
@@ -50,6 +51,7 @@ function App() {
         <Route path='/shop' element={<Shop />} />
         <Route path='/events' element={<EventPage />} />
         <Route path='/product/:id' element={<SingleProduct />} />
+        <Route path='/events/:title/:id' element={<SingleEvent />} />
         <Route path='/cart' element={<CartPage />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/success' element={<Success />} />

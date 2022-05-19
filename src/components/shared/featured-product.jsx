@@ -115,7 +115,7 @@ const FeaturedProduct = (props) => {
                 /> 
                 </Link> 
               
-                <Typography variant="div">{date}</Typography>
+                {/* <Typography variant="div">{date}</Typography> */}
                 {/* <div className='name-price'> */}
                 <Typography variant="h5" >{title}</Typography>
                 <p>$ {price}</p>    

@@ -114,37 +114,7 @@ import './single-product.styles.scss';
                         {value2 !== null && value2.map(v => <MenuItem key={v} value={v}> {v} </MenuItem>)}
                     </Select>}  
           </div>
-          <div className='add-to-cart-btns'>
-            {/* {
-              !itemInCart &&
-              <button 
-                className='button is-white nomad-btn' 
-                id='btn-white-outline'
-                onClick={addToCart}
-                >
-                  ADD TO CART
-              </button> 
-            }
-            {
-              itemInCart &&
-              <>
-              <button 
-                className='button is-white nomad-btn' 
-                id='btn-white-outline'
-                onClick={() => increase(product)}
-                >
-                
-                  ADD MORE
-              </button>
-              <button className='button is-black nomad-btn' id='btn-white-outline'>
-              PROCEED TO CHECKOUT
-            </button>
-            </>
-            }
-           
-            
-             */}
-          </div>
+         
           <div className='add-to-cart-btns'>
 
           {/* Conditional for product with no attributes */}
