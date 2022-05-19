@@ -71,9 +71,9 @@ const SingleEvent = () => {
       }
 
       useEffect(() => {
-          const prod = products.find(item => title === item.eventName);
+          const prod = products.filter(item => title === item.eventName);
           const event = events.find(ev => Number(ev.id) === Number(id));
-        //   console.log(prod)
+          console.log(prod)
           console.log(event);
           console.log(title);
           if(!event) {
@@ -98,8 +98,8 @@ const SingleEvent = () => {
       const hasValues = hasValueAttributes(product);
       const hasMoreValues = hasValueAttributes2(product);      
       
-      const addToCart = () => {
-        addProdWAttribute(product, selectedAttribute, selectedAttribute2, qty)
+      const addToCart = (prod) => {
+        addProdWAttribute(prod, selectedAttribute, selectedAttribute2, qty)
             
       }
       const updateCart = () => {
@@ -115,8 +115,9 @@ const SingleEvent = () => {
               {/* <h4>{product.price}</h4> */}
               <p>{event.description}</p>
                {/* select menu for first set of attributes */}
-               { hasValues && 
+               {  product.map(prod => hasValueAttributes(prod) && 
                     <FormControl size="small">
+                        <p>{prod.title}</p>
                     <Select
                     sx={{ width: 100, marginTop: '.5rem' }} 
                     onChange={select}
@@ -124,14 +125,14 @@ const SingleEvent = () => {
                     value={selectedAttribute}
                     MenuProps={MenuProps}
                     >
-                        {value !== [] && value.map(v => 
+                        {prod.value !== [] && prod.value.map(v => 
                         <MenuItem key={v} value={v}> {v} </MenuItem>)}
                     </Select>
                   </FormControl>
-                    }
-                    
+               )}
+                    {/* {product.map(item => item.title + " Right Here ")} */}
                     {/* select menu for second set of attributes */}
-                    { hasMoreValues && 
+                    {product.map(prod => hasValueAttributes2(prod) && 
                     <FormControl size="small">
                     <Select 
                     sx={{ width: 100 }}
@@ -140,64 +141,68 @@ const SingleEvent = () => {
                     value={selectedAttribute2}
                     MenuProps={MenuProps}
                     >
-                        {value2 !== null && value2.map(v =>
+                        {prod.value2 !== null && prod.value2.map(v =>
                          <MenuItem key={v} value={v}> {v} </MenuItem>)}
                     </Select>
                  </FormControl>
-                    }
+                    )}
                     
                
                     {/* Conditional for product with no attributes */}
-                    {Object.keys(product).length !== 0 && !itemInCart && !hasValues ? (   
+                    {product.map(prod => !isInCart(prod, cartItems, selectedAttribute, selectedAttribute2) && !hasValueAttributes(prod) ? (   
                         <button 
                         className='button btn-increase nomad-btn'
-                        onClick={addToCart}>
+                        onClick={() => addProdWAttribute(prod, selectedAttribute, selectedAttribute2, qty)}>
                             ADD TICKET TO CART</button> 
-                    ) : Object.keys(product).length !== 0 && itemInCart && !hasValues ? (
+                    ) : <></> )}
+                    {product.map(prod => isInCart(prod, cartItems, selectedAttribute, selectedAttribute2) && !hasValueAttributes(prod) ? (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={updateCart}>
+                        onClick={() => update(prod, selectedAttribute, selectedAttribute2, qty)}>
                             UPDATE TICKET IN CART</button> 
                     ) : <></>
-                        }
+                        )}
 
                         {/* Conditional for product with one attribute */}
-                        {
-                        Object.keys(product).length !== 0 && !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
+                        {product.map(prod => 
+                        !isInCart(prod, cartItems, selectedAttribute, selectedAttribute2)
+                         && hasValueAttributes(prod)  && selectedAttribute && !hasValueAttributes2(prod) ? ( 
+
                         <button 
                         className='button btn-increase nomad-btn'
-                        onClick={addToCart}>
-                            ADD TO CART</button> 
+                        onClick={() => addProdWAttribute(prod, selectedAttribute, selectedAttribute2, qty)}>
+                            ADD {prod.title} TO CART</button> 
                     ) :
-                        <></> }
-                       { Object.keys(product).length !== 0 && itemInCart && hasValues && !hasMoreValues && selectedAttribute && !hasMoreValues ? (
+                        <></> )}
+                        
+                       { product.map(prod => isInCart(prod, cartItems, selectedAttribute, selectedAttribute2) && hasValueAttributes(prod) && !hasValueAttributes2(prod) && selectedAttribute && !hasValueAttributes2(prod) ? (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={updateCart}>
+                        onClick={ update(prod, selectedAttribute, selectedAttribute2, qty)}>
                             UPDATE CART</button> 
                     ) :                
-                        <></>}
+                        <></>)}
                    
                         {/* Conditional for product with two attributes */}
                         {
-                        Object.keys(product).length !== 0 && !itemInCart && hasValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (   
+                        product.map(prod => !isInCart(prod, cartItems, selectedAttribute, selectedAttribute2) && hasValueAttributes(prod) && selectedAttribute && hasValueAttributes2(prod) && selectedAttribute2 ? (   
                         <button 
                         className='button is-black nomad-btn'
-                        onClick={addToCart}>
-                            ADD TO CART</button> 
+                        onClick={() => addProdWAttribute(prod, selectedAttribute, selectedAttribute2, qty)}>
+                            ADD TO {prod.title} CART</button> 
                     ) :
-                        <></> }
+                        <></> )}
                        { 
-                       Object.keys(product).length !== 0 && itemInCart && hasValues && hasMoreValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (
+                       product.map(prod => isInCart(prod, cartItems, selectedAttribute, selectedAttribute2) && hasValueAttributes(prod) && selectedAttribute && hasValueAttributes2(prod) && selectedAttribute2 ? (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={updateCart}>
+                        onClick={() => update(prod, selectedAttribute, selectedAttribute2, qty)}>
                             UPDATE CART</button> 
                     ) : 
-                        <></>}
+                        <></>)}
                     
               <Button></Button>
               

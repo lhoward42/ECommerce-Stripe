@@ -19,6 +19,7 @@ export const sumItems = (cartItems) => {
 const cartReducer = (state, action) => {
   switch (action.type) {
     case "ADD ITEM W ATTRIBUTE": {
+      console.log(action.payload.product);
       const previousItemsOfSize = state.cartItems.filter((item) => {
         return (
           Number(item.id) === Number(action.payload.product.id) &&
