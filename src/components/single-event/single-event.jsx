@@ -12,11 +12,14 @@ import {
     Select,
     Container,
     Button,
-    CardMedia
+    CardMedia,
+    Box,
+    Modal
 } from '@mui/material'
 import Layout from '../shared/layout';
 import { DeviceSize } from '../../utils/DeviceSize';
-import useMediaQuery from 'react-responsive'
+import useMediaQuery from 'react-responsive';
+import NestedModal from './child-modal';
 
 const SingleEvent = () => {
     const { products, MenuProps, setProduct, product } = useContext(ProductsContext);
@@ -105,21 +108,23 @@ const SingleEvent = () => {
       const updateCart = () => {
         update(product, selectedAttribute, selectedAttribute2, qty);
       }   
-
+      
       return (
           <Layout>
           <Container sx={{ margin: '2rem 0', marginBottom: '3rem', padding: '2rem',
            display: isLaptop && 'flex', justifyContent: isLaptop && 'center',
             alignItems: isLaptop && 'center'}}>
                 <CardMedia component='img' image={event.imageUrl} alt='event' sx={{ width: '60%', margin: '2.5rem auto' }} />              <h2>{event.title}</h2>
+                {product.map(prod => <NestedModal {...prod} key={prod.id} qty={qty} setQty={setQty} /> ) }
               {/* <h4>{product.price}</h4> */}
               <p>{event.description}</p>
                {/* select menu for first set of attributes */}
-               {  product.map(prod => hasValueAttributes(prod) && 
-                    <FormControl size="small">
+               {/* {  product.map(prod => hasValueAttributes(prod) &&<>  */}
+               {/* <NestedModal {...prod} key={prod.id} /> */}
+                    {/* <FormControl size="small">
                         <p>{prod.title}</p>
                     <Select
-                    sx={{ width: 100, marginTop: '.5rem' }} 
+                    sx={{ width: 100, marginTop: '.5rem', margin: '1rem' }} 
                     onChange={select}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute}
@@ -128,11 +133,11 @@ const SingleEvent = () => {
                         {prod.value !== [] && prod.value.map(v => 
                         <MenuItem key={v} value={v}> {v} </MenuItem>)}
                     </Select>
-                  </FormControl>
+                  </FormControl> </>
                )}
-                    {/* {product.map(item => item.title + " Right Here ")} */}
+                    */}
                     {/* select menu for second set of attributes */}
-                    {product.map(prod => hasValueAttributes2(prod) && 
+                    {/* {product.map(prod => hasValueAttributes2(prod) && 
                     <FormControl size="small">
                     <Select 
                     sx={{ width: 100 }}
@@ -145,45 +150,47 @@ const SingleEvent = () => {
                          <MenuItem key={v} value={v}> {v} </MenuItem>)}
                     </Select>
                  </FormControl>
-                    )}
+                    )} */}
                     
                
                     {/* Conditional for product with no attributes */}
-                    {product.map(prod => !isInCart(prod, cartItems, selectedAttribute, selectedAttribute2) && !hasValueAttributes(prod) ? (   
+                    {product.map(prod => !isInCart(prod, cartItems, "", "") && !hasValueAttributes(prod) ? (   
                         <button 
                         className='button btn-increase nomad-btn'
-                        onClick={() => addProdWAttribute(prod, selectedAttribute, selectedAttribute2, qty)}>
+                        onClick={() => addProdWAttribute(prod, "", "", qty)}>
                             ADD TICKET TO CART</button> 
                     ) : <></> )}
-                    {product.map(prod => isInCart(prod, cartItems, selectedAttribute, selectedAttribute2) && !hasValueAttributes(prod) ? (
+                    {product.map(prod => isInCart(prod, cartItems, "", "") && !hasValueAttributes(prod) ? (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={() => update(prod, selectedAttribute, selectedAttribute2, qty)}>
+                        onClick={() => update(prod, "", "", qty)}>
                             UPDATE TICKET IN CART</button> 
                     ) : <></>
                         )}
 
                         {/* Conditional for product with one attribute */}
-                        {product.map(prod => 
-                        !isInCart(prod, cartItems, selectedAttribute, selectedAttribute2)
-                         && hasValueAttributes(prod)  && selectedAttribute && !hasValueAttributes2(prod) ? ( 
-
+                        {product.map(prod => {
+                    if(!isInCart(prod, cartItems, selectedAttribute, "")
+                    && hasValueAttributes(prod)  && selectedAttribute && !hasValueAttributes2(prod)) { 
+                        return (
                         <button 
                         className='button btn-increase nomad-btn'
-                        onClick={() => addProdWAttribute(prod, selectedAttribute, selectedAttribute2, qty)}>
-                            ADD {prod.title} TO CART</button> 
-                    ) :
-                        <></> )}
-                        
-                       { product.map(prod => isInCart(prod, cartItems, selectedAttribute, selectedAttribute2) && hasValueAttributes(prod) && !hasValueAttributes2(prod) && selectedAttribute && !hasValueAttributes2(prod) ? (
+                        onClick={() => addProdWAttribute(prod, selectedAttribute, "", qty)}>
+                            ADD {prod.title} TO CART</button> )
+                    } else if ( isInCart(prod, cartItems, selectedAttribute, "") && hasValueAttributes(prod) && !hasValueAttributes2(prod) && selectedAttribute && !hasValueAttributes2(prod)) {
+                        return (
                         <button 
                         className='button is-white nomad-btn'
                         id='btn-white-outline'
-                        onClick={ update(prod, selectedAttribute, selectedAttribute2, qty)}>
-                            UPDATE CART</button> 
-                    ) :                
-                        <></>)}
+                        onClick={() => update(prod, selectedAttribute, "", qty)}>
+                            UPDATE CART
+                            </button> 
+                        )
+                    } else { 
+                        return <></>}
+                    })
+                    }
                    
                         {/* Conditional for product with two attributes */}
                         {
