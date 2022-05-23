@@ -77,7 +77,7 @@ function getStyles(val, removeVal, theme) {
             }
             case 'hasProduct': {
                 setChecked(checked);
-                // setEvent({...event, hasProduct: checked });
+                
                 console.log(checked);
                 break;
             }
@@ -103,18 +103,14 @@ function getStyles(val, removeVal, theme) {
         }
     }
 
-    const formValidation = async (e) => {
+    //create an event
+    const createEvent = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem("token")
         const eventData = {...event, hasProduct: checked };
-        // const dateMatch = isMatch(event.date,'yyyy-MM-dd');
-        // const endTimeMatch = isMatch(event.endTime, 'hh:mm a');
-        // const startTimeMatch = isMatch(event.startTime, 'hh:mm a');
+    
         try {
-        // if(dateMatch === true && 
-        // endTimeMatch === true &&
-        // startTimeMatch === true 
-        // ){ 
+       
             let res = await fetch(`${APIURL}/events/new-event`, {
                 method: "POST",
                 headers: new Headers({
@@ -126,12 +122,11 @@ function getStyles(val, removeVal, theme) {
             let data = await res.json();
             console.log(data);
             console.log("Success", eventData);
-        // }
+        
     } catch (err) {
         console.error(err);
     }
-    //    console.log(endTimeMatch);
-    //    console.log(format(new Date(event.date), 'yyyy-MM-dd'));
+    
     }
 
     //Update Event 
@@ -164,6 +159,22 @@ function getStyles(val, removeVal, theme) {
         }
     }
 
+    const toStandardTime = (time) => {
+        time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+  
+        if(time.length > 1){
+          console.log(time);
+          time = time.slice(1);
+          console.log(time);
+          time = time.slice(0,3);
+          console.log(time);
+          time[4] = +time[0] < 12 ? ' AM' : ' PM';
+          time[0] = +time[0] % 12 || 12;
+          
+        }
+        return time.join('')
+      }  
+
     const contextValues = {    
         event,
         title,
@@ -176,6 +187,7 @@ function getStyles(val, removeVal, theme) {
         location,  
         checked,
         imageUrl,
+        toStandardTime,
         setImageUrl,       
         setChecked, 
         setLocation,
@@ -185,7 +197,7 @@ function getStyles(val, removeVal, theme) {
         getStyles,
         setDate,
         updateEvent,
-        formValidation,
+        createEvent,
         setDescription,
         setTitle,
         setEvent,

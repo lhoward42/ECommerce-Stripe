@@ -29,7 +29,7 @@ const FeaturedEvents = (props) => {
     const { title, description, date, id, endTime, startTime, location, hasProduct, imageUrl} = props
     const event = { title, description, date, id, endTime, startTime, location, hasProduct, imageUrl};
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
-    
+    const token = localStorage.getItem("token");
     
     // const toStandardTime = (militaryTime) => {
     //     const [hours, minutes, seconds ] = militaryTime.split(':');
@@ -44,6 +44,14 @@ const FeaturedEvents = (props) => {
 
     return(
         <Card sx={{ backgroundColor: '#FFD8C4', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '45rem' : '40rem' }}>
+            { token ? 
+                <div className="container"> 
+                {/* import update component in here and the navigation method for react-router 6 */}
+                    <Link className='btn-increase' to={`/admin-home/update-event/${id}`}>Edit</Link>
+                    </div> 
+                    : 
+                    <></>
+                    }
             <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem',}}>
             <Link to={`/events/${title}/${id}`}>
             <CardMedia 

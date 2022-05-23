@@ -29,7 +29,7 @@ import { format } from 'date-fns';
 const FeaturedProduct = (props) => {
     const { title, imageUrl, price, id, description, metadata, value, property, value2, property2, category } = props;
     const product = { title, imageUrl, price, id, description, metadata, value, property, value2, property2, category };
-    const { cartItems, update, addProdWAttribute } = useContext(CartContext);
+    const { cartItems, update, addProdWAttribute } = useContext(CartContext);  
     const [selectedAttribute, setSelectedAttribute ] = useState("");
     const [selectedAttribute2, setSelectedAttribute2 ] = useState("");
     const [qty, setQty] = useState(1);
@@ -38,7 +38,7 @@ const FeaturedProduct = (props) => {
     const token = localStorage.getItem("token");
     const hasValues = hasValueAttributes(product);
     const hasMoreValues = hasValueAttributes2(product);
-    const date = format(new Date(2022, 11, 16), 'yyyy-MM-dd');
+    
     
     const select = async (e) => {
         //this needs a switch case for metadata 1 and 2
@@ -62,14 +62,14 @@ const FeaturedProduct = (props) => {
     const onChangeQty = (e) => {
         setQty(e.target.value);
       };
-     
-
+ 
 
       const populateQuantities = (start, end) => {
         return ( 
            <FormControl size="small">
             <Select
               className='select'
+             
               input={<OutlinedInput label="Qty" />}
               placeholder='Qty'
               value={qty ? qty : "Qty"}
@@ -126,9 +126,9 @@ const FeaturedProduct = (props) => {
                 
                      {/* select menu for first set of attributes */}
                     { hasValues && 
-                    <FormControl size="small" sx={{ margin: '1rem' }}>
+                    <FormControl size={isMobile ? "small" : "medium" } sx={{ margin: '.5rem' }}>
                     <Select
-                    sx={{ width: 100, marginTop: '.5rem' }} 
+                    sx={{ width: isMobile ? 165 : 225, marginTop: '.5rem' }} 
                     onChange={select}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute}
@@ -142,9 +142,9 @@ const FeaturedProduct = (props) => {
                     
                     {/* select menu for second set of attributes */}
                     { hasMoreValues && 
-                    <FormControl size="small" sx={{ margin: '1rem' }}>
+                    <FormControl size={isMobile ? "small" : "medium" } sx={{ margin: '.5rem' }}>
                     <Select 
-                    sx={{ width: 100 }}
+                    sx={{ width: isMobile ? 165 : 225 }}
                     onChange={select2}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute2}
@@ -157,19 +157,27 @@ const FeaturedProduct = (props) => {
                     }
                
                     {/* Conditional for product with no attributes */}
-                    {!itemInCart && !hasValues ? (   
-                        <Button 
-                        sx={{ marginTop: '1rem'}}
-                        className='button btn-increase width nomad-btn'
-                        onClick={addToCart}>
-                            ADD TO CART</Button> 
-                    ) : itemInCart && !hasValues ? (
+                    {!itemInCart && !hasValues ? (                       
                         <Button
-                        sx={{ marginTop: '1rem'}}
-                        className='button is-white width nomad-btn'
-                        id='btn-white-outline'
+                        variant='contained'
+                        color='primary' 
+                        sx={{ width: isMobile ? 160 : 235, marginTop: '1rem'}}
+                        backgroundColor='primary'
+                        onClick={addToCart}>
+                            ADD TO CART
+                        </Button>
+                     
+                    ) : itemInCart && !hasValues ? (
+                       
+                        <Button
+                        variant='contained'
+                        color='secondary'
+                        sx={{ width: isMobile ? 160 : 235, marginTop: '1rem'}}
+                        backgroundColor='secondary'
                         onClick={updateCart}>
-                            UPDATE CART</Button> 
+                            UPDATE CART
+                        </Button>
+                           
                     ) : <></>
                         }
 
@@ -197,8 +205,10 @@ const FeaturedProduct = (props) => {
                         {
                         !itemInCart && hasValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (   
                         <Button 
+                        color="primary"
+                        backgroundColor="secondary"
                         sx={{ marginTop: '1rem'}}
-                        className='button is-black nomad-btn'
+                        
                         onClick={addToCart}>
                             ADD TO CART</Button> 
                     ) :

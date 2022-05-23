@@ -18,6 +18,8 @@ import "./App.scss";
 import { useEffect, useState } from "react/cjs/react.development";
 // import {DeviceSize} from './utils/DeviceSize.js'
 // import { useMediaQuery } from "react-responsive";
+import { createTheme, ThemeProvider } from '@mui/material';
+
 
 function App() {
   const [token, setToken] = useState("");
@@ -27,6 +29,38 @@ function App() {
       setToken(localStorage.getItem("token"));
     }
   }, [])
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: "#40fff9",
+      
+      },
+      secondary: { 
+        main: "#f7f063",
+      }, 
+    },
+    components: {
+      MuiButton: {
+        variants: [
+          {
+            props: { color: 'primary' },
+            style: {
+              textTransform: 'none',
+              border: `2px black`,
+              color: '#ffd8c4'
+            },
+          },
+          {
+            props: { color: 'secondary' },
+            style: {
+              border: `4px black`,
+            },
+          },
+        ],
+      },
+   },
+  })
 
   const updateToken = (newToken) => {
     localStorage.setItem("token", newToken);
@@ -42,6 +76,7 @@ function App() {
 
 
   return (
+    <ThemeProvider theme={theme}>
     <div className='App'>
       <Routes>
         
@@ -60,10 +95,11 @@ function App() {
         <Route path='/admin-home/create-product' element={<CreateProduct />} />
         <Route path='/update-product/:id' element={<UpdateProduct />} />
         <Route path='/admin-home/create-event' element={<CreateEvent />} />
-        <Route path='/admin-home/update-event' element={<UpdateEvent />} />
+        <Route path='/admin-home/update-event/:id' element={<UpdateEvent />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
+    </ThemeProvider>
   );
 }
 

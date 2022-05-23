@@ -12,7 +12,7 @@ import Checkbox from '@mui/material/Checkbox';
 
 
 const CreateEvent = () => {
-    const { formValidation, handleChange, event, checked, handleChecked } = useContext(EventsContext);
+    const { createEvent, handleChange, event, checked, handleChecked } = useContext(EventsContext);
     // const eventDate = format(new Date(event.date), 'MMM dd, YYYY')
     const date = (new Date(JSON.stringify(event.date)));
     
@@ -25,7 +25,7 @@ const CreateEvent = () => {
             {/* {format(new Date('April 1, 1992'), 'MMMM do, yyyy')} */}        
             <div className="container">
                 <h3>New Event</h3>
-            <form onSubmit={formValidation}>
+            <form onSubmit={createEvent}>
                 <div className="form-group">
                     <label>Event Name: </label>
                     <input
