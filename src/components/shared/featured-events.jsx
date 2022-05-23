@@ -29,6 +29,19 @@ const FeaturedEvents = (props) => {
     const { title, description, date, id, endTime, startTime, location, hasProduct, imageUrl} = props
     const event = { title, description, date, id, endTime, startTime, location, hasProduct, imageUrl};
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
+    
+    
+    // const toStandardTime = (militaryTime) => {
+    //     const [hours, minutes, seconds ] = militaryTime.split(':');
+    //     return `${(hours > 12) ? hours - 12 ? hours === 0 : hours + 1 : hours }:${minutes} ${(hours >= 12) ? 'AM' : 'PM'}`
+
+    // }
+
+
+    // console.log(startTime.split(':'));
+
+    
+
     return(
         <Card sx={{ backgroundColor: '#FFD8C4', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '45rem' : '40rem' }}>
             <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem',}}>
@@ -40,7 +53,7 @@ const FeaturedEvents = (props) => {
                 alt='event'
                 /> 
                 </Link>
-                
+                {title}
             </CardContent>
         </Card>
     )

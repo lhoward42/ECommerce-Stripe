@@ -20,6 +20,7 @@ import Layout from '../shared/layout';
 import { DeviceSize } from '../../utils/DeviceSize';
 import useMediaQuery from 'react-responsive';
 import NestedModal from './child-modal';
+import { format } from 'date-fns';
 
 const SingleEvent = () => {
     const { products, MenuProps, setProduct, product } = useContext(ProductsContext);
@@ -27,7 +28,7 @@ const SingleEvent = () => {
     const { addProdWAttribute, cartItems, update } = useContext(CartContext);
     const navigate = useNavigate();  
     const { id, title } = useParams();
-   
+    
     const [selectedAttribute, setSelectedAttribute ] = useState(null);
     const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
     const [qty, setQty] = useState(1);
@@ -35,7 +36,23 @@ const SingleEvent = () => {
     const onChangeQty = (e) => {
         setQty(e.target.value);
       };
+    const toStandardTime = (time) => {
+      time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
 
+      if(time.length > 1){
+        console.log(time);
+        time = time.slice(1);
+        console.log(time);
+        time = time.slice(0,3);
+        console.log(time);
+        time[4] = +time[0] < 12 ? ' AM' : ' PM';
+        time[0] = +time[0] % 12 || 12;
+        
+      }
+      return time.join('')
+
+
+    }  
       const populateQuantities = (start, end) => {
         return (
           <FormControl sx={{ width: 100 }}>
@@ -115,8 +132,12 @@ const SingleEvent = () => {
            display: isLaptop && 'flex', justifyContent: isLaptop && 'center',
             alignItems: isLaptop && 'center'}}>
                 <CardMedia component='img' image={event.imageUrl} alt='event' sx={{ width: '60%', margin: '2.5rem auto' }} />              <h2>{event.title}</h2>
-                {product.map(prod => <NestedModal {...prod} key={prod.id} qty={qty} setQty={setQty} /> ) }
-              {/* <h4>{product.price}</h4> */}
+                {product.map(prod => 
+                <NestedModal {...prod} key={prod.id} qty={qty} setQty={setQty} /> 
+                )}
+              {format(new Date(date), 'MMM-dd-yy')} <br />
+               {toStandardTime(startTime)}
+            {/*  {format(new Date(date + startTime), 'hh:mm a')} */}
               <p>{event.description}</p>
                {/* select menu for first set of attributes */}
                {/* {  product.map(prod => hasValueAttributes(prod) &&<>  */}
@@ -154,7 +175,7 @@ const SingleEvent = () => {
                     
                
                     {/* Conditional for product with no attributes */}
-                    {product.map(prod => !isInCart(prod, cartItems, "", "") && !hasValueAttributes(prod) ? (   
+                    {/* {product.map(prod => !isInCart(prod, cartItems, "", "") && !hasValueAttributes(prod) ? (   
                         <button 
                         className='button btn-increase nomad-btn'
                         onClick={() => addProdWAttribute(prod, "", "", qty)}>
@@ -167,10 +188,10 @@ const SingleEvent = () => {
                         onClick={() => update(prod, "", "", qty)}>
                             UPDATE TICKET IN CART</button> 
                     ) : <></>
-                        )}
+                        )} */}
 
                         {/* Conditional for product with one attribute */}
-                        {product.map(prod => {
+                        {/* {product.map(prod => {
                     if(!isInCart(prod, cartItems, selectedAttribute, "")
                     && hasValueAttributes(prod)  && selectedAttribute && !hasValueAttributes2(prod)) { 
                         return (
@@ -190,10 +211,10 @@ const SingleEvent = () => {
                     } else { 
                         return <></>}
                     })
-                    }
+                    } */}
                    
                         {/* Conditional for product with two attributes */}
-                        {
+                        {/* {
                         product.map(prod => !isInCart(prod, cartItems, selectedAttribute, selectedAttribute2) && hasValueAttributes(prod) && selectedAttribute && hasValueAttributes2(prod) && selectedAttribute2 ? (   
                         <button 
                         className='button is-black nomad-btn'
@@ -209,7 +230,7 @@ const SingleEvent = () => {
                         onClick={() => update(prod, selectedAttribute, selectedAttribute2, qty)}>
                             UPDATE CART</button> 
                     ) : 
-                        <></>)}
+                        <></>)} */}
                     
               <Button></Button>
               

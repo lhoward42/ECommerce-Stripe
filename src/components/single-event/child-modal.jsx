@@ -73,6 +73,7 @@ export default function NestedModal(props) {
     };
     const handleClose = () => {
     setOpen(false);
+    setQty(1);
     };
     const select = async (e) => {
         //this needs a switch case for metadata 1 and 2
@@ -128,6 +129,8 @@ export default function NestedModal(props) {
           <h2 id="parent-modal-title">{title}</h2>
           <p id="parent-modal-description">
             {populateQuantities(1, 100)}
+            
+            <p>$ {(Math.round(price * qty * 100)/100).toFixed(2)}</p>
             {/* select menu for first set of attributes */}       
             {hasValueAttributes(product) && (
                
