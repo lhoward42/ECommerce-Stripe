@@ -3,24 +3,36 @@ import { useContext, useEffect } from "react";
 import Layout from "../../shared/layout";
 import { useParams, useNavigate } from 'react-router-dom';
 import { Checkbox } from '@mui/material'
+import { set } from "date-fns";
 
 const UpdateEvent = (props) => {
-    const { events, updateEvent, deleteEvent, setTitle, setDescription, setDate, setStartTime,
-         setEndTime, setLocation, setHasProduct, checked, setChecked, handleChange, imageUrl, 
+    const { events, setEvent, updateEvent, deleteEvent, setTitle, setDescription, setDate, setStartTime,
+         setEndTime, setLocation, checked, setChecked, handleChange, imageUrl, event,
          setImageUrl } = useContext(EventsContext);
     const { id } = useParams();
     const navigate = useNavigate();
 
 
-    // useEffect(() => {
-    //     const event = events.find(item => Number(item.id) === Number(id));
+    useEffect(() => {
+        const ev = events.find(item => Number(item.id) === Number(id));
 
-    //     if(!event){
-    //         return "Event Not Found"
-    //     }
-    // })
+        if(!ev){
+            return navigate('/events');
+        }
 
+        setEvent(ev);
+        setTitle(ev.title);
+        setDescription(ev.description);
+        setDate(ev.date);
+        setStartTime(ev.startTime);
+        setEndTime(ev.endTime);
+        setLocation(ev.location);
+        setChecked(ev.hasProduct);
+        setImageUrl(ev.imageUrl);
 
+    }, [id, navigate, events, setEvent, setTitle, setDescription, setDate, setStartTime, setEndTime, setLocation, setChecked])
+
+    
 
     return(
         <Layout>
@@ -114,7 +126,7 @@ const UpdateEvent = (props) => {
             </form>
             <button
                 type ="button" 
-                onClick={() => deleteEvent()}
+                onClick={() => deleteEvent(event)}
                 >
                 Delete Event From Store
                 </button>

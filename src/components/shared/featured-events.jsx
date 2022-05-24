@@ -24,6 +24,7 @@ import {
   // import { useMediaQuery } from "react-responsive";
 import { format } from 'date-fns';
 import { EventsContext } from '../../context/events-context';
+import { textAlign } from '@mui/system';
 
 const FeaturedEvents = (props) => {
     const { title, description, date, id, endTime, startTime, location, hasProduct, imageUrl} = props
@@ -47,7 +48,21 @@ const FeaturedEvents = (props) => {
             { token ? 
                 <div className="container"> 
                 {/* import update component in here and the navigation method for react-router 6 */}
-                    <Link className='btn-increase' to={`/admin-home/update-event/${id}`}>Edit</Link>
+                    <Link style={{ 
+                        color: 'black', 
+                        width: '50%', 
+                        display: 'block', 
+                        backgroundColor: 'white',
+                        padding: '.4rem 5px',
+                        borderRadius: '3.5%',
+                        textAlign: 'center',
+                        margin: '.6rem auto'
+                        }} 
+                        className='btn-increase' 
+                        to={`/admin-home/update-event/${id}`}
+                        >
+                            Edit
+                        </Link>
                     </div> 
                     : 
                     <></>

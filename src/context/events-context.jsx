@@ -159,6 +159,36 @@ function getStyles(val, removeVal, theme) {
         }
     }
 
+    //Delete Event
+
+    const deleteEvent = async (event) => {
+        const token = localStorage.getItem("token");
+        try{
+        const res = await fetch(
+            `${APIURL}/events/${event.id}`, {
+                method: "DELETE",
+                headers: new Headers({
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }),
+                }
+            );
+        const data = res.json();
+        console.log(data);
+        console.log("Event successfully deleted");
+        let array = await [...events];
+        console.log(array);
+        let index = array.indexOf(event);
+        if (index !== -1){
+            array.splice(index, 1);
+            setEvents(array)
+        }
+
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     const toStandardTime = (time) => {
         time = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
   
@@ -187,6 +217,7 @@ function getStyles(val, removeVal, theme) {
         location,  
         checked,
         imageUrl,
+        deleteEvent,
         toStandardTime,
         setImageUrl,       
         setChecked, 
