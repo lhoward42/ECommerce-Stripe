@@ -118,7 +118,7 @@ export default function NestedModal(props) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Get Tickets For {eventName}</Button>
+      <Button color='primary' variant="contained" onClick={handleOpen}>Get Tickets For {eventName}</Button>
       <Modal
         open={open}
         onClose={handleClose}

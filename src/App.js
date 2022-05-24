@@ -18,87 +18,116 @@ import "./App.scss";
 import { useEffect, useState } from "react/cjs/react.development";
 // import {DeviceSize} from './utils/DeviceSize.js'
 // import { useMediaQuery } from "react-responsive";
-import { createTheme, ThemeProvider } from '@mui/material';
-
+import { createTheme, ThemeProvider,  experimental_sx as sx, } from "@mui/material";
 
 function App() {
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    if(localStorage.getItem("token")){
+    if (localStorage.getItem("token")) {
       setToken(localStorage.getItem("token"));
     }
-  }, [])
+  }, []);
 
   const theme = createTheme({
     palette: {
       primary: {
         main: "#40fff9",
-      
       },
-      secondary: { 
+      secondary: {
         main: "#f7f063",
-      }, 
+      },
     },
     components: {
       MuiButton: {
         variants: [
           {
-            props: { color: 'primary' },
+            props: { color: "primary" },
             style: {
-              textTransform: 'none',
+              textTransform: "none",
               border: `2px black`,
-              color: '#ffd8c4'
+              color: "#ffd8c4",
             },
           },
+
           {
-            props: { color: 'secondary' },
+            props: { color: "secondary" },
             style: {
               border: `4px black`,
+              color: "#3b1e57",
             },
           },
         ],
       },
-   },
-  })
+
+      MuiInputBase: {
+        styleOverrides: {
+         root: sx({ 
+           backgroundColor: '#ffc7f1',
+        }),
+        }
+      },
+      MuiOutlinedInput: {
+        styleOverrides: {
+          root: sx({
+            color: 'blue',
+          }),
+        },
+      },
+
+    },
+  });
 
   const updateToken = (newToken) => {
     localStorage.setItem("token", newToken);
     setToken(localStorage.setItem("token", newToken));
   };
-  
+
   const clearToken = () => {
     localStorage.clear();
     setToken("");
-  }
+  };
 
   // const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
 
-
   return (
     <ThemeProvider theme={theme}>
-    <div className='App'>
-      <Routes>
-        
-        <Route exact path='/' element={<HomePage />} />
-       
-        {/* <Route path='/admin' element={<AdminPage />} /> */}
-        <Route path='/shop' element={<Shop />} />
-        <Route path='/events' element={<EventPage />} />
-        <Route path='/product/:id' element={<SingleProduct />} />
-        <Route path='/events/:title/:id' element={<SingleEvent />} />
-        <Route path='/cart' element={<CartPage />} />
-        <Route path='/checkout' element={<Checkout />} />
-        <Route path='/success' element={<Success />} />
-        <Route path='/canceled' element={<Canceled />} /> 
-        <Route path='/portal' element={<Portal token={token} logout={clearToken} newToken={updateToken} />} />
-        <Route path='/admin-home/create-product' element={<CreateProduct />} />
-        <Route path='/update-product/:id' element={<UpdateProduct />} />
-        <Route path='/admin-home/create-event' element={<CreateEvent />} />
-        <Route path='/admin-home/update-event/:id' element={<UpdateEvent />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-    </div>
+      <div className='App'>
+        <Routes>
+          <Route exact path='/' element={<HomePage />} />
+
+          {/* <Route path='/admin' element={<AdminPage />} /> */}
+          <Route path='/shop' element={<Shop />} />
+          <Route path='/events' element={<EventPage />} />
+          <Route path='/product/:id' element={<SingleProduct />} />
+          <Route path='/events/:title/:id' element={<SingleEvent />} />
+          <Route path='/cart' element={<CartPage />} />
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/success' element={<Success />} />
+          <Route path='/canceled' element={<Canceled />} />
+          <Route
+            path='/portal'
+            element={
+              <Portal
+                token={token}
+                logout={clearToken}
+                newToken={updateToken}
+              />
+            }
+          />
+          <Route
+            path='/admin-home/create-product'
+            element={<CreateProduct />}
+          />
+          <Route path='/update-product/:id' element={<UpdateProduct />} />
+          <Route path='/admin-home/create-event' element={<CreateEvent />} />
+          <Route
+            path='/admin-home/update-event/:id'
+            element={<UpdateEvent />}
+          />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </div>
     </ThemeProvider>
   );
 }

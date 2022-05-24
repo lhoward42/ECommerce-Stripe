@@ -83,13 +83,13 @@ const CartItem = (props) => {
             </div>
             <Container sx={{ paddingTop: isLaptop ? '20px' ? isDesktop : '30px' : '25px' }}>
                 <Button
-                sx={{ minHeight: '2.25rem', backgroundColor: '#40fff9ff', color: '#ffc7f1ff', margin: '.5rem 2px'}}
+                sx={{ minHeight: '2.25rem', backgroundColor: '#40fff9ff', color: '#ffc7f1ff', margin: '.2rem 2px'}}
                  onClick={updateCart}>
                     Update Qty 
                 </Button>
                 
                     <Button
-                    sx={{ minHeight: '2.25rem', backgroundColor: '#f7f063ff', color: '#3b1e57ff', margin: '.5rem 2px'}}
+                    sx={{ minHeight: '2.25rem', backgroundColor: '#f7f063ff', color: '#3b1e57ff', margin: '.2rem 2px'}}
                     onClick={remove}
                     >
                         <TrashIcon width='20px' />
