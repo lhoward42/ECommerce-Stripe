@@ -1,9 +1,10 @@
 import Layout from "../shared/layout";
 import { useState } from "react/cjs/react.development";
 import APIURL from "../../utils/environment";
+import {Button} from '@mui/material'
 
 
-const Login = ({ email, setEmail, password, setPassword, newToken }) => {
+const Login = ({ email, setEmail, password, setPassword, newToken, setShowLogin, showLogin }) => {
 
     const [localToken, setLocalToken] = useState("");
   const confirmAndSend = () => {
@@ -36,6 +37,7 @@ const Login = ({ email, setEmail, password, setPassword, newToken }) => {
     }
     return (
         <Layout>
+            <Button onClick={() => setShowLogin(!showLogin)}>Not A User</Button>
           <form onSubmit={adminSignUp}>
               <h4>Email</h4>
                <input value={email} onChange={(e) => { setEmail(e.target.value)}} />
@@ -44,6 +46,7 @@ const Login = ({ email, setEmail, password, setPassword, newToken }) => {
                <br />
                <input type="submit" value="Submit"/>
            </form>
+           
         </Layout>
            )
 }

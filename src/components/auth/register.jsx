@@ -1,8 +1,9 @@
 import Layout from "../shared/layout";
 import { useState } from "react/cjs/react.development";
 import APIURL from "../../utils/environment";
+import { Button } from "@mui/material";
 
-const Register = ({ token, setEmail, setPassword, email, password, newToken }) => {
+const Register = ({ token, setEmail, setPassword, email, password, newToken, setShowLogin, showLogin }) => {
   const [localToken, setLocalToken] = useState("");
   const confirmAndSend = () => {
       adminSignUp()
@@ -34,6 +35,8 @@ const Register = ({ token, setEmail, setPassword, email, password, newToken }) =
     }
   return (
 <Layout>
+  Register
+<Button onClick={() => setShowLogin(!showLogin)}>Already an Admin? Login </Button>
   <form onSubmit={adminSignUp}>
       <h4>Email</h4>
        <input value={email} onChange={(e) => { setEmail(e.target.value)}} />

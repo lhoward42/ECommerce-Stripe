@@ -1,4 +1,5 @@
 import { useState } from "react/cjs/react.development";
+import {Button} from '@mui/material'
 import Login from "./login";
 import Register from "./register";
 
@@ -25,6 +26,8 @@ const Portal = (props) => {
         email={email}
         password={password}
         setEmail={setEmail}
+        setShowLogin={setShowLogin}
+        showLogin={showLogin}
         setPassword={setPassword}
         submitForm={submitForm}
         toggle={toggleLoginSignup}
@@ -34,6 +37,8 @@ const Portal = (props) => {
     { showLogin && <Login 
         email={email}
         password={password}
+        setShowLogin={setShowLogin}
+        showLogin={showLogin}
         setEmail={setEmail}
         setPassword={setPassword}
         submitForm={submitForm}
@@ -41,7 +46,9 @@ const Portal = (props) => {
         token={props.token}
         newToken={props.newToken}
     />}
+    
     </>
+    
 )
 }
 

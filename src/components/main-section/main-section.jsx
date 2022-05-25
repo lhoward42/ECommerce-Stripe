@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'
 import HolidayDisplay from '../../assets/HolidayCraftDisplay.jpeg'
+import { Button } from '@mui/material'
 import './main-section.styles.scss'
 
 
@@ -19,9 +20,12 @@ const navigate = useNavigate()
                     Celebrate the holidays or celebrate the season, no matter what there's 
                     a crafty piece that will fit right in your space.
                 </p>
-                <button className='button is-black' id='show-now' onClick={() => navigate('/product/1')}>
+                <Button 
+                color="secondary" 
+                onClick={() => navigate('/product/1')}
+                >
                     MISTLETOE
-                </button>
+                </Button>
                 </div>
             </div>
         </div>
