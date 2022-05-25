@@ -71,6 +71,7 @@ const FeaturedProduct = (props) => {
            <FormControl size="small">
             <Select
               className='select'
+              sx={{ border: '1px solid', borderColor: 'rgba(59, 30, 87, .5)'}}
               input={<OutlinedInput label="Qty" />}
               placeholder='Qty'
               value={qty ? qty : "Qty"}
@@ -95,7 +96,7 @@ const FeaturedProduct = (props) => {
 
     return (
         
-        <Card sx={{ background:'linear-gradient(180deg, rgba(255,216,196,0.7077424719887955) 6%, rgba(255,212,207,0.9150253851540616) 66%, rgba(255,212,209,0.9430365896358543) 73%, rgba(255,211,210,0.9066220238095238) 79%, rgba(255,209,216,1) 82%, rgba(255,206,224,0.9122242647058824) 86%, rgba(255,199,241,0.7189469537815126) 88%, rgba(218,167,212,0.8421962535014006) 92%, rgba(64,255,249,1) 94%, rgba(108,72,126,0.5340730042016807) 94%, rgba(255,199,241,0.9206276260504201) 96%, rgba(255,204,228,0.8982186624649859) 97%, rgba(255,216,197,0.9374343487394958) 100%)', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '40rem' : isLaptop ? '53rem' :'66.5rem'  }}>
+        <Card sx={{ background:'linear-gradient(180deg, rgba(255,216,196,0.7077424719887955) 6%, rgba(255,212,207,0.9150253851540616) 66%, rgba(255,212,209,0.9430365896358543) 74%, rgba(255,211,210,0.9066220238095238) 80%, rgba(255,209,216,1) 84%, rgba(255,206,224,0.9122242647058824) 86%, rgba(255,199,241,0.9682466736694678) 90%, rgba(255,199,241,0.8618040966386554) 96%, rgba(255,204,228,0.8982186624649859) 99%, rgba(255,216,197,0.9374343487394958) 100%)', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '40rem' : isLaptop ? '53rem' :'66.5rem'  }}>
             <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem',}}>
                 { token ? 
                 <div className="container"> 
@@ -129,7 +130,7 @@ const FeaturedProduct = (props) => {
                     { hasValues && 
                     <FormControl size={isMobile ? "small" : "medium" }  sx={{ margin: '.3rem' }}>
                     <Select
-                    sx={{ width: isMobile ? 170 : 242, marginTop: '.5rem', border: '1px solid', borderColor: '#40FFF9' }} 
+                    sx={{ width: isMobile ? 170 : 260, marginTop: '.5rem', border: '1px solid', borderColor: 'rgba(59, 30, 87, .5)' }} 
                     onChange={select}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute}
@@ -145,7 +146,7 @@ const FeaturedProduct = (props) => {
                     { hasMoreValues && 
                     <FormControl size={isMobile ? "small" : "medium" } sx={{ margin: '.3rem' }} >
                     <Select 
-                    sx={{ width: isMobile ? 170 : 242 }}
+                    sx={{ width: isMobile ? 170 : 260, border: '1px solid', borderColor: 'rgba(59, 30, 87, .5)' }}
                     onChange={select2}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute2}

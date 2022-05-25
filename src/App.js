@@ -63,15 +63,15 @@ function App() {
       MuiInputBase: {
         styleOverrides: {
          root: sx({ 
-           backgroundColor: '#ffc7f1',
+           backgroundColor: 'rgba(64, 255, 249, .5)',
         }),
         }
       },
       MuiOutlinedInput: {
         styleOverrides: {
           root: sx({
-            color: 'blue',
-          }),
+            color: '#3b1e57',
+          }), 
         },
       },
 
