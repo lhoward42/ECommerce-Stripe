@@ -117,9 +117,8 @@ const FeaturedProduct = (props) => {
                 /> 
                 </Link> 
               
-                {/* <Typography variant="div">{date}</Typography> */}
-                {/* <div className='name-price'> */}
-                <Typography variant="h5" >{title}</Typography>
+                
+                <Typography sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.5rem', fontWeight: 'bold' }} variant="h5" >{title}</Typography>
                 <p>$ {price}</p>    
                 {/* </div> */}
                 <InputLabel id="demo-multiple-name-label">Qty</InputLabel>
@@ -165,6 +164,7 @@ const FeaturedProduct = (props) => {
                         color='primary' 
                         sx={{ width: isMobile ? 175 : 245, marginTop: '1rem'}}
                         className='button btn-increase width nomad-btn'
+                        id='btn-white-outline'
                         onClick={addToCart}>
                             ADD TO CART</Button> 
                     ) : itemInCart && !hasValues ? (
@@ -172,7 +172,7 @@ const FeaturedProduct = (props) => {
                         variant='contained'
                         color='secondary'
                         sx={{ width: isMobile ? 175 : 245, marginTop: '1rem'}}
-                        className='button width nomad-btn'
+                        className='button btn-increase width nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>
                             UPDATE CART</Button> 
@@ -187,6 +187,7 @@ const FeaturedProduct = (props) => {
                         color='primary' 
                         sx={{ width: isMobile ? 175 : 245, marginTop: '1rem'}}
                         className='button btn-increase width nomad-btn'
+                        id='btn-white-outline'
                         onClick={addToCart}>
                             ADD TO CART</Button> 
                     ) :
@@ -196,7 +197,7 @@ const FeaturedProduct = (props) => {
                         variant='contained'
                         color='secondary'
                         sx={{ width: isMobile ? 175 : 245, marginTop: '1rem'}}
-                        className='button is-white width nomad-btn'
+                        className='button btn-increase width nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>
                             UPDATE CART</Button> 
@@ -210,7 +211,8 @@ const FeaturedProduct = (props) => {
                         variant='contained'
                         color='primary' 
                         sx={{ width: isMobile ? 175 : 245, marginTop: '1rem'}}
-                        className='button is-black nomad-btn'
+                        className='button nomad-btn'
+                        id='btn-white-outline'
                         onClick={addToCart}>
                             ADD TO CART</Button> 
                     ) :
@@ -221,7 +223,7 @@ const FeaturedProduct = (props) => {
                         variant='contained'
                         color='secondary'
                         sx={{ width: isMobile ? 175 : 245, marginTop: '1rem'}}
-                        className='button is-white nomad-btn'
+                        className='button  nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>
                             UPDATE CART</Button> 

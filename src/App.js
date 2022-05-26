@@ -46,7 +46,9 @@ function App() {
             style: {
               textTransform: "none",
               border: `2px black`,
-              color: "#ffd8c4",
+              color: "#3b1e57",
+              opacity: '75%'
+              
             },
           },
 

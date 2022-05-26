@@ -117,7 +117,7 @@ const FeaturedProductHome = (props) => {
               
                 {/* <Typography variant="div">{date}</Typography> */}
                 {/* <div className='name-price'> */}
-                <Typography variant="h5" >{title}</Typography>
+                <Typography sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.5rem', fontWeight: 'bold' }} variant="h5" >{title}</Typography>
                 <p>$ {price}</p>    
                 {/* </div> */}
                 <InputLabel id="demo-multiple-name-label">Qty</InputLabel>
@@ -159,12 +159,16 @@ const FeaturedProductHome = (props) => {
                     {/* Conditional for product with no attributes */}
                     {!itemInCart && !hasValues ? (   
                         <button 
+                        variant='contained'
+                        color='primary' 
                         className='button btn-increase nomad-btn'
                         onClick={addToCart}>
                             ADD TO CART</button> 
                     ) : itemInCart && !hasValues ? (
                         <button 
-                        className='button is-white nomad-btn'
+                        variant='contained'
+                        color='primary' 
+                        className='button nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>
                             UPDATE CART</button> 
@@ -175,6 +179,8 @@ const FeaturedProductHome = (props) => {
                         {
                         !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
                         <button 
+                        variant='contained'
+                        color='primary' 
                         className='button btn-increase nomad-btn'
                         onClick={addToCart}>
                             ADD TO CART</button> 
@@ -182,7 +188,9 @@ const FeaturedProductHome = (props) => {
                         <></> }
                        { itemInCart && hasValues && !hasMoreValues && selectedAttribute && !hasMoreValues ? (
                         <button 
-                        className='button is-white nomad-btn'
+                        variant='contained'
+                        color='primary' 
+                        className='button nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>
                             UPDATE CART</button> 
@@ -192,8 +200,10 @@ const FeaturedProductHome = (props) => {
                         {/* Conditional for product with two attributes */}
                         {
                         !itemInCart && hasValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (   
-                        <button 
-                        className='button is-black nomad-btn'
+                        <button
+                        variant='contained'
+                        color='primary'  
+                        className='button nomad-btn'
                         onClick={addToCart}>
                             ADD TO CART</button> 
                     ) :
@@ -201,7 +211,9 @@ const FeaturedProductHome = (props) => {
                        { 
                        itemInCart && hasValues && hasMoreValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (
                         <button 
-                        className='button is-white nomad-btn'
+                        variant='contained'
+                        color='primary' 
+                        className='button nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>
                             UPDATE CART</button> 

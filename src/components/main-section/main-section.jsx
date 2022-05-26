@@ -22,6 +22,7 @@ const navigate = useNavigate()
                 </p>
                 <Button 
                 color="secondary" 
+                variant="contained"
                 onClick={() => navigate('/product/1')}
                 >
                     MISTLETOE

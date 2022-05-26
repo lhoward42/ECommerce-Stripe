@@ -1,5 +1,6 @@
 import React from "react";
 import './hero.styles.scss';
+import { Button } from "@mui/material";
 
 const Hero = () => {
     return (
@@ -10,9 +11,9 @@ const Hero = () => {
                     Crafts for Every Occasion 
                 </h1>
                 <div className="shop-now-btn">
-                    <button className="button shop-now" id='shop-now'>
+                    <Button color='primary' variant='contained' sx={{opacity: '95%'}} >
                         SHOP NOW
-                    </button>
+                    </Button>
                 </div>
             </div>
         </section>

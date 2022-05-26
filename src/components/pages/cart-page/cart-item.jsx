@@ -8,6 +8,7 @@ import {
   InputLabel,
   MenuItem,
   Container,
+  Card
  } from '@mui/material'
 
 import Select from '@mui/material/Select';
@@ -63,7 +64,7 @@ const CartItem = (props) => {
       const isLaptop = useMediaQuery({ maxWidth: DeviceSize.laptop })
       const isDesktop = useMediaQuery({ maxWidth: DeviceSize.desktop })
     return (
-      <div className='cart-item'>
+      <Card className='cart-item' sx={{  background:'linear-gradient(180deg, rgba(255,216,196,0.7077424719887955) 6%, rgba(255,212,207,0.9150253851540616) 66%, rgba(255,212,209,0.9430365896358543) 74%, rgba(255,211,210,0.9066220238095238) 80%, rgba(255,209,216,1) 84%, rgba(255,206,224,0.9122242647058824) 86%, rgba(255,199,241,0.9682466736694678) 90%, rgba(255,199,241,0.8618040966386554) 96%, rgba(255,204,228,0.8982186624649859) 99%, rgba(255,216,197,0.9374343487394958) 100%)',}}>
             <div className='item-image'>
             {/* <Link to={`/product/${id}`}> */}
                 <img src={imageUrl} alt='event' />
@@ -81,14 +82,18 @@ const CartItem = (props) => {
                     {populateQuantities(1, 100)}
                    
             </div>
-            <Container sx={{ paddingTop: isLaptop ? '20px' ? isDesktop : '30px' : '25px' }}>
+            <Container sx={{ paddingTop: isLaptop ? '20px' : isDesktop ? '30px' : '25px' }}>
                 <Button
-                sx={{ minHeight: '2.25rem', backgroundColor: '#40fff9ff', color: '#ffc7f1ff', margin: '.2rem 2px'}}
+                color='primary'
+                variant='contained'
+                sx={{ minHeight: '2.25rem', margin: '.2rem 2px'}}
                  onClick={updateCart}>
                     Update Qty 
                 </Button>
                 
                     <Button
+                    color='secondary'
+                    variant='contained'
                     sx={{ minHeight: '2.25rem', backgroundColor: '#f7f063ff', color: '#3b1e57ff', margin: '.2rem 2px'}}
                     onClick={remove}
                     >
@@ -97,7 +102,7 @@ const CartItem = (props) => {
                 
               
             </Container>
-            </div>
+            </Card>
     )
 }
 
