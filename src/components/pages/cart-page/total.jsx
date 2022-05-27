@@ -10,9 +10,10 @@ const Total = ({ itemCount, total, clearCart }) => {
                 <p>{`Total: $${(Math.round(total * 100)/100).toFixed(2)} `}</p>
             </div>            
             <div className='checkout'>
-                <button className='button is-black' 
+                <button className='button' 
+                style={{ background: '#3B1E57', color: 'white'}}
                 onClick={() => navigate('/checkout')} >CHECKOUT</button>
-                <button className='button is-white' onClick={() => clearCart()}>CLEAR</button>
+                <button style={{ color: '#3B1E57' }} className='button' onClick={() => clearCart()}>CLEAR</button>
             </div>
         </div>
     )

@@ -86,6 +86,7 @@ const CartItem = (props) => {
                 <Button
                 color='primary'
                 variant='contained'
+                id='btn-white-outline'
                 sx={{ minHeight: '2.25rem', margin: '.2rem 2px'}}
                  onClick={updateCart}>
                     Update Qty 
@@ -94,6 +95,7 @@ const CartItem = (props) => {
                     <Button
                     color='secondary'
                     variant='contained'
+                    id='btn-white-outline'
                     sx={{ minHeight: '2.25rem', backgroundColor: '#f7f063ff', color: '#3b1e57ff', margin: '.2rem 2px'}}
                     onClick={remove}
                     >

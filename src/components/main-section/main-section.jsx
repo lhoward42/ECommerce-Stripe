@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import HolidayDisplay from '../../assets/HolidayCraftDisplay.jpeg'
 import { Button } from '@mui/material'
 import './main-section.styles.scss'
+import { Link } from 'react-router-dom'
 
 
 const MainSection = () => {
@@ -23,9 +24,12 @@ const navigate = useNavigate()
                 <Button 
                 color="secondary" 
                 variant="contained"
-                onClick={() => navigate('/product/1')}
+                id='btn-white-outline'
+              
                 >
+                    <Link to={`/product/1`}>
                     MISTLETOE
+                    </Link>
                 </Button>
                 </div>
             </div>

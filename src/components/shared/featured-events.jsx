@@ -46,7 +46,7 @@ const FeaturedEvents = (props) => {
     
 
     return(
-        <Card sx={{ background:'linear-gradient(180deg, rgba(255,216,196,0.7077424719887955) 6%, rgba(255,212,207,0.9150253851540616) 66%, rgba(255,212,209,0.9430365896358543) 74%, rgba(255,211,210,0.9066220238095238) 80%, rgba(255,209,216,1) 84%, rgba(255,206,224,0.9122242647058824) 86%, rgba(255,199,241,0.9682466736694678) 90%, rgba(255,199,241,0.8618040966386554) 96%, rgba(255,204,228,0.8982186624649859) 99%, rgba(255,216,197,0.9374343487394958) 100%)', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '35rem' : isTablet ? '45rem' : '45rem' }}>
+        <Card sx={{ background:'linear-gradient(180deg, rgba(255,216,196,0.7077424719887955) 6%, rgba(255,212,207,0.9150253851540616) 66%, rgba(255,212,209,0.9430365896358543) 74%, rgba(255,211,210,0.9066220238095238) 80%, rgba(255,209,216,1) 84%, rgba(255,206,224,0.9122242647058824) 86%, rgba(255,199,241,0.9682466736694678) 90%, rgba(255,199,241,0.8618040966386554) 96%, rgba(255,204,228,0.8982186624649859) 99%, rgba(255,216,197,0.9374343487394958) 100%)', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? 'fit-content' : isTablet ? '42rem' : '42rem' }}>
             { token ? 
                 <div className="container"> 
                 {/* import update component in here and the navigation method for react-router 6 */}
@@ -69,10 +69,10 @@ const FeaturedEvents = (props) => {
                     : 
                     <></>
                     }
-            <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem',}}>
+            <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem'}}>
             <Link to={`/events/${title}/${id}`}>
             <CardMedia 
-                sx={{objectFit: 'cover', maxWidth: '40rem', maxHeight: '35rem'}}
+                sx={{objectFit: 'cover', maxWidth: '40rem', maxHeight: '35rem', marginBottom: '1rem'}}
                 component='img'
                 image={imageUrl} 
                 alt='event'
@@ -82,7 +82,7 @@ const FeaturedEvents = (props) => {
                 <Typography variant='h3' sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.4rem', fontWeight: 'bold' }}>{format(new Date(date), 'MMM dd, yyyy')}</Typography>
                 <Typography variant='h3' sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.25rem', fontWeight: 'bold' }}>{toStandardTime(startTime)}</Typography>
                 <Typography variant='h3' sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.25rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>{description}</Typography>
-                <Link to={`/events/${title}/${id}`}>View Event</Link>
+                <Link to={`/events/${title}/${id}`} className="nomad-btn btn-white-outline" style={{ display: 'flex', padding: '.25rem .8rem', fontSize: '1.5rem',color: '#40fff9', background: '#3B1E57', justifyContent: 'center', alignItems: 'center', boxShadow: '0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%)', borderRadius: '4px', border: '1px solid grey' }}>View Event</Link>
             </CardContent>
         </Card>
     )

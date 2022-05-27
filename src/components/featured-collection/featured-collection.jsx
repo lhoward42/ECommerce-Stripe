@@ -9,7 +9,7 @@ const FeaturedCollection = () => {
     const { products } = useContext(ProductsContext);
     const productItems = products.filter((product, i) => i < 4).map(product => (
        
-        <Grid  item xs={8} sm={6} md={3} spacing={1} >
+        <Grid  item xs={8} sm={6} md={3}  >
         <FeaturedProductHome {...product} key={product.id} />
         </Grid>
     )) 
@@ -19,7 +19,7 @@ const FeaturedCollection = () => {
     return (
         <>
         <div className="featured-collection container">
-            <h2 className="featured-section-title">Featured Collection</h2>
+            <h2 className="featured-section-title" style={{ textAlign: 'center'}}>Featured Collection</h2>
             <Grid container display="flex" justifyContent="center" sx={{ padding: !isMobile ? '1rem 1.5rem' : 'none'}}>
                 {
                     productItems

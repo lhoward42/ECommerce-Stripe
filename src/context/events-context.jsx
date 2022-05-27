@@ -121,6 +121,7 @@ function getStyles(val, removeVal, theme) {
                })  
             let data = await res.json();
             console.log(data);
+            alert(`${event.title} has been created`)
             console.log("Success", eventData);
         
     } catch (err) {
@@ -154,6 +155,7 @@ function getStyles(val, removeVal, theme) {
             })
             let data = await res.json();
             console.log(data);
+            alert("event successfully updated")
         } catch (err) {
             console.log("Happening here ******", err)
         }
@@ -175,7 +177,7 @@ function getStyles(val, removeVal, theme) {
             );
         const data = res.json();
         console.log(data);
-        console.log("Event successfully deleted");
+        alert("Event successfully deleted");
         let array = await [...events];
         console.log(array);
         let index = array.indexOf(event);

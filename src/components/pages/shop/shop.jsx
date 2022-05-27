@@ -12,7 +12,7 @@ const Shop = () => {
     const { products } = useContext(ProductsContext)
     const allProducts = products.map(product => (
         product.category.includes("product") &&
-        <Grid item xs={8} sm={6} md={4} spacing={1}>
+        <Grid item xs={8} sm={6} md={4} >
         <FeaturedProduct {...product } key={product.id} />
         </Grid>
     ))
@@ -21,7 +21,7 @@ const Shop = () => {
      
     return (
     <Layout>
-        <h2 className='product-list-title'>Shop</h2>
+        <h1 style={{ textAlign: 'center'}}>Shop</h1>
         <Grid 
         container 
         display="flex" 

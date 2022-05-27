@@ -45,6 +45,7 @@ const Register = ({ token, setEmail, setPassword, email, password, newToken, set
        <br />
        <input type="submit" value="Submit"/>
    </form>
+   
 </Layout>
    )
 }

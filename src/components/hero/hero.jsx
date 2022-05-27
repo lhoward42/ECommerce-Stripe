@@ -1,6 +1,7 @@
 import React from "react";
 import './hero.styles.scss';
 import { Button } from "@mui/material";
+import { Link } from 'react-router-dom'
 
 const Hero = () => {
     return (
@@ -11,8 +12,8 @@ const Hero = () => {
                     Crafts for Every Occasion 
                 </h1>
                 <div className="shop-now-btn">
-                    <Button color='primary' variant='contained' sx={{opacity: '95%'}} >
-                        SHOP NOW
+                    <Button color='primary' variant='contained' id='btn-white-outline' sx={{opacity: '95%'}} >
+                       <Link to={`/shop`}> SHOP NOW </Link>
                     </Button>
                 </div>
             </div>

@@ -14,6 +14,8 @@ import {
     Modal
 } from '@mui/material'
 import { ProductsContext } from '../../context/products-context';
+import { DeviceSize } from '../../utils/DeviceSize';
+import { useMediaQuery } from 'react-responsive';
 
 const style = {
   position: 'absolute',
@@ -91,10 +93,11 @@ export default function NestedModal(props) {
     const populateQuantities = (start, end) => {
         return (
           <FormControl sx={{ width: 100 }}>
-          <InputLabel id="demo-multiple-name-label">Qty</InputLabel>
+          <InputLabel  id="demo-multiple-name-label">Qty</InputLabel>
           <Select
             className='select'
-            input={<OutlinedInput label="Qty" />}
+            input={<OutlinedInput label="Qty"  />}
+            
             placeholder='Qty'
             value={qty ? qty : "Qty"}
             onChange={onChangeQty}
@@ -116,28 +119,38 @@ export default function NestedModal(props) {
         setQty(e.target.value);
       };
 
+      const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
+
   return (
     <div>
-      <Button color='primary' variant="contained" onClick={handleOpen}>Get Tickets For {eventName}</Button>
+      <Button color='primary'
+       variant="contained" 
+       onClick={handleOpen} sx={{ margin: '1rem 0'}}
+       >
+         Get {title} for {eventName}
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
+
         aria-labelledby="parent-modal-title"
         aria-describedby="parent-modal-description"
       >
-        <Box sx={{ ...style, width: 400 }}>
+        <Box sx={{ ...style, width: isTablet ? 250 : 500 }}>
           <h2 id="parent-modal-title">{title}</h2>
           <p id="parent-modal-description">
-            {populateQuantities(1, 100)}
             
-            <p>$ {(Math.round(price * qty * 100)/100).toFixed(2)}</p>
-            {/* select menu for first set of attributes */}       
+            
+            <h2>$ {(Math.round(price * qty * 100)/100).toFixed(2)}</h2>
+            {populateQuantities(1, 100)}
+            {/* select menu for first set of attributes */}    
+            <Box sx={{ display:'flex', justifyContent: 'start', alignItems: 'center'}}>  
             {hasValueAttributes(product) && (
                
                     <FormControl size="small">
-                        <p>{title}</p>
+                      <InputLabel id="demo-multiple-name-label">{property}</InputLabel>
                     <Select
-                    sx={{ width: 100, marginTop: '.5rem', margin: '1rem' }} 
+                    sx={{ width: 100, marginTop: '.4rem', marginBottom: '.8rem' }} 
                     onChange={select}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute}
@@ -149,8 +162,9 @@ export default function NestedModal(props) {
                   </FormControl> ) }
                   {hasValueAttributes2(product) && 
                     <FormControl size="small">
+                      <InputLabel id="demo-multiple-name-label">{property2}</InputLabel>
                     <Select 
-                    sx={{ width: 100 }}
+                    sx={{ width: 100, marginTop: '.4rem', marginLeft: '.8rem', marginBottom: '.8rem' }}
                     onChange={select2}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute2}
@@ -161,57 +175,81 @@ export default function NestedModal(props) {
                     </Select>
                  </FormControl>
                 }
+                </Box> 
+
                 {!isInCart(product, cartItems, "", "") && !hasValueAttributes(product) ? (   
-                        <button 
-                        className='button btn-increase nomad-btn'
+                        <Button
+                        color='primary'
+                        variant='contained'
+                        id='btn-white-outline'
+                        sx={{ marginTop: '1rem', opacity: '85%'}}
+                        className='button nomad-btn'
                         onClick={() => addProdWAttribute(product, "", "", qty)}>
-                            ADD TICKET TO CART</button> 
+                            ADD TO CART</Button> 
                     ) : <></> }
                     {isInCart(product, cartItems, "", "") && !hasValueAttributes(product) ? (
-                        <button 
-                        className='button is-white nomad-btn'
+                        <Button 
+                        color='secondary'
+                        variant='contained'
+                        sx={{ marginTop: '1rem' }}
+                        className='button nomad-btn'
                         id='btn-white-outline'
                         onClick={() => update(product, "", "", qty)}>
-                            UPDATE TICKET IN CART</button> 
+                            UPDATE CART</Button> 
                     ) : <></>
                         }
                     { 
                         !isInCart(product, cartItems, selectedAttribute, "")
                          && hasValueAttributes(product)  && selectedAttribute && !hasValueAttributes2(product) ? ( 
 
-                        <button 
-                        className='button btn-increase nomad-btn'
+                        <Button 
+                        color='primary'
+                        variant='contained'
+                        id='btn-white-outline'
+                        
+                        sx={{ marginTop: '1rem', opacity: '85%'}}
+                        className='button nomad-btn'
                         onClick={() => addProdWAttribute(product, selectedAttribute, "", qty)}>
-                            ADD {product.title} TO CART</button> 
+                            ADD TO CART</Button> 
                     ) :
                         <></> }
                         
                        {isInCart(product, cartItems, selectedAttribute, "") && hasValueAttributes(product) && !hasValueAttributes2(product) && selectedAttribute && !hasValueAttributes2(product) ? (
-                        <button 
-                        className='button is-white nomad-btn'
+                        <Button 
+                        color='secondary'
+                        variant='contained'
+                        className='button nomad-btn'
+                        sx={{ marginTop: '1rem' }}
                         id='btn-white-outline'
                         onClick={() => update(product, selectedAttribute, "", qty)}>
-                            UPDATE CART</button> 
+                            UPDATE CART</Button> 
                     ) :                
                         <></>}
 
                         {!isInCart(product, cartItems, selectedAttribute, selectedAttribute2) && hasValueAttributes(product) && selectedAttribute && hasValueAttributes2(product) && selectedAttribute2 ? (   
-                        <button 
-                        className='button is-black nomad-btn'
+                        <Button 
+                        color='primary'
+                        variant='contained'
+                        id='btn-white-outline'
+                        sx={{ marginTop: '1rem', opacity: '85%'}}
+                        className='button nomad-btn'
                         onClick={() => addProdWAttribute(product, selectedAttribute, selectedAttribute2, qty)}>
-                            ADD TO {product.title} CART</button> 
+                            ADD TO CART</Button> 
                     ) :
                         <></> }
                         {isInCart(product, cartItems, selectedAttribute, selectedAttribute2) && hasValueAttributes(product) && selectedAttribute && hasValueAttributes2(product) && selectedAttribute2 ? (
-                        <button 
-                        className='button is-white nomad-btn'
+                        <Button 
+                        color='secondary'
+                        variant='contained'
+                        className='button nomad-btn'
                         id='btn-white-outline'
+                        sx={{ marginTop: '1rem' }}
                         onClick={() => update(product, selectedAttribute, selectedAttribute2, qty)}>
-                            UPDATE CART</button> 
+                            UPDATE CART</Button> 
                     ) : 
                         <></>}
           </p>
-          <ChildModal />
+          {/* <ChildModal /> */}
         </Box>
       </Modal>
     </div>

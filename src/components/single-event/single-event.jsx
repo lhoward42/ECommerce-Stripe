@@ -115,15 +115,16 @@ const SingleEvent = () => {
           <Container sx={{ margin: '2rem 0', marginBottom: '3rem', padding: '2rem',
            display: isLaptop && 'flex', justifyContent: isLaptop && 'center',
             alignItems: isLaptop && 'center'}}>
-                <CardMedia component='img' image={event.imageUrl} alt='event' sx={{ width: '60%', margin: '2.5rem auto' }} />              <h2>{event.title}</h2>
+                <CardMedia component='img' image={event.imageUrl} alt='event' sx={{ width: '60%', margin: '2.5rem auto' }} />              <h1>{event.title}</h1>
                 {product.map(prod => 
-                <NestedModal {...prod} key={prod.id} qty={qty} setQty={setQty} /> 
+                <div style={{ marginLeft: '1rem'}}><NestedModal {...prod} key={prod.id} qty={qty} setQty={setQty} /> </div>
                 )}
-              {format(new Date(date), 'MMM-dd-yy')} <br />
-              <p> Start Time: {toStandardTime(startTime)}</p>
-              <p> End Time: {toStandardTime(endTime)}</p>
+              <h2 style={{marginBottom: '0'}}>{format(new Date(date), 'MMM-dd-yy')} </h2><br />
+               <p style={{ marginTop: '0'}}> Start Time:  <b> {toStandardTime(startTime)}</b> </p>
+               <p>End Time: <b>{toStandardTime(endTime)}</b></p>
             {/*  {format(new Date(date + startTime), 'hh:mm a')} */}
-              <p>{event.description}</p>
+            <h2>Event Info:</h2>
+              <p style={{ fontSize: '1.1rem'}}>{event.description}</p>
                {/* select menu for first set of attributes */}
                {/* {  product.map(prod => hasValueAttributes(prod) &&<>  */}
                {/* <NestedModal {...prod} key={prod.id} /> */}

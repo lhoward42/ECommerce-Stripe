@@ -41,6 +41,7 @@ const cartReducer = (state, action) => {
            },
         });
       }
+      alert('item added to cart')
       // setQuantity(0)
       return {
         ...state,
@@ -69,11 +70,13 @@ const cartReducer = (state, action) => {
       if (previousItemsOfSize.length > 0 ){
       state.cartItems[updateIndex].quantity = Number(action.payload.quantity);
     }
+    alert('cart has been updated')
       return {
         ...state,
         cartItems: [...state.cartItems],
         ...sumItems(state.cartItems),
       };
+      
     }
     case "DECREASE": {
       const previousItemsOfSize = state.cartItems.filter((item) => {

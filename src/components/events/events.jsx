@@ -9,7 +9,7 @@ import FeaturedEvents from "../shared/featured-events";
 const EventPage = () => {
     const { events } = useContext(EventsContext);
     const allEvents = events.map(event =>(
-        <Grid item xs={8} sm={6} md={4} spacing={1}>
+        <Grid item xs={8} sm={6} md={4} >
             <FeaturedEvents {...event } key={event.id} />
             {/* {event.title}
             <img src={event.imageUrl} alt='event' /> */}
@@ -18,6 +18,7 @@ const EventPage = () => {
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
     return (
         <Layout>
+            <h1 style={{ textAlign: 'center'}}>Events</h1>
             <Grid 
             container 
             display="flex" 

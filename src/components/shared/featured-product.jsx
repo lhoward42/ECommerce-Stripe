@@ -106,11 +106,11 @@ const FeaturedProduct = (props) => {
                     : 
                     <></>
                     }
-                    <p>{category}</p>
+                    
                
                 <Link to={`/product/${id}`}>
                 <CardMedia 
-                sx={{objectFit: 'cover', maxWidth: '40rem', maxHeight: '35rem'}}
+                sx={{objectFit: 'cover', maxWidth: '40rem', maxHeight: '35rem', marginBottom: '1rem'}}
                 component='img'
                 image={imageUrl} 
                 alt='product'
@@ -118,8 +118,8 @@ const FeaturedProduct = (props) => {
                 </Link> 
               
                 
-                <Typography sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.5rem', fontWeight: 'bold' }} variant="h5" >{title}</Typography>
-                <p>$ {price}</p>    
+                <Typography sx={{ textAlign: 'center', font: 'inherit', fontSize: '2rem', fontWeight: 'bold' }} variant="h1" >{title}</Typography>
+                <Typography sx={{ fontSize: '1.4rem', fontFamily: 'inherit', fontWeight: '550'}} variant='h2'>$ {price}</Typography >    
                 {/* </div> */}
                 <InputLabel id="demo-multiple-name-label">Qty</InputLabel>
                 {populateQuantities(1, 100)}

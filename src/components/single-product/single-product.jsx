@@ -9,8 +9,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import './single-product.styles.scss';
+import { Button } from '@mui/material';
+import { useMediaQuery } from 'react-responsive';
+import { DeviceSize } from '../../utils/DeviceSize';
+
 
  const SingleProduct = () => {
     const { products, MenuProps } = useContext(ProductsContext);
@@ -63,7 +68,10 @@ import './single-product.styles.scss';
       await setSelectedAttribute2(e.target.value)
       console.log(e.target.value, selectedAttribute2);
     }
-    
+    const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
+    const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
+    const isLaptop = useMediaQuery({ minWidth: DeviceSize.laptop });
+
     useEffect(() => {
         const product = products.find(item => Number(item.id) === Number(id));
       
@@ -88,7 +96,9 @@ import './single-product.styles.scss';
     }
     const updateCart = () => {
       update(product, selectedAttribute, selectedAttribute2, qty);
-    }   
+    }  
+    
+  
     return (
         <Layout>
       <div className='single-product-container'>
@@ -99,11 +109,13 @@ import './single-product.styles.scss';
         </div>
         <div className='product-details'>
           <div className='name-price'>
-            <h3>{title}</h3>
+            <h1>{title}</h1>
             <p>$ {price}</p>
             <p>{populateQuantities(1, 100)}</p>
+            <Box sx={{ display: 'flex', flexDirection: 'column', margin: isMobile ? '.8rem 9.7rem .8rem auto' : isTablet ? '.8rem 30rem .8rem auto' : '0'}}>
             { hasValues && 
                     <Select 
+                    sx={{ marginBottom: '.8rem'}}
                     onChange={(e) => select(e)}
                     >
                         {value !== null && value.map(v => <MenuItem key={v} value={v}> {v} </MenuItem>)}
@@ -112,69 +124,85 @@ import './single-product.styles.scss';
                     <Select onChange={(e) => select2(e)}>
                         
                         {value2 !== null && value2.map(v => <MenuItem key={v} value={v}> {v} </MenuItem>)}
-                    </Select>}  
+                    </Select>} 
+            </Box>
           </div>
          
-          <div className='add-to-cart-btns'>
+          <Box sx={{ display: 'flex', justifyContent: 'center'}}>
 
           {/* Conditional for product with no attributes */}
           {!itemInCart && !hasValues ? (   
-                        <button 
-                        className='button is-black nomad-btn'
+                        <Button 
+                        className='button  nomad-btn'
+                        color='primary'
+                        variant='contained'
+                        id='btn-white-outline'
                         onClick={addToCart}>
-                            ADD TO CART</button> 
+                            ADD TO CART</Button> 
                     ) : itemInCart && !hasValues ? (
-                        <button 
-                        className='button is-white nomad-btn'
+                        <Button 
+                        className='button nomad-btn'
+                        color='secondary'
+                        variant='contained'
                         id='btn-white-outline'
                         onClick={updateCart}>
-                            ADD MORE</button> 
+                            ADD MORE</Button> 
                     ) : <></>
                         }
 
           {/* Conditional for product with one attribute */}
           {
                         !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
-                        <button 
-                        className='button is-black nomad-btn'
+                        <Button 
+                        className='button nomad-btn'
+                        color='primary'
+                        variant='contained'
+                        id='btn-white-outline'
                         onClick={addToCart}>
-                            ADD TO CART</button> 
+                            ADD TO CART</Button> 
                     ) :
                         <></> }
                        { itemInCart && hasValues && !hasMoreValues && selectedAttribute && !hasMoreValues ? (
-                        <button 
-                        className='button is-white nomad-btn'
+                        <Button 
+                        className='button  nomad-btn'
+                        color='secondary'
+                        variant='contained'
                         id='btn-white-outline'
                         onClick={updateCart}>
-                            ADD MORE</button> 
+                            ADD MORE</Button> 
                     ) :                
                         <></>}
 
           {/* Conditional for product with two attributes */}
           {
                         !itemInCart && hasValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (   
-                        <button 
-                        className='button is-black nomad-btn'
+                        <Button 
+                        className='button nomad-btn'
+                        color='primary'
+                        variant='contained'
+                        id='btn-white-outline'
                         onClick={addToCart}>
-                            ADD TO CART</button> 
+                            ADD TO CART</Button> 
                     ) :
                         <></> }
                        { 
                        itemInCart && hasValues && hasMoreValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (
-                        <button 
-                        className='button is-white nomad-btn'
+                        <Button 
+                        className='button nomad-btn'
+                        color='secondary'
+                        variant='contained'
                         id='btn-white-outline'
                         onClick={updateCart}>
-                            ADD MORE</button> 
+                            ADD MORE</Button> 
                     ) : 
                         <></>}
                    
 
-          </div>
+          </Box>
           <div className='product-description'>
-            <p>
+            <h2>
               { description }
-            </p>
+            </h2>
             
           </div>
         </div>

@@ -46,8 +46,13 @@ function App() {
             style: {
               textTransform: "none",
               border: `2px black`,
+              paddingTop: '.8rem',
+              paddingBottom: '.8rem',
               color: "#3b1e57",
-              opacity: '75%'
+              fontSize: '1.1rem',
+              opacity: '75%',
+              fontWeight: 'bold',
+              fontFamily: 'inherit'
               
             },
           },
@@ -57,6 +62,11 @@ function App() {
             style: {
               border: `4px black`,
               color: "#3b1e57",
+              paddingTop: '.8rem',
+              paddingBottom: '.8rem',
+              fontSize: '1.1rem',
+              fontWeight: 'bold',
+              fontFamily: 'inherit'
             },
           },
         ],
@@ -66,6 +76,7 @@ function App() {
         styleOverrides: {
          root: sx({ 
            backgroundColor: 'rgba(64, 255, 249, .5)',
+           
         }),
         }
       },

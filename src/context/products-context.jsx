@@ -143,6 +143,7 @@ import APIURL from '../utils/environment';
            })  
         let data = await res.json();
         console.log(data);
+        alert('new product created')
         } catch (err) {
             console.error(err);
         } 
@@ -178,6 +179,7 @@ import APIURL from '../utils/environment';
             })
             let data = await res.json();
             console.log(data);
+            alert('product successfully updated')
             setRemoveVal([])
         } catch (err) {
             console.error( "Product did not update", err )
@@ -201,7 +203,7 @@ import APIURL from '../utils/environment';
             );
             const data = res.json();
             console.log(data);
-            console.log("product successfully deleted");
+            alert("product successfully deleted");
             let array = await [...products];
             let index = array.indexOf(product);
             if (index !== -1){

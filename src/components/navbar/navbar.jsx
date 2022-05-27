@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import VintageTruck from '../../assets/vintagetruck.svg';
-import LOGO from '../../assets/CMAD-10.png'
+import LOGO from '../../assets/CMAD-11.png'
 import CartIcon from "../cart-icon/cart-icon";
 import { Link } from "react-router-dom";
 import './navbar.styles.scss'
@@ -44,7 +44,7 @@ const ResponsiveAppBar = () => {
 const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
 
   return (
-    <AppBar className="nav-bar" position="sticky" sx={{ background: 'linear-gradient(180deg, rgba(220,211,239,1) 0%, rgba(167,229,236,1) 3%, rgba(119,244,234,1) 8%, rgba(64,255,249,0.9514399509803921) 31%, rgba(122,243,233,0.9122242647058824) 66%, rgba(153,233,235,1) 73%, rgba(162,230,236,1) 78%, rgba(190,221,237,1) 87%, rgba(238,205,240,0.9570421918767507) 95%, rgba(255,199,241,0.9794511554621849) 99%, rgba(59,30,87,0.774969362745098) 100%)', padding: '.5rem 1.25rem' }}>
+    <AppBar className="nav-bar" position="static" sx={{ background: 'linear-gradient(180deg, rgba(220,211,239,1) 0%, rgba(167,229,236,1) 3%, rgba(119,244,234,1) 8%, rgba(64,255,249,0.9514399509803921) 31%, rgba(122,243,233,0.9122242647058824) 66%, rgba(153,233,235,1) 73%, rgba(162,230,236,1) 78%, rgba(190,221,237,1) 87%, rgba(238,205,240,0.9570421918767507) 95%, rgba(255,199,241,0.9794511554621849) 99%, rgba(59,30,87,0.774969362745098) 100%)', padding: '.5rem 1.25rem',  }}>
     
         <Toolbar disableGutters>
         {/* {<img  className="vintage-truck" src={LOGO} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, }} alt="vintageTruck" />} */}
@@ -77,9 +77,10 @@ const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'block' }, 
+                
               }}
             >
-                <MenuItem key="home"  onClick={handleCloseNavMenu}>
+                <MenuItem key="home" onClick={handleCloseNavMenu}>
                   <Typography textAlign="center" ><Link className="nav-links" to='/'>Home</Link></Typography>
                 </MenuItem>
                 <MenuItem key="shop" onClick={handleCloseNavMenu}>
@@ -93,7 +94,7 @@ const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
           </Box>
           {/* {<img  className="vintage-truck" src={LOGO} sx={{ display: { xs: 'none', md: 'flex' }, mr: 2, }} alt="vintageTruck" />} */}
        
-           {<img className="vintage-truck" src={LOGO} alt="vintageTruck"  />}
+           {<img className="vintage-truck" src={LOGO} alt="vintageTruck" />}
       
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexDirection: 'row-reverse' }}>
             {/* <ListItem key="events" className='nav-links' onClick={handleCloseNavMenu} >
