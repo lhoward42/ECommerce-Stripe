@@ -69,7 +69,7 @@ import { DeviceSize } from '../../utils/DeviceSize';
       console.log(e.target.value, selectedAttribute2);
     }
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
-    const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
+    const isLaptop2 = useMediaQuery({ maxWidth: DeviceSize.laptop2 });
     const isLaptop = useMediaQuery({ minWidth: DeviceSize.laptop });
 
     useEffect(() => {
@@ -111,8 +111,8 @@ import { DeviceSize } from '../../utils/DeviceSize';
           <div className='name-price'>
             <h1>{title}</h1>
             <p>$ {price}</p>
-            <p>{populateQuantities(1, 100)}</p>
-            <Box sx={{ display: 'flex', flexDirection: 'column', margin: isMobile ? '.8rem auto .8rem auto' : isTablet ? '.8rem 10rem .8rem 10rem' : '0'}}>
+            <p className='populate-quantity'>{populateQuantities(1, 100)}</p>
+            <Box sx={{ display: 'flex', flexDirection: 'column', margin: isMobile ? '.8rem auto .8rem .5rem' : isLaptop2 ? '.8rem 25rem .8rem .5rem' : '0'}}>
             { hasValues && 
                     <Select 
                     sx={{ marginBottom: '.8rem'}}

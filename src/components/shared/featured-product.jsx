@@ -164,7 +164,7 @@ const FeaturedProduct = (props) => {
                         color='primary' 
                         sx={{ width: isMobile ? 175 : 245, marginTop: '2.5rem'}}
                         className='button btn-increase width nomad-btn'
-                        
+                        id='btn-white-outline'
                         onClick={addToCart}>
                             ADD TO CART</Button> 
                     ) : itemInCart && !hasValues ? (

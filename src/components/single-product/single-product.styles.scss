@@ -21,6 +21,16 @@
     .product-details {
       .name-price {
         margin: 1rem 0;
+        .populate-quantity {
+          display: flex;
+          justify-content: center;
+          @media(max-width: 1023px){
+          display: flex;
+          justify-content: flex-start;
+          margin-left: .5rem;
+        }
+      
+        }
         
       }
   

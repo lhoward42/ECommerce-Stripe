@@ -6,6 +6,7 @@ h1, .empty-cart {
   text-align: center;
   background-color: #ffd8c4ff;
   
+  
   margin: 2rem;
   padding: 1.5rem;
 
@@ -16,13 +17,17 @@ h1, .empty-cart {
   }
 
   .name-price {
+    margin: .5rem;
+    
     h4 {
       margin: 0;
+     
     }
 
     p {
       font: 1rem;
       font-weight: normal;
+      
     }
   }
 

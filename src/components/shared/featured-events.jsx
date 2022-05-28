@@ -82,7 +82,7 @@ const FeaturedEvents = (props) => {
                 <Typography variant='h3' sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.4rem', fontWeight: 'bold' }}>{format(new Date(date), 'MMM dd, yyyy')}</Typography>
                 <Typography variant='h3' sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.25rem', fontWeight: 'bold' }}>{toStandardTime(startTime)}</Typography>
                 <Typography variant='h3' sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.25rem', overflow: 'hidden', textOverflow: 'ellipsis' }}>{description}</Typography>
-                <Link to={`/events/${title}/${id}`} className="nomad-btn btn-white-outline" style={{ display: 'flex', padding: '.25rem .8rem', fontSize: '1.5rem',color: '#40fff9', background: '#3B1E57', justifyContent: 'center', alignItems: 'center', borderRadius: '4px', border: '1px solid grey' }}>View Event</Link>
+                <Link to={`/events/${title}/${id}`} className="nomad-btn btn-white-outline" style={{ display: 'flex', padding: '.25rem .8rem', fontSize: '1.5rem',color: 'rgb(64, 255, 249, .9)', backgroundColor: 'rgb(59, 30, 87, .9)', justifyContent: 'center', alignItems: 'center', borderRadius: '4px', border: '1px solid grey', opacity: '-moz-initial.75' }}>View Event</Link>
             </CardContent>
         </Card>
     )

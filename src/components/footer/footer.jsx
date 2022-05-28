@@ -1,5 +1,6 @@
 import React from 'react'
 import './footer.styles.scss'
+import { FacebookIcon, InstagramIcon } from '@mui/icons-material'
 
 const Footer = () => {
     const year = new Date().getFullYear()

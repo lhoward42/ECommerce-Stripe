@@ -5,9 +5,9 @@ const Total = ({ itemCount, total, clearCart }) => {
     const navigate = useNavigate()
     return (
         <div className='total-container'>
-            <div className='total'>
-                <p>Total Items: {itemCount}</p>
-                <p>{`Total: $${(Math.round(total * 100)/100).toFixed(2)} `}</p>
+            <div style={{ margin: '2rem'}}>
+                <p>Total Items: <b>{itemCount}</b></p>
+                <p>Total:<b>{` $${(Math.round(total * 100)/100).toFixed(2)} `}</b></p>
             </div>            
             <div className='checkout'>
                 <button className='button' 

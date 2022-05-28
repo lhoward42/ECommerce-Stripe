@@ -47,9 +47,9 @@ function App() {
             style: {
               textTransform: "none",
               border: `4px black`,
-              paddingTop: '.8rem',
-              paddingBottom: '.8rem',
-              color: "#3b1e57",
+              paddingTop: '.9rem',
+              paddingBottom: '.9rem',
+              color: "rgb(59, 30, 87)",
               fontSize: '1.1rem',
               opacity: '75%',
               fontWeight: 'bold',
@@ -64,8 +64,8 @@ function App() {
             style: {
               border: `4px black`,
               color: "#3b1e57",
-              paddingTop: '.8rem',
-              paddingBottom: '.8rem',
+              paddingTop: '.9rem',
+              paddingBottom: '.9rem',
               fontSize: '1.1rem',
               fontWeight: 'bold',
               fontFamily: 'inherit',
