@@ -19,6 +19,7 @@ import { useEffect, useState } from "react/cjs/react.development";
 // import {DeviceSize} from './utils/DeviceSize.js'
 // import { useMediaQuery } from "react-responsive";
 import { createTheme, ThemeProvider,  experimental_sx as sx, } from "@mui/material";
+import { mdiBoxShadow } from "@mdi/js";
 
 function App() {
   const [token, setToken] = useState("");
@@ -45,14 +46,15 @@ function App() {
             props: { color: "primary" },
             style: {
               textTransform: "none",
-              border: `2px black`,
+              border: `4px black`,
               paddingTop: '.8rem',
               paddingBottom: '.8rem',
               color: "#3b1e57",
               fontSize: '1.1rem',
               opacity: '75%',
               fontWeight: 'bold',
-              fontFamily: 'inherit'
+              fontFamily: 'inherit',
+              boxShadow: 'none'
               
             },
           },
@@ -66,7 +68,8 @@ function App() {
               paddingBottom: '.8rem',
               fontSize: '1.1rem',
               fontWeight: 'bold',
-              fontFamily: 'inherit'
+              fontFamily: 'inherit',
+              boxShadow: 'none'
             },
           },
         ],
@@ -75,7 +78,7 @@ function App() {
       MuiInputBase: {
         styleOverrides: {
          root: sx({ 
-           backgroundColor: 'rgba(64, 255, 249, .5)',
+           backgroundColor: 'rgba(64, 255, 249, .75)',
            
         }),
         }

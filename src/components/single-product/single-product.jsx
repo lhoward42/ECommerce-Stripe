@@ -112,7 +112,7 @@ import { DeviceSize } from '../../utils/DeviceSize';
             <h1>{title}</h1>
             <p>$ {price}</p>
             <p>{populateQuantities(1, 100)}</p>
-            <Box sx={{ display: 'flex', flexDirection: 'column', margin: isMobile ? '.8rem 9.7rem .8rem auto' : isTablet ? '.8rem 30rem .8rem auto' : '0'}}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', margin: isMobile ? '.8rem auto .8rem auto' : isTablet ? '.8rem 10rem .8rem 10rem' : '0'}}>
             { hasValues && 
                     <Select 
                     sx={{ marginBottom: '.8rem'}}

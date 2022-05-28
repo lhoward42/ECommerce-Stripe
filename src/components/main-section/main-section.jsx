@@ -24,7 +24,7 @@ const navigate = useNavigate()
                 <Button 
                 color="secondary" 
                 variant="contained"
-                id='btn-white-outline'
+                
               
                 >
                     <Link to={`/product/1`}>

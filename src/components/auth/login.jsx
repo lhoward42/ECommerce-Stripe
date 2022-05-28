@@ -1,16 +1,17 @@
 import Layout from "../shared/layout";
 import { useState } from "react/cjs/react.development";
 import APIURL from "../../utils/environment";
-import {Button} from '@mui/material'
+import {Button} from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 
 const Login = ({ email, setEmail, password, setPassword, newToken, setShowLogin, showLogin }) => {
 
     const [localToken, setLocalToken] = useState("");
-  const confirmAndSend = () => {
+    const confirmAndSend = () => {
       adminSignUp()
-  }
-
+    }
+    const navigate = useNavigate();
 
     const adminSignUp = async (e) => {
         
@@ -31,7 +32,8 @@ const Login = ({ email, setEmail, password, setPassword, newToken, setShowLogin,
         let data = await response.json();
         await newToken(data.sessionToken);
         await setLocalToken(data.sessionToken);
-        console.log(data);   
+        alert('Admin successfully loggin in');
+        await navigate('/');   
         } catch (err){ console.log(err);}
         
     }

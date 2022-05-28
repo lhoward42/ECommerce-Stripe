@@ -52,12 +52,12 @@ const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
           <IconButton
               size="large"
-              sx={{ display: 'flex', justifyContent: 'start', alignItems: 'center', width: '50%'}} 
+              sx={{ display: 'flex', justifyContent: 'start', alignItems: 'center', width: '50%', color: '#3B1E57'}} 
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              
             >
               <MenuIcon />
             </IconButton>
@@ -96,7 +96,7 @@ const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
        
            {<img className="vintage-truck" src={LOGO} alt="vintageTruck" />}
       
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexDirection: 'row-reverse' }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexDirection: 'row-reverse', fontSize: '1.5rem' }}>
             {/* <ListItem key="events" className='nav-links' onClick={handleCloseNavMenu} >
                   <ListItemText textAlign="right"><Link to='/events'> Events </Link></ListItemText>
                 </ListItem>

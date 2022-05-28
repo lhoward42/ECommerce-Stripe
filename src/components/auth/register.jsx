@@ -2,13 +2,14 @@ import Layout from "../shared/layout";
 import { useState } from "react/cjs/react.development";
 import APIURL from "../../utils/environment";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Register = ({ token, setEmail, setPassword, email, password, newToken, setShowLogin, showLogin }) => {
   const [localToken, setLocalToken] = useState("");
   const confirmAndSend = () => {
       adminSignUp()
   }
-
+  const navigate = useNavigate();
 
     const adminSignUp = async (e) => {
         
@@ -29,7 +30,9 @@ const Register = ({ token, setEmail, setPassword, email, password, newToken, set
         let data = await response.json();
         await newToken(data.sessionToken);
         await setLocalToken(data.sessionToken);
-        console.log(data);   
+        alert('Admin signed up in!');  
+        
+
         } catch (err){ console.log(err);}
         
     }
@@ -45,7 +48,7 @@ const Register = ({ token, setEmail, setPassword, email, password, newToken, set
        <br />
        <input type="submit" value="Submit"/>
    </form>
-   
+
 </Layout>
    )
 }
