@@ -116,7 +116,7 @@ import APIURL from '../utils/environment';
     //EVENT FUNCTION CREATES A NEW PRODUCT
 
     const createNewProduct = async (e) => {
-    //    e.preventDefault()
+       e.preventDefault()
         const token = localStorage.getItem("token");
         const productData = {
             title: product.title,
@@ -133,7 +133,8 @@ import APIURL from '../utils/environment';
 
         console.log(productData);
         try {
-        let res = await fetch(`${APIURL}/products/new-product`, {
+        if(token){
+            let res = await fetch(`${APIURL}/products/new-product`, {
             method: "POST",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -144,8 +145,12 @@ import APIURL from '../utils/environment';
         let data = await res.json();
         console.log(data);
         alert('new product created')
+        } else {
+            alert('Admin must be logged in to create a product')
+        }
         } catch (err) {
             console.error(err);
+            
         } 
     }
 
@@ -154,7 +159,7 @@ import APIURL from '../utils/environment';
     const updateProduct = async (e) => {
 
         e.preventDefault();
-        let token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
         let productData = {
             title: title,
             description: description,
@@ -169,6 +174,7 @@ import APIURL from '../utils/environment';
         };
 
         try {
+            if (token){
             let res = await fetch(`${APIURL}/products/${product.id}`, {
                 method: 'PUT',
                 headers: new Headers({
@@ -179,10 +185,14 @@ import APIURL from '../utils/environment';
             })
             let data = await res.json();
             console.log(data);
-            alert('product successfully updated')
+            alert('product successfully updated');
             setRemoveVal([])
+        } else {
+            alert('Admin must be logged in to update product');
+        }
         } catch (err) {
             console.error( "Product did not update", err )
+            alert('product could not be updated, please check fields and try again')
         }
         
     }
@@ -191,7 +201,9 @@ import APIURL from '../utils/environment';
 
     const deleteProduct = async (product) => { 
         const token = localStorage.getItem("token");
+        
         try{
+            if(token){
             const res = await fetch( 
                 `${APIURL}/products/${product.id}`, {
                     method: "DELETE",
@@ -210,9 +222,13 @@ import APIURL from '../utils/environment';
                 array.splice(index, 1);
                 setProducts(array);
             };
+            } else {
+                alert('Admin must be logged in to delete product');
+            }
 
         } catch (err) {
             console.error(err);
+            
         }
     }
 

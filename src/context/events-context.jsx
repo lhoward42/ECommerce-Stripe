@@ -110,7 +110,7 @@ function getStyles(val, removeVal, theme) {
         const eventData = {...event, hasProduct: checked };
     
         try {
-       
+            if (token){
             let res = await fetch(`${APIURL}/events/new-event`, {
                 method: "POST",
                 headers: new Headers({
@@ -123,7 +123,9 @@ function getStyles(val, removeVal, theme) {
             console.log(data);
             alert(`${event.title} has been created`)
             console.log("Success", eventData);
-        
+        } else {
+            alert('Admin must be logged in to create event')
+        }
     } catch (err) {
         console.error(err);
     }

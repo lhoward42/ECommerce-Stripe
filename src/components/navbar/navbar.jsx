@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import VintageTruck from '../../assets/vintagetruck.svg';
-import LOGO from '../../assets/CMAD-14.png'
+import LOGO from '../../assets/CMAD-15-sharpened.png'
 import CartIcon from "../cart-icon/cart-icon";
 import { Link } from "react-router-dom";
 import './navbar.styles.scss'
