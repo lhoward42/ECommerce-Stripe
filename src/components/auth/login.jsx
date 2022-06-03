@@ -32,7 +32,7 @@ const Login = ({ email, setEmail, password, setPassword, newToken, setShowLogin,
         let data = await response.json();
         await newToken(data.sessionToken);
         await setLocalToken(data.sessionToken);
-        alert('Admin successfully loggin in');
+        await alert('Admin successfully loggin in');
         await navigate('/');   
         } catch (err){ console.log(err);}
         

@@ -4,7 +4,7 @@
 
 .product-list-container .product-list-title {
   margin-top: 5rem;
-  text-align: center;
+  text-align: center !important;
 }
 
 .product-list-container .product-list div {

@@ -1,9 +1,11 @@
 .vintage-truck {
-  width: 8% !important;
+  width: 22% !important;
+  margin-left: auto;
 }
 
 .nav-item {
-  margin: 0rem 1.2rem;
+  margin: 0rem 1.5rem;
+  font-size: 1.5rem;
 }
 
 .nav-bar {

@@ -13,6 +13,10 @@ h1, .empty-cart {
   width: 120px;
 }
 
+.cart-item .name-price {
+  margin: .5rem;
+}
+
 .cart-item .name-price h4 {
   margin: 0;
 }
