@@ -7,7 +7,7 @@ import APIURL from '../utils/environment';
  const ProductsContextProvider = ({ children }) => {
 
     const [products, setProducts] = useState([]);
-    const [product, setProduct] = useState(null);
+    const [product, setProduct] = useState({});
     const [title, setTitle] = useState(null);
     const [description, setDescription] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
@@ -144,7 +144,7 @@ import APIURL from '../utils/environment';
            })  
         let data = await res.json();
         console.log(data);
-        alert('new product created')
+        if (data) { alert('new product created') }
         } else {
             alert('Admin must be logged in to create a product')
         }
@@ -158,7 +158,7 @@ import APIURL from '../utils/environment';
 
     const updateProduct = async (e) => {
 
-        e.preventDefault();
+        // e.preventDefault();
         const token = localStorage.getItem("token");
         let productData = {
             title: title,

@@ -15,7 +15,7 @@ const UpdateProduct = (props) => {
     const { products, updateProduct, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, 
     setProperty, setVal, setProperty2, setVal2, val, val2, newVal, newVal2, handleInputChangeVal,
     handleInputChangeVal2, handleRemoveVal2, removeVal2, handleRemoveVal, category, setCategory,
-    removeVal, handleChangeSelect, handleChangeSelect2, MenuProps, getStyles, deleteProduct } = useContext(ProductsContext);
+    removeVal, handleChangeSelect, handleChangeSelect2, MenuProps, getStyles, deleteProduct, eventName, setEventName } = useContext(ProductsContext);
     const { id } = useParams();
     const navigate = useNavigate();
     const theme = useTheme();
@@ -42,10 +42,11 @@ const UpdateProduct = (props) => {
         setCategory(product.category);
         setProperty2(product.property2);
         setVal2(product.value2);
+        setEventName(product.eventName);
 
         console.log(product);
 
-    }, [id, navigate, products, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, setProperty, setVal, setProperty2, setVal2])
+    }, [id, setCategory, navigate, products, product, setProduct, setTitle, setDescription, setPrice, setImageUrl, setProperty, setVal, setProperty2, setVal2, setEventName])
 
    
     useEffect(() => 
@@ -109,13 +110,21 @@ const UpdateProduct = (props) => {
                   <div className="form-group">
                 {/* Needs to be a select menu */}
                     <label>Category: </label>
-                    <input
-                    className="form-control"
-                    type="text"
-                    name="category"
-                    placeholder="Category"
-                    onChange={(e) => setCategory(e.target.value)}
-                    />
+                    <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                    <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={category}
+                    label="Category"
+                    onChange={e => setCategory(e.target.value)}
+                    >
+                    <MenuItem value="product">Product</MenuItem>
+                    <MenuItem value="event">Event</MenuItem>
+                
+                    </Select>
+                    </FormControl>
+                    
                 </div>
                 <div className="form-group">
                     <label>Product Attribute: </label>

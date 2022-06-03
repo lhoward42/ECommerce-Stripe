@@ -20,8 +20,8 @@ import { useTheme } from '@mui/material/styles';
 
 const CreateProduct = () => {
     const { handleChange, createNewProduct, setVal, setVal2, val, val2, newVal, newVal2, handleInputChangeVal,
-    handleRemoveVal, handleInputChangeVal2, handleRemoveVal2,removeVal, removeVal2, handleChangeSelect,
-    handleChangeSelect2, MenuProps, getStyles } = useContext(ProductsContext);
+    handleRemoveVal, handleInputChangeVal2, handleRemoveVal2,removeVal, removeVal2, handleChangeSelect, category,
+    handleChangeSelect2, MenuProps, getStyles, setProduct, product } = useContext(ProductsContext);
     
     const theme = useTheme();
 
@@ -65,13 +65,29 @@ const CreateProduct = () => {
                 <div className="form-group">
                 {/* Needs to be a select menu */}
                 <label>Category: </label>
-                <input
+                <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">Category</InputLabel>
+                <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={product.category}
+                label="Category"
+                onChange={e => setProduct({ ...product, category: e.target.value })}
+                >
+                <MenuItem value="product">Product</MenuItem>
+                <MenuItem value="event">Event</MenuItem>
+                
+                </Select>
+                </FormControl>
+
+
+                {/* <input
                 className="form-control"
                 type="text"
                 name="category"
                 placeholder="Category"
                 onChange={(e) => handleChange(e)}
-                />
+                /> */}
                 </div>
                 <div className="form-group">
                 <label>Image URL: </label>
