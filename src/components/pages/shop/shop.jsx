@@ -21,7 +21,7 @@ const Shop = () => {
      
     return (
     <Layout>
-        <h1 style={{ textAlign: 'center'}}>Shop</h1>
+        <h1 style={{ textAlign: 'center', margin: '2.5rem 2rem .5rem 2rem', fontSize: '3rem'}}>Shop</h1>
         <Grid 
         container 
         display="flex" 

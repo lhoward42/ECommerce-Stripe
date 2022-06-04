@@ -16,7 +16,7 @@ const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet})
 
     return (
         <div className="cart-container">
-            <Icon className="shopping-basket" path={mdiBasket} alt='shopping-cart-icon' size={isTablet ? 1.5 : 1.8} onClick={() => navigate('/cart')}/>
+            <Icon className="shopping-basket" path={mdiBasket} alt='shopping-cart-icon' size={isTablet ? 1.5 : 2} onClick={() => navigate('/cart')}/>
             {
                 itemCount > 0 ? <span className="cart-count"> { itemCount } </span> : null
             }

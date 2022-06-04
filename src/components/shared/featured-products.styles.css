@@ -36,4 +36,9 @@
 .margins {
   margin: .3rem;
 }
+
+.featured-card {
+  -webkit-box-shadow: inset 0px 0px 1.5px 1px rgba(186, 183, 186, 0.2) !important;
+  box-shadow: inset 0px 0px 1.5px 1px rgba(186, 183, 186, 0.2) !important;
+}
 /*# sourceMappingURL=featured-products.styles.css.map */

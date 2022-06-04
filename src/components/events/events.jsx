@@ -18,7 +18,7 @@ const EventPage = () => {
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
     return (
         <Layout>
-            <h1 style={{ textAlign: 'center'}}>Events</h1>
+            <h1 style={{ textAlign: 'center', margin: '2.5rem 2rem .5rem 2rem'}}>Events</h1>
             <Grid 
             container 
             display="flex" 
