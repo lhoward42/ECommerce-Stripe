@@ -71,7 +71,7 @@ const FeaturedProduct = (props) => {
            <FormControl size="small">
             <Select
               className='select'
-              sx={{ border: '1px solid', borderColor: 'rgba(59, 30, 87, .5)'}}
+              sx={{ }}
               input={<OutlinedInput label="Qty" />}
               placeholder='Qty'
               value={qty ? qty : "Qty"}
@@ -93,11 +93,12 @@ const FeaturedProduct = (props) => {
       
       const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
       const isLaptop = useMediaQuery({ maxWidth: DeviceSize.laptop });
+      const isLaptop2 = useMediaQuery({ maxWidth: DeviceSize.laptop2 });
 
     return (
         
-        <Card className="featured-card" sx={{ background:'linear-gradient(180deg, rgba(255,216,196,0.7077424719887955) 6%, rgba(255,212,207,0.9150253851540616) 66%, rgba(255,212,209,0.9430365896358543) 74%, rgba(255,211,210,0.9066220238095238) 80%, rgba(255,209,216,1) 84%, rgba(255,206,224,0.9122242647058824) 86%, rgba(255,199,241,0.9682466736694678) 90%, rgba(255,199,241,0.8618040966386554) 96%, rgba(255,204,228,0.8982186624649859) 99%, rgba(255,216,197,0.9374343487394958) 100%)', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '40rem' : isLaptop ? '53rem' :'66.5rem',  }}>
-            <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem',}}>
+        <Card className="featured-card" sx={{ background:'linear-gradient(180deg, rgba(255,216,196,0.7077424719887955) 6%, rgba(255,212,207,0.9150253851540616) 66%, rgba(255,212,209,0.9430365896358543) 74%, rgba(255,211,210,0.9066220238095238) 80%, rgba(255,209,216,1) 84%, rgba(255,206,224,0.9122242647058824) 86%, rgba(255,199,241,0.9682466736694678) 90%, rgba(255,199,241,0.8618040966386554) 96%, rgba(255,204,228,0.8982186624649859) 99%, rgba(255,216,197,0.9374343487394958) 100%)', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '40rem' : isLaptop ? '53rem' :'66.5rem', opacity: '87%' }}>
+            <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem', paddindTop: '1.5rem'}}>
                 { token ? 
                 <div className="container"> 
                 {/* import update component in here and the navigation method for react-router 6 */}
@@ -129,7 +130,7 @@ const FeaturedProduct = (props) => {
                     { hasValues && 
                     <FormControl size={isMobile ? "small" : "medium" }  sx={{ margin: '.5rem' }}>
                     <Select
-                    sx={{ width: isMobile ? 170 : 260, marginTop: '.5rem', border: '1px solid', borderColor: 'rgba(59, 30, 87, .5)' }} 
+                    sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '.5rem',  }} 
                     onChange={select}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute}
@@ -145,7 +146,7 @@ const FeaturedProduct = (props) => {
                     { hasMoreValues && 
                     <FormControl size={isMobile ? "small" : "medium" } sx={{ margin: '1rem' }} >
                     <Select 
-                    sx={{ width: isMobile ? 170 : 260, border: '1px solid', borderColor: 'rgba(59, 30, 87, .5)' }}
+                    sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, }}
                     onChange={select2}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute2}
@@ -162,7 +163,7 @@ const FeaturedProduct = (props) => {
                         <Button 
                         variant='contained'
                         color='primary' 
-                        sx={{ width: isMobile ? 175 : 245, marginTop: '2.5rem'}}
+                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '2.5rem'}}
                         className='button btn-increase width nomad-btn'
                         id='btn-white-outline'
                         onClick={addToCart}>
@@ -171,7 +172,7 @@ const FeaturedProduct = (props) => {
                         <Button
                         variant='contained'
                         color='secondary'
-                        sx={{ width: isMobile ? 175 : 245, marginTop: '2.5rem'}}
+                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '2.5rem'}}
                         className='button btn-increase width nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>
@@ -185,7 +186,7 @@ const FeaturedProduct = (props) => {
                         <Button 
                         variant='contained'
                         color='primary' 
-                        sx={{ width: isMobile ? 175 : 245, marginTop: '1.5rem'}}
+                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '1.5rem'}}
                         className='button btn-increase width nomad-btn'
                         id='btn-white-outline'
                         onClick={addToCart}>
@@ -196,7 +197,7 @@ const FeaturedProduct = (props) => {
                         <Button 
                         variant='contained'
                         color='secondary'
-                        sx={{ width: isMobile ? 175 : 245, marginTop: '1.5rem'}}
+                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '1.5rem'}}
                         className='button btn-increase width nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>
@@ -210,7 +211,7 @@ const FeaturedProduct = (props) => {
                         <Button 
                         variant='contained'
                         color='primary' 
-                        sx={{ width: isMobile ? 175 : 245, marginTop: '1rem'}}
+                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '1rem'}}
                         className='button nomad-btn'
                         id='btn-white-outline'
                         onClick={addToCart}>
@@ -222,7 +223,7 @@ const FeaturedProduct = (props) => {
                         <Button 
                         variant='contained'
                         color='secondary'
-                        sx={{ width: isMobile ? 175 : 245, marginTop: '1rem'}}
+                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '1rem'}}
                         className='button  nomad-btn'
                         id='btn-white-outline'
                         onClick={updateCart}>

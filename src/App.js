@@ -47,10 +47,11 @@ function App() {
             style: {
               textTransform: "none",
               border: `4px black`,
-              paddingTop: '.9rem',
-              paddingBottom: '.9rem',
+              paddingTop: '1.2rem',
+              paddingBottom: '1.2rem',
               color: "rgb(59, 30, 87)",
-              fontSize: '1.1rem',
+              fontSize: '1.4rem',
+              lineHeight: '1.2rem',
               opacity: '75%',
               fontWeight: 'bold',
               fontFamily: 'inherit',
@@ -78,19 +79,26 @@ function App() {
       MuiInputBase: {
         styleOverrides: {
          root: sx({ 
-           backgroundColor: 'rgba(64, 255, 249, .75)',
-           
+          //  backgroundColor: 'rgba(64, 255, 249, .5)',
+          //  backgroundColor: 'rgba(247, 240, 99, .4)',
+           backgroundColor: 'rgba(255, 199, 241,.5)',
+          // backgroundColor: 'rgba(59, 30, 87,.4)',
+         
         }),
         }
       },
       MuiOutlinedInput: {
         styleOverrides: {
-          root: sx({
+          root: sx({ 
+            paddingTop: '0px',
+            paddingBottom: '5px',
             color: '#3b1e57',
           }), 
         },
       },
-
+      MuiSelect: {
+        
+      }
     },
   });
 

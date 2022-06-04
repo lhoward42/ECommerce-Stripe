@@ -70,7 +70,7 @@ const FeaturedProductHome = (props) => {
            <FormControl size="small">
             <Select
               className='select'
-              sx={{ border: '1px solid', borderColor: 'rgba(59, 30, 87, .5)'}}
+              sx={{}}
               input={<OutlinedInput label="Qty" />}
               placeholder='Qty'
               value={qty ? qty : "Qty"}
@@ -129,7 +129,7 @@ const FeaturedProductHome = (props) => {
                     { hasValues && 
                     <FormControl size="small" sx={{margin: '.3rem'}}>
                     <Select
-                    sx={{ width: isMobile ? 130 : 140, marginTop: '.5rem', border: '1px solid', borderColor: 'rgba(59, 30, 87, .5)' }}
+                    sx={{ width: isMobile ? 130 : 140, marginTop: '.5rem',  }}
                     onChange={select}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute}
@@ -145,7 +145,7 @@ const FeaturedProductHome = (props) => {
                     { hasMoreValues && 
                     <FormControl size="small">
                     <Select 
-                    sx={{ width: isMobile ? 130 : 140, marginTop: '.5rem', border: '1px solid', borderColor: 'rgba(59, 30, 87, .5)' }}
+                    sx={{ width: isMobile ? 130 : 140, marginTop: '.5rem', }}
                     onChange={select2}
                     labelId="demo-multiple-name-label"
                     value={selectedAttribute2}
