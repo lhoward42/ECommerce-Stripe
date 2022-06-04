@@ -97,8 +97,8 @@ const FeaturedProduct = (props) => {
 
     return (
         
-        <Card className="featured-card" sx={{ background:'linear-gradient(180deg, rgba(255,216,196,0.7077424719887955) 6%, rgba(255,212,207,0.9150253851540616) 66%, rgba(255,212,209,0.9430365896358543) 74%, rgba(255,211,210,0.9066220238095238) 80%, rgba(255,209,216,1) 84%, rgba(255,206,224,0.9122242647058824) 86%, rgba(255,199,241,0.9682466736694678) 90%, rgba(255,199,241,0.8618040966386554) 96%, rgba(255,204,228,0.8982186624649859) 99%, rgba(255,216,197,0.9374343487394958) 100%)', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? '40rem' : isLaptop ? '53rem' :'66.5rem', opacity: '87%' }}>
-            <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding: '1rem', paddindTop: '1.5rem'}}>
+        <Card className="featured-card" sx={{ padding: '0',backgroundColor: 'transparent', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%",  boxShadow: 'none'}}>
+            <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding:'0'}}>
                 { token ? 
                 <div className="container"> 
                 {/* import update component in here and the navigation method for react-router 6 */}
@@ -122,114 +122,7 @@ const FeaturedProduct = (props) => {
                 <Typography sx={{ textAlign: 'center', font: 'inherit', fontSize: '2rem', fontWeight: 'bold' }} variant="h1" >{title}</Typography>
                 <Typography sx={{ fontSize: '1.4rem', fontFamily: 'inherit', fontWeight: '550'}} variant='h2'>$ {price}</Typography >    
                 {/* </div> */}
-                <InputLabel id="demo-multiple-name-label">Qty</InputLabel>
-                {populateQuantities(1, 100)}
-                
-                
-                     {/* select menu for first set of attributes */}
-                    { hasValues && 
-                    <FormControl size={isMobile ? "small" : "medium" }  sx={{ margin: '.5rem' }}>
-                    <Select
-                    sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '.5rem',  }} 
-                    onChange={select}
-                    labelId="demo-multiple-name-label"
-                    value={selectedAttribute}
-                    MenuProps={MenuProps}
-                    >
-                        {value !== null && value.map(v => 
-                        <MenuItem key={v} value={v}> {v} </MenuItem>)}
-                    </Select>
-                  </FormControl>
-                    }
-                    
-                    {/* select menu for second set of attributes */}
-                    { hasMoreValues && 
-                    <FormControl size={isMobile ? "small" : "medium" } sx={{ margin: '1rem' }} >
-                    <Select 
-                    sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, }}
-                    onChange={select2}
-                    labelId="demo-multiple-name-label"
-                    value={selectedAttribute2}
-                    MenuProps={MenuProps}
-                    >
-                        {value2 !== null && value2.map(v =>
-                         <MenuItem key={v} value={v}> {v} </MenuItem>)}
-                    </Select>
-                 </FormControl>
-                    }
-               
-                    {/* Conditional for product with no attributes */}
-                    {!itemInCart && !hasValues ? (   
-                        <Button 
-                        variant='contained'
-                        color='primary' 
-                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '2.5rem'}}
-                        className='button btn-increase width nomad-btn'
-                        id='btn-white-outline'
-                        onClick={addToCart}>
-                            ADD TO CART</Button> 
-                    ) : itemInCart && !hasValues ? (
-                        <Button
-                        variant='contained'
-                        color='secondary'
-                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '2.5rem'}}
-                        className='button btn-increase width nomad-btn'
-                        id='btn-white-outline'
-                        onClick={updateCart}>
-                            UPDATE CART</Button> 
-                    ) : <></>
-                        }
-
-                        {/* Conditional for product with one attribute */}
-                        {
-                        !itemInCart && hasValues && selectedAttribute && !hasMoreValues ? (   
-                        <Button 
-                        variant='contained'
-                        color='primary' 
-                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '1.5rem'}}
-                        className='button btn-increase width nomad-btn'
-                        id='btn-white-outline'
-                        onClick={addToCart}>
-                            ADD TO CART</Button> 
-                    ) :
-                        <></> }
-                       { itemInCart && hasValues && !hasMoreValues && selectedAttribute && !hasMoreValues ? (
-                        <Button 
-                        variant='contained'
-                        color='secondary'
-                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '1.5rem'}}
-                        className='button btn-increase width nomad-btn'
-                        id='btn-white-outline'
-                        onClick={updateCart}>
-                            UPDATE CART</Button> 
-                    ) :                
-                        <></>}
-                   
-                        {/* Conditional for product with two attributes */}
-                        {
-                        !itemInCart && hasValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (   
-                        <Button 
-                        variant='contained'
-                        color='primary' 
-                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '1rem'}}
-                        className='button nomad-btn'
-                        id='btn-white-outline'
-                        onClick={addToCart}>
-                            ADD TO CART</Button> 
-                    ) :
-                        <></> }
-                       { 
-                       itemInCart && hasValues && hasMoreValues && selectedAttribute && hasMoreValues && selectedAttribute2 ? (
-                        <Button 
-                        variant='contained'
-                        color='secondary'
-                        sx={{ width: isMobile ? 170 : isLaptop ? 250 : 350, marginTop: '1rem'}}
-                        className='button  nomad-btn'
-                        id='btn-white-outline'
-                        onClick={updateCart}>
-                            UPDATE CART</Button> 
-                    ) : 
-                        <></>}
+              
                     
                 
             </CardContent>

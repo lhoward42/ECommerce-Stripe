@@ -20,7 +20,8 @@ import { useEffect, useState } from "react/cjs/react.development";
 // import { useMediaQuery } from "react-responsive";
 import { createTheme, ThemeProvider,  experimental_sx as sx, } from "@mui/material";
 import { mdiBoxShadow } from "@mdi/js";
-
+import ResetRequest from "./components/auth/reset-password.jsx";
+import ResetPassword from "./components/auth/password-reset-request.jsx";
 function App() {
   const [token, setToken] = useState("");
 
@@ -50,7 +51,7 @@ function App() {
               paddingTop: '1.2rem',
               paddingBottom: '1.2rem',
               color: "rgb(59, 30, 87)",
-              fontSize: '1.4rem',
+              fontSize: '1.35rem',
               lineHeight: '1.2rem',
               opacity: '75%',
               fontWeight: 'bold',
@@ -67,7 +68,7 @@ function App() {
               color: "#3b1e57",
               paddingTop: '.9rem',
               paddingBottom: '.9rem',
-              fontSize: '1.1rem',
+              fontSize: '1.35rem',
               fontWeight: 'bold',
               fontFamily: 'inherit',
               boxShadow: 'none'
@@ -75,13 +76,19 @@ function App() {
           },
         ],
       },
-
+      // MuiCardContent: {
+      //   styleOverrides: {
+      //     root: sx({
+      //       padding: '0'
+      //     }),
+      //   }
+      // },
       MuiInputBase: {
         styleOverrides: {
          root: sx({ 
           //  backgroundColor: 'rgba(64, 255, 249, .5)',
           //  backgroundColor: 'rgba(247, 240, 99, .4)',
-           backgroundColor: 'rgba(255, 199, 241,.5)',
+           backgroundColor: 'rgba(255, 199, 241,.8)',
           // backgroundColor: 'rgba(59, 30, 87,.4)',
          
         }),
@@ -149,6 +156,8 @@ function App() {
             path='/admin-home/update-event/:id'
             element={<UpdateEvent />}
           />
+          <Route path='/passwordReset/request' element={<ResetRequest />} />
+          <Route path='/passwordReset/:token/:id' element={<ResetPassword />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>

@@ -12,7 +12,7 @@ const Shop = () => {
     const { products } = useContext(ProductsContext)
     const allProducts = products.map(product => (
         product.category.includes("product") &&
-        <Grid item xs={8} sm={6} md={4} >
+        <Grid item xs={8} sm={6} md={3} >
         <FeaturedProduct {...product } key={product.id} />
         </Grid>
     ))
@@ -21,7 +21,7 @@ const Shop = () => {
     const isLaptop2 = useMediaQuery({ maxWidth: DeviceSize.laptop2 });
     return (
     <Layout>
-        <h1 style={{ textAlign: 'center', margin: '2.5rem 2rem .5rem 2rem', fontSize: isMobile ? '3rem': isLaptop2 ? '4rem' : '5rem'}}>Shop</h1>
+        <h1 style={{ textAlign: 'center', margin: '2.5rem 2rem 1rem 2rem', fontSize: isMobile ? '3rem': isLaptop2 ? '4rem' : '5rem'}}>Shop</h1>
         <Grid 
         container 
         display="flex" 

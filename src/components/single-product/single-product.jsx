@@ -70,7 +70,7 @@ import { DeviceSize } from '../../utils/DeviceSize';
     }
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
     const isLaptop2 = useMediaQuery({ maxWidth: DeviceSize.laptop2 });
-    const isLaptop = useMediaQuery({ minWidth: DeviceSize.laptop });
+    const isLaptop = useMediaQuery({ minWidth: DeviceSize.laptop2 });
 
     useEffect(() => {
         const product = products.find(item => Number(item.id) === Number(id));
@@ -109,7 +109,7 @@ import { DeviceSize } from '../../utils/DeviceSize';
         </div>
         <div className='product-details'>
           <div className='name-price'>
-            <h1>{title}</h1>
+            <h1 style={{ textAlign: isLaptop ? 'start' : 'center'}}>{title}</h1>
             <p>$ {price}</p>
             <p className='populate-quantity'>{populateQuantities(1, 100)}</p>
             <Box sx={{ display: 'flex', flexDirection: 'column', margin: isMobile ? '.8rem auto .8rem .5rem' : isLaptop2 ? '.8rem 25rem .8rem .5rem' : '0'}}>

@@ -9,7 +9,7 @@ import FeaturedEvents from "../shared/featured-events";
 const EventPage = () => {
     const { events } = useContext(EventsContext);
     const allEvents = events.map(event =>(
-        <Grid item xs={8} sm={6} md={4} >
+        <Grid item xs={8} sm={6} md={3} >
             <FeaturedEvents {...event } key={event.id} />
             {/* {event.title}
             <img src={event.imageUrl} alt='event' /> */}

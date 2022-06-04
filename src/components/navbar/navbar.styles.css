@@ -9,8 +9,6 @@
 }
 
 .nav-bar {
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
   background: url("../../assets/clean-gray-paper.png"), -webkit-gradient(linear, left top, left bottom, from(#dcd3ef), color-stop(3%, #a7e5ec), color-stop(8%, #77f4ea), color-stop(31%, rgba(64, 255, 249, 0.95144)), color-stop(66%, rgba(122, 243, 233, 0.912224)), color-stop(73%, #99e9eb), color-stop(78%, #a2e6ec), color-stop(87%, #bedded), color-stop(95%, rgba(238, 205, 240, 0.957042)), to(rgba(255, 199, 241, 0.979451)));
   background: url("../../assets/clean-gray-paper.png"), linear-gradient(180deg, #dcd3ef 0%, #a7e5ec 3%, #77f4ea 8%, rgba(64, 255, 249, 0.95144) 31%, rgba(122, 243, 233, 0.912224) 66%, #99e9eb 73%, #a2e6ec 78%, #bedded 87%, rgba(238, 205, 240, 0.957042) 95%, rgba(255, 199, 241, 0.979451) 100%);
   border-bottom: 1px solid rgba(59, 30, 87, 0.5);
