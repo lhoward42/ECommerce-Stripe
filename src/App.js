@@ -20,8 +20,8 @@ import { useEffect, useState } from "react/cjs/react.development";
 // import { useMediaQuery } from "react-responsive";
 import { createTheme, ThemeProvider,  experimental_sx as sx, } from "@mui/material";
 import { mdiBoxShadow } from "@mdi/js";
-import ResetRequest from "./components/auth/reset-password.jsx";
-import ResetPassword from "./components/auth/password-reset-request.jsx";
+import ResetRequest from "./components/auth/reset-request.jsx";
+import ResetPassword from "./components/auth/reset-pw.jsx";
 function App() {
   const [token, setToken] = useState("");
 
@@ -157,7 +157,7 @@ function App() {
             element={<UpdateEvent />}
           />
           <Route path='/passwordReset/request' element={<ResetRequest />} />
-          <Route path='/passwordReset/:token/:id' element={<ResetPassword />} />
+          <Route path='/passwordReset/:resetToken/:id' element={<ResetPassword />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>

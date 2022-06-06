@@ -97,8 +97,8 @@ const FeaturedProduct = (props) => {
 
     return (
         
-        <Card className="featured-card" sx={{ padding: '0',backgroundColor: 'transparent', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%",  boxShadow: 'none'}}>
-            <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', padding:'0'}}>
+        <Card className="featured-card" sx={{ padding: '0',backgroundColor: 'transparent', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 98%",  boxShadow: 'none', overflow: 'visible'}}>
+           
                 { token ? 
                 <div className="container"> 
                 {/* import update component in here and the navigation method for react-router 6 */}
@@ -108,10 +108,10 @@ const FeaturedProduct = (props) => {
                     <></>
                     }
                     
-               
+               <CardContent className='featured-image' sx={{  padding:'0' }}> 
                 <Link to={`/product/${id}`}>
                 <CardMedia 
-                sx={{objectFit: 'cover', maxWidth: '40rem', maxHeight: '35rem', marginBottom: '1rem'}}
+                sx={{objectFit: 'cover', maxHeight: '35rem', marginBottom: '.25rem',}}
                 component='img'
                 image={imageUrl} 
                 alt='product'
@@ -119,11 +119,10 @@ const FeaturedProduct = (props) => {
                 </Link> 
               
                 
-                <Typography sx={{ textAlign: 'center', font: 'inherit', fontSize: '2rem', fontWeight: 'bold' }} variant="h1" >{title}</Typography>
-                <Typography sx={{ fontSize: '1.4rem', fontFamily: 'inherit', fontWeight: '550'}} variant='h2'>$ {price}</Typography >    
-                {/* </div> */}
-              
-                    
+                <Typography sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.4rem', fontWeight: 'bold', marginLeft: '1rem' }} variant="h1" >{title}</Typography>
+                <Typography sx={{ fontSize: '1.2rem', fontFamily: 'inherit', fontWeight: '550', marginLeft: '1rem' }} variant='h2'>$ {price}</Typography >                
+                
+               {/* </div> */}     
                 
             </CardContent>
         </Card>

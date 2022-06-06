@@ -23,12 +23,12 @@ import NestedModal from './child-modal';
 import { format } from 'date-fns';
 
 const SingleEvent = () => {
-    const { products, MenuProps, setProduct, product } = useContext(ProductsContext);
+    const { products, MenuProps } = useContext(ProductsContext);
     const { events, event, setEvent, toStandardTime } = useContext(EventsContext);
     const { addProdWAttribute, cartItems, update } = useContext(CartContext);
     const navigate = useNavigate();  
     const { id, title } = useParams();
-    
+    const [product, setProduct] = useState(null)
     const [selectedAttribute, setSelectedAttribute ] = useState(null);
     const [selectedAttribute2, setSelectedAttribute2 ] = useState(null);
     const [qty, setQty] = useState(1);
@@ -115,7 +115,8 @@ const SingleEvent = () => {
           <Container sx={{ margin: '2rem 0', marginBottom: '3rem', padding: '2rem',
            display: isLaptop && 'flex', justifyContent: isLaptop && 'center',
             alignItems: isLaptop && 'center'}}>
-                <CardMedia component='img' image={event.imageUrl} alt='event' sx={{ width: '60%', margin: '2.5rem auto' }} />              <h1>{event.title}</h1>
+                <CardMedia component='img' image={event.imageUrl} alt='event' sx={{ width: '60%', margin: '2.5rem auto' }} />              
+                <h1>{event.title}</h1>
                 {product.map(prod => 
                 <div style={{ marginLeft: '1rem'}}><NestedModal {...prod} key={prod.id} qty={qty} setQty={setQty} /> </div>
                 )}
