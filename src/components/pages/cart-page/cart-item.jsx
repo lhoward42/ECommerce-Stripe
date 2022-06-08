@@ -62,12 +62,15 @@ const CartItem = (props) => {
       }
 
       const isLaptop = useMediaQuery({ maxWidth: DeviceSize.laptop })
+      const isLaptopMin = useMediaQuery({ minWidth: DeviceSize.laptop })
+      const isLaptop2Min = useMediaQuery({ minWidth: DeviceSize.laptop2 })
+      const isTabletMin = useMediaQuery({ minWidth: DeviceSize.tablet })
       const isDesktop = useMediaQuery({ maxWidth: DeviceSize.desktop })
     return (
       <Card className='cart-item' sx={{  background:'linear-gradient(180deg, rgba(255,216,196,0.7077424719887955) 6%, rgba(255,212,207,0.9150253851540616) 66%, rgba(255,212,209,0.9430365896358543) 74%, rgba(255,211,210,0.9066220238095238) 80%, rgba(255,209,216,1) 84%, rgba(255,206,224,0.9122242647058824) 86%, rgba(255,199,241,0.9682466736694678) 90%, rgba(255,199,241,0.8618040966386554) 96%, rgba(255,204,228,0.8982186624649859) 99%, rgba(255,216,197,0.9374343487394958) 100%)', color:  '#3b1e57', opacity: '92%'}}>
             <div className='item-image'>
             {/* <Link to={`/product/${id}`}> */}
-                <img src={imageUrl} alt='event' />
+                <img src={imageUrl} alt='product' />
             {/* </Link> */}
             </div>
             <div className='name-price'>
@@ -77,8 +80,8 @@ const CartItem = (props) => {
                 <p><b>$ {(Math.round(price * 100)/100).toFixed(2)}</b></p>
    
             </div>
-            <div className='quantity'>
-                   <p>{`Quantity: ${quantity}`}</p>           
+            <div>
+                   <p className='quantity'>{`Quantity: ${quantity}`}</p>           
                     {populateQuantities(1, 100)}
                    
             </div>
@@ -96,10 +99,10 @@ const CartItem = (props) => {
                     color='secondary'
                     variant='contained'
                     id='btn-white-outline'
-                    sx={{ minHeight: '2.25rem', backgroundColor: '#f7f063ff', color: '#3b1e57ff', margin: '.2rem 2px'}}
+                    sx={{ minHeight: '2.25rem', backgroundColor: '#f7f063ff', color: '#3b1e57ff', margin: '.2rem 2px' }}
                     onClick={remove}
                     >
-                        <TrashIcon width='20px' />
+                        <TrashIcon width='1.75rem' />
                     </Button>
                 
               

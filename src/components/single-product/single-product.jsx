@@ -112,23 +112,37 @@ import { DeviceSize } from '../../utils/DeviceSize';
             <h1 style={{ textAlign: isLaptop ? 'start' : 'center'}}>{title}</h1>
             <p>$ {price}</p>
             <p className='populate-quantity'>{populateQuantities(1, 100)}</p>
-            <Box sx={{ display: 'flex', flexDirection: 'column', margin: isMobile ? '.8rem auto .8rem .5rem' : isLaptop2 ? '.8rem 25rem .8rem .5rem' : '0'}}>
+            { isLaptop ? <Box sx={{ display: 'flex', flexDirection: 'column', margin: isMobile ? '.8rem auto .8rem .5rem' : isLaptop2 ? '.8rem 25rem .8rem .5rem' : '0'}}>
             { hasValues && 
                     <Select 
-                    sx={{ marginBottom: '.8rem'}}
+                    sx={{ marginBottom: '1rem'}}
                     onChange={(e) => select(e)}
                     >
                         {value !== null && value.map(v => <MenuItem key={v} value={v}> {v} </MenuItem>)}
                     </Select>}
             { hasMoreValues && 
-                    <Select onChange={(e) => select2(e)}>
+                    <Select 
+                    onChange={(e) => select2(e)}>
                         
                         {value2 !== null && value2.map(v => <MenuItem key={v} value={v}> {v} </MenuItem>)}
                     </Select>} 
-            </Box>
+            </Box> : <> { hasValues && 
+                    <Select 
+                    sx={{ marginBottom: '1rem', width: '100%' }}
+                    onChange={(e) => select(e)}
+                    >
+                        {value !== null && value.map(v => <MenuItem key={v} value={v}> {v} </MenuItem>)}
+                    </Select>}
+            { hasMoreValues && 
+                    <Select 
+                    sx={{  width: '100%' }}
+                    onChange={(e) => select2(e)}>
+                        
+                        {value2 !== null && value2.map(v => <MenuItem key={v} value={v}> {v} </MenuItem>)}
+                    </Select>} </> }
           </div>
          
-          <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+          <Box sx={{ display: 'flex', justifyContent: isLaptop ? 'start' : 'center' }}>
 
           {/* Conditional for product with no attributes */}
           {!itemInCart && !hasValues ? (   
@@ -146,7 +160,7 @@ import { DeviceSize } from '../../utils/DeviceSize';
                         variant='contained'
                         id='btn-white-outline'
                         onClick={updateCart}>
-                            ADD MORE</Button> 
+                            UPDATE CART</Button> 
                     ) : <></>
                         }
 
@@ -169,7 +183,7 @@ import { DeviceSize } from '../../utils/DeviceSize';
                         variant='contained'
                         id='btn-white-outline'
                         onClick={updateCart}>
-                            ADD MORE</Button> 
+                            UPDATE CART</Button> 
                     ) :                
                         <></>}
 
@@ -193,7 +207,7 @@ import { DeviceSize } from '../../utils/DeviceSize';
                         variant='contained'
                         id='btn-white-outline'
                         onClick={updateCart}>
-                            ADD MORE</Button> 
+                            UPDATE CART</Button> 
                     ) : 
                         <></>}
                    

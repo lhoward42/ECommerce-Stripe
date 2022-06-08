@@ -1,12 +1,19 @@
 import React from "react";
 import './hero.styles.scss';
 import { Button } from "@mui/material";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { Parallax } from 'react-parallax';
+import HERO from '../../assets/CMADHero.jpeg'
 
 const Hero = () => {
+    
     return (
-    <div>
+       
+    
+    <div> 
+        <Parallax>
         <section className="hero is-large is-info hero-image">
+           
             <div className="hero-body">
                 <h1 className="hero-title">
                     Crafts for Every Occasion 
@@ -17,8 +24,9 @@ const Hero = () => {
                     </Button>
                 </div>
             </div>
-        </section>
+        </section></Parallax> 
     </div>
+   
     )
 }
 

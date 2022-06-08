@@ -30,7 +30,7 @@ const UpdateEvent = (props) => {
         setChecked(ev.hasProduct);
         setImageUrl(ev.imageUrl);
 
-    }, [id, navigate, events, setEvent, setTitle, setDescription, setDate, setStartTime, setEndTime, setLocation, setChecked])
+    }, [id, navigate, events, setEvent, setTitle, setDescription, setDate, setStartTime, setEndTime, setLocation, setChecked, setImageUrl ])
 
     
 
@@ -40,6 +40,7 @@ const UpdateEvent = (props) => {
         <h3> Update Events </h3>
             <form onSubmit={updateEvent} >
                 <div className="form-group">
+                    <img src={event.imageUrl} alt='event' />
                     <label>Event Name: </label>
                     <input
                     className="form-control"

@@ -31,6 +31,7 @@ const FeaturedEvents = (props) => {
     const event = { title, description, date, id, endTime, startTime, location, hasProduct, imageUrl};
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
     const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
+    const isLaptop2Min = useMediaQuery({ minWidth: DeviceSize.laptop2})
     const { toStandardTime } = useContext(EventsContext);
     const token = localStorage.getItem("token");
     
@@ -46,7 +47,13 @@ const FeaturedEvents = (props) => {
     
 
     return(
-        <Card sx={{ backgroundColor: 'transparent', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 50%", minHeight: isMobile ? 'fit-content' : isTablet ? '42rem' : '42rem', opacity: '92%', boxShadow: 'none' }}>
+        <Card 
+        sx={{ backgroundColor: 'transparent', color: '#3B1E57',
+         margin: '.5rem', minWidth: isMobile ? "100%" : " 50%",
+         minHeight: isMobile ? 'fit-content' : isTablet ? '42rem' : '42rem',
+         opacity: '92%', boxShadow: 'none' }}
+       
+        >
             { token ? 
                 <div className="container"> 
                 {/* import update component in here and the navigation method for react-router 6 */}
@@ -72,17 +79,17 @@ const FeaturedEvents = (props) => {
             <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', padding: '0'}}>
             <Link to={`/events/${title}/${id}`}>
             <CardMedia 
-                sx={{objectFit: 'cover', maxHeight: '35rem', marginBottom: '1rem' }}
+                sx={{objectFit: 'cover', maxHeight: '35rem', marginBottom: '.25rem' }}
                 component='img'
                 image={imageUrl} 
                 alt='event'
                 /> 
                 </Link>
-                <Typography variant="h5" sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.75rem', fontWeight: 'bold' }}>{title}</Typography>
-                <Typography variant='h3' sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.4rem', fontWeight: 'bold' }}>{format(new Date(date), 'MMM dd, yyyy')}</Typography>
-                <Typography variant='h3' sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.25rem', fontWeight: 'bold' }}>{toStandardTime(startTime)}</Typography>
-                <Typography variant='h3' sx={{ textAlign: 'center', font: 'inherit', fontSize: '1.25rem', overflow: 'hidden', textOverflow: 'ellipsis', width: '65%', marginBottom: '1rem' }}>{description}</Typography>
-                <Link to={`/events/${title}/${id}`} className="nomad-btn btn-white-outline" style={{ display: 'flex', padding: '.25rem .8rem', fontSize: '1.35rem', fontWeight: 'bold', color: 'rgb(64, 255, 249, .9)', backgroundColor: 'rgb(59, 30, 87, .9)', justifyContent: 'center', alignItems: 'center', borderRadius: '4px', border: '1px solid grey', opacity: '-moz-initial.75', width: '65%', marginBottom: '1rem' }}>View Event</Link>
+                <Typography variant="h5" sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.6rem', fontWeight: 'bold', marginLeft: '1rem' }}>{title}</Typography>
+                <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.25rem', fontWeight: 'bold', marginLeft: '1rem', fontStyle: 'italic' }}>{format(new Date(date), 'MMM dd, yyyy')}</Typography>
+                <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.25rem', fontWeight: 'bold', marginLeft: '1rem' }}>{toStandardTime(startTime)}</Typography>
+                <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.25rem', overflow: 'hidden', textOverflow: 'ellipsis', width: '65%', marginLeft: '1rem',fontStyle: 'italic' }}>{description}</Typography>
+                <Link to={`/events/${title}/${id}`}  style={{ fontSize: '1.25rem', fontWeight: 'bold', borderRadius: '4px', opacity: '-moz-initial.75', width: '65%', marginBottom: '1rem', marginLeft: '1rem', textDecoration: 'underline' }}>View Event</Link>
             </CardContent>
         </Card>
     )

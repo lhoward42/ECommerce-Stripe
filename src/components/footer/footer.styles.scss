@@ -1,5 +1,13 @@
 .footer {
-    width: 50%;
-    margin: 4rem auto;
+    background: url('../../assets/clean-gray-paper.png'),linear-gradient(180deg, rgba(190,221,237,1) 0%, rgba(167,229,236,1) 5%, rgba(119,244,234,1) 8%, rgba(64,255,249,0.9514399509803921) 31%, rgba(122,243,233,0.9122242647058824) 66%, rgba(153,233,235,1) 73%, rgba(162,230,236,1) 78%, rgba(190,221,237,1) 100%,  );
+    -webkit-box-shadow: 0px -1px 19px -4px rgba(0,0,0,0.4); 
+    box-shadow: 0px -1px 19px -4px rgba(0,0,0,0.4);
+    width: 100%;
+    margin: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

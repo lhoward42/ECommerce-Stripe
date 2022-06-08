@@ -21,19 +21,25 @@
     .product-details {
       .name-price {
         margin: 1rem 0;
+        @media (max-width: 1023px) {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
         .populate-quantity {
           display: flex;
-          justify-content: center;
-          @media(max-width: 1023px){
-          display: flex;
           justify-content: flex-start;
-          margin-left: .5rem;
+          @media(max-width: 1023px){
+          // display: flex;
+          // justify-content: flex-start;
+          // margin-left: .5rem;
           // h1 {
           //   @media(min-width: 1023px){
           //     text-align: start !important;
           //   }
-          // }
-        }
+          }
+        // }
       
         }
         

@@ -16,19 +16,25 @@ const EventPage = () => {
         </Grid>
     ))
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
+    const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet })
+    const isLaptop2 = useMediaQuery({ maxWidth: DeviceSize.laptop2 });
+    const isLaptop2Min = useMediaQuery({ minWidth: DeviceSize.laptop2})
+
     return (
         <Layout>
-            <h1 style={{ textAlign: 'center', margin: '2.5rem 2rem .5rem 2rem'}}>Events</h1>
+            <h1 style={{ textAlign: 'center', margin: '2.5rem 2rem .5rem 2rem', fontSize: isMobile ? '3rem': isLaptop2 ? '4rem' : '5rem' }}>Events</h1>
+            <div style={{ padding: isMobile ? '.5rem 1.5rem' : isTablet ? '1rem 2.5rem' : '2rem 2rem' }}>
             <Grid 
             container 
             display="flex" 
             justifyContent="center" 
-            sx={{ padding: !isMobile ? '1rem 1.5rem' : 'none' }} 
+            sx={{ padding: isMobile ? '1rem 0' : isTablet ? '1.5rem 1.75rem 0rem 1.25rem' : '2rem 1.75rem 2rem 1.25rem', background: 'rgba(255, 199, 241, .7)' }} 
             >
                 {
                     allEvents
                 }
             </Grid>
+            </div>
         </Layout>
     )
 }

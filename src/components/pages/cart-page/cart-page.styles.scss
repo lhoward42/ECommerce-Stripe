@@ -71,9 +71,13 @@ h1, .empty-cart {
   .cart-item {
     display: flex;
     justify-content: space-between;
+    
   }
  
   .name-price {
     width: 200px;
+  }
+  .quantity {
+    margin-top: .5rem !important;
   }
 }

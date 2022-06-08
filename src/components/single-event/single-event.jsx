@@ -112,9 +112,9 @@ const SingleEvent = () => {
       
       return (
           <Layout>
-          <Container sx={{ margin: '2rem 0', marginBottom: '3rem', padding: '2rem',
-           display: isLaptop && 'flex', justifyContent: isLaptop && 'center',
-            alignItems: isLaptop && 'center'}}>
+          <Container sx={{ padding: '2rem',
+           display: isLaptop && 'flex', justifyContent: isLaptop && 'center', maxWidth: '100% !important',
+            alignItems: isLaptop && 'center', background: 'rgba(255, 199, 241, .7)'}}>
                 <CardMedia component='img' image={event.imageUrl} alt='event' sx={{ width: '60%', margin: '2.5rem auto' }} />              
                 <h1>{event.title}</h1>
                 {product.map(prod => 
