@@ -61,7 +61,9 @@ const SingleEvent = () => {
       </FormControl>
         );
       };
-      const isLaptop = useMediaQuery({ minWidth: DeviceSize.laptop })
+      const isLaptop = useMediaQuery({ minWidth: DeviceSize.laptop });
+      const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
+      const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
       const select = async (e) => {
         //this needs a switch case for metadata 1 and 2
         await setSelectedAttribute(e.target.value)
@@ -114,8 +116,8 @@ const SingleEvent = () => {
           <Layout>
           <Container sx={{ padding: '2rem',
            display: isLaptop && 'flex', justifyContent: isLaptop && 'center', maxWidth: '100% !important',
-            alignItems: isLaptop && 'center', background: 'rgba(255, 199, 241, .7)'}}>
-                <CardMedia component='img' image={event.imageUrl} alt='event' sx={{ width: '60%', margin: '2.5rem auto' }} />              
+            alignItems: isLaptop && 'center', background: 'rgba(255, 216, 196, .5)'}}>
+                <CardMedia component='img' image={event.imageUrl} alt='event' sx={{ width: isMobile ? '100%' : '40%', margin: '2.5rem auto' }} />              
                 <h1>{event.title}</h1>
                 {product.map(prod => 
                 <div style={{ marginLeft: '1rem'}}><NestedModal {...prod} key={prod.id} qty={qty} setQty={setQty} /> </div>

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../shared/layout';
 import { CartContext } from '../../../context/cart-context'
-
+import { Button } from '@mui/material'
 
 const Success = () => {
     const { clearCart, cartItems } = useContext(CartContext);
@@ -20,9 +20,14 @@ const Success = () => {
                  will send you a confirmation email shortly
                  </p>
                  <div>
-                     <button className="button is-black nomad-btn submit" onClick={() => navigate('/shop')}>
+                     <Button 
+                      sx={{ color: "#3B1E57"}}
+                     onClick={() => navigate('/shop')}
+                     
+                     variant="contained"
+                     >
                          Continue Shopping
-                     </button>
+                     </Button>
                  </div>
         </div>
         </Layout>

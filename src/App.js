@@ -22,6 +22,7 @@ import { createTheme, ThemeProvider,  experimental_sx as sx, } from "@mui/materi
 import { mdiBoxShadow } from "@mdi/js";
 import ResetRequest from "./components/auth/reset-request.jsx";
 import ResetPassword from "./components/auth/reset-pw.jsx";
+import Footer from "./components/footer/footer.jsx";
 function App() {
   const [token, setToken] = useState("");
 
@@ -124,6 +125,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div className='App'>
+        
         <Routes>
           <Route exact path='/' element={<HomePage />} />
 
@@ -160,6 +162,7 @@ function App() {
           <Route path='/passwordReset/:resetToken/:id' element={<ResetPassword />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
+        {/* <Footer /> */}
       </div>
     </ThemeProvider>
   );

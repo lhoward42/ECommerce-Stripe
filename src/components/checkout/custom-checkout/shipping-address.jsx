@@ -1,5 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { Button } from '@mui/material';
+
 
 const validate = values => {
   const { name, email, address } = values;
@@ -64,9 +66,12 @@ const ShippingAddress = ({ setShipping }) => {
                   /> 
                 </div>
                 <div className='submit-btn'>
-                  <button type='submit' className='button is-black nomad-btn submit'>
+                  <Button color='primary'
+                        variant='contained'
+                        type='submit' 
+                        className='button'>
                     CONTINUE
-                  </button>
+                  </Button>
                 </div>
               </form>
             );

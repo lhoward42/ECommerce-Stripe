@@ -89,7 +89,7 @@ const FeaturedEvents = (props) => {
                 <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.25rem', fontWeight: 'bold', marginLeft: '1rem', fontStyle: 'italic' }}>{format(new Date(date), 'MMM dd, yyyy')}</Typography>
                 <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.25rem', fontWeight: 'bold', marginLeft: '1rem' }}>{toStandardTime(startTime)}</Typography>
                 <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.25rem', overflow: 'hidden', textOverflow: 'ellipsis', width: '65%', marginLeft: '1rem',fontStyle: 'italic' }}>{description}</Typography>
-                <Link to={`/events/${title}/${id}`}  style={{ fontSize: '1.25rem', fontWeight: 'bold', borderRadius: '4px', opacity: '-moz-initial.75', width: '65%', marginBottom: '1rem', marginLeft: '1rem', textDecoration: 'underline' }}>View Event</Link>
+                <Link to={`/events/${title}/${id}`}  style={{ fontSize: '1.25rem', fontWeight: 'bold', borderRadius: '4px', opacity: '-moz-initial.75', width: '65%', marginBottom: isMobile ? '0' : '1rem', marginLeft: '1rem', textDecoration: 'underline' }}>View Event</Link>
             </CardContent>
         </Card>
     )

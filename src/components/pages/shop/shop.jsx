@@ -7,6 +7,7 @@ import { Grid, Box } from '@mui/material'
 import './shop.styles.scss'
 import { DeviceSize } from '../../../utils/DeviceSize';
 import { useMediaQuery } from "react-responsive";
+import ShopSign from '../../../assets/ShopSign.png'
 
 const Shop = () => {
     const { products } = useContext(ProductsContext)
@@ -28,7 +29,8 @@ const Shop = () => {
     const isLaptop2Min = useMediaQuery({ minWidth: DeviceSize.laptop2})
     return (
     <Layout>
-        <h1 style={{ textAlign: 'center', margin: '2.5rem 2rem 1rem 2rem', fontSize: isMobile ? '3rem': isLaptop2 ? '4rem' : '5rem'}}>Shop</h1>
+        <div className='sign-div'><img className='shop-sign' sx={{  }} src={ShopSign} alt='shop'/></div>
+        {/* <h1 style={{ textAlign: 'center', margin: '2.5rem 2rem 1rem 2rem', fontSize: isMobile ? '3rem': isLaptop2 ? '4rem' : '5rem'}}>Shop</h1> */}
         <div style={{ padding: isMobile ? '.5rem 1.5rem' : isTablet ? '1rem 2.5rem' : '2rem 2rem' }}>
         <Grid 
         container 
