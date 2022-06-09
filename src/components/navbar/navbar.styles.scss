@@ -1,6 +1,7 @@
 .vintage-truck { 
     width: 15% !important;
     margin-left: auto;
+    
     @media (max-width: 1023px) {
       width: 20% !important;
     }
