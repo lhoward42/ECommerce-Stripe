@@ -23,7 +23,7 @@ const EventPage = () => {
 
     return (
         <Layout>
-             <div className='sign-div'><img className='shop-sign' sx={{  }} src={EventSign} alt='shop'/></div>
+             <div className='sign-div'><img className='event-sign' sx={{  }} src={EventSign} alt='shop'/></div>
             {/* <h1 style={{ textAlign: 'center', margin: '2.5rem 2rem .5rem 2rem', fontSize: isMobile ? '3rem': isLaptop2 ? '4rem' : '5rem' }}>Events</h1> */}
             <div style={{ padding: isMobile ? '.5rem 1.5rem' : isTablet ? '1rem 2.5rem' : '2rem 2rem' }}>
             <Grid 

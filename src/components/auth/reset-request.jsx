@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import APIURL from "../../utils/environment";
 import Layout from "../shared/layout";
+import { Button, Container } from '@mui/material';
 
 const ResetRequest = () => {
     const [email, setEmail] = useState(null)
@@ -27,14 +28,21 @@ const ResetRequest = () => {
 
     return (
         <Layout>
+            <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '4rem' }}>
         <input
+                style={{ marginBottom: '1rem', height: '2rem', width: '65%'}}
                 className="form-control"
                 type="email"           
                 name="email"
                 placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
                 />
-                <button onClick={(e) =>requestReset(e)}></button>
+                <Button 
+                variant='contained'
+                color='secondary'
+                onClick={(e) =>requestReset(e)}>Send Request
+                </Button>
+                </Container>
         </Layout>
     )
 }

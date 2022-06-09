@@ -26,7 +26,12 @@
 img {
   width: 100%;
 }
-
+.event-pic {
+  width: 90% !important;
+  @media (min-width: 1024px) {
+    width: 40% !important;
+  }
+}
 .nomad-container {
   width: 60%;
   margin: 0 auto;

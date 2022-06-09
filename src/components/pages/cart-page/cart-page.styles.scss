@@ -2,6 +2,26 @@ h1, .empty-cart {
     text-align: center;
 }
 
+.sign {
+  display: flex;
+  justify-content: center;
+}
+.cart-sign {
+  width: 23% !important;
+  margin-top: 1.5rem;
+  color: #3B1E57;
+  // background-color: rgba(64, 255, 249, .2);
+  opacity: 100%;
+  @media (max-width: 1023px) {
+      width: 46% !important;
+      margin-top: 1rem;
+  }
+  @media (max-width: 767px) {
+      width: 71% !important;
+      margin-top: 1rem;
+  }
+}
+
 .cart-item {
   text-align: center;
   background-color: #ffd8c4ff;

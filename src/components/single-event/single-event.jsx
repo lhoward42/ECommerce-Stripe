@@ -114,10 +114,10 @@ const SingleEvent = () => {
       
       return (
           <Layout>
-          <Container sx={{ padding: '2rem',
+          <Container sx={{ padding: '2rem', bottom: '0',
            display: isLaptop && 'flex', justifyContent: isLaptop && 'center', maxWidth: '100% !important',
             alignItems: isLaptop && 'center', background: 'rgba(255, 216, 196, .5)'}}>
-                <CardMedia component='img' image={event.imageUrl} alt='event' sx={{ width: isMobile ? '100%' : '40%', margin: '2.5rem auto' }} />              
+                <CardMedia component='img' image={event.imageUrl} alt='event' className="event-pic" sx={{ margin: '2.5rem auto' }} />              
                 <h1>{event.title}</h1>
                 {product.map(prod => 
                 <div style={{ marginLeft: '1rem'}}><NestedModal {...prod} key={prod.id} qty={qty} setQty={setQty} /> </div>

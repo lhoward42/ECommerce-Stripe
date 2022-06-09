@@ -23,7 +23,7 @@ const Success = () => {
                      <Button 
                       sx={{ color: "#3B1E57"}}
                      onClick={() => navigate('/shop')}
-                     
+                     color="secondary"
                      variant="contained"
                      >
                          Continue Shopping

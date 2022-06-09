@@ -33,7 +33,7 @@ const Hero = () => {
                    Crafts for Every Occasion 
                </h1>
                <div className="shop-now-btn">
-                   <Button color='primary' variant='contained' id='btn-white-outline' sx={{opacity: '95%'}} >
+                   <Button color='primary' variant='contained' id='btn-white-outline' sx={{opacity: '95%', paddingTop: '.75rem !important', paddingBottom: '.75rem !important' }} >
                       <Link to={`/shop`}> SHOP NOW </Link>
                    </Button>
                </div>

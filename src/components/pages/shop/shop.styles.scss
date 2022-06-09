@@ -1,11 +1,36 @@
 .shop-sign {
-    width: 18% !important;
+    width: 23% !important;
     margin-top: 1.5rem;
     color: #3B1E57;
+    // background-color: rgba(64, 255, 249, .2);
+    opacity: 100%;
+    @media (max-width: 1023px) {
+        width: 46% !important;
+        margin-top: 1rem;
+    }
+    @media (max-width: 767px) {
+        width: 71% !important;
+        margin-top: 1rem;
+    }
+}
+.event-sign {
+    width: 26% !important;
+    margin-top: 1.5rem;
+    color: #3B1E57;
+    // background-color: rgba(64, 255, 249, .2);
+    opacity: 100%;
+    @media (max-width: 1023px) {
+        width: 50% !important;
+        margin-top: 1rem;
+    }
+    @media (max-width: 767px) {
+        width: 75% !important;
+        margin-top: 1rem;
+    }
 }
 .sign-div {
     display: flex;
-    
+    padding-bottom: .5rem;
     justify-content: center;
 }
 .product-list-container {

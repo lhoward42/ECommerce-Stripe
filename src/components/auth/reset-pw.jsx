@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import APIURL from "../../utils/environment";
 import Layout from "../shared/layout";
 import { useParams } from 'react-router-dom';
+import { Button, Container } from '@mui/material'
 
 const ResetPassword = () => {
     const [password, setPassword] = useState(null)
@@ -35,14 +36,23 @@ const ResetPassword = () => {
 
     return (
         <Layout>
+           <Container sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '4rem' }}>
         <input
+                style={{ marginBottom: '1rem', height: '2rem', width: '65%'}}
                 className="form-control"
                 type="password"           
                 name="password"
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 />
-                <button onClick={(e) =>updatePassword(e)}></button>
+                <Button 
+                variant='contained'
+                color='secondary'
+                onClick={(e) =>updatePassword(e)}
+                >
+                 Reset Password   
+                </Button>
+            </Container>
         </Layout>
     )
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
 import Layout from '../../shared/layout';
-
+import { Button } from '@mui/material'
 
 
 const Canceled = () => {
@@ -13,9 +13,14 @@ const Canceled = () => {
                 <h1>Payment Failed</h1>
                 <p>Payment was not successful</p>
                 <div>
-                     <button className="button is-black nomad-btn submit" onClick={() => navigate('/shop')}>
+                     <Button 
+                        className="button submit"
+                        color="secondary"
+                        variant="contained"
+                        onClick={() => navigate('/shop')}
+                      >
                          Continue Shopping
-                     </button>
+                     </Button>
                  </div>
             </div>
         </Layout>
