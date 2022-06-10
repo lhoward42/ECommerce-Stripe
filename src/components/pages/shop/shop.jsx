@@ -16,7 +16,8 @@ const Shop = () => {
         <Grid item xs={8} sm={8} md={3} sx={{ }}>
         <FeaturedProduct {...product } key={product.id} />
         </Grid>
-    ))
+    ));
+    console.log('app products ===', products, allProducts)
     const allProductsAdmin = products.map(product => (
         <Grid item xs={8} sm={8} md={3} sx={{ }}>
         <FeaturedProduct {...product } key={product.id} />
