@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext } from 'react/cjs/react.development';
+import { useContext } from 'react';
 import { CartContext } from '../../../context/cart-context';
 import Layout from '../../shared/layout';
 import CartItem from './cart-item';
