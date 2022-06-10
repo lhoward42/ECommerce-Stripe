@@ -100,16 +100,13 @@ const ProductsContextProvider = ({ children }) => {
         try {
             fetch(`${APIURL}/products/all`, {
                 method: "GET",
-                headers: new Headers({
-                    "Content-Type": "application/json",
-                }),
-            }).then(response => response.json()).then(async (data) => {
+                redirect: 'follow'
+            }).then(response => response.text()).then(async (data) => {
                 setProducts(data);
                 console.log('products context data ===', data);
                 if (data) {
                     await localStorage.setItem("products", JSON.stringify(data));
                 };
-                console.log(data);
             });
         } catch (err) {
             console.log(err);
