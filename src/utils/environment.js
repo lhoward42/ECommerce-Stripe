@@ -1,4 +1,4 @@
-let APIURL = "";
+let APIURL = "https://lh-cmadapp.herokuapp.com";
 
 switch (window.location.hostname) {
   case "localhost" || "127.0.0.1":
@@ -8,8 +8,8 @@ switch (window.location.hostname) {
   case "https://craftmeadream317.herokuapp.com":
     APIURL = "https://lh-cmadapp.herokuapp.com";
     break;
-  default:
-    APIURL = "";
+default: APIURL = "https://lh-cmadapp.herokuapp.com";
+        
 }
 
 export default APIURL;
