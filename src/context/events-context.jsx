@@ -88,6 +88,7 @@ const EventsContextProvider = ({ children }) => {
 
     const fetchAllEvents = async () => {
         try {
+            console.log('events API URL ===', APIURL);
             fetch(`${APIURL}/events/all`, {
                 method: "GET",
                 redirect: 'follow'
