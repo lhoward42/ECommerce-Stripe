@@ -88,16 +88,29 @@ function getStyles(val, removeVal, theme) {
 
     const fetchAllEvents = async () => {
         try{
-            let res = await fetch(`${APIURL}/events/all`, {
+            // let res = await fetch(`${APIURL}/events/all`, {
+            //     method: "GET", 
+            //     headers: new Headers({
+            //         "Content-Type": "application/json",
+            //     }),
+            // });
+            fetch(`${APIURL}/events/all`, {
                 method: "GET", 
                 headers: new Headers({
                     "Content-Type": "application/json",
                 }),
+            }).then(response => {
+                console.log('events context response ===', response);
+                return response.json();
+            }).then(async (data) => {
+                setEvents(data);
+                await localStorage.setItem("events", JSON.stringify(data));
+                console.log('events context data ===', data);
             });
-            let data = await res.json() || {};
-            await setEvents(data);
-            await localStorage.setItem("events", JSON.stringify(data));
-            console.log(data);
+            // let data = await res.json() || {};
+            // await setEvents(data);
+            // await localStorage.setItem("events", JSON.stringify(data));
+            // console.log(data);
         } catch (err) {
             console.log(err)
         }
