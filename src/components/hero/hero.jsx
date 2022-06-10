@@ -16,12 +16,19 @@ const Hero = () => {
         <section className="hero is-large ">
            
             <div className="hero-body">
-                <h1 className="hero-title ">
-                    Crafts for Every Occasion 
-                </h1>
+            <h1 className="hero-title">
+                   <span className="title-word title-word-1">Crafts </span>
+                   <span className="title-word title-word-2">for </span>
+                   <span className="title-word title-word-3">Every </span>
+                   <span className="title-word title-word-4">Occasion </span>
+               </h1>
                 <div className="shop-now-btn">
-                    <Button color='primary' variant='contained' id='btn-white-outline' sx={{opacity: '95%'}} >
-                       <Link to={`/shop`}> SHOP NOW </Link>
+                    <Button 
+                        variant='contained'
+                        color='secondary'  
+                        id='btn-white-outline' 
+                        sx={{opacity: '95%'}} >
+                       <Link  style={{ backgroundColor: 'F7F063' }} to={`/shop`}> SHOP NOW </Link>
                     </Button>
                 </div>
             </div>
@@ -29,11 +36,15 @@ const Hero = () => {
         </Parallax> :  <section className="hero is-large is-info hero-image">
            
            <div className="hero-body">
+            <div className="title-container">
                <h1 className="hero-title">
-                   Crafts for Every Occasion 
-               </h1>
+                   <span className="title-word title-word-1">Crafts </span>
+                   <span className="title-word title-word-2">for </span>
+                   <span className="title-word title-word-3">Every </span>
+                   <span className="title-word title-word-4">Occasion </span>
+               </h1></div>
                <div className="shop-now-btn">
-                   <Button color='primary' variant='contained' id='btn-white-outline' sx={{opacity: '95%', paddingTop: '.75rem !important', paddingBottom: '.75rem !important' }} >
+                   <Button color='secondary' variant='contained' id='btn-white-outline' sx={{opacity: '95%', paddingTop: '.75rem !important', paddingBottom: '.75rem !important' }} >
                       <Link to={`/shop`}> SHOP NOW </Link>
                    </Button>
                </div>

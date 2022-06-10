@@ -6,15 +6,56 @@
 
 .hero-title {
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 1.75rem;
     color: white;
     @media(min-width: 1024px) {
         font-size: 3rem;
 }
 
 }
+.title-word {
+    animation: color-animation 7s linear infinite;
+}
 
+.title-word-1 {
+    --color-1: #40FFF9;
+    --color-2: #F7F063;
+    --color-3: #502b72;
+}
 
+.title-word-2 {
+    --color-1: #40FFF9;
+    --color-2: #F7F063;
+    --color-3: #502b72;
+}
+.title-word-3 {
+    --color-1: #FFD8C4;
+    --color-2: #FFC7F1;
+    --color-3: #F7F063;
+}
+
+.title-word-4 {
+    --color-1: #FFD8C4;
+    --color-2: #FFC7F1;
+    --color-3: #F7F063;
+}
+
+@keyframes color-animation {
+    0%    {color: var(--color-1)}
+    32%   {color: var(--color-1)}
+    33%   {color: var(--color-1)}
+    65%   {color: var(--color-2)}
+    66%   {color: var(--color-2)}
+    99%   {color: var(--color-1)}
+    100%  {color: var(--color-1)}
+  }
+  
+// .title-container {
+//     display: grid;
+//     place-items: center;  
+//     text-align: center;
+//     height: 100vh;
+// }
 .shop-now-btn {
     text-align: center;
     
