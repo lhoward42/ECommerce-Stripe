@@ -100,8 +100,10 @@ const ProductsContextProvider = ({ children }) => {
         try {
             fetch(`${APIURL}/products/all`, {
                 method: "GET",
-                redirect: 'follow'
-            }).then(response => response.text()).then(async (data) => {
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                }),
+            }).then(response => response.json()).then(async (data) => {
                 setProducts(data);
                 console.log('products context data ===', data);
                 if (data) {

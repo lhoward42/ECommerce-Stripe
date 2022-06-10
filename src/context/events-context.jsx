@@ -91,8 +91,10 @@ const EventsContextProvider = ({ children }) => {
             console.log('events API URL ===', APIURL);
             fetch(`${APIURL}/events/all`, {
                 method: "GET",
-                redirect: 'follow'
-            }).then(response => response.text()).then(async (data) => {
+                headers: new Headers({
+                    "Content-Type": "application/json",
+                }),
+            }).then(response => response.json()).then(async (data) => {
                 setEvents(data);
                 console.log('events context data ===', data);
                 if (data) {
