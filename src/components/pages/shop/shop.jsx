@@ -38,7 +38,7 @@ const Shop = () => {
         justifyContent="center" 
         sx={{ padding: isMobile ? '1rem 0' : isTablet ? '1.5rem 1.75rem 0rem 1.25rem' : '2rem 1.75rem 2rem 1.25rem', background: 'rgba(255, 216, 196, .7)'}}
         >
-        { token ? allProductsAdmin : allProducts }
+        { allProducts }
             </Grid>
            </div>
    
