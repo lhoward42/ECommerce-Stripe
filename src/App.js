@@ -15,7 +15,7 @@ import UpdateProduct from "./components/admin/products/update-product.jsx";
 import CreateEvent from "./components/admin/events/create-events.jsx";
 import UpdateEvent from "./components/admin/events/update-event.jsx";
 import "./App.scss";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 // import {DeviceSize} from './utils/DeviceSize.js'
 // import { useMediaQuery } from "react-responsive";
 import { createTheme, ThemeProvider,  experimental_sx as sx, } from "@mui/material";
@@ -24,7 +24,7 @@ import ResetRequest from "./components/auth/reset-request.jsx";
 import ResetPassword from "./components/auth/reset-pw.jsx";
 import Footer from "./components/footer/footer.jsx";
 function App() {
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState('');
 
   useEffect(() => {
     if (localStorage.getItem("token")) {
