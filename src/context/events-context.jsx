@@ -87,22 +87,19 @@ const EventsContextProvider = ({ children }) => {
     }
 
     const fetchAllEvents = async () => {
-        try {
-            console.log('events API URL ===', APIURL);
-            fetch(`${APIURL}/events/all`, {
-                method: "GET",
+        try{
+            let res = await fetch(`${APIURL}/events/all`, {
+                method: "GET", 
                 headers: new Headers({
                     "Content-Type": "application/json",
                 }),
-            }).then(response => response.json()).then(async (data) => {
-                setEvents(data);
-                console.log('events context data ===', data);
-                if (data) {
-                    await localStorage.setItem("events", JSON.stringify(data));
-                }
             });
+            let data = await res.json();
+            await setEvents(data);
+            await localStorage.setItem("events", JSON.stringify(data));
+            console.log("events date ---->",data);
         } catch (err) {
-            console.log(err)
+            console.error(err)
         }
     }
 

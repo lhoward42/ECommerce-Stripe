@@ -98,22 +98,20 @@ const ProductsContextProvider = ({ children }) => {
 
     const fetchAllProducts = async () => {
         try {
-            fetch(`${APIURL}/products/all`, {
-                method: "GET",
-                headers: new Headers({
-                    "Content-Type": "application/json",
-                }),
-            }).then(response => response.json()).then(async (data) => {
-                setProducts(data);
-                console.log('products context data ===', data);
-                if (data) {
-                    await localStorage.setItem("products", JSON.stringify(data));
-                };
-            });
-        } catch (err) {
-            console.log(err);
-        }
-    }
+         let res = await fetch(`${APIURL}/products/all`, { 
+             method: "GET", 
+             headers: new Headers({
+                 "Content-Type": "application/json",
+             }),
+         });
+         let data = await res.json();
+         await setProducts(data); 
+         await localStorage.setItem("products", JSON.stringify(data));
+         console.log(data); 
+     } catch (err) {
+         console.error(err);
+     } 
+     }
 
     //EVENT FUNCTION CREATES A NEW PRODUCT
 
