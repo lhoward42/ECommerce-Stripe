@@ -18,11 +18,13 @@ const Shop = () => {
         </Grid>
     ));
     console.log('app products ===', products, allProducts)
+    
     const allProductsAdmin = products.map(product => (
         <Grid item xs={8} sm={8} md={3} sx={{ }}>
         <FeaturedProduct {...product } key={product.id} />
         </Grid>
     ))
+    console.log("app admin products===", allProductsAdmin);
     let token = localStorage.getItem("token")
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
     const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet })
@@ -39,8 +41,7 @@ const Shop = () => {
         justifyContent="center" 
         sx={{ padding: isMobile ? '1rem 0' : isTablet ? '1.5rem 1.75rem 0rem 1.25rem' : '2rem 1.75rem 2rem 1.25rem', background: 'rgba(255, 216, 196, .7)'}}
         >
-        { allProducts }
-        {products.map(product => product.title) }
+        { token ? allProductsAdmin : allProducts }
             </Grid>
            </div>
    
