@@ -27,8 +27,8 @@ const Hero = () => {
                         variant='contained'
                         color='secondary'  
                         id='btn-white-outline' 
-                        sx={{opacity: '95%'}} >
-                       <Link  style={{ backgroundColor: 'F7F063' }} to={`/shop`}> SHOP NOW </Link>
+                        sx={{opacity: '95%', width: '25%', padding: '1rem'}} >
+                       <Link  style={{ fontSize: '2rem' }} to={`/shop`}> SHOP NOW </Link>
                     </Button>
                 </div>
             </div>
