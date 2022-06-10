@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {Button} from '@mui/material'
 import Login from "./login";
 import Register from "./register";
