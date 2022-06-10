@@ -106,10 +106,10 @@ import APIURL from '../utils/environment';
         });
         let data = await res.json();
         await setProducts(data); 
-        await localStorage.setItem("products", JSON.stringify(data));
+        if (data) { await localStorage.setItem("products", JSON.stringify(data))} ;
         console.log(data); 
     } catch (err) {
-        console.error(err);
+        console.log(err);
     } 
     }
 
@@ -149,7 +149,7 @@ import APIURL from '../utils/environment';
             alert('Admin must be logged in to create a product')
         }
         } catch (err) {
-            console.error(err);
+            console.log(err);
             
         } 
     }
@@ -191,7 +191,7 @@ import APIURL from '../utils/environment';
             alert('Admin must be logged in to update product');
         }
         } catch (err) {
-            console.error( "Product did not update", err )
+            console.log( "Product did not update", err )
             alert('product could not be updated, please check fields and try again')
         }
         
@@ -227,7 +227,7 @@ import APIURL from '../utils/environment';
             }
 
         } catch (err) {
-            console.error(err);
+            console.log(err);
             
         }
     }

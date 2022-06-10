@@ -99,7 +99,7 @@ function getStyles(val, removeVal, theme) {
             await localStorage.setItem("events", JSON.stringify(data));
             console.log(data);
         } catch (err) {
-            console.error(err)
+            console.log(err)
         }
     }
 
@@ -127,7 +127,7 @@ function getStyles(val, removeVal, theme) {
             alert('Admin must be logged in to create event')
         }
     } catch (err) {
-        console.error(err);
+        console.log(err);
     }
     
     }
@@ -189,7 +189,7 @@ function getStyles(val, removeVal, theme) {
         }
 
         } catch (err) {
-            console.error(err);
+            console.log(err);
         }
     }
 
