@@ -104,7 +104,7 @@ import APIURL from '../utils/environment';
                 "Content-Type": "application/json",
             }),
         });
-        let data = await res.json();
+        let data = await res.json() || {};
         await setProducts(data); 
         if (data) { await localStorage.setItem("products", JSON.stringify(data))} ;
         console.log(data); 

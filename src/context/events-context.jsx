@@ -94,7 +94,7 @@ function getStyles(val, removeVal, theme) {
                     "Content-Type": "application/json",
                 }),
             });
-            let data = await res.json();
+            let data = await res.json() || {};
             await setEvents(data);
             await localStorage.setItem("events", JSON.stringify(data));
             console.log(data);
