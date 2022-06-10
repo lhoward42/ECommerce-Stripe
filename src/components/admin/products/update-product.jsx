@@ -244,7 +244,16 @@ const UpdateProduct = (props) => {
                     Remove 
                     </button>
                 </div>
-
+                <div className="form-group">
+                    <label>Event Name: </label>
+                    <input
+                    className="form-control"
+                    type="text"
+                    name="eventName"
+                    placeholder="Event Name (Must Be Exact)"
+                    onChange={e => setEventName(e.target.value)}
+                />
+                </div>   
                 <div>
                     <button type="submit">Update Product</button>
                 </div>
