@@ -53,11 +53,11 @@ const isLaptop2 = useMediaQuery({ minWidth: DeviceSize.laptop2 })
                 <Button 
                 color="secondary" 
                 variant="contained"
-                
+                sx={{ paddingTop: '.5rem !important', paddingBottom: '.25rem !important'}}
               
                 >
-                    <Link to={`/product/1`}>
-                    MISTLETOE
+                    <Link style={{ fontSize: '1rem'}} to={`/product/1`}>
+                    FOR YOU
                     </Link>
                 </Button>
                 </div>
