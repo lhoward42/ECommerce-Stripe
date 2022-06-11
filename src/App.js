@@ -40,6 +40,9 @@ function App() {
       secondary: {
         main: "#f7f063",
       },
+      success: {
+        main: "#f7f063",
+      }
     },
     components: {
       MuiButton: {
@@ -67,14 +70,25 @@ function App() {
             style: {
               border: `4px black`,
               color: "#3b1e57",
-              paddingTop: '.9rem',
-              paddingBottom: '.9rem',
               fontSize: '1.35rem',
               fontWeight: 'bold',
               fontFamily: 'inherit',
               boxShadow: 'none'
             },
           },
+          {
+            props: { color: "success" },
+            style: {
+              border: `4px black`,
+              color: "#3b1e57",
+              fontSize: '1.35rem',
+              fontWeight: 'bold',
+              fontFamily: 'inherit',
+              boxShadow: 'none',
+              padding: '1rem 0 !important'
+            },
+          },
+
         ],
       },
       // MuiCardContent: {

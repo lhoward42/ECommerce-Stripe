@@ -1,8 +1,23 @@
 .hero-image {
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
     url("../../assets/CMADHero.jpeg") center/cover no-repeat;
+   margin-top: auto;    
+   @media (min-width: 767px) {
+    
+   } 
+    
+    
+}
+.hero-body {
+    @media (min-width: 768px) {
+        padding: 16rem 1.5rem !important;
+        // margin: 3rem 2rem !important;
+    } 
 }
 
+.react-parallax img {
+    height: 100% !important;
+}
 
 .hero-title {
     text-align: center;
@@ -49,7 +64,9 @@
     99%   {color: var(--color-1)}
     100%  {color: var(--color-1)}
   }
-  
+  .react-parallax img {
+    width: 100% !important;
+  }
 // .title-container {
 //     display: grid;
 //     place-items: center;  
@@ -60,4 +77,6 @@
     text-align: center;
     
 }
-
+.shop-now {
+    padding: .5rem 0 !important;
+}

@@ -11,8 +11,8 @@ const Hero = () => {
     return (
        
     
-    <div> 
-       { isLaptop ? <Parallax   bgImage={ HERO } bgImageAlt='hero' >
+    <div style={{ backgroundColor: 'rgba(64, 255, 249, .3)', paddingBottom: isLaptop && '1.5rem', paddingTop: isLaptop && '2rem', paddingLeft: isLaptop && '1rem', paddingRight: isLaptop && '1rem' }}> 
+       { isLaptop ? <Parallax style={{ width: '100%', height:'100%', marginTop: '2.5rem', marginLeft: 'auto', marginRight: 'auto' }} bgImage={ HERO } bgImageAlt='hero' >
         <section className="hero is-large ">
            
             <div className="hero-body">
@@ -25,10 +25,10 @@ const Hero = () => {
                 <div className="shop-now-btn">
                     <Button 
                         variant='contained'
-                        color='secondary'  
+                        color='success'  
                         id='btn-white-outline' 
-                        sx={{opacity: '95%', width: '25%', padding: '1rem'}} >
-                       <Link  style={{ fontSize: '2rem' }} to={`/shop`}> SHOP NOW </Link>
+                        sx={{opacity: '95%', width: '25%', padding: '1rem', }} >
+                       <Link  style={{ fontSize: '2rem', color: '#3B1E57',}} to={`/shop`}> SHOP NOW </Link>
                     </Button>
                 </div>
             </div>
@@ -44,7 +44,7 @@ const Hero = () => {
                    <span className="title-word title-word-4">Occasion </span>
                </h1></div>
                <div className="shop-now-btn">
-                   <Button color='secondary' variant='contained' id='btn-white-outline' sx={{opacity: '95%', paddingTop: '.5rem !important', paddingBottom: '.25rem !important' }} >
+                   <Button color='secondary' className="shop-now-btn" variant='contained'  sx={{opacity: '95%', }} >
                       <Link style={{ fontSize: '1rem'}} to={`/shop`}> SHOP NOW </Link>
                    </Button>
                </div>
