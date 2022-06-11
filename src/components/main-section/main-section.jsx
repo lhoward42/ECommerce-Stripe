@@ -15,7 +15,7 @@ const isLaptop2 = useMediaQuery({ minWidth: DeviceSize.laptop2 })
         {isLaptop2 ? <div className='main-section-container'>
             <div className='main-section-middle'> 
             <Parallax style={{ backgroundSize: '100% 100%' }} bgImage={HolidayDisplay} strength={100}>
-      <div style={{ height: '40rem', width: '69rem' }}>
+      <div style={{ height: '40rem', width: '70rem' }}>
        
       </div>
     </Parallax>
