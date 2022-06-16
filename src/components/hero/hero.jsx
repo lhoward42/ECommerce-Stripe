@@ -48,7 +48,7 @@ const Hero = () => {
                    <span className="title-word title-word-4">Occasion </span> */}
                </h1></div>
                <div className="shop-now-btn">
-                   <Button color='secondary' className="shop-now-btn" variant='contained'  sx={{opacity: '95%', backgroundColor: 'rgba(64,255,249,.9)' }} >
+                   <Button color='secondary' className="shop-now-btn" variant='contained'  sx={{opacity: '95%', backgroundColor: 'rgba(64,255,249,.83)' }} >
                       <Link style={{ fontSize: '11px'}} to={`/shop`}> SHOP NOW </Link>
                    </Button>
                </div>
