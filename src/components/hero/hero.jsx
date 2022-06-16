@@ -49,7 +49,7 @@ const Hero = () => {
                </h1></div>
                <div className="shop-now-btn">
                    <Button color='secondary' className="shop-now-btn" variant='contained'  sx={{opacity: '95%', backgroundColor: 'rgba(64,255,249,.9)' }} >
-                      <Link style={{ fontSize: '1rem'}} to={`/shop`}> SHOP NOW </Link>
+                      <Link style={{ fontSize: '11px'}} to={`/shop`}> SHOP NOW </Link>
                    </Button>
                </div>
            </div>
