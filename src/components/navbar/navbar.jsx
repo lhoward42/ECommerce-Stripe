@@ -44,7 +44,7 @@ const ResponsiveAppBar = () => {
 const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
 const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
   return (
-    <AppBar className="nav-bar" position="static" sx={{  padding: isTablet ? '0rem .75rem' : '1rem 1.25rem',  }}>
+    <AppBar className="nav-bar" position="static" sx={{  padding: isTablet ? '0rem .75rem' : '.5rem 1.25rem 0rem'  }}>
     
         <Toolbar disableGutters>
         {/* {<img  className="vintage-truck" src={LOGO} sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, }} alt="vintageTruck" />} */}

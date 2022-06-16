@@ -108,10 +108,10 @@ const FeaturedProduct = (props) => {
                     <></>
                     }
                     
-               <CardContent className='featured-image' sx={{  padding:'0' }}> 
+               <CardContent className='featured-image' sx={{  padding:'0', paddingBottom: '0 !important' }}> 
                 <Link to={`/product/${id}`}>
                 <CardMedia 
-                sx={{objectFit: 'cover', maxHeight: '35rem', marginBottom: '.25rem',}}
+                sx={{objectFit: 'cover', maxHeight: '35rem', marginBottom: '.25rem', marginLeft: isMobile && '-.5rem' }}
                 component='img'
                 image={imageUrl} 
                 alt='product'
