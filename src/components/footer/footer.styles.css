@@ -1,6 +1,21 @@
 .footer {
-  width: 50%;
-  margin: 4rem auto;
+  background: url("../../assets/clean-gray-paper.png"), -webkit-gradient(linear, left top, left bottom, from(#bedded), color-stop(5%, #a7e5ec), color-stop(8%, #77f4ea), color-stop(31%, rgba(64, 255, 249, 0.95144)), color-stop(66%, rgba(122, 243, 233, 0.912224)), color-stop(73%, #99e9eb), color-stop(78%, #a2e6ec), to(#bedded));
+  background: url("../../assets/clean-gray-paper.png"), linear-gradient(180deg, #bedded 0%, #a7e5ec 5%, #77f4ea 8%, rgba(64, 255, 249, 0.95144) 31%, rgba(122, 243, 233, 0.912224) 66%, #99e9eb 73%, #a2e6ec 78%, #bedded 100%);
+  -webkit-box-shadow: 0px -1px 19px -4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px -1px 19px -4px rgba(0, 0, 0, 0.4);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   text-align: center;
+  font-size: large;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.footer a {
+  margin-left: .25rem;
 }
 /*# sourceMappingURL=footer.styles.css.map */

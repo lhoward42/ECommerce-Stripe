@@ -2,6 +2,36 @@ h1, .empty-cart {
   text-align: center;
 }
 
+.sign {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.cart-sign {
+  width: 23% !important;
+  margin-top: 1.5rem;
+  color: #3B1E57;
+  opacity: 100%;
+}
+
+@media (max-width: 1023px) {
+  .cart-sign {
+    width: 46% !important;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .cart-sign {
+    width: 71% !important;
+    margin-top: 1rem;
+  }
+}
+
 .cart-item {
   text-align: center;
   background-color: #ffd8c4ff;
@@ -72,6 +102,9 @@ h1, .empty-cart {
   }
   .name-price {
     width: 200px;
+  }
+  .quantity {
+    margin-top: .5rem !important;
   }
 }
 /*# sourceMappingURL=cart-page.styles.css.map */

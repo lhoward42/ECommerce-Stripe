@@ -119,10 +119,11 @@ const EventsContextProvider = ({ children }) => {
                     }),
                     body: JSON.stringify(eventData),
                 })
-                let data = await res.json();
-                console.log(data);
+                
+                await res.json();
+                // console.log(data);
                 alert(`${event.title} has been created`)
-                console.log("Success", eventData);
+                // console.log("Success", eventData);
             } else {
                 alert('Admin must be logged in to create event')
             }
@@ -134,7 +135,7 @@ const EventsContextProvider = ({ children }) => {
 
     //Update Event 
     const updateEvent = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
         const token = localStorage.getItem("token");
         const eventData = {
             title: title,
@@ -155,8 +156,8 @@ const EventsContextProvider = ({ children }) => {
                 }),
                 body: JSON.stringify(eventData),
             })
-            let data = await res.json();
-            console.log(data);
+             await res.json();
+            // console.log(data);
             alert("event successfully updated")
         } catch (err) {
             console.log("Happening here ******", err)
@@ -177,11 +178,11 @@ const EventsContextProvider = ({ children }) => {
                 }),
             }
             );
-            const data = res.json();
-            console.log(data);
+         res.json();
+            // console.log(data);
             alert("Event successfully deleted");
             let array = await [...events];
-            console.log(array);
+            // console.log(array);
             let index = array.indexOf(event);
             if (index !== -1) {
                 array.splice(index, 1);

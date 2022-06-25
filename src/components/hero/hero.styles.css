@@ -1,20 +1,102 @@
 .hero-image {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.2)), to(rgba(0, 0, 0, 0.2))), url("../../assets/CMADHero.jpeg") center/cover no-repeat;
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("../../assets/CMADHero.jpeg") center/cover no-repeat;
+  background: url("../../assets/CMADHero.jpeg") center/cover no-repeat, black;
+  margin-top: auto;
+}
+
+.hero-body {
+  background-color: rgba(14, 7, 12, 0.457);
+}
+
+@media (max-width: 767px) {
+  .hero-body {
+    padding: 3.5rem 0rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-body {
+    padding: 7rem 3rem !important;
+  }
+}
+
+@media (min-width: 1023px) {
+  .hero-body {
+    padding: 11rem 2rem !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-body {
+    padding: 18rem 0rem !important;
+  }
+}
+
+.react-parallax img {
+  height: 100% !important;
 }
 
 .hero-title {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  color: white;
 }
 
-@media (min: 1024px) {
+@media (max-width: 767px) {
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1023px) {
+  .hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .hero-title {
+    font-size: 4rem;
+  }
+}
+
+.animate-character {
+  text-transform: uppercase;
+  background-image: linear-gradient(-225deg, #3b1e57e3 0%, #ffc7f1 45%, #ffd8c4 75%, #f7f063 100%);
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation: textclip 10s linear infinite;
+          animation: textclip 10s linear infinite;
+}
+
+@-webkit-keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
   }
 }
 
 .shop-now-btn {
   text-align: center;
+}
+
+.shop-now {
+  padding: .5rem 0 !important;
 }
 /*# sourceMappingURL=hero.styles.css.map */

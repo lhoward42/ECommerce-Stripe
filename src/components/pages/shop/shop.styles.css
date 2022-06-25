@@ -1,3 +1,55 @@
+.shop-sign {
+  width: 23% !important;
+  margin-top: 1.5rem;
+  color: #3B1E57;
+  opacity: 100%;
+}
+
+@media (max-width: 1023px) {
+  .shop-sign {
+    width: 35% !important;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .shop-sign {
+    width: 71% !important;
+    margin-top: 1rem;
+  }
+}
+
+.event-sign {
+  width: 26% !important;
+  margin-top: 1.5rem;
+  color: #3B1E57;
+  opacity: 100%;
+}
+
+@media (max-width: 1023px) {
+  .event-sign {
+    width: 40% !important;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .event-sign {
+    width: 75% !important;
+    margin-top: 1rem;
+  }
+}
+
+.sign-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: .5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .product-list-container {
   margin: 3rem 0;
 }

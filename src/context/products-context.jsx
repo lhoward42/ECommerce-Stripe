@@ -107,7 +107,7 @@ const ProductsContextProvider = ({ children }) => {
          let data = await res.json();
          await setProducts(data); 
          await localStorage.setItem("products", JSON.stringify(data));
-         console.log(data); 
+        //  console.log(data); 
      } catch (err) {
          console.error(err);
      } 
@@ -131,7 +131,7 @@ const ProductsContextProvider = ({ children }) => {
             eventName: product.eventName,
         };
 
-        console.log(productData);
+        // console.log(productData);
         try {
             if (token) {
                 let res = await fetch(`${APIURL}/products/new-product`, {
@@ -143,8 +143,8 @@ const ProductsContextProvider = ({ children }) => {
                     body: JSON.stringify(productData),
                 })
                 let data = await res.json();
-                console.log(data);
-                if (data) { alert('new product created') }
+                // console.log(data);
+                if (data) { alert('new product created')  }
             } else {
                 alert('Admin must be logged in to create a product')
             }
@@ -183,8 +183,8 @@ const ProductsContextProvider = ({ children }) => {
                     }),
                     body: JSON.stringify(productData),
                 })
-                let data = await res.json();
-                console.log(data);
+                await res.json();
+                // console.log(data);
                 alert('product successfully updated');
                 setRemoveVal([])
             } else {
@@ -213,8 +213,8 @@ const ProductsContextProvider = ({ children }) => {
                     }),
                 }
                 );
-                const data = res.json();
-                console.log(data);
+                 res.json();
+                // console.log(data);
                 alert("product successfully deleted");
                 let array = await [...products];
                 let index = array.indexOf(product);
@@ -235,7 +235,7 @@ const ProductsContextProvider = ({ children }) => {
     //EVENT FUNCTIONS FOR FIRST SET OF PRODUCT ATTRIBUTES
 
     const handleRemoveVal = (e) => {
-        console.log('val', val, removeVal)
+        // console.log('val', val, removeVal)
         // const newArray = val.filter(element => 
         //     !removeVal.includes(element))
         const newArray = val.filter((item) => {
@@ -243,8 +243,8 @@ const ProductsContextProvider = ({ children }) => {
         })
 
 
-        console.log({ newArray });
-        // setVal(val.length > 1 ? newArray : [])
+        // console.log({ newArray });
+
         setVal(newArray)
         setRemoveVal([])
         //     console.log(e);
@@ -274,11 +274,9 @@ const ProductsContextProvider = ({ children }) => {
         e.preventDefault();
         const newArray = val2.filter(element =>
             !removeVal2.includes(element))
-        console.log(newArray);
+        // console.log(newArray);
         setVal2(newArray)
-        //    const removedIndexItem =  val2.findIndex(element => 
-        //         removeVal2.includes(element))
-        //      setRemoveVal2(removedIndexItem!== -1 ? removeVal2[removeVal2.length-1]:[])
+        
     }
 
     const handleChangeSelect2 = (event) => {
@@ -305,13 +303,13 @@ const ProductsContextProvider = ({ children }) => {
         const newValues = [...options]
             .filter(option => option.selected)
             .map(x => x.value);
-        console.log("New Values", newValues, "event target", e.target);
+        // console.log("New Values", newValues, "event target", e.target);
 
         const removed = val2.filter(element =>
             newValues.includes(element)
         )
         setRemoveVal2(removed)
-        console.log(removed)
+        // console.log(removed)
     }
 
 
