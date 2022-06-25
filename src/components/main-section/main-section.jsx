@@ -15,20 +15,20 @@ const isLaptop2 = useMediaQuery({ minWidth: DeviceSize.laptop2 })
         {isLaptop2 ? <div className='main-section-container'>
             <div className='main-section-middle'> 
             <Parallax style={{ backgroundSize: '100% 100%', borderRadius: '1%' }} bgImage={HolidayDisplay} strength={100}>
-      <div style={{ height: '40rem', width: '70rem' }}>
+      <div style={{ height: '40rem', width: '85rem' }}>
        
       </div>
     </Parallax>
                 <div className='ms-m-description'>
-                <h2>Handmade pieces crafted with you in mind.</h2>
-                <p> Custom pieces carefully crafted with love to bring life to your space. 
+                <h2 style={{ fontSize: "2rem" }}>Handmade pieces crafted with you in mind.</h2>
+                <p style ={{ fontSize: "1.5rem" }}> Custom pieces carefully crafted with love to bring life to your space. 
                     Celebrate the holidays or celebrate the season, no matter what there's 
                     a crafty piece that will fit right in your space.
                 </p>
                 <Button 
                 color="secondary" 
                 variant="contained"
-                
+                sx={{ padding: "1rem 2rem"}}
               
                 >
                     <Link to={`/product/1`}>
@@ -45,8 +45,8 @@ const isLaptop2 = useMediaQuery({ minWidth: DeviceSize.laptop2 })
                     <img src={HolidayDisplay} alt='holiday-display' />
                 </div>
                 <div className='ms-m-description'>
-                <h2>Handmade pieces crafted with you in mind.</h2>
-                <p> Custom pieces carefully crafted with love to bring life to your space. 
+                <h2 style={{ fontSize: "2rem" }}>Handmade pieces crafted with you in mind.</h2>
+                <p style={{ fontSize: "1.5rem" }}> Custom pieces carefully crafted with love to bring life to your space. 
                     Celebrate the holidays or celebrate the season, no matter what there's 
                     a crafty piece that will fit right in your space.
                 </p>

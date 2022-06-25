@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { useStripe } from '@stripe/react-stripe-js';
 import { CartContext } from '../../../context/cart-context';
 import { fetchFromAPI } from "../../../helpers";
+import Layout from "../../shared/layout";
+import { Button } from "@mui/material"
 
 const StripeCheckout = () => {
     const [email, setEmail] = useState('');
@@ -41,6 +43,7 @@ const StripeCheckout = () => {
     }
 
     return (
+        <Layout>
         <form onSubmit={handleGuestCheckout}>
             <div>
                 <input 
@@ -51,11 +54,12 @@ const StripeCheckout = () => {
                 className="nomad-input" />
             </div>
             <div className="submit-btn">
-                <button type='submit' className="button is-black nomad-btn submit">
+                <Button type='submit' variant="contained" className="button nomad-btn submit">
                     Checkout
-                </button>
+                </Button>
             </div>
         </form>
+        </Layout>
     )
 }
 

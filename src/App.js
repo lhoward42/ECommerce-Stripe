@@ -7,6 +7,7 @@ import Shop from "./components/pages/shop/shop";
 import EventPage from "./components/events/events.jsx";
 import CartPage from "./components/pages/cart-page/cart-page.jsx";
 import Checkout from "./components/checkout/checkout";
+import StripeCheckout from "./components/checkout/stripe-checkout/stripe-checkout.jsx";
 import Success from "./components/checkout/stripe-checkout/success.jsx";
 import Canceled from "./components/checkout/stripe-checkout/canceled.jsx";
 import Portal from "./components/auth/portal.jsx";
@@ -149,7 +150,7 @@ function App() {
           <Route path='/product/:id' element={<SingleProduct />} />
           <Route path='/events/:title/:id' element={<SingleEvent />} />
           <Route path='/cart' element={<CartPage />} />
-          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/checkout' element={<StripeCheckout />} />
           <Route path='/success' element={<Success />} />
           <Route path='/canceled' element={<Canceled />} />
           <Route

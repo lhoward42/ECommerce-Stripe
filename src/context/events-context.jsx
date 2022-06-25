@@ -135,7 +135,8 @@ const EventsContextProvider = ({ children }) => {
 
     //Update Event 
     const updateEvent = async (e) => {
-        // e.preventDefault();
+
+        e.preventDefault();
         const token = localStorage.getItem("token");
         const eventData = {
             title: title,
@@ -147,6 +148,7 @@ const EventsContextProvider = ({ children }) => {
             location: location,
             hasProduct: checked
         };
+        console.log(eventData);
         try {
             const res = await fetch(`${APIURL}/events/${event.id}`, {
                 method: 'PUT',
@@ -156,8 +158,8 @@ const EventsContextProvider = ({ children }) => {
                 }),
                 body: JSON.stringify(eventData),
             })
-             await res.json();
-            // console.log(data);
+            let data = await res.json();
+            console.log(data);
             alert("event successfully updated")
         } catch (err) {
             console.log("Happening here ******", err)
