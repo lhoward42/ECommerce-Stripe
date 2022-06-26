@@ -13,10 +13,10 @@ const Portal = (props) => {
       };
 
 
-      const submitForm = () =>
-    console.log(
-      `Form is sent!\nemail: ${email}\npassword: ${password}`
-    );
+    //   const submitForm = () =>
+    // console.log(
+    //   `Form is sent!\nemail: ${email}\npassword: ${password}`
+    // );
 
 
     return (
@@ -29,7 +29,7 @@ const Portal = (props) => {
         setShowLogin={setShowLogin}
         showLogin={showLogin}
         setPassword={setPassword}
-        submitForm={submitForm}
+        // submitForm={submitForm}
         toggle={toggleLoginSignup}
         token={props.token}
         newToken={props.newToken}
@@ -41,10 +41,11 @@ const Portal = (props) => {
         showLogin={showLogin}
         setEmail={setEmail}
         setPassword={setPassword}
-        submitForm={submitForm}
+        // submitForm={submitForm}
         toggle={toggleLoginSignup}
         token={props.token}
         newToken={props.newToken}
+        logout={props.logout}
     />}
     
     

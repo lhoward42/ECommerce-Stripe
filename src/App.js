@@ -131,7 +131,7 @@ function App() {
   };
 
   const clearToken = () => {
-    localStorage.clear();
+    localStorage.removeItem("token");
     setToken("");
   };
 

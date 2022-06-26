@@ -38,13 +38,16 @@ const Register = ({ token, setEmail, setPassword, email, password, newToken, set
     }
   return (
 <Layout>
-  Register
-<Button onClick={() => setShowLogin(!showLogin)}>Already an Admin? Login </Button>
+
+<Button onClick={() => setShowLogin(!showLogin)}><u>Already an Admin? Login </u></Button>
+  
+    
   <form onSubmit={adminSignUp}>
+    <h1>Register</h1>
       <h4>Email</h4>
        <input value={email} onChange={(e) => { setEmail(e.target.value)}} />
        <h4>Password</h4>
-       <input value={password} onChange={(e) => { setPassword(e.target.value)}} />
+       <input style={{marginBottom: "1rem"}} value={password} onChange={(e) => { setPassword(e.target.value)}} />
        <br />
        <input type="submit" value="Submit"/>
    </form>
