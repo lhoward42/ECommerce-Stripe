@@ -27,11 +27,14 @@ const Register = ({ token, setEmail, setPassword, email, password, newToken, set
             }),
             body: JSON.stringify(adminData)
         })
+        if(response.status === 200){
         let data = await response.json();
         await newToken(data.sessionToken);
         await setLocalToken(data.sessionToken);
         alert('Admin signed up in!');  
-        
+        } else if (response.status === 401 ) {
+          console.log("failed in sign up");
+        }
 
         } catch (err){ console.log(err);}
         

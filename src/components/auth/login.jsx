@@ -20,7 +20,7 @@ const Login = ({ email, setEmail, password, setPassword, newToken, setShowLogin,
             email: email,
             password: password
         }
-    // console.log(`newUserData --> ${adminData.email} ${adminData.password}`);
+     console.log(`newUserData --> ${adminData.email} ${adminData.password}`);
        try {
          let response = await fetch(`${APIURL}/admin/login`, {
             method: 'POST',
@@ -29,13 +29,18 @@ const Login = ({ email, setEmail, password, setPassword, newToken, setShowLogin,
             }),
             body: JSON.stringify(adminData)
         })
+        if (response.status === 200){
         let data = await response.json();
         await newToken(data.sessionToken);
-        await setLocalToken(data.sessionToken);
-        await alert('Admin successfully logged in');
-        await navigate('/');   
-        } catch (err){ console.log(err);}
-        
+        setLocalToken(data.sessionToken);
+        alert('Admin successfully logged in');
+        navigate('/'); 
+        } else if (response.status === 401){
+          console.log("failed");
+        }
+        //logic for 401 status (if) conditional statement
+          
+        } catch (err){ console.log("error message",err);}      
     }
     return (
         <Layout>
