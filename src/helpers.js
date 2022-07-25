@@ -1,3 +1,5 @@
+  import APIURL from './utils/environment'
+
 export const isInCart = (product, cartItems, metadata, metadata2) => {
   // console.log(">>>>>>>", product, cartItems," metadata", metadata)
 
@@ -31,12 +33,14 @@ export const hasValueAttributes2 = (product) => {
   }
 };
 
-const API = "http://localhost:3001";
+
 
 export async function fetchFromAPI(endpoint, opts) {
+
+
   const { method, body } = { method: "POST", body: null, ...opts };
 
-  const res = await fetch(`${API}/${endpoint}`, {
+  const res = await fetch(`${APIURL}/${endpoint}`, {
     method,
     ...(body && { body: JSON.stringify(body) }),
     headers: {
