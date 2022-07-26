@@ -10,7 +10,7 @@ import EventSign from '../../assets/EventSign.png'
 const EventPage = () => {
     const { events } = useContext(EventsContext);
     const allEvents = events.map(event =>(
-        <Grid item xs={8} sm={6} md={3} >
+        <Grid item xs={5.6} sm={2.9} md={2.9} sx={{ margin: '0rem .15rem' }} >
             <FeaturedEvents {...event } key={event.id} />
             {/* {event.title}
             <img src={event.imageUrl} alt='event' /> */}
@@ -25,12 +25,12 @@ const EventPage = () => {
         <Layout>
              <div className='sign-div'><img className='event-sign' sx={{  }} src={EventSign} alt='shop'/></div>
             {/* <h1 style={{ textAlign: 'center', margin: '2.5rem 2rem .5rem 2rem', fontSize: isMobile ? '3rem': isLaptop2 ? '4rem' : '5rem' }}>Events</h1> */}
-            <div style={{ padding: isMobile ? '.5rem 1.5rem' : isTablet ? '1rem 2.5rem' : '2rem 2rem' }}>
+            <div style={{ padding: isMobile ? '.5rem .75rem' : isTablet ? '1rem' : '0rem 1rem' }}>
             <Grid 
             container 
             display="flex" 
             justifyContent="center" 
-            sx={{ padding: isMobile ? '1rem 0' : isTablet ? '1.5rem 1.75rem 0rem 1.25rem' : '2rem 1.75rem 2rem 1.25rem', background: 'rgba(255, 199, 241, .7)' }} 
+            sx={{ padding: isMobile ? '1rem 0' : isTablet ? '1rem .5rem 0rem .5rem' : '2rem 1.75rem 2rem 1.25rem', background: 'rgba(255, 199, 241, .7)' }} 
             >
                 {
                     allEvents

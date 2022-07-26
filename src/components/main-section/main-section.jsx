@@ -45,8 +45,8 @@ const isLaptop2 = useMediaQuery({ minWidth: DeviceSize.laptop2 })
                     <img src={HolidayDisplay} alt='holiday-display' />
                 </div>
                 <div className='ms-m-description'>
-                <h2 style={{ fontSize: "2rem" }}>Handmade pieces crafted with you in mind.</h2>
-                <p style={{ fontSize: "1.5rem" }}> Custom pieces carefully crafted with love to bring life to your space. 
+                <h2 style={{ fontSize: "2rem", margin: '.5rem 0px 0px' }}>Handmade pieces crafted with you in mind.</h2>
+                <p style={{ fontSize: "1.5rem", marginTop: '1rem' }}> Custom pieces carefully crafted with love to bring life to your space. 
                     Celebrate the holidays or celebrate the season, no matter what there's 
                     a crafty piece that will fit right in your space.
                 </p>

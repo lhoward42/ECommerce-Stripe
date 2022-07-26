@@ -94,10 +94,10 @@ const FeaturedProduct = (props) => {
       const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
       const isLaptop = useMediaQuery({ maxWidth: DeviceSize.laptop });
       const isLaptop2 = useMediaQuery({ maxWidth: DeviceSize.laptop2 });
-
+      const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
     return (
         
-        <Card className="featured-card" sx={{ padding: '0',backgroundColor: 'transparent', color: '#3B1E57', margin: '.5rem', minWidth: isMobile ? "100%" : " 98%",  boxShadow: 'none', overflow: 'visible'}}>
+        <Card className="featured-card" sx={{ padding: '0',backgroundColor: 'transparent', color: '#3B1E57', minWidth: isMobile ? "100%" : " 98%", minHeight: isMobile && 'fit-content',  boxShadow: 'none', overflow: 'visible'}}>
            
                 { token ? 
                 <div className="container"> 
@@ -111,7 +111,7 @@ const FeaturedProduct = (props) => {
                <CardContent className='featured-image' sx={{  padding:'0', paddingBottom: '0 !important' }}> 
                 <Link to={`/product/${id}`}>
                 <CardMedia 
-                sx={{objectFit: 'cover', maxHeight: '35rem', marginBottom: '.25rem', marginLeft: isMobile && '-.5rem' }}
+                sx={{objectFit: 'cover', maxHeight: '35rem', marginBottom: '.25rem', marginLeft: isMobile && '-.25rem', width: '100%' }}
                 component='img'
                 image={imageUrl} 
                 alt='product'
@@ -119,8 +119,8 @@ const FeaturedProduct = (props) => {
                 </Link> 
               
                 
-                <Typography sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.4rem', fontWeight: 'bold', marginLeft: '1rem' }} variant="h1" >{title}</Typography>
-                <Typography sx={{ fontSize: '1.2rem', fontFamily: 'inherit', fontWeight: '550', marginLeft: '1rem' }} variant='h2'>$ {price}</Typography >                
+                <Typography sx={{ textAlign: 'start', font: 'inherit', fontSize: '1rem', fontWeight: 'bold', marginLeft: '.1rem' }} variant="h1" >{title}</Typography>
+                <Typography sx={{ fontSize: '1rem', fontFamily: 'inherit', fontWeight: '500', marginLeft: '.1rem' }} variant='h2'>$ {price}</Typography >                
                 
                {/* </div> */}     
                 

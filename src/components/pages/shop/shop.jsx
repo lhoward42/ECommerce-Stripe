@@ -13,14 +13,14 @@ const Shop = () => {
     const { products } = useContext(ProductsContext)
     const allProducts = products.map(product => (
         product.category.includes("product") &&
-        <Grid item xs={8} sm={8} md={3} sx={{ }}>
+        <Grid item xs={5.8} sm={2.9} md={2.9} sx={{ margin: '0rem .15rem' }}>
         <FeaturedProduct {...product } key={product.id} />
         </Grid>
     ));
     console.log('app products ===', products, allProducts)
     
     const allProductsAdmin = products.map(product => (
-        <Grid item xs={8} sm={8} md={3} sx={{ }}>
+        <Grid item xs={5.8} sm={3.85} md={2.5} sx={{ }}>
         <FeaturedProduct {...product } key={product.id} />
         </Grid>
     ))
@@ -34,12 +34,12 @@ const Shop = () => {
     <Layout>
         <div className='sign-div'><img className='shop-sign' src={ShopSign} alt='shop'/></div>
         {/* <h1 style={{ textAlign: 'center', margin: '2.5rem 2rem 1rem 2rem', fontSize: isMobile ? '3rem': isLaptop2 ? '4rem' : '5rem'}}>Shop</h1> */}
-        <div style={{ padding: isMobile ? '.5rem 1.5rem' : isTablet ? '1rem 2.5rem' : '2rem 2rem' }}>
+        <div style={{ padding: isMobile ? '.5rem .75rem' : isTablet ? '1rem' : '0rem 1rem' }}>
         <Grid 
         container 
         display="flex" 
         justifyContent="center" 
-        sx={{ padding: isMobile ? '1rem 0' : isTablet ? '1.5rem 1.75rem 0rem 1.25rem' : '2rem 1.75rem 2rem 1.25rem', background: 'rgba(255, 216, 196, .7)'}}
+        sx={{ padding: isMobile ? '.75rem 0rem 0rem .5rem' : isTablet ? '1.5rem 1rem 0rem .75rem' : '2rem 1.5rem 2rem 1.25rem', background: 'rgba(255, 216, 196, .7)'}}
         >
         { token ? allProductsAdmin : allProducts }
             </Grid>

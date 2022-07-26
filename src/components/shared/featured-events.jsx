@@ -31,7 +31,8 @@ const FeaturedEvents = (props) => {
     const event = { title, description, date, id, endTime, startTime, location, hasProduct, imageUrl};
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
     const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
-    const isLaptop2Min = useMediaQuery({ minWidth: DeviceSize.laptop2})
+    const isTabletMin = useMediaQuery({ minWidth: DeviceSize.tablet });
+    const isLaptop2Min = useMediaQuery({ minWidth: DeviceSize.laptop2});
     const { toStandardTime } = useContext(EventsContext);
     const token = localStorage.getItem("token");
     
@@ -45,13 +46,13 @@ const FeaturedEvents = (props) => {
     // console.log(startTime.split(':'));
 
     
-
+    
     return(
         <Card 
         sx={{ backgroundColor: 'transparent', color: '#3B1E57',
-         margin: '.5rem', minWidth: isMobile ? "100%" : " 50%",
-         minHeight: isMobile ? 'fit-content' : isTablet ? '42rem' : '42rem',
-         opacity: '92%', boxShadow: 'none' }}
+         margin: '0rem', minWidth: isMobile ? "100%" : " 50%",
+         
+         opacity: '92%', boxShadow: 'none', padding: '0' }}
        
         >
             { token ? 
@@ -76,7 +77,7 @@ const FeaturedEvents = (props) => {
                     : 
                     <></>
                     }
-            <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', padding: '0'}}>
+            <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', padding: '0', paddingBottom: isTabletMin && '0rem !important' }}>
             <Link to={`/events/${title}/${id}`}>
             <CardMedia 
                 sx={{objectFit: 'cover', maxHeight: '35rem', marginBottom: '.25rem' }}
@@ -84,12 +85,12 @@ const FeaturedEvents = (props) => {
                 image={imageUrl} 
                 alt='event'
                 /> 
-                </Link>
-                <Typography variant="h5" sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.6rem', fontWeight: 'bold', marginLeft: '1rem' }}>{title}</Typography>
-                <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.25rem', fontWeight: 'bold', marginLeft: '1rem', fontStyle: 'italic' }}>{format(new Date(date), 'MMM dd, yyyy')}</Typography>
-                <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.25rem', fontWeight: 'bold', marginLeft: '1rem' }}>{toStandardTime(startTime)}</Typography>
-                <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.25rem', overflow: 'hidden', textOverflow: 'ellipsis', width: '65%', marginLeft: '1rem',fontStyle: 'italic' }}>{description}</Typography>
-                <Link to={`/events/${title}/${id}`}  style={{ fontSize: '1.25rem', fontWeight: 'bold', borderRadius: '4px', opacity: '-moz-initial.75', width: '65%', marginBottom: isMobile ? '0' : '1rem', marginLeft: '1rem', textDecoration: 'underline' }}>View Event</Link>
+                </Link> 
+                <Typography variant="h5" sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.2rem', fontWeight: 'bold', marginLeft: '.1rem' }}>{title}</Typography>
+                <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1rem', marginLeft: '.1rem'  }}>{format(new Date(date), 'MMM dd, yyyy')}</Typography>
+                <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1rem',  marginLeft: '.1rem' }}>{toStandardTime(startTime)}</Typography>
+                <Typography variant='h3' sx={{ textAlign: 'start', font: 'inherit', fontSize: '1rem', fontStyle: 'italic', overflow: 'hidden', textOverflow: 'ellipsis', width: '65%', marginLeft: '.1rem' }}>{description}</Typography>
+                <Link to={`/events/${title}/${id}`}  style={{ fontSize: '1rem', fontWeight: 'bold', borderRadius: '4px', opacity: '-moz-initial.75', width: '65%', marginBottom: isMobile ? '0' : '1rem',  textDecoration: 'underline', marginLeft: '.1rem'}}>View Event</Link>
             </CardContent>
         </Card>
     )
