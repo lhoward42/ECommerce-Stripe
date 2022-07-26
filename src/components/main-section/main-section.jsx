@@ -14,7 +14,7 @@ const isLaptop2 = useMediaQuery({ minWidth: DeviceSize.laptop2 })
         <>
         {isLaptop2 ? <div className='main-section-container'>
             <div className='main-section-middle'> 
-            <Parallax style={{ backgroundSize: '100% 100%', borderRadius: '1%' }} bgImage={HolidayDisplay} strength={100}>
+            <Parallax style={{ backgroundSize: '100% 100%' }} bgImage={HolidayDisplay} strength={100}>
       <div style={{ height: '40rem', width: '85rem' }}>
        
       </div>
@@ -53,10 +53,10 @@ const isLaptop2 = useMediaQuery({ minWidth: DeviceSize.laptop2 })
                 <Button 
                 color="secondary" 
                 variant="contained"
-                sx={{ paddingTop: '.5rem !important', paddingBottom: '.25rem !important'}}
+                sx={{ padding: '.5rem 2rem .5rem !important', margin: '0rem 0rem 1rem 0rem'}}
               
                 >
-                    <Link style={{ fontSize: '1rem'}} to={`/product/1`}>
+                    <Link style={{ fontSize: '1.25rem'}} to={`/product/1`}>
                     FOR YOU
                     </Link>
                 </Button>
