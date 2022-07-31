@@ -20,7 +20,9 @@
         margin-left: .25rem;
         
     }
-    h2 {
-        font-size: 1.3rem !important;
-    }
+    @media (min-width: 1020px) {
+        h2 {
+            font-size: 1.3rem !important;
+        }
+    } 
 }
