@@ -40,7 +40,7 @@ const isLaptop2 = useMediaQuery({ minWidth: DeviceSize.laptop2 })
         </div>
     :
    <div className='main-section-container'>
-            <div className='main-section-middle'> 
+            <div className='main-section-middle' style={{ boxShadow: "rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px"}}> 
                 <div className='ms-m-image'>
                     <img src={HolidayDisplay} alt='holiday-display' />
                 </div>

@@ -30,7 +30,7 @@ const EventPage = () => {
             container 
             display="flex" 
             justifyContent="center" 
-            sx={{ padding: isMobile ? '1rem 0' : isTablet ? '1rem .5rem 0rem .5rem' : '2rem 1.75rem 2rem 1.25rem', background: 'rgba(255, 199, 241, .7)' }} 
+            sx={{ padding: isMobile ? '1rem 0' : isTablet ? '1rem .5rem 0rem .5rem' : '2rem 1.75rem 2rem 1.25rem', background: 'rgba(255, 199, 241, .7)', boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px'}} 
             >
                 {
                     allEvents

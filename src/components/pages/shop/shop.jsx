@@ -39,7 +39,7 @@ const Shop = () => {
         container 
         display="flex" 
         justifyContent="center" 
-        sx={{ padding: isMobile ? '.75rem 0rem 0rem .5rem' : isTablet ? '1.5rem 1rem 0rem .75rem' : '2rem 1.5rem 2rem 1.25rem', background: 'rgba(255, 216, 196, .7)'}}
+        sx={{ padding: isMobile ? '.75rem 0rem 0rem .5rem' : isTablet ? '1.5rem 1rem 0rem .75rem' : '2rem 1.5rem 2rem 1.25rem', background: 'rgba(255, 216, 196, .7)', boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px'}}
         >
         { token ? allProductsAdmin : allProducts }
             </Grid>

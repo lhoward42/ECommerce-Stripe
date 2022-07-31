@@ -120,7 +120,7 @@ const SingleEvent = () => {
                 <CardMedia component='img' image={event.imageUrl} alt='event' className="event-pic" sx={{ margin: '2.5rem auto' }} />              
                 <h1>{event.title}</h1>
                 {product.map(prod => 
-                <div style={{ marginLeft: '1rem'}}><NestedModal {...prod} key={prod.id} qty={qty} setQty={setQty} /> </div>
+                <div><NestedModal {...prod} key={prod.id} qty={qty} setQty={setQty} /> </div>
                 )}
               <h2 style={{marginBottom: '0'}}>{format(new Date(date), 'MMM-dd-yy')} </h2><br />
                <p style={{ marginTop: '0'}}> Start Time:  <b> {toStandardTime(startTime)}</b> </p>
