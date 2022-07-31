@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
         <div className='layout'>
         {/* <Header /> */}
         <ResponsiveAppBar />
-        <main>
+        <main style={{ maxWidth: "100vw" }}>
             {
               children  
             }

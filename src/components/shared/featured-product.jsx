@@ -23,8 +23,8 @@ import {
   }  from '@mui/material/'
   import { DeviceSize } from '../../utils/DeviceSize';
   // import { useMediaQuery } from "react-responsive";
-import { format } from 'date-fns';
-import { mdiBorderColor } from '@mdi/js';
+  import { format } from 'date-fns';
+  import { mdiBorderColor } from '@mdi/js';
 
 
 const FeaturedProduct = (props) => {
