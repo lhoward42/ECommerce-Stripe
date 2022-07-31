@@ -119,8 +119,8 @@ const FeaturedProduct = (props) => {
                 </Link> 
               
                 
-                <Typography sx={{ textAlign: 'start', font: 'inherit', fontSize: '1rem', fontWeight: 'bold', marginLeft: '.1rem' }} variant="h1" >{title}</Typography>
-                <Typography sx={{ fontSize: '1rem', fontFamily: 'inherit', fontWeight: '500', marginLeft: '.1rem' }} variant='h2'>$ {price}</Typography >                
+                <Typography sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.2rem', fontWeight: 'bold', marginLeft: '.1rem' }} variant="h1" >{title}</Typography>
+                <Typography sx={{ fontSize: '1.2rem !important', fontFamily: 'inherit', fontWeight: '500', marginLeft: '.1rem' }} variant="h2">$ {price}</Typography >                
                 
                {/* </div> */}     
                 
