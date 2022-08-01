@@ -8,10 +8,11 @@ import { DeviceSize } from '../../../utils/DeviceSize';
 
 const Total = ({ itemCount, total, clearCart }) => {
     const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet })
+    const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile})
     const navigate = useNavigate()
     return (
         <div className='total-container'>
-            <div style={{ margin: '2rem'}}>
+            <div style={{ margin: '2rem', textAlign: isMobile && 'center'}}>
                 <p>Total Items: <b>{itemCount}</b></p>
                 <p>Total:<b>{` $${(Math.round(total * 100)/100).toFixed(2)} `}</b></p>
             </div>            
