@@ -97,7 +97,7 @@ const FeaturedProduct = (props) => {
       const isTablet = useMediaQuery({ maxWidth: DeviceSize.tablet });
     return (
         
-        <Card className="featured-card" sx={{ padding: '0',backgroundColor: 'transparent', color: '#3B1E57', minWidth: isMobile ? "100%" : " 98%", minHeight: isMobile && 'fit-content',  boxShadow: 'none', overflow: 'visible'}}>
+        <Card className="featured-card" sx={{ marginTop: '1rem !important', padding: '0',backgroundColor: 'transparent', color: '#3B1E57', minWidth: isMobile ? "100%" : " 98%", minHeight: isMobile && 'fit-content',  boxShadow: 'none', overflow: 'visible'}}>
            
                 { token ? 
                 <div className="container"> 
@@ -111,7 +111,7 @@ const FeaturedProduct = (props) => {
                <CardContent className='featured-image' sx={{  padding:'0', paddingBottom: '0 !important' }}> 
                 <Link to={`/product/${id}`}>
                 <CardMedia 
-                sx={{objectFit: 'cover', maxHeight: '35rem', marginBottom: '.25rem', marginLeft: isMobile && '-.25rem', width: '100%' }}
+                sx={{objectFit: 'cover', maxHeight: '35rem', marginBottom: '.25rem', marginTop:'.75rem', marginLeft: isMobile && '-.25rem', width: '100%' }}
                 component='img'
                 image={imageUrl} 
                 alt='product'
@@ -120,7 +120,7 @@ const FeaturedProduct = (props) => {
               
                 
                 <Typography sx={{ textAlign: 'start', font: 'inherit', fontSize: '1.2rem', fontWeight: 'bold', marginLeft: '.1rem' }} variant="h1" >{title}</Typography>
-                <Typography sx={{ fontSize: '1.2rem !important', fontFamily: 'inherit', fontWeight: '500', marginLeft: '.1rem' }} variant="h2">$ {price}</Typography >                
+                <Typography sx={{ fontSize: '1.2rem !important', fontFamily: 'inherit', fontWeight: '500', marginLeft: '.1rem', marginBottom: '1.5rem !important' }} variant="h2">$ {price}</Typography >                
                 
                {/* </div> */}     
                 

@@ -50,7 +50,7 @@ const FeaturedEvents = (props) => {
     return(
         <Card 
         sx={{ backgroundColor: 'transparent', color: '#3B1E57',
-         margin: '0rem', minWidth: isMobile ? "100%" : " 50%",
+         margin: '1rem 0rem', minWidth: isMobile ? "100%" : " 50%",
          
          opacity: '92%', boxShadow: 'none', padding: '0', borderRadius: '0px' }}
        
@@ -79,7 +79,7 @@ const FeaturedEvents = (props) => {
             <CardContent className='featured-image' sx={{ display: 'flex', flexDirection: 'column', padding: '0', paddingBottom: isTabletMin && '0rem !important' }}>
             <Link to={`/events/${title}/${id}`}>
             <CardMedia 
-                sx={{objectFit: 'cover', maxHeight: '35rem', marginBottom: '.25rem', marginLeft: '-.25rem' }}
+                sx={{objectFit: 'cover', maxHeight: '35rem', marginTop:'1rem',marginBottom: '.25rem', marginLeft: '-.25rem' }}
                 component='img'
                 image={imageUrl} 
                 alt='event'

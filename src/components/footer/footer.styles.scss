@@ -17,12 +17,24 @@
     
  
     a {
+        // align-self: center;
         margin-left: .25rem;
         
     }
+    @media (max-width: 1023px) {
+        a {
+            align-self: center;
+        }
+    }
+    @media (min-width: 1024px) {
+        a {
+            align-self: flex-end;
+            padding-bottom: .3rem;
+        }
+    }
     @media (min-width: 1020px) {
         h2 {
-            font-size: 1.3rem !important;
+            font-size: 2rem !important;
         }
     } 
 }

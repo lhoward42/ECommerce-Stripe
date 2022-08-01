@@ -17,9 +17,9 @@ const Total = ({ itemCount, total, clearCart }) => {
             </div>            
             <div className='checkout'>
                 <button className='button' 
-                style={{ background: '#3B1E57', color: 'white', padding: isTablet ? '1.5rem 2.15rem': '1.1rem 1.4rem', font: 'inherit', fontSize: '1.1rem' }}
+                style={{ background: '#3B1E57', color: 'white', padding: isTablet ? '1.5rem 2.15rem': '1.1rem 2rem', font: 'inherit', fontSize: '1.3rem', boxShadow: "rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px" }}
                 onClick={() => navigate('/checkout')} >CHECKOUT</button>
-                <button style={{ color: '#3B1E57', padding: isTablet ? '1.5rem 3.35rem' : '.75rem 2.55rem', marginBottom: isTablet && '2rem', font: 'inherit', fontSize: '1.1rem' }} className='button' onClick={() => clearCart()}>CLEAR</button>
+                <button style={{ color: '#3B1E57', padding: isTablet ? '1.5rem 3.55rem' : '.75rem 3.4rem', marginBottom: isTablet && '2rem', font: 'inherit', fontSize: '1.3rem', boxShadow: "rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px" }} className='button' onClick={() => clearCart()}>CLEAR</button>
             </div>
         </div>
     )
