@@ -31,7 +31,7 @@ const Hero = () => {
         
                         // id='btn-white-outline' 
                         sx={{opacity: '95%', width: '25%', padding: '1rem', backgroundColor: 'rgba(64,255,249,.9)' }} > */}
-                       <Link className="shop-link" style={{ boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px', opacity: '99%', width: '25%', padding: '1.1rem 2rem', backgroundColor: 'rgba(64,255,249,.9)', fontSize: '2rem', fontWeight: 'bold', borderRadius: '4px' }} to={`/shop`}> SHOP NOW </Link>
+                       <Link className="shop-link" style={{ boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px', opacity: '99%', width: '25%', padding: '1.2rem 2.6rem', backgroundColor: 'rgba(64,255,249,.9)', fontSize: '2rem', fontWeight: 'bold', borderRadius: '4px' }} to={`/shop`}> SHOP NOW </Link>
                     {/* </Button> */}
                 </div>
             </div>
