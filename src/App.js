@@ -61,7 +61,7 @@ function App() {
               opacity: '75%',
               fontWeight: 'bold',
               fontFamily: 'inherit',
-              boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
+              boxShadow: 'none',
               
             },
           },
@@ -74,7 +74,7 @@ function App() {
               fontSize: '1.35rem',
               fontWeight: 'bold',
               fontFamily: 'inherit',
-              boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
+              boxShadow: 'none',
             },
           },
           {
@@ -85,7 +85,7 @@ function App() {
               fontSize: '1.35rem',
               fontWeight: 'bold',
               fontFamily: 'inherit',
-              boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
+              boxShadow: 'none',
               padding: '1rem 0 !important'
             },
           },
