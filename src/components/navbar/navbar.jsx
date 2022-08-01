@@ -94,7 +94,7 @@ const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
           </Box>
           {/* {<img  className="vintage-truck" src={LOGO} sx={{ display: { xs: 'none', md: 'flex' }, mr: 2, }} alt="vintageTruck" />} */}
        
-           {<img className="vintage-truck" src={LOGO} alt="vintageTruck" />}
+           {<a className="vintage-truck"  href="/" ><img  className="vintage-truck" src={LOGO} sx={{ display: { xs: 'none', md: 'flex' }, mr: 2, }} alt="vintageTruck" /></a>}
       
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, flexDirection: 'row-reverse', fontSize: '1.5rem' }}>
             {/* <ListItem key="events" className='nav-links' onClick={handleCloseNavMenu} >

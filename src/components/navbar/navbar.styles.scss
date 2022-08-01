@@ -1,13 +1,18 @@
 .vintage-truck { 
-    width: 13.5% !important;
+    background-image: url('../../assets/vintagetruck.svg');
+    width: 35% !important;
     margin-left: auto;
     
+    
     @media (max-width: 1023px) {
-      width: 20% !important;
+      width: 40% !important;
     }
-    @media (max-width: 500px) {
-      width: 35% !important;
+    @media (max-width: 425px) {
+      width: 50% !important;
     }
+   @media (max-width: 1000px) {
+      text-align: center;
+   }
     // display: flex;
     // justify-self: center;
   }

@@ -9,13 +9,14 @@ import { useMediaQuery } from 'react-responsive';
 import { DeviceSize } from '../../utils/DeviceSize';
 const MainSection = () => {
 const navigate = useNavigate()
+const isDesktop = useMediaQuery({ minWidth: DeviceSize.desktop })
 const isLaptop2 = useMediaQuery({ minWidth: DeviceSize.laptop2 })
     return (
         <>
         {isLaptop2 ? <div className='main-section-container'>
             <div className='main-section-middle'> 
             <Parallax style={{ backgroundSize: '100% 100%' }} bgImage={HolidayDisplay} strength={100}>
-      <div style={{ height: '40rem', width: '85rem' }}>
+      <div style={{ height: isDesktop ? '65rem' : '40rem', width: '85rem' }}>
        
       </div>
     </Parallax>
@@ -53,7 +54,7 @@ const isLaptop2 = useMediaQuery({ minWidth: DeviceSize.laptop2 })
                 <Button 
                 color="secondary" 
                 variant="contained"
-                sx={{ padding: '.5rem 2rem .5rem !important', margin: '0rem 0rem 1rem 0rem'}}
+                sx={{ padding: '.5rem 2rem .5rem !important', margin: '0rem 0rem 1rem 0rem', border: '1px solid rgba(59, 30, 87, .1)', boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',}}
               
                 >
                     <Link style={{ fontSize: '1.25rem'}} to={`/product/1`}>
