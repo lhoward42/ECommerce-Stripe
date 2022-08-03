@@ -10,6 +10,14 @@
   padding-right: .3rem;
   border-radius: .65rem;
 }
+@media (min-width: 1024px) {
+    .cart-count {
+      border-radius: 100%;
+      font-size: 1.5rem;
+      padding-right: none;
+      margin-left: -1.1rem;
+    }
+}
 
 .shopping-basket {
   color: #3B1E57;
